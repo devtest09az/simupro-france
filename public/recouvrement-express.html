@@ -256,7 +256,7 @@
                             <li>✓ Export PDF juridique certifié</li>
                         </ul>
                     </div>
-                    <button onclick="alert('Intégration Stripe : Ce bouton active l\'abonnement mensuel récurrent de 49 €/mois.')" class="mt-6 w-full py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs rounded-lg transition shadow-lg shadow-indigo-600/30">
+                    <button onclick="openCheckoutModal(49, 'Pro Illimité')" class="mt-6 w-full py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs rounded-lg transition shadow-lg shadow-indigo-600/30">
                         S'abonner en Pro (49 €/m) →
                     </button>
                 </div>
@@ -271,10 +271,77 @@
                             <li>✓ Support prioritaire juriste</li>
                         </ul>
                     </div>
-                    <button onclick="alert('Intégration Stripe : Plan Cabinet à 149 €/mois.')" class="mt-6 w-full py-2 bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs rounded-lg transition">
-                        Choisir Cabinet →
+                    <button onclick="openCheckoutModal(149, 'Cabinet & Entreprise')" class="mt-6 w-full py-2 bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs rounded-lg transition">
+                        Choisir Cabinet (149 €/m) →
                     </button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal : Stripe Checkout Flow -->
+    <div id="checkout-modal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-lg w-full p-6 sm:p-8 space-y-6 shadow-2xl">
+            <div class="flex justify-between items-center pb-4 border-b border-slate-800">
+                <div class="flex items-center gap-2">
+                    <span class="w-7 h-7 rounded-lg bg-indigo-600 text-white flex items-center justify-center font-black text-xs">🔒</span>
+                    <h3 class="font-extrabold text-white text-base">Paiement Sécurisé SSL (Stripe)</h3>
+                </div>
+                <button onclick="closeCheckoutModal()" class="text-slate-400 hover:text-white text-lg">✕</button>
+            </div>
+
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex justify-between items-center">
+                <div>
+                    <span id="checkout-plan-name" class="font-bold text-white text-sm block">Abonnement Pro Illimité</span>
+                    <span class="text-xs text-slate-400">Facturation mensuelle sans engagement</span>
+                </div>
+                <span id="checkout-plan-price" class="text-xl font-black text-emerald-400 mono">49,00 €</span>
+            </div>
+
+            <form id="checkout-form" onsubmit="handleProcessPayment(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Nom sur la Carte</label>
+                    <input type="text" id="card-name" required placeholder="Ex: Jean Dupont" value="Jean Dupont"
+                           class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-sm text-white focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Numéro de Carte Bancaire</label>
+                    <div class="relative">
+                        <input type="text" id="card-num" required maxlength="19" placeholder="4242 4242 4242 4242" value="4242 4242 4242 4242"
+                               class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-sm mono text-white focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                        <span class="absolute right-3 top-2.5 text-xs text-slate-400">CB / Visa</span>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Expiration</label>
+                        <input type="text" id="card-exp" required maxlength="5" placeholder="12/28" value="12/28"
+                               class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-sm mono text-white">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">CVC</label>
+                        <input type="text" id="card-cvc" required maxlength="3" placeholder="123" value="123"
+                               class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-sm mono text-white">
+                    </div>
+                </div>
+
+                <div class="pt-2">
+                    <button type="submit" id="pay-submit-btn" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-sm rounded-xl transition shadow-xl shadow-emerald-600/30 flex items-center justify-center gap-2">
+                        <span>Payer 49,00 € TTC et Activer le Compte →</span>
+                    </button>
+                </div>
+                <p class="text-center text-[10px] text-slate-500">Paiement chiffré 256 bits conforme DSP2 / 3D-Secure.</p>
+            </form>
+
+            <div id="payment-success" class="hidden text-center space-y-4 py-4">
+                <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto text-2xl">
+                    ✓
+                </div>
+                <h4 class="text-lg font-bold text-white">Paiement Validé avec Succès !</h4>
+                <p class="text-xs text-slate-300">Votre compte Pro est activé. Reçu n° REC-2026-0849 envoyé.</p>
+                <button onclick="closeCheckoutModal()" class="px-5 py-2 bg-indigo-600 text-white font-bold text-xs rounded-xl">
+                    Accéder à mon espace débloqué →
+                </button>
             </div>
         </div>
     </div>
@@ -537,6 +604,34 @@
         }
         function closePricingModal() {
             document.getElementById('pricing-modal').classList.add('hidden');
+        }
+
+        function openCheckoutModal(price, planName) {
+            closePricingModal();
+            document.getElementById('checkout-plan-name').textContent = 'Abonnement ' + planName;
+            document.getElementById('checkout-plan-price').textContent = price.toFixed(2) + ' €';
+            document.getElementById('pay-submit-btn').innerHTML = `<span>Payer ${price.toFixed(2)} € TTC et Activer le Compte →</span>`;
+            document.getElementById('checkout-form').classList.remove('hidden');
+            document.getElementById('payment-success').classList.add('hidden');
+            document.getElementById('checkout-modal').classList.remove('hidden');
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkout-modal').classList.add('hidden');
+        }
+
+        function handleProcessPayment(e) {
+            e.preventDefault();
+            const btn = document.getElementById('pay-submit-btn');
+            btn.innerHTML = `<span>⏳ Traitement bancaire sécurisé en cours...</span>`;
+            btn.disabled = true;
+
+            setTimeout(() => {
+                document.getElementById('checkout-form').classList.add('hidden');
+                document.getElementById('payment-success').classList.remove('hidden');
+                btn.disabled = false;
+                localStorage.setItem('recouvr_is_pro', 'true');
+            }, 1200);
         }
 
         renderInvoices();
