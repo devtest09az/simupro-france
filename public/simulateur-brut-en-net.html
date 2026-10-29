@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertisseur Salaire Brut en Net (Cadre & Non-Cadre 2026)</title>
+    <meta name="description" content="Calculez précisément votre salaire net mensuel et annuel à partir du brut pour salarié non-cadre, cadre ou fonction publique.">
+    <link rel="canonical" href="https://simupro.fr/simulateur-brut-en-net.html">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        @media print {
+            header, footer, .no-print { display: none !important; }
+            body { background: white !important; color: black !important; }
+            .bg-gradient-to-br, .bg-gradient-to-r { background: #f8fafc !important; color: #0f172a !important; border: 1px solid #cbd5e1 !important; }
+            .text-white { color: #0f172a !important; }
+            .text-slate-400, .text-indigo-300, .text-teal-300, .text-blue-300, .text-rose-300 { color: #475569 !important; }
+            .text-emerald-400 { color: #047857 !important; font-weight: 800 !important; }
+            .print-header { display: block !important; }
+        }
+        .print-header { display: none; }
+    </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Convertisseur Salaire Brut en Net (Cadre & Non-Cadre 2026)",
+      "description": "Calculez précisément votre salaire net mensuel et annuel à partir du brut pour salarié non-cadre, cadre ou fonction publique.",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quel est le pourcentage moyen de charges entre brut et net ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pour un salarié non-cadre du secteur privé, les cotisations salariales représentent environ 22% à 23% du brut (soit un salaire net égal à environ 77-78% du brut). Pour un cadre, les cotisations s'élèvent à environ 25% (net égal à environ 75% du brut)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment passer d'un salaire brut annuel à un net mensuel ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Divisez le salaire brut annuel par 12 (ou par le nombre de mois prévu au contrat, ex. 13 mois), puis appliquez le coefficient de 0,78 (non-cadre) ou 0,75 (cadre) avant prélèvement à la source."
+          }
+        }
+      ]
+    }
+  ]
+}
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
+    <header class="bg-white border-b border-slate-100 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2.5 font-extrabold text-slate-900 text-lg tracking-tight">
+                <span class="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-black text-sm shadow-md shadow-indigo-200">⚡</span>
+                SimuPro France
+            </a>
+            <div class="flex items-center gap-4">
+                <span class="text-xs font-semibold px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full border border-indigo-100">
+                    Barème 2026
+                </span>
+                <a href="index.html" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition">Tous les simulateurs</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-6xl mx-auto px-4 py-10 w-full space-y-12">
+        <div class="print-header">
+            <div class="flex justify-between items-center border-b-2 border-slate-900 pb-4 mb-6">
+                <div>
+                    <h2 class="text-2xl font-black text-slate-900">⚡ SimuPro France — Dossier de Simulation Officielle</h2>
+                    <p class="text-sm text-slate-600">Calcul conforme à la réglementation fiscale et sociale 2026</p>
+                </div>
+                <div class="text-right text-xs text-slate-500">
+                    Document de synthèse personnel
+                </div>
+            </div>
+        </div>
+        <div class="text-center max-w-3xl mx-auto space-y-4">
+            <span class="inline-block text-xs font-bold tracking-wider uppercase px-3 py-1 rounded-full bg-slate-200 text-slate-700">
+                Emploi & Salaires
+            </span>
+            <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                Convertisseur Salaire Brut en Net (Cadre & Non-Cadre 2026)
+            </h1>
+            <p class="text-base md:text-lg text-slate-600 leading-relaxed">
+                Calculez précisément votre salaire net mensuel et annuel à partir du brut pour salarié non-cadre, cadre ou fonction publique.
+            </p>
+        </div>
+
+        <section class="max-w-5xl mx-auto">
+            
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 space-y-6">
+                <h3 class="text-lg font-semibold text-slate-800 flex items-center gap-2">
+                    <span class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">1</span>
+                    Votre Rémunération Brute
+                </h3>
+                
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-2">Salaire Brut Mensuel (€)</label>
+                    <input type="number" id="brut-mensuel" value="3200" step="50"
+                           class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-800 font-bold text-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-2">Statut du Salarié</label>
+                    <select id="statut-salarie" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-800 font-medium focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+                        <option value="non_cadre">Salarié Non-Cadre (Cotisations ~22%)</option>
+                        <option value="cadre" selected>Salarié Cadre (Cotisations ~25% dont APEC & Prévoyance)</option>
+                        <option value="fonctionnaire">Fonction Publique (Cotisations ~15%)</option>
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Mois payés</label>
+                        <select id="nb-mois" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-800 font-medium">
+                            <option value="12" selected>12 mois</option>
+                            <option value="13">13 mois</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Taux Prélèvement Source</label>
+                        <input type="number" id="taux-pas" value="5.5" step="0.5" min="0" max="45"
+                               class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-800 font-medium">
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-slate-900 to-emerald-950 rounded-2xl p-6 text-white flex flex-col justify-between shadow-xl">
+                <div>
+                    <div class="flex items-center justify-between pb-4 border-b border-white/10">
+                        <span class="text-xs font-semibold tracking-wider text-emerald-300 uppercase">Fiche de Paie Estimée</span>
+                        <span class="px-3 py-1 bg-emerald-500/20 text-emerald-300 text-xs rounded-full border border-emerald-400/30">Barème 2026</span>
+                    </div>
+
+                    <div class="mt-6 space-y-6">
+                        <div>
+                            <span class="text-sm text-slate-400 block">Salaire Net avant Impôt (versé sur le compte)</span>
+                            <span id="net-avant-impot" class="text-3xl font-extrabold text-white">2 400 €</span>
+                            <span id="net-annuel-display" class="text-xs text-slate-400 block mt-1">soit 28 800 € net / an</span>
+                        </div>
+
+                        <div class="p-4 bg-white/5 rounded-xl border border-white/10 space-y-3">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-slate-400">Cotisations salariales prélevées</span>
+                                <span id="charges-salariales" class="font-semibold text-rose-300">- 800 €</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-slate-400">Impôt à la source estimé</span>
+                                <span id="impot-source" class="font-semibold text-amber-300">- 132 €</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-2">
+                            <span class="text-sm text-emerald-300 block font-medium">Net Final dans votre Poche (après impôt)</span>
+                            <div class="flex items-baseline gap-3 mt-1">
+                                <span id="net-apres-impot" class="text-4xl font-black text-emerald-400">2 268 €</span>
+                                <span class="text-sm text-slate-400">/ mois</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-4 border-t border-white/10 flex justify-between items-center text-xs text-slate-400">
+                    <span>Coût total employeur : <strong id="super-brut" class="text-white">4 544 €</strong></span>
+                    <span>35h hebdo</span>
+                </div>
+            </div>
+        </div>
+        
+        </section>
+
+        <!-- Export & Viral Sharing Bar -->
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 p-5 bg-white rounded-2xl border border-slate-200/80 no-print shadow-sm">
+            <div class="flex items-center gap-3">
+                <span class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-base shadow-sm">🔗</span>
+                <div>
+                    <p class="text-sm font-bold text-slate-800">Partager ou sauvegarder cette simulation</p>
+                    <p class="text-xs text-slate-500">Lien interactif avec vos chiffres pré-remplis ou export PDF officiel.</p>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 w-full md:w-auto">
+                <button onclick="copyShareLink()" id="copy-btn" class="flex-1 md:flex-none px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs rounded-xl transition flex items-center justify-center gap-2">
+                    <span id="copy-icon">📋</span>
+                    <span id="copy-text">Copier le lien direct</span>
+                </button>
+                <button onclick="shareWhatsApp()" class="px-3.5 py-2.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-semibold text-xs rounded-xl transition flex items-center justify-center gap-1.5 border border-emerald-200/60">
+                    <span>💬</span>
+                    <span>WhatsApp</span>
+                </button>
+                <button onclick="shareLinkedIn()" class="px-3.5 py-2.5 bg-blue-50 hover:bg-blue-100 text-blue-700 font-semibold text-xs rounded-xl transition flex items-center justify-center gap-1.5 border border-blue-200/60">
+                    <span>💼</span>
+                    <span>LinkedIn</span>
+                </button>
+                <button onclick="window.print()" class="flex-1 md:flex-none px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs rounded-xl transition flex items-center justify-center gap-2 shadow-sm">
+                    <span>PDF Officiel</span>
+                    <span>↓</span>
+                </button>
+            </div>
+        </div>
+
+        <section class="max-w-5xl mx-auto">
+            <div class="bg-gradient-to-r from-indigo-50 via-purple-50 to-pink-50 rounded-2xl p-6 md:p-8 border border-indigo-100 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
+                <div class="space-y-2 text-center md:text-left">
+                    <span class="text-xs font-bold tracking-wider text-indigo-700 uppercase">Partenaire Recommandé</span>
+                    <h3 class="text-lg md:text-xl font-bold text-slate-900">Votre salaire net sur un compte sans frais avec prime de bienvenue de 80 € à 160 € :</h3>
+                    <p class="text-sm text-slate-600">Offre partenaire certifiée, 100% conforme et sans engagement.</p>
+                </div>
+                <a href="#banques-en-ligne" class="whitespace-nowrap px-6 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-indigo-200 transition-all transform hover:-translate-y-0.5 text-center">
+                    Voir les Meilleures Banques en Ligne →
+                </a>
+            </div>
+        </section>
+
+        <section class="max-w-5xl mx-auto pt-6 space-y-6">
+            <div class="border-t border-slate-200 pt-8">
+                <h3 class="text-2xl font-bold text-slate-900 mb-6">Questions Fréquentes & Règles Officielles</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    
+        <div class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm">
+            <h4 class="text-base font-semibold text-slate-800 mb-2">Quel est le pourcentage moyen de charges entre brut et net ?</h4>
+            <p class="text-sm text-slate-600 leading-relaxed">Pour un salarié non-cadre du secteur privé, les cotisations salariales représentent environ 22% à 23% du brut (soit un salaire net égal à environ 77-78% du brut). Pour un cadre, les cotisations s'élèvent à environ 25% (net égal à environ 75% du brut).</p>
+        </div>
+        
+        <div class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm">
+            <h4 class="text-base font-semibold text-slate-800 mb-2">Comment passer d'un salaire brut annuel à un net mensuel ?</h4>
+            <p class="text-sm text-slate-600 leading-relaxed">Divisez le salaire brut annuel par 12 (ou par le nombre de mois prévu au contrat, ex. 13 mois), puis appliquez le coefficient de 0,78 (non-cadre) ou 0,75 (cadre) avant prélèvement à la source.</p>
+        </div>
+        
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white border-t border-slate-100 py-8 text-center text-sm text-slate-500">
+        <div class="max-w-6xl mx-auto px-4 space-y-2">
+            <p>© 2026 SimuPro France. Outils gratuits et indépendants pour professionnels et particuliers.</p>
+        </div>
+    </footer>
+
+    <script>
+    function copyShareLink() {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+            const btn = document.getElementById('copy-text');
+            const original = btn.textContent;
+            btn.textContent = 'Lien copié !';
+            setTimeout(() => { btn.textContent = original; }, 2000);
+        });
+    }
+
+    function shareWhatsApp() {
+        const url = encodeURIComponent(window.location.href);
+        const text = encodeURIComponent('Découvre cette simulation sur SimuPro France : ');
+        window.open('https://api.whatsapp.com/send?text=' + text + url, '_blank');
+    }
+
+    function shareLinkedIn() {
+        const url = encodeURIComponent(window.location.href);
+        window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + url, '_blank');
+    }
+
+    
+        function updateBrutNet() {
+            const brutMensuel = parseFloat(document.getElementById('brut-mensuel').value) || 0;
+            const statut = document.getElementById('statut-salarie').value;
+            const nbMois = parseFloat(document.getElementById('nb-mois').value) || 12;
+            const tauxPas = (parseFloat(document.getElementById('taux-pas').value) || 0) / 100;
+
+            let rateCotis = 0.22;
+            if (statut === 'cadre') rateCotis = 0.25;
+            if (statut === 'fonctionnaire') rateCotis = 0.15;
+
+            const cotis = brutMensuel * rateCotis;
+            const netAvant = Math.max(0, brutMensuel - cotis);
+            const impot = netAvant * tauxPas;
+            const netApres = netAvant - impot;
+            const superBrut = brutMensuel * 1.42; // charges patronales ~42%
+
+            const fmt = (n) => new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(n) + ' €';
+
+            document.getElementById('net-avant-impot').textContent = fmt(netAvant);
+            document.getElementById('net-annuel-display').textContent = 'soit ' + fmt(netAvant * nbMois) + ' net / an';
+            document.getElementById('charges-salariales').textContent = '- ' + fmt(cotis);
+            document.getElementById('impot-source').textContent = '- ' + fmt(impot);
+            document.getElementById('net-apres-impot').textContent = fmt(netApres);
+            document.getElementById('super-brut').textContent = fmt(superBrut);
+
+            const params = new URLSearchParams({ brut: brutMensuel, statut, mois: nbMois, pas: (tauxPas * 100).toFixed(1) });
+            window.history.replaceState({}, '', window.location.pathname + '?' + params.toString());
+        }
+
+        const q = new URLSearchParams(window.location.search);
+        if (q.has('brut')) document.getElementById('brut-mensuel').value = q.get('brut');
+        if (q.has('statut')) document.getElementById('statut-salarie').value = q.get('statut');
+        if (q.has('mois')) document.getElementById('nb-mois').value = q.get('mois');
+        if (q.has('pas')) document.getElementById('taux-pas').value = q.get('pas');
+
+        ['brut-mensuel', 'statut-salarie', 'nb-mois', 'taux-pas'].forEach(id => {
+            document.getElementById(id).addEventListener('input', updateBrutNet);
+        });
+        updateBrutNet();
+        
+    </script>
+</body>
+</html>
