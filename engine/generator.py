@@ -637,7 +637,7 @@ def generate_tool_page(niche: dict) -> str:
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{niche['title']}</title>
     <meta name="description" content="{niche['meta_description']}">
-    <link rel="canonical" href="https://simupro.fr/{niche['slug']}.html">
+    <link rel="canonical" href="https://moonlit-baklava-2495ca.netlify.app/{niche['slug']}.html">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -869,7 +869,7 @@ def generate_index_page(niches: list[dict]) -> str:
 </html>
 """
 
-def generate_seo_assets(niches: list[dict], out: Path, base_url: str = "https://simupro.fr"):
+def generate_seo_assets(niches: list[dict], out: Path, base_url: str = "https://moonlit-baklava-2495ca.netlify.app"):
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>']
     sitemap.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
     sitemap.append(f'  <url><loc>{base_url}/index.html</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>')
