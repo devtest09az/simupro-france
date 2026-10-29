@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth bg-slate-950 text-slate-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RecouvrExpress — Récupérez vos Factures Impayées sans Avocat (SaaS B2B)</title>
+    <meta name="description" content="Le logiciel n°1 pour PME et artisans : calculez automatiquement vos pénalités légales et générez des mises en demeure officielles qui font payer vos débiteurs sous 8 jours.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- Header Navigation -->
+    <header class="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-2xl bg-indigo-600 flex items-center justify-center font-black text-xl text-white shadow-xl shadow-indigo-500/25">
+                    ⚖️
+                </div>
+                <span class="font-black text-xl tracking-tight text-white">Recouvr<span class="text-indigo-400">Express</span></span>
+            </div>
+            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-300">
+                <a href="#roi" class="hover:text-white transition">Calculateur de Gains</a>
+                <a href="#fonctionnalites" class="hover:text-white transition">Fonctionnalités</a>
+                <a href="#tarifs" class="hover:text-white transition">Tarifs</a>
+                <a href="#faq" class="hover:text-white transition">Cadre Légal</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <a href="recouvrement-express.html" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm rounded-xl transition shadow-lg shadow-indigo-600/30">
+                    Lancer l'Application Gratuite →
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="max-w-7xl mx-auto px-6 pt-20 pb-16 text-center space-y-8">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-bold uppercase tracking-wider">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Conforme Art. L. 441-10 du Code de Commerce
+        </div>
+
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white max-w-4xl mx-auto leading-tight">
+            Récupérez vos factures impayées <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-400">sans payer d'avocat</span>.
+        </h1>
+
+        <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto font-normal leading-relaxed">
+            Ne laissez plus vos clients financer leur trésorerie sur votre dos. Calculez les pénalités légales au centime près et générez des mises en demeure officielles qui débloquent les paiements sous 8 jours.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+            <a href="recouvrement-express.html" class="w-full sm:w-auto px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-base rounded-2xl transition shadow-2xl shadow-indigo-600/40 transform hover:-translate-y-0.5">
+                Tester sur un impayé maintenant (Gratuit) →
+            </a>
+            <a href="#roi" class="w-full sm:w-auto px-8 py-4 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 font-bold text-base rounded-2xl transition">
+                Estimer vos pénalités de retard
+            </a>
+        </div>
+
+        <!-- Social Proof Stats -->
+        <div class="pt-12 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto border-t border-slate-800/80">
+            <div>
+                <span class="text-3xl font-black text-white mono">100 %</span>
+                <span class="text-xs text-slate-400 block mt-1">Conforme Droit Français</span>
+            </div>
+            <div>
+                <span class="text-3xl font-black text-emerald-400 mono">+ 40,00 €</span>
+                <span class="text-xs text-slate-400 block mt-1">Forfait légal par facture</span>
+            </div>
+            <div>
+                <span class="text-3xl font-black text-indigo-400 mono">0 %</span>
+                <span class="text-xs text-slate-400 block mt-1">De commission prélevée</span>
+            </div>
+            <div>
+                <span class="text-3xl font-black text-white mono">&lt; 8 jours</span>
+                <span class="text-xs text-slate-400 block mt-1">Délai moyen de régularisation</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive ROI Simulator Section -->
+    <section id="roi" class="max-w-5xl mx-auto px-6 py-16">
+        <div class="bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 rounded-3xl p-8 sm:p-12 shadow-2xl space-y-8">
+            <div class="text-center max-w-xl mx-auto space-y-2">
+                <span class="text-xs font-bold uppercase tracking-wider text-indigo-400">Simulateur de Rentabilité</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Combien d'argent perdez-vous en ce moment ?</h2>
+                <p class="text-sm text-slate-400">Réglez vos chiffres pour découvrir les pénalités légales que la loi vous autorise à réclamer en plus.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center pt-4">
+                <div class="space-y-6 bg-slate-950/60 p-6 rounded-2xl border border-slate-800/60">
+                    <div>
+                        <div class="flex justify-between text-sm font-semibold mb-2">
+                            <span class="text-slate-300">Montant total de vos factures en retard</span>
+                            <span id="roi-amount-val" class="text-indigo-400 mono font-bold">12 000 €</span>
+                        </div>
+                        <input type="range" id="roi-amount" min="1000" max="80000" step="1000" value="12000" 
+                               class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500">
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm font-semibold mb-2">
+                            <span class="text-slate-300">Nombre de factures impayées</span>
+                            <span id="roi-invoices-val" class="text-indigo-400 mono font-bold">4 factures</span>
+                        </div>
+                        <input type="range" id="roi-invoices" min="1" max="20" step="1" value="4" 
+                               class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500">
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm font-semibold mb-2">
+                            <span class="text-slate-300">Retard moyen constaté</span>
+                            <span id="roi-days-val" class="text-indigo-400 mono font-bold">45 jours</span>
+                        </div>
+                        <input type="range" id="roi-days" min="10" max="180" step="5" value="45" 
+                               class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500">
+                    </div>
+                </div>
+
+                <div class="bg-indigo-950/40 border border-indigo-500/30 rounded-2xl p-6 sm:p-8 space-y-6">
+                    <div>
+                        <span class="text-xs uppercase tracking-wider text-indigo-300 font-bold block">Pénalités Légales Récupérables</span>
+                        <span id="roi-penalties" class="text-3xl sm:text-4xl font-black text-emerald-400 mt-1 block mono">+ 374,38 €</span>
+                        <span class="text-xs text-slate-400 mt-1 block">Taux légal BCE (14,5%) + 40 € par facture</span>
+                    </div>
+                    <div class="pt-4 border-t border-indigo-500/20">
+                        <span class="text-xs uppercase tracking-wider text-indigo-300 font-bold block">Total que vous devez encaisser</span>
+                        <span id="roi-total" class="text-2xl sm:text-3xl font-black text-white mt-1 block mono">12 374,38 €</span>
+                    </div>
+                    <a href="recouvrement-express.html" class="block w-full text-center py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm rounded-xl transition shadow-lg shadow-indigo-600/30">
+                        Générer mes courriers de mise en demeure →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="tarifs" class="max-w-6xl mx-auto px-6 py-20">
+        <div class="text-center max-w-2xl mx-auto space-y-4 mb-16">
+            <span class="text-xs font-bold uppercase tracking-wider text-indigo-400">Tarification Transparente</span>
+            <h2 class="text-3xl sm:text-4xl font-black text-white">Rentabilisé dès la première facture récupérée</h2>
+            <p class="text-slate-400 text-sm">Les cabinets de recouvrement traditionnels prennent 20% de vos gains. Avec RecouvrExpress, vous gardez 100% de votre argent.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-slate-900/60 border border-slate-800 rounded-3xl p-8 flex flex-col justify-between">
+                <div>
+                    <h3 class="font-bold text-lg text-white">Starter</h3>
+                    <p class="text-xs text-slate-400 mt-1">Pour tester sur un impayé ponctuel</p>
+                    <div class="text-4xl font-black text-white mt-6">0 € <span class="text-sm font-normal text-slate-500">/ mois</span></div>
+                    <ul class="text-sm text-slate-300 mt-8 space-y-3">
+                        <li class="flex items-center gap-2">✓ 1 facture impayée active</li>
+                        <li class="flex items-center gap-2">✓ Calcul des pénalités BCE</li>
+                        <li class="flex items-center gap-2">✓ Relance niveau 1 amicale</li>
+                    </ul>
+                </div>
+                <a href="recouvrement-express.html" class="mt-8 block text-center py-3 bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm rounded-xl transition">
+                    Démarrer Gratuitement
+                </a>
+            </div>
+
+            <div class="bg-gradient-to-b from-indigo-950/80 to-slate-900 border-2 border-indigo-500 rounded-3xl p-8 flex flex-col justify-between shadow-2xl relative">
+                <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 bg-indigo-500 text-white text-xs font-black uppercase tracking-wider rounded-full shadow-md">
+                    Le Choix des PME
+                </span>
+                <div>
+                    <h3 class="font-bold text-lg text-white">Pro Illimité</h3>
+                    <p class="text-xs text-indigo-200 mt-1">Pour les entreprises et artisans avec facturation récurrente</p>
+                    <div class="text-4xl font-black text-white mt-6">49 € <span class="text-sm font-normal text-slate-400">/ mois</span></div>
+                    <ul class="text-sm text-slate-200 mt-8 space-y-3">
+                        <li class="flex items-center gap-2">✓ <strong>Factures impayées illimitées</strong></li>
+                        <li class="flex items-center gap-2">✓ <strong>Mises en demeure LRAR certifiées</strong></li>
+                        <li class="flex items-center gap-2">✓ Calcul temps réel + 40 € légaux</li>
+                        <li class="flex items-center gap-2">✓ Export PDF officiel personnalisé</li>
+                        <li class="flex items-center gap-2">✓ 0 % de commission sur les montants</li>
+                    </ul>
+                </div>
+                <a href="recouvrement-express.html" class="mt-8 block text-center py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-sm rounded-xl transition shadow-xl shadow-indigo-600/40">
+                    Prendre l'Abonnement Pro →
+                </a>
+            </div>
+
+            <div class="bg-slate-900/60 border border-slate-800 rounded-3xl p-8 flex flex-col justify-between">
+                <div>
+                    <h3 class="font-bold text-lg text-white">Cabinet / Groupe</h3>
+                    <p class="text-xs text-slate-400 mt-1">Pour experts-comptables et réseaux</p>
+                    <div class="text-4xl font-black text-white mt-6">149 € <span class="text-sm font-normal text-slate-500">/ mois</span></div>
+                    <ul class="text-sm text-slate-300 mt-8 space-y-3">
+                        <li class="flex items-center gap-2">✓ Multi-entreprises et filiales</li>
+                        <li class="flex items-center gap-2">✓ Dossiers d'injonction de payer greffe</li>
+                        <li class="flex items-center gap-2">✓ Support prioritaire juriste</li>
+                    </ul>
+                </div>
+                <a href="recouvrement-express.html" class="mt-8 block text-center py-3 bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm rounded-xl transition">
+                    Contacter pour Groupe
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-900 bg-slate-950 py-12 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-6 space-y-3">
+            <p>© 2026 RecouvrExpress — Plateforme SaaS indépendante d'aide juridique au recouvrement commercial.</p>
+            <p class="text-slate-600">Les modèles sont rédigés en stricte conformité avec le Code de commerce français (Art. L441-10 et suivants).</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Script -->
+    <script>
+        function updateRoi() {
+            const amount = parseFloat(document.getElementById('roi-amount').value);
+            const count = parseInt(document.getElementById('roi-invoices').value);
+            const days = parseInt(document.getElementById('roi-days').value);
+
+            document.getElementById('roi-amount-val').textContent = amount.toLocaleString('fr-FR') + ' €';
+            document.getElementById('roi-invoices-val').textContent = count + ' facture' + (count > 1 ? 's' : '');
+            document.getElementById('roi-days-val').textContent = days + ' jours';
+
+            const interestRate = 0.145; // 14.5% BCE
+            const interest = amount * (interestRate * (days / 365));
+            const fixedFees = count * 40;
+            const penalties = interest + fixedFees;
+            const total = amount + penalties;
+
+            document.getElementById('roi-penalties').textContent = '+ ' + penalties.toLocaleString('fr-FR', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' €';
+            document.getElementById('roi-total').textContent = total.toLocaleString('fr-FR', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' €';
+        }
+
+        ['roi-amount', 'roi-invoices', 'roi-days'].forEach(id => {
+            document.getElementById(id).addEventListener('input', updateRoi);
+        });
+        updateRoi();
+    </script>
+</body>
+</html>
