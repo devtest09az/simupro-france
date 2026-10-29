@@ -6,6 +6,7 @@ if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
 from engine.niches import NICHES
+from engine.guides import GUIDES, generate_guide_page
 
 def get_calculator_html_and_js(calculator_type: str) -> tuple[str, str]:
     if calculator_type == "tjm_freelance":
@@ -860,6 +861,35 @@ def generate_index_page(niches: list[dict]) -> str:
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {cards_html}
         </div>
+
+        <!-- Section Guides & Dossiers Fiscaux -->
+        <div class="pt-8 border-t border-slate-200 space-y-6">
+            <div>
+                <span class="text-xs font-bold tracking-wider uppercase text-indigo-600">Expertise & Décryptage</span>
+                <h2 class="text-2xl font-bold text-slate-900 mt-1">Nos Dossiers Pratiques 2026</h2>
+                <p class="text-sm text-slate-600">Guides complets pour optimiser vos revenus, indemnités et projets immobiliers.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <a href="guide-comprendre-salaire-brut-en-net.html" class="bg-white p-5 rounded-2xl border border-slate-200/80 hover:border-indigo-300 transition block group">
+                    <span class="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700">Fiche de Paie</span>
+                    <h3 class="text-base font-bold text-slate-900 mt-2 group-hover:text-indigo-600 transition">Salaire Brut en Net : Où va la différence ?</h3>
+                    <p class="text-xs text-slate-500 mt-1 line-clamp-2">Comprendre les 22% à 25% de cotisations sociales prélevées entre brut et net.</p>
+                    <span class="text-xs font-semibold text-indigo-600 mt-4 block">Lire le guide →</span>
+                </a>
+                <a href="guide-reduire-frais-de-notaire.html" class="bg-white p-5 rounded-2xl border border-slate-200/80 hover:border-indigo-300 transition block group">
+                    <span class="text-xs font-semibold px-2 py-0.5 rounded bg-rose-50 text-rose-700">Immobilier</span>
+                    <h3 class="text-base font-bold text-slate-900 mt-2 group-hover:text-indigo-600 transition">4 Astuces pour Réduire ses Frais de Notaire</h3>
+                    <p class="text-xs text-slate-500 mt-1 line-clamp-2">Économisez jusqu'à 5 000 € grâce au mobilier, honoraires d'agence et VEFA.</p>
+                    <span class="text-xs font-semibold text-indigo-600 mt-4 block">Lire le guide →</span>
+                </a>
+                <a href="guide-negocier-rupture-conventionnelle.html" class="bg-white p-5 rounded-2xl border border-slate-200/80 hover:border-indigo-300 transition block group">
+                    <span class="text-xs font-semibold px-2 py-0.5 rounded bg-teal-50 text-teal-700">Carrière</span>
+                    <h3 class="text-base font-bold text-slate-900 mt-2 group-hover:text-indigo-600 transition">Négocier sa Rupture Conventionnelle</h3>
+                    <p class="text-xs text-slate-500 mt-1 line-clamp-2">Indemnités supra-légales, différé chômage ARE et stratégie de négociation.</p>
+                    <span class="text-xs font-semibold text-indigo-600 mt-4 block">Lire le guide →</span>
+                </a>
+            </div>
+        </div>
     </main>
 
     <footer class="bg-white border-t border-slate-100 py-8 text-center text-sm text-slate-500">
@@ -874,7 +904,9 @@ def generate_seo_assets(niches: list[dict], out: Path, base_url: str = "https://
     sitemap.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
     sitemap.append(f'  <url><loc>{base_url}/index.html</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>')
     for n in niches:
-        sitemap.append(f'  <url><loc>{base_url}/{n["slug"]}.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>')
+        sitemap.append(f'  <url><loc>{base_url}/{n["slug"]}.html</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>')
+    for g in GUIDES:
+        sitemap.append(f'  <url><loc>{base_url}/{g["slug"]}.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>')
     sitemap.append('</urlset>')
 
     (out / "sitemap.xml").write_text("\n".join(sitemap), encoding="utf-8")
@@ -897,12 +929,18 @@ def build_all(output_dir: str = "public"):
         dest_file.write_text(html_content, encoding="utf-8")
         print(f"  -> Genere : {dest_file.name}")
 
+    for guide in GUIDES:
+        guide_html = generate_guide_page(guide, base_url="https://moonlit-baklava-2495ca.netlify.app")
+        guide_file = out / f"{guide['slug']}.html"
+        guide_file.write_text(guide_html, encoding="utf-8")
+        print(f"  -> Guide genere : {guide_file.name}")
+
     index_content = generate_index_page(NICHES)
     (out / "index.html").write_text(index_content, encoding="utf-8")
     print("  -> Genere : index.html (Catalogue complet)")
 
     generate_seo_assets(NICHES, out)
-    print("  -> Genere : sitemap.xml & robots.txt pour Google")
+    print("  -> Genere : sitemap.xml & robots.txt pour Google (8 URLs)")
 
     print("[OK] Tous les actifs ont ete generes avec succes !")
 
