@@ -142,9 +142,16 @@
             </div>
             <form id="invoice-form" onsubmit="handleCreateInvoice(event)" class="space-y-4">
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">Nom du Client / Raison Sociale</label>
-                    <input type="text" id="deb-name" required placeholder="Ex: SARL Bâtiment Moderne" 
-                           class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-white focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Nom du Client / Raison Sociale ou SIREN</label>
+                    <div class="relative">
+                        <input type="text" id="deb-name" required placeholder="Tapez un nom ou SIREN (ex: Bâtiment Aquitaine)" 
+                               oninput="handleSearchCompany(this.value)" autocomplete="off"
+                               class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-white focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                        <div id="company-results" class="absolute left-0 right-0 top-full mt-1 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl z-50 max-h-48 overflow-y-auto hidden">
+                            <!-- Injected live from API Gouv -->
+                        </div>
+                    </div>
+                    <p class="text-[10px] text-slate-500 mt-1">Connecté en direct à la Base Officielle SIRENE / Inpi (API Gouv).</p>
                 </div>
                 <div class="grid grid-cols-2 gap-3">
                     <div>
@@ -350,6 +357,57 @@
         }
         function closeAddModal() {
             document.getElementById('add-modal').classList.add('hidden');
+            document.getElementById('company-results').classList.add('hidden');
+        }
+
+        let searchTimeout = null;
+        let selectedCompanyMeta = null;
+
+        function handleSearchCompany(val) {
+            clearTimeout(searchTimeout);
+            const dropdown = document.getElementById('company-results');
+            if (val.trim().length < 2) {
+                dropdown.classList.add('hidden');
+                return;
+            }
+            searchTimeout = setTimeout(async () => {
+                try {
+                    const res = await fetch(`https://recherche-entreprises.api.gouv.fr/search?q=${encodeURIComponent(val)}&per_page=5`);
+                    const data = await res.json();
+                    if (!data.results || data.results.length === 0) {
+                        dropdown.classList.add('hidden');
+                        return;
+                    }
+                    dropdown.innerHTML = '';
+                    data.results.forEach(co => {
+                        const div = document.createElement('div');
+                        div.className = 'p-2.5 hover:bg-slate-800 cursor-pointer border-b border-slate-800/80 text-xs text-left transition';
+                        const dir = co.dirigeants && co.dirigeants[0] ? `${co.dirigeants[0].prenoms || ''} ${co.dirigeants[0].nom || ''} (${co.dirigeants[0].qualite || ''})` : '';
+                        div.innerHTML = `
+                            <p class="font-bold text-white">${co.nom_complet}</p>
+                            <p class="text-[10px] text-slate-400 font-mono">SIREN: ${co.siren} — ${co.siege.code_postal || ''} ${co.siege.libelle_commune || ''}</p>
+                            ${dir ? `<p class="text-[10px] text-indigo-300">Dirigeant: ${dir}</p>` : ''}
+                        `;
+                        div.onclick = () => selectCompany(co);
+                        dropdown.appendChild(div);
+                    });
+                    dropdown.classList.remove('hidden');
+                } catch(e) {
+                    console.error("Erreur API recherche-entreprises:", e);
+                }
+            }, 300);
+        }
+
+        function selectCompany(co) {
+            const dir = co.dirigeants && co.dirigeants[0] ? `${co.dirigeants[0].prenoms || ''} ${co.dirigeants[0].nom || ''} (${co.dirigeants[0].qualite || ''})` : '';
+            document.getElementById('deb-name').value = `${co.nom_complet} (SIREN ${co.siren})`;
+            selectedCompanyMeta = {
+                nom: co.nom_complet,
+                siren: co.siren,
+                adresse: `${co.siege.adresse || ''}`,
+                dirigeant: dir
+            };
+            document.getElementById('company-results').classList.add('hidden');
         }
 
         function handleCreateInvoice(e) {
@@ -359,7 +417,15 @@
             const amount = parseFloat(document.getElementById('deb-amount').value);
             const dueDate = document.getElementById('deb-date').value;
 
-            invoices.push({ id: Date.now(), client, ref, amount, dueDate });
+            invoices.push({ 
+                id: Date.now(), 
+                client, 
+                ref, 
+                amount, 
+                dueDate,
+                meta: selectedCompanyMeta 
+            });
+            selectedCompanyMeta = null;
             renderInvoices();
             closeAddModal();
             document.getElementById('invoice-form').reset();
@@ -418,18 +484,36 @@
                     <p>Nous vous demandons de régulariser cette situation sous 48 heures afin d'éviter toute procédure contentieuse.</p>
                 `;
             } else {
+                const meta = selectedInvoice.meta || null;
                 container.innerHTML = `
-                    <div class="border-b border-slate-300 pb-4 mb-4">
-                        <p class="font-bold uppercase tracking-wider text-xs text-slate-500">Lettre Recommandée avec Accusé de Réception (LRAR)</p>
-                        <p class="text-base font-black text-slate-900 mt-1">MISE EN DEMEURE DE PAYER</p>
+                    <div class="border-b border-slate-300 pb-3 mb-4 flex justify-between items-start">
+                        <div>
+                            <p class="font-bold uppercase tracking-wider text-[11px] text-rose-600">Courrier Recommandé avec Accusé de Réception (LRAR)</p>
+                            <p class="text-base font-black text-slate-900 mt-0.5">MISE EN DEMEURE VALANT SOMMATION DE PAYER</p>
+                        </div>
+                        <span class="text-[10px] mono text-slate-500 border border-slate-300 px-2 py-0.5 rounded">Réf: LRAR-${Date.now().toString().slice(-6)}</span>
                     </div>
-                    <p><strong>Destinataire :</strong> ${selectedInvoice.client}</p>
+
+                    <div class="grid grid-cols-2 gap-4 mb-4 text-xs">
+                        <div class="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                            <p class="font-bold text-slate-500 uppercase text-[10px]">Créancier :</p>
+                            <p class="font-bold text-slate-900 mt-1">Votre Entreprise / Service Recouvrement</p>
+                        </div>
+                        <div class="p-3 bg-slate-100 rounded-lg border border-slate-300">
+                            <p class="font-bold text-slate-500 uppercase text-[10px]">Débiteur Sommé :</p>
+                            <p class="font-bold text-slate-900 mt-1">${meta ? meta.nom : selectedInvoice.client}</p>
+                            ${meta && meta.siren ? `<p class="mono text-[11px] text-slate-600">SIREN : ${meta.siren}</p>` : ''}
+                            ${meta && meta.adresse ? `<p class="text-slate-600 mt-0.5">${meta.adresse}</p>` : ''}
+                            ${meta && meta.dirigeant ? `<p class="font-bold text-indigo-900 mt-1">À l'attention de : ${meta.dirigeant}</p>` : ''}
+                        </div>
+                    </div>
+
                     <p><strong>Date :</strong> 29 octobre 2026</p>
-                    <p><strong>Objet :</strong> MISE EN DEMEURE VALANT SOMMATION DE PAYER — Facture n° ${selectedInvoice.ref}</p>
+                    <p><strong>Objet :</strong> Mise en demeure valant sommation de payer sous 8 jours — Facture n° ${selectedInvoice.ref}</p>
                     <p>Madame, Monsieur,</p>
-                    <p>Par la présente, nous vous mettons formellement en demeure de nous régler la somme principale de <strong>${selectedInvoice.amount.toLocaleString('fr-FR', {minimumFractionDigits: 2})} € TTC</strong> relative à la facture n° ${selectedInvoice.ref} échue depuis le ${selectedInvoice.dueDate} (${days} jours de retard).</p>
-                    <p>En application de l'article L. 441-10 du Code de commerce, ce montant est majoré de plein droit des pénalités de retard légales ainsi que de l'indemnité forfaitaire de 40 €, portant la créance totale à <strong>${total.toLocaleString('fr-FR', {minimumFractionDigits: 2})} €</strong>.</p>
-                    <p><strong>À DÉFAUT DE RÈGLEMENT INTÉGRAL DANS UN DÉLAI STRICT DE 8 JOURS</strong> à compter de la réception de la présente, nous saisirons sans autre avis la juridiction compétente (Tribunal de Commerce) aux fins d'obtenir une ordonnance d'Injonction de Payer avec exécution forcée par commissaire de justice, l'ensemble des dépens restant à votre charge exclusive.</p>
+                    <p>Par la présente, nous vous mettons formellement en demeure de nous régler la somme principale de <strong>${selectedInvoice.amount.toLocaleString('fr-FR', {minimumFractionDigits: 2})} € TTC</strong> relative à la facture n° ${selectedInvoice.ref} échue depuis le ${selectedInvoice.dueDate} (soit <strong>${days} jours de retard</strong> injustifié).</p>
+                    <p>En stricte application de l'<strong>article L. 441-10 du Code de commerce</strong>, ce montant est majoré de plein droit des pénalités de retard légales (taux BCE + 10 points) ainsi que de l'indemnité forfaitaire légale de 40,00 €, portant le montant de votre dette exigible à <strong>${total.toLocaleString('fr-FR', {minimumFractionDigits: 2})} €</strong>.</p>
+                    <p><strong>À DÉFAUT DE RÈGLEMENT INTÉGRAL DANS UN DÉLAI STRICT DE 8 JOURS</strong> à compter de la réception de la présente, nous saisirons sans autre préavis le Tribunal de Commerce territorialement compétent aux fins d'obtenir une ordonnance d'Injonction de Payer avec exécution forcée par commissaire de justice, l'ensemble des dépens restant à votre charge exclusive.</p>
                     <p>Fait pour valoir ce que de droit.</p>
                 `;
             }
