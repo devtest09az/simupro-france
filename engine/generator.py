@@ -850,6 +850,10 @@ def generate_index_page(niches: list[dict]) -> str:
 
     <main class="flex-grow max-w-6xl mx-auto px-4 py-16 w-full space-y-12">
         <div class="text-center max-w-3xl mx-auto space-y-4">
+            <a href="recouvrement-express.html" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-900/40 text-indigo-300 border border-indigo-500/30 text-xs font-semibold hover:bg-indigo-900/60 transition shadow-sm mb-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Nouveau Produit B2B : RecouvrExpress SaaS — Récupérez vos factures impayées →</span>
+            </a>
             <h1 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
                 Simulateurs Fiscaux & Financiers en 1 Clic
             </h1>
@@ -903,6 +907,7 @@ def generate_seo_assets(niches: list[dict], out: Path, base_url: str = "https://
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>']
     sitemap.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
     sitemap.append(f'  <url><loc>{base_url}/index.html</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>')
+    sitemap.append(f'  <url><loc>{base_url}/recouvrement-express.html</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>')
     for n in niches:
         sitemap.append(f'  <url><loc>{base_url}/{n["slug"]}.html</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>')
     for g in GUIDES:

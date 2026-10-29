@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="fr" class="h-full bg-slate-950 text-slate-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RecouvrExpress B2B — Logiciel de Recouvrement Légal d'Impayés pour PME & Artisans</title>
+    <meta name="description" content="Récupérez vos factures impayées sans avocat. Calcul automatique des pénalités légales (art. L441-10) et génération de mises en demeure officielles en 1 clic.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        @media print {
+            body * { visibility: hidden; }
+            #print-modal, #print-modal * { visibility: visible; }
+            #print-modal { position: absolute; left: 0; top: 0; width: 100%; }
+        }
+    </style>
+</head>
+<body class="h-full flex flex-col antialiased bg-slate-950 text-slate-100">
+
+    <!-- Top Navigation -->
+    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-indigo-600 flex items-center justify-center font-black text-white shadow-lg shadow-indigo-500/20">
+                    ⚖️
+                </div>
+                <div>
+                    <span class="font-extrabold text-lg text-white tracking-tight">Recouvr<span class="text-indigo-400">Express</span></span>
+                    <span class="ml-2 px-2 py-0.5 text-[10px] uppercase font-bold tracking-wider rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">B2B SaaS</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button onclick="openPricingModal()" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-amber-500/10 text-amber-300 border border-amber-500/30 hover:bg-amber-500/20 transition">
+                    ⚡ Passer en Version Pro (49 €/mois)
+                </button>
+                <a href="index.html" class="text-xs text-slate-400 hover:text-white transition">← Retour au portail</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 py-8 w-full space-y-8">
+
+        <!-- Hero Stats Banner -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div class="bg-slate-900/90 border border-slate-800 p-5 rounded-2xl">
+                <span class="text-xs text-slate-400 font-medium block">Total Créances en Souffrance</span>
+                <span id="stat-total" class="text-2xl font-black text-white mt-1 block mono">11 450,00 €</span>
+                <span class="text-xs text-rose-400 mt-1 block">3 factures en retard critique</span>
+            </div>
+            <div class="bg-slate-900/90 border border-slate-800 p-5 rounded-2xl">
+                <span class="text-xs text-slate-400 font-medium block">Pénalités Légales Réclamables</span>
+                <span id="stat-penalites" class="text-2xl font-black text-emerald-400 mt-1 block mono">+ 786,40 €</span>
+                <span class="text-xs text-slate-400 mt-1 block">Taux légal BCE + 10 pts + 40 €/facture</span>
+            </div>
+            <div class="bg-slate-900/90 border border-slate-800 p-5 rounded-2xl">
+                <span class="text-xs text-slate-400 font-medium block">Total Recouvrable Global</span>
+                <span id="stat-recouvrable" class="text-2xl font-black text-indigo-400 mt-1 block mono">12 236,40 €</span>
+                <span class="text-xs text-indigo-300 mt-1 block">100% conforme Code de Commerce</span>
+            </div>
+            <div class="bg-gradient-to-br from-indigo-900/50 to-indigo-950 border border-indigo-700/50 p-5 rounded-2xl flex flex-col justify-between">
+                <div>
+                    <span class="text-xs text-indigo-300 font-bold block uppercase tracking-wider">Action Immédiate</span>
+                    <span class="text-sm font-semibold text-white mt-1 block">Ajouter un impayé à relancer</span>
+                </div>
+                <button onclick="openAddModal()" class="w-full mt-3 py-2 px-4 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs rounded-xl transition shadow-lg shadow-indigo-600/30 flex items-center justify-center gap-2">
+                    <span>+ Nouvelle Facture</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Invoices Table Section -->
+        <div class="bg-slate-900/70 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+            <div class="p-6 border-b border-slate-800 flex flex-col sm:flex-row justify-between sm:items-center gap-4">
+                <div>
+                    <h2 class="text-lg font-bold text-white">Dossiers de Recouvrement en Cours</h2>
+                    <p class="text-xs text-slate-400 mt-0.5">Calcul automatisé au jour le jour selon l'article L. 441-10 du Code de commerce.</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                        ● Moteur Juridique 2026 Actif
+                    </span>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                    <thead class="bg-slate-950/60 text-xs uppercase tracking-wider text-slate-400 border-b border-slate-800">
+                        <tr>
+                            <th class="py-3.5 px-6">Client / Entreprise Débitrice</th>
+                            <th class="py-3.5 px-4">Facture N°</th>
+                            <th class="py-3.5 px-4">Retard</th>
+                            <th class="py-3.5 px-4 text-right">Montant Initial</th>
+                            <th class="py-3.5 px-4 text-right">Pénalités + 40 €</th>
+                            <th class="py-3.5 px-4 text-right">Total Réclamable</th>
+                            <th class="py-3.5 px-6 text-center">Génération Juridique</th>
+                        </tr>
+                    </thead>
+                    <tbody id="invoices-tbody" class="divide-y divide-slate-800/60">
+                        <!-- Rendered dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Explanatory B2B Value Box -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+            <div class="bg-slate-900/50 border border-slate-800/80 p-5 rounded-2xl">
+                <div class="text-2xl mb-2">⚖️</div>
+                <h3 class="font-bold text-white text-sm">Validité Juridique Certifiée</h3>
+                <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                    Les courriers générés citent expressément l'article L. 441-10 du Code de commerce et incluent l'indemnité légale de 40 € due de plein droit sans préavis.
+                </p>
+            </div>
+            <div class="bg-slate-900/50 border border-slate-800/80 p-5 rounded-2xl">
+                <div class="text-2xl mb-2">⚡</div>
+                <h3 class="font-bold text-white text-sm">Graduation en 3 Paliers</h3>
+                <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                    De la relance commerciale bienveillante à la mise en demeure formelle avec sommation d'huissier, le ton s'adapte à la gravité du retard.
+                </p>
+            </div>
+            <div class="bg-slate-900/50 border border-slate-800/80 p-5 rounded-2xl">
+                <div class="text-2xl mb-2">💶</div>
+                <h3 class="font-bold text-white text-sm">Sans Pourcentage sur les Gains</h3>
+                <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                    Contrairement aux cabinets de recouvrement traditionnels qui prélèvent 15% à 25% de votre argent, vous conservez 100% des sommes récupérées.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal : Add Invoice -->
+    <div id="add-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl">
+            <div class="flex justify-between items-center pb-3 border-b border-slate-800">
+                <h3 class="font-bold text-white text-base">Ajouter une Facture Impayée</h3>
+                <button onclick="closeAddModal()" class="text-slate-400 hover:text-white text-lg">✕</button>
+            </div>
+            <form id="invoice-form" onsubmit="handleCreateInvoice(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Nom du Client / Raison Sociale</label>
+                    <input type="text" id="deb-name" required placeholder="Ex: SARL Bâtiment Moderne" 
+                           class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-white focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">N° de Facture</label>
+                        <input type="text" id="deb-ref" required placeholder="Ex: FAC-2026-089" 
+                               class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-white">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Montant TTC (€)</label>
+                        <input type="number" id="deb-amount" required step="0.01" min="10" placeholder="Ex: 3500.00" 
+                               class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-white">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Date d'échéance dépassée</label>
+                    <input type="date" id="deb-date" required 
+                           class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-white">
+                </div>
+                <button type="submit" class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm rounded-xl transition shadow-lg shadow-indigo-600/30">
+                    Enregistrer et Calculer les Pénalités →
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal : Legal Letter Generator -->
+    <div id="letter-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-2xl w-full p-6 space-y-4 shadow-2xl max-h-[90vh] flex flex-col">
+            <div class="flex justify-between items-center pb-3 border-b border-slate-800">
+                <div class="flex items-center gap-2">
+                    <span id="letter-level-badge" class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30">
+                        Niveau 3 : Mise en Demeure Officielle
+                    </span>
+                </div>
+                <button onclick="closeLetterModal()" class="text-slate-400 hover:text-white text-lg">✕</button>
+            </div>
+
+            <!-- Letter Selector Tabs -->
+            <div class="flex gap-2 border-b border-slate-800 pb-2">
+                <button onclick="switchLetterTab(1)" id="tab-1" class="text-xs font-semibold px-3 py-1.5 rounded-lg text-slate-400 hover:text-white">
+                    1. Relance Aimable
+                </button>
+                <button onclick="switchLetterTab(2)" id="tab-2" class="text-xs font-semibold px-3 py-1.5 rounded-lg text-slate-400 hover:text-white">
+                    2. Relance Ferme + Pénalités
+                </button>
+                <button onclick="switchLetterTab(3)" id="tab-3" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-indigo-600 text-white">
+                    3. Mise en Demeure (LRAR)
+                </button>
+            </div>
+
+            <!-- Letter Body Container -->
+            <div class="flex-grow overflow-y-auto bg-white text-slate-900 p-6 rounded-xl text-xs sm:text-sm leading-relaxed border border-slate-200 shadow-inner font-sans space-y-4" id="letter-content">
+                <!-- Injected via JavaScript -->
+            </div>
+
+            <!-- Actions Bar -->
+            <div class="flex items-center justify-between pt-2">
+                <button onclick="copyLetterText()" id="copy-letter-btn" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-xl transition flex items-center gap-2">
+                    <span>📋 Copier le texte complet</span>
+                </button>
+                <button onclick="printLetter()" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold rounded-xl transition shadow-lg shadow-indigo-600/30 flex items-center gap-2">
+                    <span>🖨️ Imprimer le courrier officiel (PDF)</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal : Pricing / Subscription -->
+    <div id="pricing-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-3xl w-full p-8 space-y-6 shadow-2xl">
+            <div class="flex justify-between items-center pb-2">
+                <div>
+                    <h3 class="text-2xl font-black text-white">Tarifs RecouvrExpress Pro</h3>
+                    <p class="text-xs text-slate-400">Recouvrez vos factures sans commission d'intermédiaire.</p>
+                </div>
+                <button onclick="closePricingModal()" class="text-slate-400 hover:text-white text-xl">✕</button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-white text-sm">Découverte</h4>
+                        <div class="text-2xl font-black text-white mt-2">0 € <span class="text-xs text-slate-500 font-normal">/ mois</span></div>
+                        <ul class="text-xs text-slate-400 mt-4 space-y-2">
+                            <li>✓ Jusqu'à 1 facture active</li>
+                            <li>✓ Calcul légal de base</li>
+                            <li>✕ Pas d'export PDF en-tête</li>
+                        </ul>
+                    </div>
+                    <button class="mt-6 w-full py-2 bg-slate-800 text-slate-300 font-semibold text-xs rounded-lg">Plan Actuel</button>
+                </div>
+
+                <div class="bg-gradient-to-b from-indigo-950 to-slate-900 p-5 rounded-xl border-2 border-indigo-500 flex flex-col justify-between shadow-xl relative">
+                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 px-2.5 py-0.5 bg-indigo-500 text-white text-[10px] font-bold uppercase rounded-full">Recommandé PME</span>
+                    <div>
+                        <h4 class="font-bold text-indigo-300 text-sm">Pro Illimité</h4>
+                        <div class="text-2xl font-black text-white mt-2">49 € <span class="text-xs text-slate-400 font-normal">/ mois</span></div>
+                        <ul class="text-xs text-slate-300 mt-4 space-y-2">
+                            <li>✓ Factures impayées illimitées</li>
+                            <li>✓ Génération Mises en demeure LRAR</li>
+                            <li>✓ Calculs pénalités BCE temps réel</li>
+                            <li>✓ Export PDF juridique certifié</li>
+                        </ul>
+                    </div>
+                    <button onclick="alert('Intégration Stripe : Ce bouton active l\'abonnement mensuel récurrent de 49 €/mois.')" class="mt-6 w-full py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs rounded-lg transition shadow-lg shadow-indigo-600/30">
+                        S'abonner en Pro (49 €/m) →
+                    </button>
+                </div>
+
+                <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-white text-sm">Cabinet & Entreprise</h4>
+                        <div class="text-2xl font-black text-white mt-2">149 € <span class="text-xs text-slate-500 font-normal">/ mois</span></div>
+                        <ul class="text-xs text-slate-400 mt-4 space-y-2">
+                            <li>✓ Multi-sociétés / multi-utilisateurs</li>
+                            <li>✓ Dossiers d'injonction de payer greffe</li>
+                            <li>✓ Support prioritaire juriste</li>
+                        </ul>
+                    </div>
+                    <button onclick="alert('Intégration Stripe : Plan Cabinet à 149 €/mois.')" class="mt-6 w-full py-2 bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs rounded-lg transition">
+                        Choisir Cabinet →
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Data & Logic Engine -->
+    <script>
+        const DEFAULT_INVOICES = [
+            { id: 1, client: "Groupe BTP Aquitaine", ref: "FAC-2026-034", amount: 4800.00, dueDate: "2026-08-15" },
+            { id: 2, client: "Studio Design Lumina", ref: "FAC-2026-052", amount: 2150.00, dueDate: "2026-09-01" },
+            { id: 3, client: "Transports Durand SARL", ref: "FAC-2026-061", amount: 4500.00, dueDate: "2026-09-20" }
+        ];
+
+        let invoices = JSON.parse(localStorage.getItem('recouvr_invoices')) || DEFAULT_INVOICES;
+        let selectedInvoice = null;
+        let activeTab = 3;
+
+        // Legal constants (Art. L441-10 C. commerce)
+        const LEGAL_FIXED_FEE = 40.00; // Indemnité forfaitaire légale
+        const ANNUAL_INTEREST_RATE = 0.145; // Taux refinancement BCE + 10 points (~14.5% en 2026)
+
+        function calculateDaysLate(dueDateStr) {
+            const due = new Date(dueDateStr);
+            const now = new Date("2026-10-29");
+            const diffTime = Math.max(0, now - due);
+            return Math.floor(diffTime / (1000 * 60 * 60 * 24));
+        }
+
+        function calculatePenalties(amount, daysLate) {
+            if (daysLate <= 0) return 0;
+            const interest = amount * (ANNUAL_INTEREST_RATE * (daysLate / 365));
+            return interest + LEGAL_FIXED_FEE;
+        }
+
+        function renderInvoices() {
+            const tbody = document.getElementById('invoices-tbody');
+            tbody.innerHTML = '';
+
+            let totalInitial = 0;
+            let totalPenalties = 0;
+
+            invoices.forEach(inv => {
+                const daysLate = calculateDaysLate(inv.dueDate);
+                const penalties = calculatePenalties(inv.amount, daysLate);
+                const totalDue = inv.amount + penalties;
+
+                totalInitial += inv.amount;
+                totalPenalties += penalties;
+
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-800/40 transition group";
+                tr.innerHTML = `
+                    <td class="py-4 px-6 font-semibold text-white">${inv.client}</td>
+                    <td class="py-4 px-4 mono text-xs text-slate-300">${inv.ref}</td>
+                    <td class="py-4 px-4">
+                        <span class="px-2.5 py-1 text-xs font-bold rounded-lg ${daysLate > 45 ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30' : 'bg-amber-500/20 text-amber-300'}">
+                            ${daysLate} jours
+                        </span>
+                    </td>
+                    <td class="py-4 px-4 text-right mono font-semibold text-slate-200">${inv.amount.toLocaleString('fr-FR', {minimumFractionDigits: 2})} €</td>
+                    <td class="py-4 px-4 text-right mono text-emerald-400 font-bold">+ ${penalties.toLocaleString('fr-FR', {minimumFractionDigits: 2})} €</td>
+                    <td class="py-4 px-4 text-right mono text-white font-black text-base">${totalDue.toLocaleString('fr-FR', {minimumFractionDigits: 2})} €</td>
+                    <td class="py-4 px-6 text-center">
+                        <button onclick="openLetterModal(${inv.id})" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs rounded-xl shadow-md transition">
+                            Générer Courrier Légal →
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            document.getElementById('stat-total').textContent = totalInitial.toLocaleString('fr-FR', {minimumFractionDigits: 2}) + ' €';
+            document.getElementById('stat-penalites').textContent = '+ ' + totalPenalties.toLocaleString('fr-FR', {minimumFractionDigits: 2}) + ' €';
+            document.getElementById('stat-recouvrable').textContent = (totalInitial + totalPenalties).toLocaleString('fr-FR', {minimumFractionDigits: 2}) + ' €';
+
+            localStorage.setItem('recouvr_invoices', JSON.stringify(invoices));
+        }
+
+        function openAddModal() {
+            document.getElementById('add-modal').classList.remove('hidden');
+        }
+        function closeAddModal() {
+            document.getElementById('add-modal').classList.add('hidden');
+        }
+
+        function handleCreateInvoice(e) {
+            e.preventDefault();
+            const client = document.getElementById('deb-name').value;
+            const ref = document.getElementById('deb-ref').value;
+            const amount = parseFloat(document.getElementById('deb-amount').value);
+            const dueDate = document.getElementById('deb-date').value;
+
+            invoices.push({ id: Date.now(), client, ref, amount, dueDate });
+            renderInvoices();
+            closeAddModal();
+            document.getElementById('invoice-form').reset();
+        }
+
+        function openLetterModal(id) {
+            selectedInvoice = invoices.find(i => i.id === id);
+            activeTab = 3;
+            renderLetterContent();
+            document.getElementById('letter-modal').classList.remove('hidden');
+        }
+        function closeLetterModal() {
+            document.getElementById('letter-modal').classList.add('hidden');
+        }
+
+        function switchLetterTab(tabNum) {
+            activeTab = tabNum;
+            [1, 2, 3].forEach(n => {
+                const btn = document.getElementById('tab-' + n);
+                if (n === tabNum) {
+                    btn.className = "text-xs font-semibold px-3 py-1.5 rounded-lg bg-indigo-600 text-white";
+                } else {
+                    btn.className = "text-xs font-semibold px-3 py-1.5 rounded-lg text-slate-400 hover:text-white";
+                }
+            });
+            renderLetterContent();
+        }
+
+        function renderLetterContent() {
+            if (!selectedInvoice) return;
+            const days = calculateDaysLate(selectedInvoice.dueDate);
+            const penalties = calculatePenalties(selectedInvoice.amount, days);
+            const total = selectedInvoice.amount + penalties;
+            const container = document.getElementById('letter-content');
+
+            if (activeTab === 1) {
+                container.innerHTML = `
+                    <p><strong>Objet :</strong> Rappel amical — Facture n° ${selectedInvoice.ref} en attente</p>
+                    <p>Madame, Monsieur,</p>
+                    <p>Sauf erreur ou omission de notre part, le règlement de la facture <strong>n° ${selectedInvoice.ref}</strong> d'un montant de <strong>${selectedInvoice.amount.toLocaleString('fr-FR')} € TTC</strong>, arrivée à échéance le ${selectedInvoice.dueDate}, ne nous est pas encore parvenu.</p>
+                    <p>Nous vous remercions de bien vouloir procéder à son règlement par virement bancaire dans les meilleurs délais.</p>
+                    <p>Si votre virement a déjà été effectué entre-temps, nous vous prions de ne pas tenir compte du présent rappel.</p>
+                    <p>Restant à votre disposition, veuillez agréer, Madame, Monsieur, nos salutations distinguées.</p>
+                `;
+            } else if (activeTab === 2) {
+                container.innerHTML = `
+                    <p><strong>Objet :</strong> Deuxième relance avant contentieux — Facture n° ${selectedInvoice.ref}</p>
+                    <p>Madame, Monsieur,</p>
+                    <p>Malgré notre première relance, nous constatons avec regret que la facture <strong>n° ${selectedInvoice.ref}</strong> présente à ce jour un retard de <strong>${days} jours</strong>.</p>
+                    <p>Nous vous rappelons que conformément à l'article L. 441-10 du Code de commerce :</p>
+                    <ul>
+                        <li>Des pénalités de retard au taux légal sont exigibles sans rappel préalable (montant calculé à ce jour : <strong>${(penalties - 40).toFixed(2)} €</strong>).</li>
+                        <li>Une indemnité forfaitaire pour frais de recouvrement de <strong>40,00 €</strong> est due de plein droit.</li>
+                    </ul>
+                    <p>Le solde réclamable s'élève désormais à <strong>${total.toLocaleString('fr-FR', {minimumFractionDigits: 2})} €</strong>.</p>
+                    <p>Nous vous demandons de régulariser cette situation sous 48 heures afin d'éviter toute procédure contentieuse.</p>
+                `;
+            } else {
+                container.innerHTML = `
+                    <div class="border-b border-slate-300 pb-4 mb-4">
+                        <p class="font-bold uppercase tracking-wider text-xs text-slate-500">Lettre Recommandée avec Accusé de Réception (LRAR)</p>
+                        <p class="text-base font-black text-slate-900 mt-1">MISE EN DEMEURE DE PAYER</p>
+                    </div>
+                    <p><strong>Destinataire :</strong> ${selectedInvoice.client}</p>
+                    <p><strong>Date :</strong> 29 octobre 2026</p>
+                    <p><strong>Objet :</strong> MISE EN DEMEURE VALANT SOMMATION DE PAYER — Facture n° ${selectedInvoice.ref}</p>
+                    <p>Madame, Monsieur,</p>
+                    <p>Par la présente, nous vous mettons formellement en demeure de nous régler la somme principale de <strong>${selectedInvoice.amount.toLocaleString('fr-FR', {minimumFractionDigits: 2})} € TTC</strong> relative à la facture n° ${selectedInvoice.ref} échue depuis le ${selectedInvoice.dueDate} (${days} jours de retard).</p>
+                    <p>En application de l'article L. 441-10 du Code de commerce, ce montant est majoré de plein droit des pénalités de retard légales ainsi que de l'indemnité forfaitaire de 40 €, portant la créance totale à <strong>${total.toLocaleString('fr-FR', {minimumFractionDigits: 2})} €</strong>.</p>
+                    <p><strong>À DÉFAUT DE RÈGLEMENT INTÉGRAL DANS UN DÉLAI STRICT DE 8 JOURS</strong> à compter de la réception de la présente, nous saisirons sans autre avis la juridiction compétente (Tribunal de Commerce) aux fins d'obtenir une ordonnance d'Injonction de Payer avec exécution forcée par commissaire de justice, l'ensemble des dépens restant à votre charge exclusive.</p>
+                    <p>Fait pour valoir ce que de droit.</p>
+                `;
+            }
+        }
+
+        function copyLetterText() {
+            const text = document.getElementById('letter-content').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.getElementById('copy-letter-btn');
+                btn.textContent = '✓ Texte copié !';
+                setTimeout(() => { btn.innerHTML = '<span>📋 Copier le texte complet</span>'; }, 2000);
+            });
+        }
+
+        function printLetter() {
+            window.print();
+        }
+
+        function openPricingModal() {
+            document.getElementById('pricing-modal').classList.remove('hidden');
+        }
+        function closePricingModal() {
+            document.getElementById('pricing-modal').classList.add('hidden');
+        }
+
+        renderInvoices();
+    </script>
+</body>
+</html>
