@@ -907,8 +907,9 @@ def generate_seo_assets(niches: list[dict], out: Path, base_url: str = "https://
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>']
     sitemap.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
     sitemap.append(f'  <url><loc>{base_url}/index.html</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>')
-    sitemap.append(f'  <url><loc>{base_url}/recouvrement.html</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>')
-    sitemap.append(f'  <url><loc>{base_url}/recouvrement-express.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>')
+    sitemap.append(f'  <url><loc>{base_url}/alarme-solaire.html</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>')
+    sitemap.append(f'  <url><loc>{base_url}/recouvrement.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>')
+    sitemap.append(f'  <url><loc>{base_url}/recouvrement-express.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>')
     for n in niches:
         sitemap.append(f'  <url><loc>{base_url}/{n["slug"]}.html</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>')
     for g in GUIDES:
