@@ -9,6 +9,7 @@ Ce kit vous permet de tester la demande réelle dans votre département dès dem
 * **Catégorie :** *Maison & Jardin > Bricolage > Électricité & Domotique* (ou *Matériel Professionnel > Équipements de Sécurité*)
 * **Prix :** `159 €`
 * **Localisation :** Votre ville ou chef-lieu de département (rayon de 50 km)
+* **Photo Principale de l'Annonce :** Utilisez la photo haute résolution du pack située à [`public/img/pack-alarme-11p.jpg`](file:///d:/dev/app_ia_upgrade/public/img/pack-alarme-11p.jpg) (présentation studio du pack complet 11 pièces).
 
 ### Titre de l'annonce (optimisé pour le moteur de recherche Leboncoin) :
 ```text
