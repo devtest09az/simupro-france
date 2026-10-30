@@ -102,3 +102,27 @@ FORTERESSE CONNECT France
    * Absence de métaux lourds (plomb, mercure, cadmium).
 3. **Filière DEEE (Éco-participation) :**
    * En tant que metteur sur le marché en France, vous déclarerez quelques centimes d'éco-participation par appareil auprès d'éco-organismes comme Ecosystem ou Ecologic.
+
+---
+
+## 6. Cahier des Charges Énergie & Batteries (Zéro SAV)
+
+Pour éliminer 99% des retours clients liés aux piles :
+1. **Piles neuves pré-installées avec languette de tirage isolante :**
+   * Chaque détecteur d'ouverture doit inclure une pile CR2032 de marque (Maxell/Panasonic) avec languette plastique à tirer.
+   * Chaque détecteur PIR doit inclure ses 2 piles AA Lithium industrielles.
+2. **Notification prédictive "Low Battery" :**
+   * La puce RF 433 MHz doit transmettre le statut de tension. Dès que la tension passe sous 2.4V, l'application Tuya Smart Life envoie un push "Batterie Faible (20%)".
+3. **Batterie tampon de la centrale :**
+   * Cellule Li-Po 1000 mAh certifiée UN38.3 (obligatoire pour le transport aérien).
+
+---
+
+## 7. Tutoriel d'Installation & Support Client (15 Minutes Chrono)
+
+1. **Pré-synchronisation obligatoire en usine (Factory Pre-pairing) :**
+   * Tous les capteurs du pack doivent être associés au Host avant mise en boîte (Zone 1 : Porte d'Entrée, Zone 2 : Fenêtre Salon, etc.). Le client n'a aucun bouton d'appairage à presser.
+2. **Autocollant QR Code Vidéo sur le rabat de la boîte :**
+   * Renvoie vers une vidéo unlisted YouTube / Vimeo de 3 minutes montrant la mise en route en français.
+3. **Adhésifs 3M VHB prédécoupés :**
+   * Fournis dans le sachet de chaque capteur pour une pose sans aucun perçage.

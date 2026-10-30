@@ -58,11 +58,12 @@
                 </div>
             </div>
 
-            <nav class="hidden lg:flex items-center gap-8 text-xs font-semibold uppercase tracking-wider text-slate-400">
+            <nav class="hidden lg:flex items-center gap-6 text-xs font-semibold uppercase tracking-wider text-slate-400">
                 <a href="#pack-details" class="hover:text-white transition">Les 11 Pièces</a>
-                <a href="#comparatif" class="hover:text-white transition">Face à Verisure</a>
-                <a href="#simulateur" class="hover:text-white transition">Simulateur d'Économies</a>
-                <a href="#technologie" class="hover:text-white transition">Double Sécurité WiFi+4G</a>
+                <a href="#autonomie" class="hover:text-white transition">Autonomie & Piles</a>
+                <a href="#tuto" class="hover:text-white transition text-cyan-300">Tuto 15 Min</a>
+                <a href="#technologie" class="hover:text-white transition">Double Sécurité</a>
+                <a href="#simulateur" class="hover:text-white transition">Économies</a>
                 <a href="#tarifs" class="hover:text-white transition text-cyan-400 font-bold">Nos 3 Packs</a>
             </nav>
 
@@ -352,6 +353,206 @@
                     <p class="text-xs text-slate-400 leading-relaxed">
                         Un intrus tente de décrocher la centrale ou un capteur du mur ? Le contacteur anti-sabotage (tamper switch) déclenche immédiatement les <strong>120 dB de la sirène extérieure</strong> et alerte immédiatement votre smartphone.
                     </p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Autonomy & Battery Management Section -->
+        <section id="autonomie" class="max-w-7xl mx-auto px-6 py-20 border-t border-white/[0.06]">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="mono text-xs uppercase tracking-widest text-cyan-400 font-bold">Gestion Intelligente de l'Énergie</span>
+                <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight text-white">
+                    Autonomie longue durée & 0 panne surprise
+                </h2>
+                <p class="text-slate-400 text-sm sm:text-base">
+                    Chaque composant a été conçu avec des puces micro-consommation. Les piles durent jusqu'à 3 ans, et l'application vous prévient proactivement 30 jours avant le moindre changement.
+                </p>
+            </div>
+
+            <!-- Battery Life Table / Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 1. Centrale -->
+                <div class="glass-card p-6 rounded-2xl border-l-4 border-cyan-400 space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="font-display font-bold text-white text-base">Centrale Tactile IPS</span>
+                        <span class="mono text-[11px] px-2.5 py-1 rounded bg-cyan-400/10 text-cyan-300 font-bold">Secteur + Relais</span>
+                    </div>
+                    <div class="text-xs text-slate-300">
+                        <span class="text-slate-500">Alimentation :</span> Câble USB-C / 220V permanent.
+                    </div>
+                    <div class="text-xs text-slate-300">
+                        <span class="text-slate-500">Batterie de secours :</span> Lithium 1000 mAh intégrée.
+                    </div>
+                    <div class="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-cyan-300">
+                        <strong>Autonomie coupure :</strong> 8 heures sans courant. Alerte instantanée sur smartphone dès la coupure.
+                    </div>
+                </div>
+
+                <!-- 2. Sirène Solaire -->
+                <div class="glass-card p-6 rounded-2xl border-l-4 border-emerald-400 space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="font-display font-bold text-white text-base">Sirène Extérieure 120 dB</span>
+                        <span class="mono text-[11px] px-2.5 py-1 rounded bg-emerald-400/10 text-emerald-300 font-bold">100% Solaire</span>
+                    </div>
+                    <div class="text-xs text-slate-300">
+                        <span class="text-slate-500">Alimentation :</span> Panneau solaire monocristallin intégré.
+                    </div>
+                    <div class="text-xs text-slate-300">
+                        <span class="text-slate-500">Batterie :</span> Accumulateur longue durée haute endurance.
+                    </div>
+                    <div class="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-emerald-300">
+                        <strong>Autonomie :</strong> Illimitée. 0 recharge manuelle, fonctionne même en hiver sous ciel couvert.
+                    </div>
+                </div>
+
+                <!-- 3. Détecteurs d'Ouverture -->
+                <div class="glass-card p-6 rounded-2xl border-l-4 border-cyan-400 space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="font-display font-bold text-white text-base">4x Capteurs Ouverture</span>
+                        <span class="mono text-[11px] px-2.5 py-1 rounded bg-cyan-400/10 text-cyan-300 font-bold">2 à 3 Ans</span>
+                    </div>
+                    <div class="text-xs text-slate-300">
+                        <span class="text-slate-500">Alimentation :</span> Pile Lithium CR2032 (fournie et pré-insérée).
+                    </div>
+                    <div class="text-xs text-slate-300">
+                        <span class="text-slate-500">Consommation :</span> Mode veille < 3 µA (micro-ampères).
+                    </div>
+                    <div class="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-slate-300">
+                        Remplacement facile en 10 secondes sans décoller le boîtier.
+                    </div>
+                </div>
+
+                <!-- 4. Détecteurs PIR Mouvement -->
+                <div class="glass-card p-6 rounded-2xl border-l-4 border-cyan-400 space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="font-display font-bold text-white text-base">2x Détecteurs de Mouvement</span>
+                        <span class="mono text-[11px] px-2.5 py-1 rounded bg-cyan-400/10 text-cyan-300 font-bold">18 à 24 Mois</span>
+                    </div>
+                    <div class="text-xs text-slate-300">
+                        <span class="text-slate-500">Alimentation :</span> 2x Piles AA Lithium industrielles (fournies).
+                    </div>
+                    <div class="text-xs text-slate-300">
+                        <span class="text-slate-500">Technologie :</span> Mise en veille intelligente entre 2 détections.
+                    </div>
+                    <div class="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-slate-300">
+                        Test automatique de charge toutes les 24 heures.
+                    </div>
+                </div>
+
+                <!-- 5. Télécommandes & Badges -->
+                <div class="glass-card p-6 rounded-2xl border-l-4 border-cyan-400 space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="font-display font-bold text-white text-base">Télécommandes & Badges</span>
+                        <span class="mono text-[11px] px-2.5 py-1 rounded bg-cyan-400/10 text-cyan-300 font-bold">3 Ans / Infini</span>
+                    </div>
+                    <div class="text-xs text-slate-300">
+                        <span class="text-slate-500">Télécommandes :</span> Pile CR2025 (~5 000 clics).
+                    </div>
+                    <div class="text-xs text-slate-300">
+                        <span class="text-slate-500">Badges RFID :</span> Technologie passive, <strong>aucune pile</strong> (durée de vie illimitée).
+                    </div>
+                    <div class="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-slate-300">
+                        Indestructible, étanche pour porte-clés.
+                    </div>
+                </div>
+
+                <!-- 6. Système Proactif Alerte Batterie -->
+                <div class="glass-card p-6 rounded-2xl border-l-4 border-amber-400 space-y-3 bg-gradient-to-br from-amber-950/20 to-transparent">
+                    <div class="flex justify-between items-center">
+                        <span class="font-display font-bold text-white text-base">Alerte Proactive 20%</span>
+                        <span class="mono text-[11px] px-2.5 py-1 rounded bg-amber-400/10 text-amber-300 font-bold">Sécurité Garantie</span>
+                    </div>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Dès qu'une pile atteint 20% de charge restante, l'application vous envoie une notification précise :
+                    </p>
+                    <div class="p-2.5 rounded-lg bg-black/40 border border-amber-500/30 text-[11px] mono text-amber-300">
+                        ⚠️ Alerte : Pile faible (20%) sur Détecteur Fenêtre Cuisine. Prévoir changement sous 30 jours.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step-by-Step Installation Guide (15 Minutes) -->
+        <section id="tuto" class="max-w-7xl mx-auto px-6 py-20 border-t border-white/[0.06]">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="mono text-xs uppercase tracking-widest text-cyan-400 font-bold">Installation 100% Sans Fil</span>
+                <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight text-white">
+                    Installé en 15 minutes chrono. Zéro outil, zéro trou.
+                </h2>
+                <p class="text-slate-400 text-sm sm:text-base">
+                    Tous les détecteurs sont déjà synchronisés avec la centrale dans le carton. Vous n'avez aucun code technique à taper, aucun câble à tirer et aucun trou à percer dans vos murs.
+                </p>
+            </div>
+
+            <!-- 4 Visual Steps -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Step 1 -->
+                <div class="glass-card p-6 rounded-2xl space-y-4 relative hover:border-cyan-400/40 transition">
+                    <div class="flex items-center justify-between">
+                        <span class="w-10 h-10 rounded-xl bg-cyan-400 text-black font-extrabold flex items-center justify-center font-display text-base">1</span>
+                        <span class="mono text-[10px] text-slate-400 font-bold">CHRONO : 1 MIN</span>
+                    </div>
+                    <h3 class="font-display font-bold text-white text-base">Branchez la Centrale</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Posez la centrale sur votre meuble d'entrée ou fixez-la au mur. Branchez-la sur une prise de courant standard : l'écran tactile s'allume immédiatement en français.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="glass-card p-6 rounded-2xl space-y-4 relative hover:border-cyan-400/40 transition">
+                    <div class="flex items-center justify-between">
+                        <span class="w-10 h-10 rounded-xl bg-cyan-400 text-black font-extrabold flex items-center justify-center font-display text-base">2</span>
+                        <span class="mono text-[10px] text-slate-400 font-bold">CHRONO : 5 MIN</span>
+                    </div>
+                    <h3 class="font-display font-bold text-white text-base">Collez les Capteurs de Porte</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Retirez la pellicule des bandes adhésives industrielles 3M (fournies). Collez un capteur sur votre porte d'entrée, la porte de garage et vos fenêtres. C'est tout.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="glass-card p-6 rounded-2xl space-y-4 relative hover:border-cyan-400/40 transition">
+                    <div class="flex items-center justify-between">
+                        <span class="w-10 h-10 rounded-xl bg-cyan-400 text-black font-extrabold flex items-center justify-center font-display text-base">3</span>
+                        <span class="mono text-[10px] text-slate-400 font-bold">CHRONO : 4 MIN</span>
+                    </div>
+                    <h3 class="font-display font-bold text-white text-base">Posez les Détecteurs Mouvement</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Fixez le support rotatif à 2 mètres de hauteur dans l'angle du salon ou du couloir (par adhésif ou avec le support magnétique). Orientez-le vers la pièce.
+                    </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="glass-card p-6 rounded-2xl space-y-4 relative hover:border-cyan-400/40 transition">
+                    <div class="flex items-center justify-between">
+                        <span class="w-10 h-10 rounded-xl bg-cyan-400 text-black font-extrabold flex items-center justify-center font-display text-base">4</span>
+                        <span class="mono text-[10px] text-slate-400 font-bold">CHRONO : 5 MIN</span>
+                    </div>
+                    <h3 class="font-display font-bold text-white text-base">Scannez le QR Code de l'App</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Ouvrez l'application gratuite Smart Life / Tuya sur votre iPhone ou Android. Scannez le QR code au dos de la centrale : vos 11 accessoires apparaissent automatiquement !
+                    </p>
+                </div>
+            </div>
+
+            <!-- Video Tutorial & Support Callout -->
+            <div class="mt-12 glass-card p-8 rounded-3xl border border-cyan-500/20 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-5">
+                    <div class="w-14 h-14 rounded-2xl bg-cyan-400/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400 shrink-0">
+                        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <div>
+                        <h4 class="font-display font-bold text-white text-lg">Tutoriel Vidéo Pas-à-Pas en Français Inclus</h4>
+                        <p class="text-xs text-slate-400 mt-1 max-w-xl">
+                            Un QR code collé à l'intérieur du carton vous donne accès direct à notre vidéo de démonstration de 3 minutes chrono. Et si vous avez la moindre question, notre support WhatsApp basé en France vous répond en direct 7j/7.
+                        </p>
+                    </div>
+                </div>
+                <div class="shrink-0 flex items-center gap-3">
+                    <span class="px-4 py-2 rounded-xl bg-emerald-400/10 text-emerald-300 font-mono text-xs font-bold border border-emerald-400/20">
+                        ● Taux de réussite installation : 99,4%
+                    </span>
                 </div>
             </div>
         </section>
