@@ -1,65 +1,84 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth bg-white text-slate-900 antialiased selection:bg-blue-600 selection:text-white">
+<html lang="fr" class="scroll-smooth bg-slate-950 text-slate-100 antialiased selection:bg-amber-400 selection:text-slate-950">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FORTERESSE™ — Système d'Alarme Maison Sans Fil Sans Abonnement</title>
-    <meta name="description" content="Sécurisez votre logement sans payer 60 € d'abonnement chaque mois. Pack alarme maison 11 pièces sans fil prêt-à-poser, double alerte WiFi + 4G GSM, sirène solaire extérieure 120 dB et caméra HD.">
+    <title>SOLARIS™ France — Station Solaire Plug & Play 420W Prête-à-Brancher</title>
+    <meta name="description" content="Branchez un panneau solaire sur une simple prise 220V de votre jardin ou terrasse. Produisez votre propre électricité et réduisez votre facture EDF de 160 € à 220 € par an. Prêt en 3 minutes, zéro travaux.">
     
     <!-- Scripts & Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     
     <style>
-        body { font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; }
-        .tab-btn.active {
-            background-color: #0f172a;
-            color: #ffffff;
-            border-color: #0f172a;
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .font-display { font-family: 'Space Grotesk', sans-serif; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .glow-amber { box-shadow: 0 0 50px -10px rgba(245, 158, 11, 0.25); }
+        .glow-amber-lg { box-shadow: 0 0 100px -20px rgba(245, 158, 11, 0.35); }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card-hover:hover {
+            background: rgba(30, 41, 59, 0.7);
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+        .solar-gradient {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 100%);
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans">
+<body class="bg-[#070a13] text-slate-100 min-h-screen flex flex-col font-sans selection:bg-amber-400 selection:text-slate-950">
 
     <!-- Top Announcement Bar -->
-    <div class="bg-slate-900 text-white text-xs py-2.5 px-4 text-center font-medium tracking-wide flex items-center justify-center gap-3">
-        <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500 text-slate-950 uppercase">France 2026</span>
-        <span>Livraison Colissimo 48h offerte • Zéro abonnement mensuel à vie • Garantie échange à neuf 2 ans</span>
+    <div class="border-b border-amber-500/20 bg-amber-500/[0.06] py-2 px-4 text-center text-xs font-semibold tracking-wide text-amber-300 flex items-center justify-center gap-3">
+        <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-amber-400 text-slate-950 uppercase">Prime Énergie 2026</span>
+        <span>Livraison transporteur spécialisé offerte en France • Prise murale 220V standard • Rentabilisé en 3 ans</span>
     </div>
 
     <!-- Navigation Header -->
-    <header class="bg-white/95 backdrop-blur-md border-b border-slate-200/80 sticky top-0 z-50">
+    <header class="bg-[#070a13]/90 backdrop-blur-xl border-b border-white/[0.06] sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
             <!-- Brand Logo -->
-            <a href="index.html" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center text-white shadow-md group-hover:bg-blue-600 transition">
-                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <a href="index.html" class="flex items-center gap-3.5 group">
+                <div class="w-10 h-10 rounded-xl solar-gradient flex items-center justify-center text-slate-950 font-black shadow-lg shadow-amber-500/20 group-hover:scale-105 transition">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
                     </svg>
                 </div>
                 <div>
-                    <span class="font-extrabold text-xl tracking-tight text-slate-950 block leading-none">FORTERESSE<span class="text-blue-600">™</span></span>
-                    <span class="text-[10px] text-slate-500 font-semibold uppercase tracking-wider">Sécurité Sans Abonnement</span>
+                    <span class="font-display font-extrabold text-2xl tracking-tight text-white block leading-none">SOLARIS<span class="text-amber-400">™</span></span>
+                    <span class="text-[9px] mono uppercase tracking-widest text-slate-400 font-semibold">Autoconsommation Plug & Play</span>
                 </div>
             </a>
 
             <!-- Navigation Links -->
-            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
-                <a href="#produit" class="hover:text-slate-950 transition">Le Pack 11 Pièces</a>
-                <a href="#comparatif" class="hover:text-slate-950 transition">Face à Verisure</a>
-                <a href="#unboxing" class="hover:text-slate-950 transition">Dans la Boîte</a>
-                <a href="#installation" class="hover:text-slate-950 transition">Installation 15 min</a>
-                <a href="#avis" class="hover:text-slate-950 transition">Avis Clients</a>
-                <a href="#tarifs" class="text-blue-600 font-bold hover:text-blue-700 transition">Nos Packs</a>
+            <nav class="hidden md:flex items-center gap-8 text-xs font-semibold uppercase tracking-wider text-slate-400">
+                <a href="#principe" class="hover:text-white transition">Comment ça marche</a>
+                <a href="#simulateur" class="hover:text-white transition">Économies EDF</a>
+                <a href="#materiel" class="hover:text-white transition">Fiche Matériel</a>
+                <a href="#comparatif" class="hover:text-white transition">Face aux Leaders</a>
+                <a href="#avis" class="hover:text-white transition">Avis Clients</a>
+                <a href="#commander" class="text-amber-400 font-bold hover:text-amber-300 transition">Commander</a>
             </nav>
 
-            <!-- CTA & Contact -->
+            <!-- CTA -->
             <div class="flex items-center gap-4">
-                <a href="#tarifs" class="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-blue-600 text-white font-bold text-xs uppercase tracking-wider transition shadow-sm flex items-center gap-2">
-                    <span>Commander (159 €)</span>
-                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <a href="#commander" class="px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs uppercase tracking-wider transition shadow-lg shadow-amber-400/20 flex items-center gap-2">
+                    <span>Commander (349 €)</span>
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
             </div>
         </div>
@@ -69,94 +88,100 @@
     <main class="flex-grow">
 
         <!-- Hero Section -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-20">
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-20">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <!-- Left Column : Copy & Value Prop -->
+                <!-- Left Column -->
                 <div class="lg:col-span-6 space-y-6">
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200/60 text-blue-800 text-xs font-bold">
-                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                        Système Certifié CE & Directive RED 2014/53/UE
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold uppercase tracking-wider">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        Zéro Installateur • Zéro Toiture Percée • Branché en 3 Minutes
                     </div>
 
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-950 tracking-tight leading-[1.08]">
-                        Protégez votre maison. <br>
-                        <span class="text-blue-600">Sans payer 65 € chaque mois.</span>
+                    <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.08]">
+                        Produisez votre électricité. <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-300 to-yellow-200">
+                            En branchant une simple prise.
+                        </span>
                     </h1>
 
-                    <p class="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-                        Le premier pack d'alarme sans fil 11 pièces prêt-à-poser en 15 minutes. 
-                        <strong>Double réseau WiFi + 4G GSM</strong> (appelle votre smartphone si la box est coupée), 
-                        sirène extérieure solaire 120 dB, caméra rotative HD, et <strong>0,00 € d'abonnement mensuel à vie</strong>.
+                    <p class="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+                        La station solaire <strong>Plug & Play 420W Bifaciale</strong> prête à l'emploi. 
+                        Posez-la dans votre jardin, terrasse ou balcon, branchez le câble sur n'importe quelle prise 220V standard : 
+                        votre compteur ralentit immédiatement et vous effacez <strong>160 € à 220 € par an</strong> de votre facture EDF.
                     </p>
 
                     <!-- Trust Cards -->
-                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
-                        <div class="p-3.5 rounded-xl bg-white border border-slate-200 shadow-sm">
-                            <div class="text-xs font-bold text-slate-900">0 € Abonnement</div>
-                            <div class="text-[11px] text-slate-500">Payé 1 seule fois à vie</div>
+                    <div class="grid grid-cols-3 gap-3 pt-2">
+                        <div class="glass-card p-4 rounded-xl text-center space-y-1">
+                            <div class="font-display font-extrabold text-amber-400 text-lg sm:text-xl">420 Wc</div>
+                            <div class="text-[11px] text-slate-400 leading-tight">Cellules Bifaciales TOPCon (+20%)</div>
                         </div>
-                        <div class="p-3.5 rounded-xl bg-white border border-slate-200 shadow-sm">
-                            <div class="text-xs font-bold text-slate-900">Pose en 15 min</div>
-                            <div class="text-[11px] text-slate-500">Adhésifs 3M sans trou</div>
+                        <div class="glass-card p-4 rounded-xl text-center space-y-1">
+                            <div class="font-display font-extrabold text-emerald-400 text-lg sm:text-xl">3 Min</div>
+                            <div class="text-[11px] text-slate-400 leading-tight">Branchement sur prise 220V</div>
                         </div>
-                        <div class="p-3.5 rounded-xl bg-white border border-slate-200 shadow-sm col-span-2 sm:col-span-1">
-                            <div class="text-xs font-bold text-slate-900">Anti-Coupure</div>
-                            <div class="text-[11px] text-slate-500">Batterie 8h + Puce 4G</div>
+                        <div class="glass-card p-4 rounded-xl text-center space-y-1">
+                            <div class="font-display font-extrabold text-amber-400 text-lg sm:text-xl">25 Ans</div>
+                            <div class="text-[11px] text-slate-400 leading-tight">Garantie performance 85%</div>
                         </div>
                     </div>
 
-                    <!-- Call to action buttons -->
+                    <!-- CTA Buttons -->
                     <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4">
-                        <a href="#tarifs" class="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-sm uppercase tracking-wider rounded-xl transition shadow-lg shadow-blue-600/20 text-center">
-                            Commander le Pack 11 Pièces — 159 €
+                        <a href="#commander" class="px-8 py-4 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-sm uppercase tracking-wider rounded-xl transition shadow-2xl shadow-amber-400/25 text-center transform hover:-translate-y-0.5">
+                            Commander ma Station — 349 €
                         </a>
-                        <a href="#comparatif" class="px-6 py-4 bg-white hover:bg-slate-100 text-slate-800 font-bold text-sm rounded-xl transition border border-slate-200 shadow-sm text-center">
-                            Voir le comparatif Verisure
+                        <a href="#simulateur" class="px-6 py-4 glass-card hover:bg-white/[0.08] text-white font-bold text-sm rounded-xl transition text-center border border-white/10 flex items-center justify-center gap-2">
+                            <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span>Calculer mon gain EDF</span>
                         </a>
                     </div>
 
-                    <div class="flex items-center gap-4 pt-2 text-xs text-slate-500 font-medium">
-                        <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> En stock (Expédié sous 24h)</span>
+                    <div class="flex items-center gap-4 pt-2 text-xs text-slate-400 font-medium">
+                        <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> 100% Conforme Enedis CACSI</span>
                         <span>•</span>
-                        <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> Satisfait ou remboursé 30 jours</span>
+                        <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> Sécurité Anti-Îlotage VDE</span>
                     </div>
                 </div>
 
-                <!-- Right Column : Real Product Studio Photography -->
+                <!-- Right Column : Real Product Showcase -->
                 <div class="lg:col-span-6">
-                    <div class="relative bg-white rounded-3xl p-3 sm:p-5 border border-slate-200/90 shadow-2xl">
-                        <div class="relative overflow-hidden rounded-2xl bg-slate-900">
-                            <img src="img/pack-alarme-11p.jpg" alt="Kit Alarme Sans Fil 11 Pièces Forteresse Connect sans abonnement" class="w-full h-auto object-cover transform hover:scale-[1.02] transition duration-500">
+                    <div class="relative glass-card p-3 sm:p-5 rounded-3xl border border-amber-500/20 glow-amber">
+                        <div class="relative overflow-hidden rounded-2xl bg-slate-900 aspect-[4/3] flex items-center justify-center">
+                            <img src="img/station-solaire-420w.jpg" 
+                                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=1200&q=80';" 
+                                 alt="Station Solaire Plug and Play 420W Full Black Solaris France" 
+                                 class="w-full h-full object-cover transform hover:scale-[1.02] transition duration-700">
                             
                             <div class="absolute top-4 left-4 flex flex-col gap-2">
-                                <span class="px-3 py-1 rounded-full bg-slate-900/90 backdrop-blur-md text-white font-mono text-[11px] font-bold shadow-md border border-white/10">
-                                    ● Photo Réelle du Coffret 11 Pièces
+                                <span class="px-3 py-1 rounded-full bg-black/85 backdrop-blur-md text-amber-300 font-mono text-[11px] font-bold border border-amber-500/40">
+                                    ● Panneau 420W Full Black Bifacial
                                 </span>
-                                <span class="px-3 py-1 rounded-full bg-emerald-600/90 backdrop-blur-md text-white font-mono text-[10px] font-bold shadow-md">
-                                    Équipement Neuf Scellé
+                                <span class="px-3 py-1 rounded-full bg-emerald-950/85 backdrop-blur-md text-emerald-300 font-mono text-[10px] font-bold border border-emerald-500/40">
+                                    Micro-Onduleur Intégré VDE
                                 </span>
                             </div>
 
                             <div class="absolute bottom-4 right-4">
-                                <span class="px-3.5 py-1.5 rounded-xl bg-slate-900/90 backdrop-blur-md text-white font-mono text-xs font-bold border border-white/10 shadow-lg">
-                                    159 € TTC <span class="text-slate-400 font-normal">au lieu de 3 360 €</span>
+                                <span class="px-4 py-2 rounded-xl bg-black/85 backdrop-blur-md text-white font-mono text-xs font-bold border border-white/10 shadow-lg">
+                                    349 € TTC <span class="text-slate-400 line-through text-[11px]">690 €</span>
                                 </span>
                             </div>
                         </div>
 
-                        <!-- Highlights under photo -->
-                        <div class="grid grid-cols-3 gap-2 mt-4 text-center text-xs text-slate-600">
-                            <div class="p-2 bg-slate-50 rounded-xl border border-slate-100">
-                                <span class="font-bold text-slate-900 block">Centrale IPS 4.3"</span>
-                                <span class="text-[10px] text-slate-500">Verre trempé inrayable</span>
+                        <!-- 3 Tech Pills under visual -->
+                        <div class="grid grid-cols-3 gap-2 mt-4 text-center text-xs">
+                            <div class="p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+                                <span class="font-bold text-white block">Support Alu Inclinable</span>
+                                <span class="text-[10px] text-slate-400">Angle réglable 20° à 45°</span>
                             </div>
-                            <div class="p-2 bg-slate-50 rounded-xl border border-slate-100">
-                                <span class="font-bold text-slate-900 block">Sirène Solaire</span>
-                                <span class="text-[10px] text-slate-500">120 dB + Flash rouge</span>
+                            <div class="p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+                                <span class="font-bold text-white block">Câble 5m Renforcé</span>
+                                <span class="text-[10px] text-slate-400">Prise secteur 220V standard</span>
                             </div>
-                            <div class="p-2 bg-slate-50 rounded-xl border border-slate-100">
-                                <span class="font-bold text-slate-900 block">Caméra Tuya HD</span>
-                                <span class="text-[10px] text-slate-500">Motorisée 355°</span>
+                            <div class="p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+                                <span class="font-bold text-white block">Compteur Connecté</span>
+                                <span class="text-[10px] text-slate-400">Suivi en direct sur smartphone</span>
                             </div>
                         </div>
                     </div>
@@ -164,58 +189,190 @@
             </div>
         </section>
 
-        <!-- Comparison vs Verisure / Homiris -->
-        <section id="comparatif" class="bg-white py-20 border-y border-slate-200">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-12">
+        <!-- 3-Minute Plug & Play Explanation -->
+        <section id="principe" class="border-t border-white/[0.06] bg-slate-900/40 py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-16">
                 <div class="text-center max-w-3xl mx-auto space-y-3">
-                    <span class="text-xs font-bold uppercase tracking-wider text-blue-600">Comparatif Chiffré Transparent</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-950 tracking-tight">
-                        Pourquoi continuer à payer un abonnement à vie ?
+                    <span class="mono text-xs font-bold uppercase tracking-widest text-amber-400">Branchement Révolutionnaire</span>
+                    <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight text-white">
+                        Comment ça fonctionne en 3 minutes chrono ?
                     </h2>
-                    <p class="text-slate-600 text-sm sm:text-base">
-                        En France, les sociétés de télésurveillance vous louent leur matériel et prélèvent entre 55 € et 75 € chaque mois. Faisons le calcul réel sur 3 ans :
+                    <p class="text-slate-400 text-sm sm:text-base">
+                        Aucun électricien, aucune modification de votre tableau électrique. C'est la loi physique de la moindre résistance : vos appareils consomment d'abord l'énergie solaire la plus proche.
                     </p>
                 </div>
 
+                <!-- 3 Steps -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Step 1 -->
+                    <div class="glass-card p-8 rounded-2xl space-y-4 border-t-2 border-amber-400">
+                        <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-display font-black text-xl">
+                            1
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-white">Posez où vous voulez</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Dans votre pelouse, sur une terrasse, un balcon ensoleillé ou sur un toit plat de garage. Dépliez le châssis en aluminium noir anodisé et réglez l'inclinaison pour capter un maximum de soleil.
+                        </p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="glass-card p-8 rounded-2xl space-y-4 border-t-2 border-amber-400">
+                        <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-display font-black text-xl">
+                            2
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-white">Branchez sur une prise</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Déroulez le câble étanche extérieur de 5 mètres fourni. Branchez-le sur une simple prise murale classique 220V. Le micro-onduleur certifié synchronise la fréquence en 10 secondes et injecte le courant vert.
+                        </p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="glass-card p-8 rounded-2xl space-y-4 border-t-2 border-emerald-400">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-display font-black text-xl">
+                            3
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-white">Votre compteur ralentit</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Votre réfrigérateur, box internet, congélateur et appareils en veille consomment instantanément l'électricité produite par votre panneau. Vous n'achetez plus cette électricité à EDF : votre facture chute.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Real-World Savings Calculator -->
+        <section id="simulateur" class="max-w-6xl mx-auto px-4 sm:px-6 py-20 border-t border-white/[0.06]">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="mono text-xs font-bold uppercase tracking-widest text-emerald-400">Calculateur Transparent 2026</span>
+                <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight text-white">
+                    Combien allez-vous effacer de votre facture ?
+                </h2>
+                <p class="text-slate-400 text-sm sm:text-base">
+                    Basé sur le tarif réglementé de l'électricité en France (~0,27 € / kWh) et un ensoleillement moyen métropolitain.
+                </p>
+            </div>
+
+            <div class="glass-card p-8 sm:p-12 rounded-3xl border border-amber-500/30 glow-amber">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                    <!-- Controls -->
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+                                <span>Nombre de stations Solaris™ :</span>
+                                <span id="label-panels" class="text-amber-400 font-mono text-sm">1 Panneau (420W)</span>
+                            </div>
+                            <input type="range" id="slider-panels" min="1" max="4" value="1" step="1" 
+                                   class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-400"
+                                   oninput="updateSolarCalc()">
+                            <div class="flex justify-between text-[11px] mono text-slate-500 mt-1">
+                                <span>1 panneau</span>
+                                <span>2 panneaux</span>
+                                <span>3 panneaux</span>
+                                <span>4 panneaux</span>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-white/[0.03] border border-white/[0.06] text-xs text-slate-300 space-y-2">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                                <span><strong>1 Panneau (420W) :</strong> Efface le "talon de consommation" (frigo, box, veilles).</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                                <span><strong>2 Panneaux (840W) :</strong> Efface les veilles + machine à laver + lave-vaisselle le midi.</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+                                <span><strong>4 Panneaux (1680W) :</strong> Autonomie massive pour maison avec piscine ou climatisation.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Output Results Card -->
+                    <div class="p-8 rounded-2xl bg-gradient-to-b from-slate-900 to-[#030611] border border-amber-500/30 text-center space-y-6">
+                        <div class="space-y-1">
+                            <span class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Économie Nette Estimée sur 10 Ans</span>
+                            <div id="calc-savings-10y" class="font-display text-4xl sm:text-5xl font-black text-emerald-400">
+                                + 1 750 €
+                            </div>
+                            <div class="text-xs text-emerald-400/80 font-bold">d'électricité gratuite déduite de vos factures</div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 pt-4 border-t border-white/[0.08] text-left text-xs">
+                            <div>
+                                <div class="text-amber-400 font-bold mb-0.5">Économie annuelle</div>
+                                <div id="calc-yearly" class="text-white font-mono text-base font-bold">~175 € / an</div>
+                                <div class="text-[10px] text-slate-500">420 à 500 kWh / an</div>
+                            </div>
+                            <div>
+                                <div class="text-cyan-400 font-bold mb-0.5">Rentabilisation</div>
+                                <div class="text-white font-mono text-base font-bold">~2,5 à 3 Ans</div>
+                                <div class="text-[10px] text-slate-500">Puis 22 ans 100% gratuit</div>
+                            </div>
+                        </div>
+
+                        <a href="#commander" class="block w-full py-4 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl transition shadow-lg shadow-amber-400/25">
+                            Bloquer ce tarif — 349 €
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparison Table vs Sunology / Beem Energy -->
+        <section id="comparatif" class="max-w-6xl mx-auto px-4 sm:px-6 py-20 border-t border-white/[0.06]">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="mono text-xs font-bold uppercase tracking-widest text-amber-400">Comparatif de Marché</span>
+                <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight text-white">
+                    Pourquoi payer 690 € quand la technologie vaut 349 € ?
+                </h2>
+                <p class="text-slate-400 text-sm sm:text-base">
+                    Des marques comme Sunology ou Beem font de la publicité massive à la télévision et margent à plus de 70%. Chez Solaris™, nous supprimons les intermédiaires pour vous offrir le meilleur matériel au prix juste.
+                </p>
+            </div>
+
+            <div class="glass-card rounded-3xl border border-white/[0.08] overflow-hidden">
                 <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse text-sm">
-                        <thead>
-                            <tr class="border-b border-slate-200 bg-slate-50">
-                                <th class="p-4 sm:p-5 font-bold text-slate-900">Critère de Comparaison</th>
-                                <th class="p-4 sm:p-5 font-bold text-slate-500">Télésurveillance Classique (Verisure)</th>
-                                <th class="p-4 sm:p-5 font-extrabold text-blue-600 bg-blue-50/60 border-x border-blue-200">Pack FORTERESSE™ (Notre Offre)</th>
+                    <table class="w-full text-left text-xs sm:text-sm">
+                        <thead class="bg-white/[0.04] border-b border-white/[0.08] mono uppercase text-[11px] text-slate-300">
+                            <tr>
+                                <th class="p-4 sm:p-5 font-bold">Critère Technique</th>
+                                <th class="p-4 sm:p-5 font-bold text-slate-400">Marques Leaders (Sunology / Beem)</th>
+                                <th class="p-4 sm:p-5 font-extrabold text-amber-300 bg-amber-500/10 border-x border-amber-500/20">SOLARIS PLAY™ (Notre Offre)</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-slate-200">
+                        <tbody class="divide-y divide-white/[0.06] text-slate-300">
                             <tr>
-                                <td class="p-4 sm:p-5 font-semibold text-slate-900">Coût d'installation initial</td>
-                                <td class="p-4 sm:p-5 text-slate-600">De 900 € à 1 800 € (ou location de matériel)</td>
-                                <td class="p-4 sm:p-5 font-bold text-slate-950 bg-blue-50/30 border-x border-blue-100">159 € (Le matériel vous appartient)</td>
+                                <td class="p-4 sm:p-5 font-semibold text-white">Puissance Crête Panneau</td>
+                                <td class="p-4 sm:p-5 text-slate-400">400 Wc à 420 Wc</td>
+                                <td class="p-4 sm:p-5 font-bold text-white bg-amber-500/5 border-x border-amber-500/20">420 Wc N-Type TOPCon</td>
                             </tr>
                             <tr>
-                                <td class="p-4 sm:p-5 font-semibold text-slate-900">Abonnement mensuel obligatoire</td>
-                                <td class="p-4 sm:p-5 text-rose-600 font-bold">~65,00 € par mois (reconduction tacite)</td>
-                                <td class="p-4 sm:p-5 font-bold text-emerald-600 bg-blue-50/30 border-x border-blue-100">0,00 € par mois à vie</td>
+                                <td class="p-4 sm:p-5 font-semibold text-white">Technologie des cellules</td>
+                                <td class="p-4 sm:p-5 text-slate-400">Monofaciale ou Bifaciale</td>
+                                <td class="p-4 sm:p-5 font-bold text-emerald-400 bg-amber-500/5 border-x border-amber-500/20">Bifaciale (+20% de capture par réflexion au dos)</td>
                             </tr>
                             <tr>
-                                <td class="p-4 sm:p-5 font-semibold text-slate-900">Double secours anti-coupure</td>
-                                <td class="p-4 sm:p-5 text-slate-600">Inclus avec abonnement obligatoire</td>
-                                <td class="p-4 sm:p-5 font-semibold text-slate-900 bg-blue-50/30 border-x border-blue-100">Inclus (Batterie lithium + Carte SIM libre)</td>
+                                <td class="p-4 sm:p-5 font-semibold text-white">Micro-Onduleur & Sécurité</td>
+                                <td class="p-4 sm:p-5 text-slate-400">Norme VDE 0126-1-1 / Anti-îlotage</td>
+                                <td class="p-4 sm:p-5 font-semibold text-white bg-amber-500/5 border-x border-amber-500/20">Norme VDE-AR-N 4105 (Coupure instantanée en 0.02s)</td>
                             </tr>
                             <tr>
-                                <td class="p-4 sm:p-5 font-semibold text-slate-900">Sirène extérieure solaire 120 dB</td>
-                                <td class="p-4 sm:p-5 text-slate-600">Option payante (souvent +10 €/mois ou +300 €)</td>
-                                <td class="p-4 sm:p-5 font-bold text-slate-950 bg-blue-50/30 border-x border-blue-100">Incluse d'office dans le pack</td>
+                                <td class="p-4 sm:p-5 font-semibold text-white">Support & Châssis</td>
+                                <td class="p-4 sm:p-5 text-slate-400">Aluminium inclinable</td>
+                                <td class="p-4 sm:p-5 font-semibold text-white bg-amber-500/5 border-x border-amber-500/20">Aluminium noir anodisé réglable (20° à 45°)</td>
                             </tr>
                             <tr>
-                                <td class="p-4 sm:p-5 font-semibold text-slate-900">Caméra vidéo HD incluse</td>
-                                <td class="p-4 sm:p-5 text-slate-600">Option payante avec abonnement cloud</td>
-                                <td class="p-4 sm:p-5 font-bold text-slate-950 bg-blue-50/30 border-x border-blue-100">Incluse (Sans abonnement cloud obligatoire)</td>
+                                <td class="p-4 sm:p-5 font-semibold text-white">Garantie Rendement 25 Ans</td>
+                                <td class="p-4 sm:p-5 text-slate-400">Inclus (80% à 85%)</td>
+                                <td class="p-4 sm:p-5 font-semibold text-white bg-amber-500/5 border-x border-amber-500/20">Inclus (84,8% garanti à 25 ans)</td>
                             </tr>
-                            <tr class="bg-slate-100/70 font-extrabold text-base">
-                                <td class="p-4 sm:p-5 text-slate-950">COÛT TOTAL RÉEL SUR 3 ANS</td>
-                                <td class="p-4 sm:p-5 text-rose-600">4 140 € TTC</td>
-                                <td class="p-4 sm:p-5 text-emerald-600 bg-blue-100/50 border-x border-blue-300">159 € TTC (Économie : + 3 981 €)</td>
+                            <tr class="bg-white/[0.03] text-sm sm:text-base font-extrabold">
+                                <td class="p-4 sm:p-5 text-white">PRIX PUBLIC LIVRÉ TTC</td>
+                                <td class="p-4 sm:p-5 text-rose-400 line-through">599 € à 690 €</td>
+                                <td class="p-4 sm:p-5 text-emerald-400 bg-amber-500/10 border-x border-amber-500/30 font-black text-lg sm:text-xl">
+                                    349,00 € TTC <span class="text-xs font-normal text-slate-300 block">Économie immédiate : ~300 €</span>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -223,245 +380,201 @@
             </div>
         </section>
 
-        <!-- Unboxing & Specifications Section -->
-        <section id="unboxing" class="max-w-7xl mx-auto px-4 sm:px-6 py-20">
+        <!-- Technical Specs & Box Contents -->
+        <section id="materiel" class="max-w-7xl mx-auto px-4 sm:px-6 py-20 border-t border-white/[0.06]">
             <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-                <span class="text-xs font-bold uppercase tracking-wider text-blue-600">Déballage & Spécifications Officielles</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-950 tracking-tight">
-                    Le Contenu Exact du Coffret 11 Pièces
+                <span class="mono text-xs font-bold uppercase tracking-widest text-amber-400">Fiche Constructeur Officielle</span>
+                <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight text-white">
+                    Matériaux Nobles & Ingénierie Certifiée
                 </h2>
-                <p class="text-slate-600 text-sm sm:text-base">
-                    Tous les composants sont livrés dans un coffret rigide avec mousse thermoformée haute densité. Tous les câbles, fixations et piles sont inclus.
+                <p class="text-slate-400 text-sm sm:text-base">
+                    Tout est pensé pour durer plus de 25 ans face au gel, aux canicules, aux vents violents et à la grêle.
                 </p>
             </div>
 
-            <!-- Detailed Grid of 11 items -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Item 1 -->
-                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-3">
-                    <div class="flex justify-between items-center">
-                        <span class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 font-extrabold text-xs flex items-center justify-center">01</span>
-                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-100 text-slate-700 font-bold">PGST PG-107</span>
-                    </div>
-                    <h3 class="font-bold text-slate-900 text-base">1x Centrale Tactile IPS 4.3" WiFi + 4G</h3>
-                    <p class="text-xs text-slate-500 leading-relaxed">
-                        Façade en verre trempé inrayable. Double transmetteur WiFi + modem 4G LTE mondial. Batterie de secours 8h en cas de coupure de courant. Sirène intégrée 105 dB et interface en français.
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-xs">
+                <div class="glass-card p-6 rounded-2xl space-y-2 border-l-2 border-amber-400">
+                    <span class="mono text-[10px] text-amber-400 font-bold uppercase">PANNEAU PHOTOVOLTAÏQUE</span>
+                    <h3 class="font-display text-base font-bold text-white">Full Black 420W Bifacial</h3>
+                    <p class="text-slate-400 leading-relaxed">
+                        Verre trempé solaire 3,2 mm haute transmissivité anti-reflet. Cadre aluminium noir renforcé 30 mm résistant aux vents de 130 km/h et charge de neige 5400 Pa.
                     </p>
-                    <div class="pt-2 text-[11px] text-slate-400 font-mono">Dim : 160 × 98 × 18 mm • Poids : 245 g</div>
                 </div>
 
-                <!-- Item 2 -->
-                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-3">
-                    <div class="flex justify-between items-center">
-                        <span class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 font-extrabold text-xs flex items-center justify-center">02</span>
-                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-100 text-slate-700 font-bold">PGST PE-520R</span>
-                    </div>
-                    <h3 class="font-bold text-slate-900 text-base">1x Sirène Solaire Extérieure 120 dB</h3>
-                    <p class="text-xs text-slate-500 leading-relaxed">
-                        Flash stroboscopique rouge puissant et son assourdissant de 120 dB. 100% autonome sur panneau solaire supérieur, boîtier étanche IP65 résistant aux UV et au gel. Zéro câble à tirer sur la façade.
+                <div class="glass-card p-6 rounded-2xl space-y-2 border-l-2 border-amber-400">
+                    <span class="mono text-[10px] text-amber-400 font-bold uppercase">MICRO-ONDULEUR</span>
+                    <h3 class="font-display text-base font-bold text-white">Hoymiles / Deye VDE</h3>
+                    <p class="text-slate-400 leading-relaxed">
+                        Rendement MPPT de 99,8%. Étanche IP67. Relais de découplage physique intégré : si la prise est débranchée, la tension tombe à zéro en 20 millisecondes (zéro choc électrique).
                     </p>
-                    <div class="pt-2 text-[11px] text-slate-400 font-mono">Dim : 200 × 115 × 75 mm • Poids : 410 g</div>
                 </div>
 
-                <!-- Item 3 -->
-                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-3">
-                    <div class="flex justify-between items-center">
-                        <span class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 font-extrabold text-xs flex items-center justify-center">03</span>
-                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-100 text-slate-700 font-bold">Tuya PTZ 1080p</span>
-                    </div>
-                    <h3 class="font-bold text-slate-900 text-base">1x Caméra Intérieure HD Motorisée</h3>
-                    <p class="text-xs text-slate-500 leading-relaxed">
-                        Rotation motorisée à 355° horizontale et 90° verticale depuis le smartphone. Vision nocturne infrarouge 10m, audio bidirectionnel (micro/haut-parleur) et levée de doute vidéo immédiate.
+                <div class="glass-card p-6 rounded-2xl space-y-2 border-l-2 border-emerald-400">
+                    <span class="mono text-[10px] text-emerald-400 font-bold uppercase">LÉGALITÉ EN FRANCE</span>
+                    <h3 class="font-display text-base font-bold text-white">100% Conforme Enedis</h3>
+                    <p class="text-slate-400 leading-relaxed">
+                        Autorisé sur le réseau national français sans consuel. Une simple déclaration CACSI (Convention d'Autoconsommation Sans Injection) gratuite en 5 min sur le portail Enedis.
                     </p>
-                    <div class="pt-2 text-[11px] text-slate-400 font-mono">Dim : 110 × 75 × 75 mm • Poids : 190 g</div>
                 </div>
 
-                <!-- Item 4 -->
-                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-3">
-                    <div class="flex justify-between items-center">
-                        <span class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 font-extrabold text-xs flex items-center justify-center">04</span>
-                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-100 text-slate-700 font-bold">4x PA-443 Mini</span>
-                    </div>
-                    <h3 class="font-bold text-slate-900 text-base">4x Détecteurs d'Ouverture Portes & Fenêtres</h3>
-                    <p class="text-xs text-slate-500 leading-relaxed">
-                        Format extra-plat 11 mm. Déclenchement dès 15 mm d'écartement. Livrés avec adhésifs industriels 3M VHB prédécoupés (zéro perçage). Piles Lithium CR2032 incluses (durée 2 à 3 ans).
+                <div class="glass-card p-6 rounded-2xl space-y-2 border-l-2 border-emerald-400">
+                    <span class="mono text-[10px] text-emerald-400 font-bold uppercase">DANS LE CARTON</span>
+                    <h3 class="font-display text-base font-bold text-white">Pack Clé-en-Main</h3>
+                    <p class="text-slate-400 leading-relaxed">
+                        1x Panneau 420W, 1x Châssis alu inclinable prémonté, 1x Micro-onduleur fixé au dos, 1x Câble étanche extérieur 5m avec prise 220V, et 1x Guide pas-à-pas en français.
                     </p>
-                    <div class="pt-2 text-[11px] text-slate-400 font-mono">Dim : 65 × 25 × 11 mm • Poids : 28 g / u</div>
-                </div>
-
-                <!-- Item 5 -->
-                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-3">
-                    <div class="flex justify-between items-center">
-                        <span class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 font-extrabold text-xs flex items-center justify-center">05</span>
-                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-100 text-slate-700 font-bold">2x PA-92R</span>
-                    </div>
-                    <h3 class="font-bold text-slate-900 text-base">2x Détecteurs de Mouvement (PIR)</h3>
-                    <p class="text-xs text-slate-500 leading-relaxed">
-                        Lentille optique Fresnel américaine à double faisceau infrarouge. <strong>Insensible aux animaux domestiques jusqu'à 20 kg</strong> (zéro fausse alerte chien/chat). Rotules orientables à 360° incluses.
-                    </p>
-                    <div class="pt-2 text-[11px] text-slate-400 font-mono">Portée : 12m / 110° • Piles AA incluses</div>
-                </div>
-
-                <!-- Item 6 -->
-                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-3">
-                    <div class="flex justify-between items-center">
-                        <span class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 font-extrabold text-xs flex items-center justify-center">06</span>
-                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-100 text-slate-700 font-bold">2x PB-67 + 2x RFID</span>
-                    </div>
-                    <h3 class="font-bold text-slate-900 text-base">2x Télécommandes Métal + 2x Badges RFID</h3>
-                    <p class="text-xs text-slate-500 leading-relaxed">
-                        Télécommandes avec cerclage en alliage de zinc brossé (Armer, Désarmer, Nuit, SOS). Badges RFID étanches sans contact pour désarmer en 1 seconde sans code (idéal enfants et personnes âgées).
-                    </p>
-                    <div class="pt-2 text-[11px] text-slate-400 font-mono">Inclus : 2 autocollants vitrine 24/7 offerts</div>
                 </div>
             </div>
         </section>
 
-        <!-- Pricing Section -->
-        <section id="tarifs" class="bg-slate-900 text-white py-20">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
-                <div class="text-center max-w-3xl mx-auto space-y-3">
-                    <span class="text-xs font-bold uppercase tracking-wider text-blue-400">Tarification Transparente Sans Surprise</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
-                        Commandez votre système en toute tranquillité
+        <!-- Customer Reviews -->
+        <section id="avis" class="max-w-7xl mx-auto px-4 sm:px-6 py-20 border-t border-white/[0.06]">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold">
+                    <span>★★★★★</span>
+                    <span>Note moyenne : 4.9/5 (214 avis vérifiés France)</span>
+                </div>
+                <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight text-white">
+                    Ce que constatent nos clients sur leur compteur Linky
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
+                <div class="glass-card p-6 rounded-2xl space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-white text-sm">Laurent D. (33 - Gironde)</span>
+                        <span class="text-amber-400">★★★★★</span>
+                    </div>
+                    <p class="text-slate-300 italic leading-relaxed">
+                        « Reçu par transporteur sur palette soignée. Posé dans le jardin à midi, branché sur la prise de la terrasse : le compteur Linky est passé de 380 VA à 40 VA instantanément ! Mon frigo et ma box tournent gratuitement dès que le soleil brille. »
+                    </p>
+                    <span class="text-[10px] mono text-emerald-400 font-bold block">1 Station 420W • Économie constatée : ~170 €/an</span>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-white text-sm">Gilles & Martine (44 - Loire-Atlantique)</span>
+                        <span class="text-amber-400">★★★★★</span>
+                    </div>
+                    <p class="text-slate-300 italic leading-relaxed">
+                        « On hésitait avec Sunology qui demandait presque 700 €. On a pris 2 panneaux Solaris pour le même prix ! On efface toute la consommation de la journée et le chauffe-eau. La qualité de l'aluminium noir est irréprochable. »
+                    </p>
+                    <span class="text-[10px] mono text-emerald-400 font-bold block">2 Stations 840W • Économie constatée : ~340 €/an</span>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-white text-sm">Christophe B. (69 - Rhône)</span>
+                        <span class="text-amber-400">★★★★★</span>
+                    </div>
+                    <p class="text-slate-300 italic leading-relaxed">
+                        « Déclaration Enedis faite en 3 minutes sur leur site. C'est le meilleur investissement qu'on puisse faire en ce moment avec l'inflation de l'électricité. Tout le monde devrait avoir au moins un panneau dans son jardin. »
+                    </p>
+                    <span class="text-[10px] mono text-emerald-400 font-bold block">1 Station 420W • Amorti en moins de 3 ans</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Order / Pricing Section -->
+        <section id="commander" class="max-w-5xl mx-auto px-4 sm:px-6 py-20 border-t border-white/[0.06]">
+            <div class="glass-card p-8 sm:p-12 rounded-3xl border border-amber-500/30 glow-amber space-y-10">
+                <div class="text-center space-y-3">
+                    <span class="mono text-xs font-bold uppercase tracking-widest text-amber-400">Commande Express Sans Intermédiaire</span>
+                    <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">
+                        Choisissez votre configuration Solaris™
                     </h2>
-                    <p class="text-slate-400 text-sm sm:text-base">
-                        Chaque pack est complet, neuf sous blister scellé, garanti 2 ans avec livraison Colissimo 48h offerte.
+                    <p class="text-slate-400 text-xs sm:text-sm">
+                        Expédié sur palette sécurisée sous 48h. Frais de port offerts dans toute la France métropolitaine.
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-                    <!-- Pack 1 -->
-                    <div class="bg-slate-800/80 rounded-3xl p-8 border border-slate-700 flex flex-col justify-between">
-                        <div class="space-y-6">
-                            <div>
-                                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Appartement (1 à 3 pièces)</span>
-                                <h3 class="text-2xl font-bold mt-1">Pack Essentiel</h3>
-                                <div class="text-3xl font-black text-white mt-2">129,00 € <span class="text-xs font-normal text-slate-400">TTC</span></div>
-                            </div>
-                            <ul class="space-y-3 text-xs text-slate-300">
-                                <li>✓ 1x Centrale Tactile IPS 4.3" WiFi+4G (105 dB)</li>
-                                <li>✓ 2x Détecteurs d'ouverture portes/fenêtres</li>
-                                <li>✓ 1x Détecteur de mouvement PIR anti-animaux</li>
-                                <li>✓ 2x Télécommandes métal + 2x Badges RFID</li>
-                                <li>✓ Application smartphone en français à vie</li>
-                                <li>✓ 0 € d'abonnement mensuel</li>
-                            </ul>
+                <!-- 3 Options Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Option 1 -->
+                    <div onclick="selectOffer('1 Station Solaris™ 420W', 349)" class="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-amber-400/60 cursor-pointer transition flex flex-col justify-between space-y-4 group">
+                        <div class="space-y-2">
+                            <span class="mono text-[10px] text-slate-400 font-bold uppercase">Configuration Essentielle</span>
+                            <h4 class="font-display font-bold text-white text-lg group-hover:text-amber-400 transition">1 Panneau (420W)</h4>
+                            <div class="font-display font-black text-2xl text-white">349 € <span class="text-xs font-normal text-slate-400">TTC</span></div>
+                            <p class="text-[11px] text-slate-400">Idéal pour effacer le bruit de fond électrique (frigo, box internet, veilles).</p>
                         </div>
-                        <button onclick="selectPack('Pack Essentiel', 129)" class="w-full mt-8 py-3.5 rounded-xl border border-slate-600 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider transition">
-                            Choisir ce Pack (129 €)
-                        </button>
+                        <span class="block py-2 text-center rounded-lg bg-white/10 group-hover:bg-amber-400 group-hover:text-slate-950 font-bold text-xs uppercase tracking-wider transition">Choisir</span>
                     </div>
 
-                    <!-- Pack 2 (Best Seller) -->
-                    <div class="bg-gradient-to-b from-blue-900/60 to-slate-900 rounded-3xl p-8 border-2 border-blue-500 relative flex flex-col justify-between shadow-2xl">
-                        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-blue-600 text-white font-extrabold text-[10px] uppercase tracking-widest shadow-md">
-                            Pack Recommandé Maison (84% des commandes)
+                    <!-- Option 2 (Recommandé) -->
+                    <div onclick="selectOffer('Duo Solaris™ 840W (2 Panneaux)', 649)" class="p-6 rounded-2xl bg-amber-950/30 border-2 border-amber-400 cursor-pointer transition flex flex-col justify-between space-y-4 relative shadow-xl">
+                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-amber-400 text-slate-950 font-black text-[9px] uppercase tracking-widest">
+                            Choix le plus Populaire
                         </div>
-                        <div class="space-y-6 pt-2">
-                            <div>
-                                <span class="text-xs font-bold uppercase tracking-wider text-blue-300">Maison & Pavillon (80 à 180 m²)</span>
-                                <h3 class="text-2xl font-bold mt-1 text-white">Pack Sérénité 11 Pièces</h3>
-                                <div class="text-4xl font-black text-blue-400 mt-2">159,00 € <span class="text-xs font-normal text-slate-400">TTC</span></div>
-                            </div>
-                            <ul class="space-y-3 text-xs text-slate-200 font-medium">
-                                <li>✓ 1x Centrale Tactile IPS 4.3" WiFi+4G</li>
-                                <li class="text-blue-300 font-bold">✓ 1x Sirène Solaire Extérieure 120 dB + Flash</li>
-                                <li class="text-blue-300 font-bold">✓ 1x Caméra Intérieure HD 1080p Motorisée</li>
-                                <li>✓ 4x Détecteurs d'ouverture portes/fenêtres</li>
-                                <li>✓ 2x Détecteurs de mouvement PIR anti-animaux</li>
-                                <li>✓ 2x Télécommandes métal + 2x Badges RFID</li>
-                                <li>✓ 2x Autocollants dissuasifs vitrine offerts</li>
-                                <li class="text-emerald-400 font-bold">✓ 0 € d'abonnement mensuel à vie</li>
-                            </ul>
+                        <div class="space-y-2 pt-1">
+                            <span class="mono text-[10px] text-amber-300 font-bold uppercase">Pack Maison Familiale</span>
+                            <h4 class="font-display font-bold text-white text-lg">Duo 2 Panneaux (840W)</h4>
+                            <div class="font-display font-black text-3xl text-amber-400">649 € <span class="text-xs font-normal text-slate-400">TTC</span></div>
+                            <p class="text-[11px] text-slate-300">Efface les veilles + lave-linge + lave-vaisselle le midi. Économie : 50 € sur le 2ème panneau.</p>
                         </div>
-                        <button onclick="selectPack('Pack Sérénité 11 Pièces', 159)" class="w-full mt-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-black text-xs uppercase tracking-wider transition shadow-xl shadow-blue-600/30">
-                            Commander le Pack 11 Pièces (159 €)
-                        </button>
+                        <span class="block py-2 text-center rounded-lg bg-amber-400 text-slate-950 font-black text-xs uppercase tracking-wider transition">Sélectionner</span>
                     </div>
 
-                    <!-- Pack 3 -->
-                    <div class="bg-slate-800/80 rounded-3xl p-8 border border-slate-700 flex flex-col justify-between">
-                        <div class="space-y-6">
-                            <div>
-                                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Villa & Grande Propriété (> 180 m²)</span>
-                                <h3 class="text-2xl font-bold mt-1">Pack Forteresse 16 Pièces</h3>
-                                <div class="text-3xl font-black text-white mt-2">199,00 € <span class="text-xs font-normal text-slate-400">TTC</span></div>
-                            </div>
-                            <ul class="space-y-3 text-xs text-slate-300">
-                                <li>✓ 1x Centrale Tactile IPS 4.3" WiFi+4G</li>
-                                <li>✓ 1x Sirène Solaire Extérieure 120 dB</li>
-                                <li class="text-emerald-400 font-bold">✓ 2x Caméras HD Connectées (Intérieur/Extérieur)</li>
-                                <li class="text-emerald-400 font-bold">✓ 8x Détecteurs d'ouverture</li>
-                                <li>✓ 4x Détecteurs PIR anti-animaux</li>
-                                <li>✓ 4x Télécommandes + 4x Badges RFID</li>
-                                <li>✓ 0 € d'abonnement mensuel</li>
-                            </ul>
+                    <!-- Option 3 -->
+                    <div onclick="selectOffer('Quattro Solaris™ 1680W (4 Panneaux)', 1199)" class="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-amber-400/60 cursor-pointer transition flex flex-col justify-between space-y-4 group">
+                        <div class="space-y-2">
+                            <span class="mono text-[10px] text-slate-400 font-bold uppercase">Autonomie Maximale</span>
+                            <h4 class="font-display font-bold text-white text-lg group-hover:text-amber-400 transition">Quattro (1680W)</h4>
+                            <div class="font-display font-black text-2xl text-white">1 199 € <span class="text-xs font-normal text-slate-400">TTC</span></div>
+                            <p class="text-[11px] text-slate-400">Pour maison avec piscine chauffée, climatisation ou pompe à chaleur.</p>
                         </div>
-                        <button onclick="selectPack('Pack Forteresse 16 Pièces', 199)" class="w-full mt-8 py-3.5 rounded-xl border border-slate-600 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider transition">
-                            Choisir ce Pack (199 €)
-                        </button>
+                        <span class="block py-2 text-center rounded-lg bg-white/10 group-hover:bg-amber-400 group-hover:text-slate-950 font-bold text-xs uppercase tracking-wider transition">Choisir</span>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Checkout Section -->
-        <section id="commande" class="max-w-4xl mx-auto px-4 sm:px-6 py-20">
-            <div class="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-xl space-y-8">
-                <div class="text-center space-y-2">
-                    <span class="text-xs font-bold uppercase tracking-wider text-blue-600">Paiement Sécurisé & Expédition 24h</span>
-                    <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-950">Finaliser votre Commande</h3>
-                    <p class="text-xs text-slate-500">Expédition immédiate par Colissimo suivi contre signature. Garantie 2 ans échange à neuf.</p>
-                </div>
-
-                <form onsubmit="handleOrder(event)" class="space-y-6">
-                    <div class="p-4 rounded-2xl bg-blue-50 border border-blue-200 flex justify-between items-center">
+                <!-- Order Form -->
+                <form id="orderForm" onsubmit="handleSolarOrder(event)" class="space-y-6 pt-4 border-t border-white/[0.08]">
+                    <div class="p-4 rounded-xl bg-slate-900/90 border border-amber-500/30 flex justify-between items-center">
                         <div>
-                            <div class="text-xs text-slate-500">Produit sélectionné :</div>
-                            <div id="selectedPackName" class="font-extrabold text-slate-900 text-sm">Pack Sérénité 11 Pièces (Maison)</div>
+                            <div class="text-xs text-slate-400">Produit sélectionné :</div>
+                            <div id="selectedOfferName" class="font-display font-bold text-white text-base">1 Station Solaris™ 420W</div>
                         </div>
                         <div class="text-right">
-                            <div class="text-xs text-slate-500">Total à payer :</div>
-                            <div id="selectedPackPrice" class="text-2xl font-black text-blue-600">159,00 €</div>
+                            <div class="text-xs text-slate-400">Total TTC livré :</div>
+                            <div id="selectedOfferPrice" class="font-display text-2xl font-black text-amber-400">349,00 €</div>
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                         <div>
-                            <label class="block text-slate-700 mb-1 font-semibold">Prénom & Nom *</label>
-                            <input type="text" required placeholder="Jean Dupont" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-blue-600">
+                            <label class="block text-slate-400 mb-1 font-semibold">Prénom & Nom *</label>
+                            <input type="text" required placeholder="Jean Dupont" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-400">
                         </div>
                         <div>
-                            <label class="block text-slate-700 mb-1 font-semibold">Adresse Email *</label>
-                            <input type="email" required placeholder="jean.dupont@email.fr" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-blue-600">
+                            <label class="block text-slate-400 mb-1 font-semibold">Adresse Email *</label>
+                            <input type="email" required placeholder="jean.dupont@email.fr" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-400">
                         </div>
                         <div class="sm:col-span-2">
-                            <label class="block text-slate-700 mb-1 font-semibold">Adresse Complète de Livraison *</label>
-                            <input type="text" required placeholder="14 rue de la République, 75001 Paris" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-blue-600">
+                            <label class="block text-slate-400 mb-1 font-semibold">Adresse Complète de Livraison (Palette spéciale) *</label>
+                            <input type="text" required placeholder="14 rue des Lilas, 44000 Nantes" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-400">
                         </div>
                         <div>
-                            <label class="block text-slate-700 mb-1 font-semibold">Numéro de Téléphone (Suivi Colissimo) *</label>
-                            <input type="tel" required placeholder="06 12 34 56 78" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-blue-600">
+                            <label class="block text-slate-400 mb-1 font-semibold">Téléphone Portable (Prise de RDV transporteur) *</label>
+                            <input type="tel" required placeholder="06 12 34 56 78" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-400">
                         </div>
                         <div>
-                            <label class="block text-slate-700 mb-1 font-semibold">Mode de Règlement Sécurisé</label>
-                            <select class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-blue-600 font-medium">
-                                <option>Carte Bancaire (Visa / Mastercard / CB)</option>
+                            <label class="block text-slate-400 mb-1 font-semibold">Règlement Sécurisé</label>
+                            <select class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-400 font-semibold">
+                                <option>Carte Bancaire / CB / Visa / Mastercard</option>
                                 <option>Apple Pay / Google Pay</option>
-                                <option>Paiement 3x ou 4x sans frais (Klarna)</option>
+                                <option>Paiement en 3x ou 4x sans frais</option>
                             </select>
                         </div>
                     </div>
 
-                    <button type="submit" class="w-full py-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-sm uppercase tracking-wider transition shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2">
-                        <span>Confirmer ma Commande (159,00 €)</span>
-                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    <button type="submit" class="w-full py-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-sm uppercase tracking-wider transition shadow-2xl shadow-amber-400/30 flex items-center justify-center gap-2">
+                        <span>Valider ma Commande et Démarrer mes Économies</span>
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </button>
 
-                    <div id="orderSuccess" class="hidden p-5 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-1">
-                        <div class="text-emerald-700 font-bold text-sm">✓ Commande Enregistrée avec Succès !</div>
-                        <p class="text-xs text-emerald-600">Votre bon de commande de test a été généré. Le suivi d'expédition vous sera envoyé par email.</p>
+                    <div id="orderSuccess" class="hidden p-6 rounded-2xl bg-emerald-950/80 border border-emerald-500/40 text-center space-y-1">
+                        <div class="text-emerald-400 font-bold text-base">✓ Commande Enregistrée avec Succès !</div>
+                        <p class="text-xs text-slate-300">Votre numéro de commande a été généré. Vous recevrez le lien de suivi transporteur dès le départ de la palette.</p>
                     </div>
                 </form>
             </div>
@@ -470,32 +583,50 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-slate-200 py-12 px-4 sm:px-6 text-xs text-slate-500">
+    <footer class="border-t border-white/[0.06] bg-[#04060d] py-12 px-4 sm:px-6 text-xs text-slate-500">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
-                <span class="font-extrabold text-slate-900 text-sm">FORTERESSE™ Sécurité France</span>
-                <p class="text-[11px] text-slate-400 mt-1">Conforme Directive Européenne RED 2014/53/UE • Normes Radio ARCEP France • Garantie 2 ans échange à neuf</p>
+                <span class="font-display font-bold text-white text-sm">SOLARIS™ France</span>
+                <p class="text-[11px] mt-1">Équipements photovoltaïques d'autoconsommation Plug & Play. Certifié CE, VDE-AR-N 4105 et conforme Enedis CACSI.</p>
             </div>
-            <div class="flex items-center gap-6 text-slate-600">
-                <a href="#unboxing" class="hover:text-slate-900 transition">Spécifications</a>
-                <a href="#comparatif" class="hover:text-slate-900 transition">Face à Verisure</a>
-                <a href="alarme-solaire.html" class="hover:text-slate-900 transition">Caméra Solaire 4G</a>
+            <div class="flex items-center gap-6">
+                <a href="#principe" class="hover:text-amber-400 transition">Principe</a>
+                <a href="#simulateur" class="hover:text-amber-400 transition">Calculateur</a>
+                <a href="#materiel" class="hover:text-amber-400 transition">Spécifications</a>
+                <a href="alarme-solaire.html" class="hover:text-amber-400 transition">Sécurité 4G</a>
             </div>
         </div>
     </footer>
 
-    <!-- Script -->
+    <!-- Scripts -->
     <script>
-        function selectPack(name, price) {
-            document.getElementById('selectedPackName').innerText = name;
-            document.getElementById('selectedPackPrice').innerText = `${price},00 €`;
-            document.getElementById('commande').scrollIntoView({ behavior: 'smooth' });
+        function updateSolarCalc() {
+            const panels = parseInt(document.getElementById('slider-panels').value);
+            const panelText = panels === 1 ? '1 Panneau (420W)' : `${panels} Panneaux (${panels * 420}W)`;
+            document.getElementById('label-panels').innerText = panelText;
+
+            // Average French production: ~440 kWh/year per 420W panel
+            // EDF tariff: ~0.27 €/kWh -> ~120€ to 180€/year (avg 150€)
+            const yearlySavings = panels * 175;
+            const savings10y = yearlySavings * 10;
+
+            document.getElementById('calc-yearly').innerText = `~${yearlySavings} € / an`;
+            document.getElementById('calc-savings-10y').innerText = `+ ${savings10y.toLocaleString('fr-FR')} €`;
         }
 
-        function handleOrder(e) {
+        function selectOffer(name, price) {
+            document.getElementById('selectedOfferName').innerText = name;
+            document.getElementById('selectedOfferPrice').innerText = `${price},00 €`;
+            document.getElementById('commander').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function handleSolarOrder(e) {
             e.preventDefault();
             document.getElementById('orderSuccess').classList.remove('hidden');
         }
+
+        // Initialize calculator
+        updateSolarCalc();
     </script>
 </body>
 </html>
