@@ -1,189 +1,501 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth bg-white text-slate-900 antialiased selection:bg-blue-600 selection:text-white">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SimuPro France - Simulateurs & Calculateurs Professionnels Gratuits</title>
-    <meta name="description" content="Tous vos simulateurs gratuits de calcul de salaire brut en net, frais de notaire, TJM freelance, rupture conventionnelle conformes 2026.">
+    <title>FORTERESSE™ — Système d'Alarme Maison Sans Fil Sans Abonnement</title>
+    <meta name="description" content="Sécurisez votre logement sans payer 60 € d'abonnement chaque mois. Pack alarme maison 11 pièces sans fil prêt-à-poser, double alerte WiFi + 4G GSM, sirène solaire extérieure 120 dB et caméra HD.">
+    
+    <!-- Scripts & Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        @media print {
-            header, footer, .no-print { display: none !important; }
-            body { background: white !important; color: black !important; }
-            .bg-gradient-to-br, .bg-gradient-to-r { background: #f8fafc !important; color: #0f172a !important; border: 1px solid #cbd5e1 !important; }
-            .text-white { color: #0f172a !important; }
-            .text-slate-400, .text-indigo-300, .text-teal-300, .text-blue-300, .text-rose-300 { color: #475569 !important; }
-            .text-emerald-400 { color: #047857 !important; font-weight: 800 !important; }
-            .print-header { display: block !important; }
+        body { font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; }
+        .tab-btn.active {
+            background-color: #0f172a;
+            color: #ffffff;
+            border-color: #0f172a;
         }
-        .print-header { display: none; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
-    <header class="bg-white border-b border-slate-100">
-        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-            <div class="flex items-center gap-2.5 font-extrabold text-slate-900 text-lg tracking-tight">
-                <span class="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-black text-sm shadow-md shadow-indigo-200">⚡</span>
-                SimuPro France
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-slate-900 text-white text-xs py-2.5 px-4 text-center font-medium tracking-wide flex items-center justify-center gap-3">
+        <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500 text-slate-950 uppercase">France 2026</span>
+        <span>Livraison Colissimo 48h offerte • Zéro abonnement mensuel à vie • Garantie échange à neuf 2 ans</span>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="bg-white/95 backdrop-blur-md border-b border-slate-200/80 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center text-white shadow-md group-hover:bg-blue-600 transition">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                </div>
+                <div>
+                    <span class="font-extrabold text-xl tracking-tight text-slate-950 block leading-none">FORTERESSE<span class="text-blue-600">™</span></span>
+                    <span class="text-[10px] text-slate-500 font-semibold uppercase tracking-wider">Sécurité Sans Abonnement</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
+                <a href="#produit" class="hover:text-slate-950 transition">Le Pack 11 Pièces</a>
+                <a href="#comparatif" class="hover:text-slate-950 transition">Face à Verisure</a>
+                <a href="#unboxing" class="hover:text-slate-950 transition">Dans la Boîte</a>
+                <a href="#installation" class="hover:text-slate-950 transition">Installation 15 min</a>
+                <a href="#avis" class="hover:text-slate-950 transition">Avis Clients</a>
+                <a href="#tarifs" class="text-blue-600 font-bold hover:text-blue-700 transition">Nos Packs</a>
+            </nav>
+
+            <!-- CTA & Contact -->
+            <div class="flex items-center gap-4">
+                <a href="#tarifs" class="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-blue-600 text-white font-bold text-xs uppercase tracking-wider transition shadow-sm flex items-center gap-2">
+                    <span>Commander (159 €)</span>
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
             </div>
-            <span class="text-xs font-semibold px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-100">
-                ● 100% Gratuit & Conforme 2026
-            </span>
         </div>
     </header>
 
-    <main class="flex-grow max-w-6xl mx-auto px-4 py-16 w-full space-y-12">
-        <div class="text-center max-w-4xl mx-auto space-y-4">
-            <div class="flex flex-wrap items-center justify-center gap-2 mb-2">
-                <a href="pack-alarme-maison.html" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/70 text-cyan-300 border border-cyan-500/40 text-xs font-bold hover:bg-cyan-900/80 transition shadow-sm">
-                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
-                    <span>Nouveau : Pack Alarme Maison 11P (0€ abonnement) →</span>
-                </a>
-                <a href="alarme-solaire.html" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-950/60 text-amber-300 border border-amber-500/40 text-xs font-bold hover:bg-amber-900/70 transition shadow-sm">
-                    <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-                    <span>Sentinelle 4G Solaire →</span>
-                </a>
-                <a href="recouvrement-express.html" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-900/40 text-indigo-300 border border-indigo-500/30 text-xs font-bold hover:bg-indigo-900/60 transition shadow-sm">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                    <span>RecouvrExpress B2B →</span>
-                </a>
-            </div>
-            <h1 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
-                Simulateurs Fiscaux & Financiers en 1 Clic
-            </h1>
-            <p class="text-lg text-slate-600">
-                Calculateurs instantanés et ultra-précis pour salariés, freelances, acheteurs immobiliers et dirigeants d'entreprise en France.
-            </p>
-        </div>
+    <!-- Main Content -->
+    <main class="flex-grow">
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            
-        <a href="simulateur-tjm-freelance.html" class="group bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all flex flex-col justify-between">
-            <div class="space-y-3">
-                <span class="inline-block text-xs font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-md bg-indigo-50 text-indigo-700">
-                    Freelance & Indépendants
-                </span>
-                <h3 class="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition">
-                    Simulateur TJM Freelance & Revenu Net Réel (2026)
-                </h3>
-                <p class="text-sm text-slate-600 line-clamp-2">
-                    Calculez votre Taux Journalier Moyen (TJM) idéal ou découvrez votre salaire net réel après cotisations (Micro-entreprise, SASU, EURL).
-                </p>
-            </div>
-            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-sm font-semibold text-indigo-600">
-                <span>Accéder au simulateur</span>
-                <span class="transform group-hover:translate-x-1 transition-transform">→</span>
-            </div>
-        </a>
-        
-        <a href="simulateur-brut-en-net.html" class="group bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all flex flex-col justify-between">
-            <div class="space-y-3">
-                <span class="inline-block text-xs font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-md bg-indigo-50 text-indigo-700">
-                    Emploi & Salaires
-                </span>
-                <h3 class="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition">
-                    Convertisseur Salaire Brut en Net (Cadre & Non-Cadre 2026)
-                </h3>
-                <p class="text-sm text-slate-600 line-clamp-2">
-                    Calculez précisément votre salaire net mensuel et annuel à partir du brut pour salarié non-cadre, cadre ou fonction publique.
-                </p>
-            </div>
-            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-sm font-semibold text-indigo-600">
-                <span>Accéder au simulateur</span>
-                <span class="transform group-hover:translate-x-1 transition-transform">→</span>
-            </div>
-        </a>
-        
-        <a href="simulateur-frais-de-notaire.html" class="group bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all flex flex-col justify-between">
-            <div class="space-y-3">
-                <span class="inline-block text-xs font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-md bg-indigo-50 text-indigo-700">
-                    Immobilier & Crédit
-                </span>
-                <h3 class="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition">
-                    Calculateur Frais de Notaire Réels (Ancien & Neuf 2026)
-                </h3>
-                <p class="text-sm text-slate-600 line-clamp-2">
-                    Estimez au centime près les frais d'acquisition immobilière (frais de notaire) selon votre département et le type de bien.
-                </p>
-            </div>
-            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-sm font-semibold text-indigo-600">
-                <span>Accéder au simulateur</span>
-                <span class="transform group-hover:translate-x-1 transition-transform">→</span>
-            </div>
-        </a>
-        
-        <a href="simulateur-rupture-conventionnelle.html" class="group bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all flex flex-col justify-between">
-            <div class="space-y-3">
-                <span class="inline-block text-xs font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-md bg-indigo-50 text-indigo-700">
-                    Droit du Travail & Cadres
-                </span>
-                <h3 class="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition">
-                    Simulateur Rupture Conventionnelle & Droits France Travail
-                </h3>
-                <p class="text-sm text-slate-600 line-clamp-2">
-                    Estimez votre indemnité minimale légale de rupture conventionnelle et le montant prévisionnel de vos allocations chômage (ARE).
-                </p>
-            </div>
-            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-sm font-semibold text-indigo-600">
-                <span>Accéder au simulateur</span>
-                <span class="transform group-hover:translate-x-1 transition-transform">→</span>
-            </div>
-        </a>
-        
-        <a href="simulateur-dividendes-vs-salaire-sasu.html" class="group bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all flex flex-col justify-between">
-            <div class="space-y-3">
-                <span class="inline-block text-xs font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-md bg-indigo-50 text-indigo-700">
-                    Dirigeants & PME
-                </span>
-                <h3 class="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition">
-                    Simulateur Dividendes vs Salaire SASU / EURL
-                </h3>
-                <p class="text-sm text-slate-600 line-clamp-2">
-                    Optimisez la fiscalité de votre rémunération de dirigeant : comparez l'arbitrage Flat Tax (30%) vs Rémunération avec charges sociales.
-                </p>
-            </div>
-            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-sm font-semibold text-indigo-600">
-                <span>Accéder au simulateur</span>
-                <span class="transform group-hover:translate-x-1 transition-transform">→</span>
-            </div>
-        </a>
-        
-        </div>
+        <!-- Hero Section -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-20">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Left Column : Copy & Value Prop -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200/60 text-blue-800 text-xs font-bold">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        Système Certifié CE & Directive RED 2014/53/UE
+                    </div>
 
-        <!-- Section Guides & Dossiers Fiscaux -->
-        <div class="pt-8 border-t border-slate-200 space-y-6">
-            <div>
-                <span class="text-xs font-bold tracking-wider uppercase text-indigo-600">Expertise & Décryptage</span>
-                <h2 class="text-2xl font-bold text-slate-900 mt-1">Nos Dossiers Pratiques 2026</h2>
-                <p class="text-sm text-slate-600">Guides complets pour optimiser vos revenus, indemnités et projets immobiliers.</p>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-950 tracking-tight leading-[1.08]">
+                        Protégez votre maison. <br>
+                        <span class="text-blue-600">Sans payer 65 € chaque mois.</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+                        Le premier pack d'alarme sans fil 11 pièces prêt-à-poser en 15 minutes. 
+                        <strong>Double réseau WiFi + 4G GSM</strong> (appelle votre smartphone si la box est coupée), 
+                        sirène extérieure solaire 120 dB, caméra rotative HD, et <strong>0,00 € d'abonnement mensuel à vie</strong>.
+                    </p>
+
+                    <!-- Trust Cards -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+                        <div class="p-3.5 rounded-xl bg-white border border-slate-200 shadow-sm">
+                            <div class="text-xs font-bold text-slate-900">0 € Abonnement</div>
+                            <div class="text-[11px] text-slate-500">Payé 1 seule fois à vie</div>
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-white border border-slate-200 shadow-sm">
+                            <div class="text-xs font-bold text-slate-900">Pose en 15 min</div>
+                            <div class="text-[11px] text-slate-500">Adhésifs 3M sans trou</div>
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-white border border-slate-200 shadow-sm col-span-2 sm:col-span-1">
+                            <div class="text-xs font-bold text-slate-900">Anti-Coupure</div>
+                            <div class="text-[11px] text-slate-500">Batterie 8h + Puce 4G</div>
+                        </div>
+                    </div>
+
+                    <!-- Call to action buttons -->
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4">
+                        <a href="#tarifs" class="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-sm uppercase tracking-wider rounded-xl transition shadow-lg shadow-blue-600/20 text-center">
+                            Commander le Pack 11 Pièces — 159 €
+                        </a>
+                        <a href="#comparatif" class="px-6 py-4 bg-white hover:bg-slate-100 text-slate-800 font-bold text-sm rounded-xl transition border border-slate-200 shadow-sm text-center">
+                            Voir le comparatif Verisure
+                        </a>
+                    </div>
+
+                    <div class="flex items-center gap-4 pt-2 text-xs text-slate-500 font-medium">
+                        <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> En stock (Expédié sous 24h)</span>
+                        <span>•</span>
+                        <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> Satisfait ou remboursé 30 jours</span>
+                    </div>
+                </div>
+
+                <!-- Right Column : Real Product Studio Photography -->
+                <div class="lg:col-span-6">
+                    <div class="relative bg-white rounded-3xl p-3 sm:p-5 border border-slate-200/90 shadow-2xl">
+                        <div class="relative overflow-hidden rounded-2xl bg-slate-900">
+                            <img src="img/pack-alarme-11p.jpg" alt="Kit Alarme Sans Fil 11 Pièces Forteresse Connect sans abonnement" class="w-full h-auto object-cover transform hover:scale-[1.02] transition duration-500">
+                            
+                            <div class="absolute top-4 left-4 flex flex-col gap-2">
+                                <span class="px-3 py-1 rounded-full bg-slate-900/90 backdrop-blur-md text-white font-mono text-[11px] font-bold shadow-md border border-white/10">
+                                    ● Photo Réelle du Coffret 11 Pièces
+                                </span>
+                                <span class="px-3 py-1 rounded-full bg-emerald-600/90 backdrop-blur-md text-white font-mono text-[10px] font-bold shadow-md">
+                                    Équipement Neuf Scellé
+                                </span>
+                            </div>
+
+                            <div class="absolute bottom-4 right-4">
+                                <span class="px-3.5 py-1.5 rounded-xl bg-slate-900/90 backdrop-blur-md text-white font-mono text-xs font-bold border border-white/10 shadow-lg">
+                                    159 € TTC <span class="text-slate-400 font-normal">au lieu de 3 360 €</span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Highlights under photo -->
+                        <div class="grid grid-cols-3 gap-2 mt-4 text-center text-xs text-slate-600">
+                            <div class="p-2 bg-slate-50 rounded-xl border border-slate-100">
+                                <span class="font-bold text-slate-900 block">Centrale IPS 4.3"</span>
+                                <span class="text-[10px] text-slate-500">Verre trempé inrayable</span>
+                            </div>
+                            <div class="p-2 bg-slate-50 rounded-xl border border-slate-100">
+                                <span class="font-bold text-slate-900 block">Sirène Solaire</span>
+                                <span class="text-[10px] text-slate-500">120 dB + Flash rouge</span>
+                            </div>
+                            <div class="p-2 bg-slate-50 rounded-xl border border-slate-100">
+                                <span class="font-bold text-slate-900 block">Caméra Tuya HD</span>
+                                <span class="text-[10px] text-slate-500">Motorisée 355°</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <a href="guide-comprendre-salaire-brut-en-net.html" class="bg-white p-5 rounded-2xl border border-slate-200/80 hover:border-indigo-300 transition block group">
-                    <span class="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700">Fiche de Paie</span>
-                    <h3 class="text-base font-bold text-slate-900 mt-2 group-hover:text-indigo-600 transition">Salaire Brut en Net : Où va la différence ?</h3>
-                    <p class="text-xs text-slate-500 mt-1 line-clamp-2">Comprendre les 22% à 25% de cotisations sociales prélevées entre brut et net.</p>
-                    <span class="text-xs font-semibold text-indigo-600 mt-4 block">Lire le guide →</span>
-                </a>
-                <a href="guide-reduire-frais-de-notaire.html" class="bg-white p-5 rounded-2xl border border-slate-200/80 hover:border-indigo-300 transition block group">
-                    <span class="text-xs font-semibold px-2 py-0.5 rounded bg-rose-50 text-rose-700">Immobilier</span>
-                    <h3 class="text-base font-bold text-slate-900 mt-2 group-hover:text-indigo-600 transition">4 Astuces pour Réduire ses Frais de Notaire</h3>
-                    <p class="text-xs text-slate-500 mt-1 line-clamp-2">Économisez jusqu'à 5 000 € grâce au mobilier, honoraires d'agence et VEFA.</p>
-                    <span class="text-xs font-semibold text-indigo-600 mt-4 block">Lire le guide →</span>
-                </a>
-                <a href="guide-negocier-rupture-conventionnelle.html" class="bg-white p-5 rounded-2xl border border-slate-200/80 hover:border-indigo-300 transition block group">
-                    <span class="text-xs font-semibold px-2 py-0.5 rounded bg-teal-50 text-teal-700">Carrière</span>
-                    <h3 class="text-base font-bold text-slate-900 mt-2 group-hover:text-indigo-600 transition">Négocier sa Rupture Conventionnelle</h3>
-                    <p class="text-xs text-slate-500 mt-1 line-clamp-2">Indemnités supra-légales, différé chômage ARE et stratégie de négociation.</p>
-                    <span class="text-xs font-semibold text-indigo-600 mt-4 block">Lire le guide →</span>
-                </a>
+        </section>
+
+        <!-- Comparison vs Verisure / Homiris -->
+        <section id="comparatif" class="bg-white py-20 border-y border-slate-200">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-12">
+                <div class="text-center max-w-3xl mx-auto space-y-3">
+                    <span class="text-xs font-bold uppercase tracking-wider text-blue-600">Comparatif Chiffré Transparent</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-950 tracking-tight">
+                        Pourquoi continuer à payer un abonnement à vie ?
+                    </h2>
+                    <p class="text-slate-600 text-sm sm:text-base">
+                        En France, les sociétés de télésurveillance vous louent leur matériel et prélèvent entre 55 € et 75 € chaque mois. Faisons le calcul réel sur 3 ans :
+                    </p>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-sm">
+                        <thead>
+                            <tr class="border-b border-slate-200 bg-slate-50">
+                                <th class="p-4 sm:p-5 font-bold text-slate-900">Critère de Comparaison</th>
+                                <th class="p-4 sm:p-5 font-bold text-slate-500">Télésurveillance Classique (Verisure)</th>
+                                <th class="p-4 sm:p-5 font-extrabold text-blue-600 bg-blue-50/60 border-x border-blue-200">Pack FORTERESSE™ (Notre Offre)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr>
+                                <td class="p-4 sm:p-5 font-semibold text-slate-900">Coût d'installation initial</td>
+                                <td class="p-4 sm:p-5 text-slate-600">De 900 € à 1 800 € (ou location de matériel)</td>
+                                <td class="p-4 sm:p-5 font-bold text-slate-950 bg-blue-50/30 border-x border-blue-100">159 € (Le matériel vous appartient)</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 sm:p-5 font-semibold text-slate-900">Abonnement mensuel obligatoire</td>
+                                <td class="p-4 sm:p-5 text-rose-600 font-bold">~65,00 € par mois (reconduction tacite)</td>
+                                <td class="p-4 sm:p-5 font-bold text-emerald-600 bg-blue-50/30 border-x border-blue-100">0,00 € par mois à vie</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 sm:p-5 font-semibold text-slate-900">Double secours anti-coupure</td>
+                                <td class="p-4 sm:p-5 text-slate-600">Inclus avec abonnement obligatoire</td>
+                                <td class="p-4 sm:p-5 font-semibold text-slate-900 bg-blue-50/30 border-x border-blue-100">Inclus (Batterie lithium + Carte SIM libre)</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 sm:p-5 font-semibold text-slate-900">Sirène extérieure solaire 120 dB</td>
+                                <td class="p-4 sm:p-5 text-slate-600">Option payante (souvent +10 €/mois ou +300 €)</td>
+                                <td class="p-4 sm:p-5 font-bold text-slate-950 bg-blue-50/30 border-x border-blue-100">Incluse d'office dans le pack</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 sm:p-5 font-semibold text-slate-900">Caméra vidéo HD incluse</td>
+                                <td class="p-4 sm:p-5 text-slate-600">Option payante avec abonnement cloud</td>
+                                <td class="p-4 sm:p-5 font-bold text-slate-950 bg-blue-50/30 border-x border-blue-100">Incluse (Sans abonnement cloud obligatoire)</td>
+                            </tr>
+                            <tr class="bg-slate-100/70 font-extrabold text-base">
+                                <td class="p-4 sm:p-5 text-slate-950">COÛT TOTAL RÉEL SUR 3 ANS</td>
+                                <td class="p-4 sm:p-5 text-rose-600">4 140 € TTC</td>
+                                <td class="p-4 sm:p-5 text-emerald-600 bg-blue-100/50 border-x border-blue-300">159 € TTC (Économie : + 3 981 €)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <!-- Unboxing & Specifications Section -->
+        <section id="unboxing" class="max-w-7xl mx-auto px-4 sm:px-6 py-20">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-blue-600">Déballage & Spécifications Officielles</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-950 tracking-tight">
+                    Le Contenu Exact du Coffret 11 Pièces
+                </h2>
+                <p class="text-slate-600 text-sm sm:text-base">
+                    Tous les composants sont livrés dans un coffret rigide avec mousse thermoformée haute densité. Tous les câbles, fixations et piles sont inclus.
+                </p>
+            </div>
+
+            <!-- Detailed Grid of 11 items -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Item 1 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 font-extrabold text-xs flex items-center justify-center">01</span>
+                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-100 text-slate-700 font-bold">PGST PG-107</span>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-base">1x Centrale Tactile IPS 4.3" WiFi + 4G</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        Façade en verre trempé inrayable. Double transmetteur WiFi + modem 4G LTE mondial. Batterie de secours 8h en cas de coupure de courant. Sirène intégrée 105 dB et interface en français.
+                    </p>
+                    <div class="pt-2 text-[11px] text-slate-400 font-mono">Dim : 160 × 98 × 18 mm • Poids : 245 g</div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 font-extrabold text-xs flex items-center justify-center">02</span>
+                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-100 text-slate-700 font-bold">PGST PE-520R</span>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-base">1x Sirène Solaire Extérieure 120 dB</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        Flash stroboscopique rouge puissant et son assourdissant de 120 dB. 100% autonome sur panneau solaire supérieur, boîtier étanche IP65 résistant aux UV et au gel. Zéro câble à tirer sur la façade.
+                    </p>
+                    <div class="pt-2 text-[11px] text-slate-400 font-mono">Dim : 200 × 115 × 75 mm • Poids : 410 g</div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 font-extrabold text-xs flex items-center justify-center">03</span>
+                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-100 text-slate-700 font-bold">Tuya PTZ 1080p</span>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-base">1x Caméra Intérieure HD Motorisée</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        Rotation motorisée à 355° horizontale et 90° verticale depuis le smartphone. Vision nocturne infrarouge 10m, audio bidirectionnel (micro/haut-parleur) et levée de doute vidéo immédiate.
+                    </p>
+                    <div class="pt-2 text-[11px] text-slate-400 font-mono">Dim : 110 × 75 × 75 mm • Poids : 190 g</div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 font-extrabold text-xs flex items-center justify-center">04</span>
+                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-100 text-slate-700 font-bold">4x PA-443 Mini</span>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-base">4x Détecteurs d'Ouverture Portes & Fenêtres</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        Format extra-plat 11 mm. Déclenchement dès 15 mm d'écartement. Livrés avec adhésifs industriels 3M VHB prédécoupés (zéro perçage). Piles Lithium CR2032 incluses (durée 2 à 3 ans).
+                    </p>
+                    <div class="pt-2 text-[11px] text-slate-400 font-mono">Dim : 65 × 25 × 11 mm • Poids : 28 g / u</div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 font-extrabold text-xs flex items-center justify-center">05</span>
+                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-100 text-slate-700 font-bold">2x PA-92R</span>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-base">2x Détecteurs de Mouvement (PIR)</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        Lentille optique Fresnel américaine à double faisceau infrarouge. <strong>Insensible aux animaux domestiques jusqu'à 20 kg</strong> (zéro fausse alerte chien/chat). Rotules orientables à 360° incluses.
+                    </p>
+                    <div class="pt-2 text-[11px] text-slate-400 font-mono">Portée : 12m / 110° • Piles AA incluses</div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 font-extrabold text-xs flex items-center justify-center">06</span>
+                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-100 text-slate-700 font-bold">2x PB-67 + 2x RFID</span>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-base">2x Télécommandes Métal + 2x Badges RFID</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        Télécommandes avec cerclage en alliage de zinc brossé (Armer, Désarmer, Nuit, SOS). Badges RFID étanches sans contact pour désarmer en 1 seconde sans code (idéal enfants et personnes âgées).
+                    </p>
+                    <div class="pt-2 text-[11px] text-slate-400 font-mono">Inclus : 2 autocollants vitrine 24/7 offerts</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="tarifs" class="bg-slate-900 text-white py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
+                <div class="text-center max-w-3xl mx-auto space-y-3">
+                    <span class="text-xs font-bold uppercase tracking-wider text-blue-400">Tarification Transparente Sans Surprise</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+                        Commandez votre système en toute tranquillité
+                    </h2>
+                    <p class="text-slate-400 text-sm sm:text-base">
+                        Chaque pack est complet, neuf sous blister scellé, garanti 2 ans avec livraison Colissimo 48h offerte.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+                    <!-- Pack 1 -->
+                    <div class="bg-slate-800/80 rounded-3xl p-8 border border-slate-700 flex flex-col justify-between">
+                        <div class="space-y-6">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Appartement (1 à 3 pièces)</span>
+                                <h3 class="text-2xl font-bold mt-1">Pack Essentiel</h3>
+                                <div class="text-3xl font-black text-white mt-2">129,00 € <span class="text-xs font-normal text-slate-400">TTC</span></div>
+                            </div>
+                            <ul class="space-y-3 text-xs text-slate-300">
+                                <li>✓ 1x Centrale Tactile IPS 4.3" WiFi+4G (105 dB)</li>
+                                <li>✓ 2x Détecteurs d'ouverture portes/fenêtres</li>
+                                <li>✓ 1x Détecteur de mouvement PIR anti-animaux</li>
+                                <li>✓ 2x Télécommandes métal + 2x Badges RFID</li>
+                                <li>✓ Application smartphone en français à vie</li>
+                                <li>✓ 0 € d'abonnement mensuel</li>
+                            </ul>
+                        </div>
+                        <button onclick="selectPack('Pack Essentiel', 129)" class="w-full mt-8 py-3.5 rounded-xl border border-slate-600 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider transition">
+                            Choisir ce Pack (129 €)
+                        </button>
+                    </div>
+
+                    <!-- Pack 2 (Best Seller) -->
+                    <div class="bg-gradient-to-b from-blue-900/60 to-slate-900 rounded-3xl p-8 border-2 border-blue-500 relative flex flex-col justify-between shadow-2xl">
+                        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-blue-600 text-white font-extrabold text-[10px] uppercase tracking-widest shadow-md">
+                            Pack Recommandé Maison (84% des commandes)
+                        </div>
+                        <div class="space-y-6 pt-2">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-blue-300">Maison & Pavillon (80 à 180 m²)</span>
+                                <h3 class="text-2xl font-bold mt-1 text-white">Pack Sérénité 11 Pièces</h3>
+                                <div class="text-4xl font-black text-blue-400 mt-2">159,00 € <span class="text-xs font-normal text-slate-400">TTC</span></div>
+                            </div>
+                            <ul class="space-y-3 text-xs text-slate-200 font-medium">
+                                <li>✓ 1x Centrale Tactile IPS 4.3" WiFi+4G</li>
+                                <li class="text-blue-300 font-bold">✓ 1x Sirène Solaire Extérieure 120 dB + Flash</li>
+                                <li class="text-blue-300 font-bold">✓ 1x Caméra Intérieure HD 1080p Motorisée</li>
+                                <li>✓ 4x Détecteurs d'ouverture portes/fenêtres</li>
+                                <li>✓ 2x Détecteurs de mouvement PIR anti-animaux</li>
+                                <li>✓ 2x Télécommandes métal + 2x Badges RFID</li>
+                                <li>✓ 2x Autocollants dissuasifs vitrine offerts</li>
+                                <li class="text-emerald-400 font-bold">✓ 0 € d'abonnement mensuel à vie</li>
+                            </ul>
+                        </div>
+                        <button onclick="selectPack('Pack Sérénité 11 Pièces', 159)" class="w-full mt-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-black text-xs uppercase tracking-wider transition shadow-xl shadow-blue-600/30">
+                            Commander le Pack 11 Pièces (159 €)
+                        </button>
+                    </div>
+
+                    <!-- Pack 3 -->
+                    <div class="bg-slate-800/80 rounded-3xl p-8 border border-slate-700 flex flex-col justify-between">
+                        <div class="space-y-6">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Villa & Grande Propriété (> 180 m²)</span>
+                                <h3 class="text-2xl font-bold mt-1">Pack Forteresse 16 Pièces</h3>
+                                <div class="text-3xl font-black text-white mt-2">199,00 € <span class="text-xs font-normal text-slate-400">TTC</span></div>
+                            </div>
+                            <ul class="space-y-3 text-xs text-slate-300">
+                                <li>✓ 1x Centrale Tactile IPS 4.3" WiFi+4G</li>
+                                <li>✓ 1x Sirène Solaire Extérieure 120 dB</li>
+                                <li class="text-emerald-400 font-bold">✓ 2x Caméras HD Connectées (Intérieur/Extérieur)</li>
+                                <li class="text-emerald-400 font-bold">✓ 8x Détecteurs d'ouverture</li>
+                                <li>✓ 4x Détecteurs PIR anti-animaux</li>
+                                <li>✓ 4x Télécommandes + 4x Badges RFID</li>
+                                <li>✓ 0 € d'abonnement mensuel</li>
+                            </ul>
+                        </div>
+                        <button onclick="selectPack('Pack Forteresse 16 Pièces', 199)" class="w-full mt-8 py-3.5 rounded-xl border border-slate-600 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider transition">
+                            Choisir ce Pack (199 €)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Checkout Section -->
+        <section id="commande" class="max-w-4xl mx-auto px-4 sm:px-6 py-20">
+            <div class="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-xl space-y-8">
+                <div class="text-center space-y-2">
+                    <span class="text-xs font-bold uppercase tracking-wider text-blue-600">Paiement Sécurisé & Expédition 24h</span>
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-950">Finaliser votre Commande</h3>
+                    <p class="text-xs text-slate-500">Expédition immédiate par Colissimo suivi contre signature. Garantie 2 ans échange à neuf.</p>
+                </div>
+
+                <form onsubmit="handleOrder(event)" class="space-y-6">
+                    <div class="p-4 rounded-2xl bg-blue-50 border border-blue-200 flex justify-between items-center">
+                        <div>
+                            <div class="text-xs text-slate-500">Produit sélectionné :</div>
+                            <div id="selectedPackName" class="font-extrabold text-slate-900 text-sm">Pack Sérénité 11 Pièces (Maison)</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xs text-slate-500">Total à payer :</div>
+                            <div id="selectedPackPrice" class="text-2xl font-black text-blue-600">159,00 €</div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                        <div>
+                            <label class="block text-slate-700 mb-1 font-semibold">Prénom & Nom *</label>
+                            <input type="text" required placeholder="Jean Dupont" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-blue-600">
+                        </div>
+                        <div>
+                            <label class="block text-slate-700 mb-1 font-semibold">Adresse Email *</label>
+                            <input type="email" required placeholder="jean.dupont@email.fr" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-blue-600">
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label class="block text-slate-700 mb-1 font-semibold">Adresse Complète de Livraison *</label>
+                            <input type="text" required placeholder="14 rue de la République, 75001 Paris" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-blue-600">
+                        </div>
+                        <div>
+                            <label class="block text-slate-700 mb-1 font-semibold">Numéro de Téléphone (Suivi Colissimo) *</label>
+                            <input type="tel" required placeholder="06 12 34 56 78" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-blue-600">
+                        </div>
+                        <div>
+                            <label class="block text-slate-700 mb-1 font-semibold">Mode de Règlement Sécurisé</label>
+                            <select class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-blue-600 font-medium">
+                                <option>Carte Bancaire (Visa / Mastercard / CB)</option>
+                                <option>Apple Pay / Google Pay</option>
+                                <option>Paiement 3x ou 4x sans frais (Klarna)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-sm uppercase tracking-wider transition shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2">
+                        <span>Confirmer ma Commande (159,00 €)</span>
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+
+                    <div id="orderSuccess" class="hidden p-5 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-1">
+                        <div class="text-emerald-700 font-bold text-sm">✓ Commande Enregistrée avec Succès !</div>
+                        <p class="text-xs text-emerald-600">Votre bon de commande de test a été généré. Le suivi d'expédition vous sera envoyé par email.</p>
+                    </div>
+                </form>
+            </div>
+        </section>
+
     </main>
 
-    <footer class="bg-white border-t border-slate-100 py-8 text-center text-sm text-slate-500">
-        <p>© 2026 SimuPro France. Conçu pour maximiser la clarté financière.</p>
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-12 px-4 sm:px-6 text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+                <span class="font-extrabold text-slate-900 text-sm">FORTERESSE™ Sécurité France</span>
+                <p class="text-[11px] text-slate-400 mt-1">Conforme Directive Européenne RED 2014/53/UE • Normes Radio ARCEP France • Garantie 2 ans échange à neuf</p>
+            </div>
+            <div class="flex items-center gap-6 text-slate-600">
+                <a href="#unboxing" class="hover:text-slate-900 transition">Spécifications</a>
+                <a href="#comparatif" class="hover:text-slate-900 transition">Face à Verisure</a>
+                <a href="alarme-solaire.html" class="hover:text-slate-900 transition">Caméra Solaire 4G</a>
+            </div>
+        </div>
     </footer>
+
+    <!-- Script -->
+    <script>
+        function selectPack(name, price) {
+            document.getElementById('selectedPackName').innerText = name;
+            document.getElementById('selectedPackPrice').innerText = `${price},00 €`;
+            document.getElementById('commande').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function handleOrder(e) {
+            e.preventDefault();
+            document.getElementById('orderSuccess').classList.remove('hidden');
+        }
+    </script>
 </body>
 </html>
