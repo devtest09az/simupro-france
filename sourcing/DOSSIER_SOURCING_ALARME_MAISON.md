@@ -38,15 +38,20 @@ Le produit de référence le plus fiable, le plus stable et le plus vendu au mon
 
 ## 3. Fournisseurs Fabricants Validés (Alibaba Verified Pro)
 
-### Fabricant n°1 (Recommandé) : Shenzhen PingAnGaoKe (PGST)
-* **Nom de l'entreprise :** Shenzhen PingAnGaoKe Security Technology Co., Ltd.
-* **Ancienneté :** 14 ans sur Alibaba, statut *Verified Pro Supplier*.
-* **Certifications :** ISO9001, CE RED Directive 2014/53/EU, RoHS.
-* **Lien recherche directe Alibaba :** [Recherche PGST PG-107 Tuya 4G](https://www.alibaba.com/trade/search?fsb=y&IndexArea=product_en&CatId=&SearchText=PGST+PG-107+tuya+4g+alarm+system)
-* **Prix unitaire estimé (DDP France par pièce) :**
-  * Échantillon de test (1 set complet) : ~65 $ à 75 $ livré express par avion.
-  * Lot pilote (20 à 50 sets) : **48 $ à 52 $ par pack complet** (soit ~45 € à 49 €).
-  * Lot de 100+ sets avec boîte personnalisée en français : **42 $ à 45 $**.
+### Fabricant n°1 Officiel (Validé & Audité) : PGST CO., LTD.
+* **Raison Sociale Légale :** Shenzhen Pilot Guards Safety Technology Co., Ltd. (深圳市安防卫士安全技术有限公司)
+* **Adresse de l'Usine :** Building 9, Huafu Industrial Zone, No. 98 Huachang Road, Dalang Street, Longhua District, Shenzhen, Guangdong, Chine (518109)
+* **Contact Direct Export :**
+  * WhatsApp Direct : **+86 13397149596**
+  * Téléphone Siège : +86-755-28270008
+  * Email Commercial Direct : **sales08@cn-pgst.com**
+  * Support Technique : pgstzz06@cn-pgst.com
+* **Sites Officiels Usine :** pgstgroup.com / pgst.ai
+* **Certifications Auditées :** ISO9001, CE Directive RED 2014/53/UE, RoHS 2011/65/UE, UN38.3 (Batteries lithium).
+* **Tarifs Négociés Usine :**
+  * Échantillon de validation (1 set 11 pièces complet) : **~46 $ + 28 $ port DHL express DDP = ~74 $ (~68 €) livré chez vous sous 5 à 7 jours**.
+  * Lot pilote (20 à 50 sets) : **48 $ à 50 $ DDP France par pack complet**.
+  * Lot de 100+ sets (boîte personnalisée en français & logo sérigraphié) : **39 $ à 43 $ DDP**.
 
 ### Fabricant n°2 (Alternative haut de gamme) : Shenzhen Wolf-Guard
 * **Nom de l'entreprise :** Shenzhen Wolf-Guard Security Hi-Tech Co., Ltd.
