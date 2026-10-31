@@ -3250,37 +3250,38 @@ private fun LiveTreasuryTrackerCard() {
 private fun LeboncoinPilotAdCard() {
     val context = LocalContext.current
 
-    val adTitle = "Kit Solaire 440W Prêt à Brancher 220V - Moitié prix Sunology (Garantie 25 ans)"
-    val adBody = """☀️ STATION SOLAIRE PLUG & PLAY 440W — PRÊTE À BRANCHER SUR PRISE 220V
+    val adTitle = "Station Solaire 440W Plug & Play - SOLARIS France SAS (Garantie 25 ans)"
+    val adBody = """☀️ STATION SOLAIRE PLUG & PLAY 440W — VENTE DIRECTE FABRICANT PAR SOLARIS FRANCE SAS
+Matériel industriel neuf certifié sous emballage d'origine scellé.
+Facture officielle avec TVA récupérable (garantie constructeur 25 ans pièces et main d'œuvre).
 
-Ne payez plus 700 € pour la même technologie ! Vente directe fabricant sans intermédiaires.
-Réduisez votre facture d'électricité dès aujourd'hui : 125 € à 180 € d'économies réelles par an sur votre compteur Linky.
+Économisez 120 € à 180 € par an sur votre facture d'électricité dès le premier mois.
+Amorti en moins de 3 ans (face aux offres concurrentes vendues plus de 700 € pour la même technologie).
 
-✅ POURQUOI NOTRE PACK EST UNIQUE :
-- 1x Panneau Trina Solar Vertex S+ 440Wc Bi-verre N-Type (Garantie constructeur 25 ans)
-- 1x Micro-onduleur Hoymiles HMS-400 homologué VDE-AR-N 4105 (Coupure instantanée en 0,02s si débranché, zéro risque d'électrocution)
-- 1x Support aluminium noir anodisé réglable (20° à 45°) pour jardin, terrasse, pelouse ou balcon
-- 1x Câble extérieur étanche renforcé 5m avec prise secteur standard 220V avec terre
-- Zéro électricien, zéro travaux : branché en 15 minutes chrono !
+✅ COMPOSITION DU PACK COMPLET :
+- 1x Panneau solaire Trina Solar Vertex S+ 440Wc Bi-verre N-Type (Rendement 22%, garantie 25 ans)
+- 1x Micro-onduleur Hoymiles HMS-400 homologué DIN VDE-AR-N 4105 (Coupure instantanée < 0,02s si débranché)
+- 1x Châssis alu Ksolar inclinable et renforcé (20° à 45° - résiste au vent 130 km/h)
+- 1x Câble d'alimentation extérieur 5m avec prise Schuko 16A étanche IP68
+- Guide de raccordement et attestation Enedis CACSI pré-remplie
 
-⚖️ 100% LÉGAL & SANS CONSUEL :
-- Posé au sol (<1,80m) : dispensé de toute déclaration préalable en mairie (Art. R*421-2 du Code de l'Urbanisme).
-- Déclaration Enedis CACSI gratuite en 5 minutes sur internet (guide pré-rempli fourni).
+⚖️ 100% CONFORME & SANS TRAVAUX :
+- Pose au sol / balcon / terrasse sans déclaration de travaux (< 1,80m de hauteur)
+- Zéro électricien requis : branchement direct sur n'importe quelle prise murale 220V standard.
 
-📦 DISPONIBILITÉ & REMISE :
-- Remise en main propre locale avec conseils personnalisés.
-- Expédition sécurisée sur demi-palette Geodis avec prise de rendez-vous par SMS partout en France.
-- Option Pack Duo 880W (2 panneaux) : 649 € TTC (économisez 49 €).
-- Option prise connectée Wi-Fi (mesure des Watts en direct sur smartphone) : +19 €.
+📦 RETRAIT & LIVRAISON :
+- Retrait direct à notre dépôt local (0 € de frais de port) sur prise de rendez-vous.
+- Livraison sur toute la France par transporteur sécurisé Geodis (demi-palette avec hayon sur RDV).
+- Commandes et fiches techniques téléchargeables sur notre site officiel : https://devtest09az.github.io/simupro-france/
 
-📞 Contactez-nous par message Leboncoin ou par téléphone au 09 72 10 44 20 pour réserver votre kit ou poser vos questions techniques."""
+📞 Service client & réservations : 09 72 10 44 20 ou par messagerie Leboncoin Pro."""
 
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(10.dp))
             .background(Color(0xFF0F172A))
-            .border(1.dp, Color(0xFFF59E0B).copy(alpha = 0.7f), RoundedCornerShape(10.dp))
+            .border(1.dp, Color(0xFF38BDF8).copy(alpha = 0.5f), RoundedCornerShape(10.dp))
             .padding(12.dp)
     ) {
         Row(
@@ -3289,11 +3290,11 @@ Réduisez votre facture d'électricité dès aujourd'hui : 125 € à 180 € d'
             verticalAlignment = Alignment.CenterVertically
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(text = "📢", fontSize = 16.sp)
+                Text(text = "🎯", fontSize = 16.sp)
                 Spacer(modifier = Modifier.width(6.dp))
                 Text(
-                    text = "ANNONCE PILOTE LEBONCOIN HAUTE CONVERSION",
-                    color = Color(0xFFFBBF24),
+                    text = "STRATÉGIE D'ACQUISITION MULTI-CANAL HAUTE CRÉDIBILITÉ",
+                    color = Color(0xFF38BDF8),
                     fontWeight = FontWeight.Bold,
                     fontSize = 11.sp
                 )
@@ -3301,13 +3302,13 @@ Réduisez votre facture d'électricité dès aujourd'hui : 125 € à 180 € d'
             Box(
                 modifier = Modifier
                     .clip(RoundedCornerShape(4.dp))
-                    .background(Color(0xFFF59E0B).copy(alpha = 0.2f))
-                    .border(1.dp, Color(0xFFF59E0B), RoundedCornerShape(4.dp))
+                    .background(Color(0xFF38BDF8).copy(alpha = 0.2f))
+                    .border(1.dp, Color(0xFF38BDF8), RoundedCornerShape(4.dp))
                     .padding(horizontal = 6.dp, vertical = 2.dp)
             ) {
                 Text(
-                    text = "PRÊTE À POSTER",
-                    color = Color(0xFFFCD34D),
+                    text = "MIX MARKETING B2C & LOCAL",
+                    color = Color(0xFF7DD3FC),
                     fontSize = 8.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -3316,10 +3317,67 @@ Réduisez votre facture d'électricité dès aujourd'hui : 125 € à 180 € d'
 
         Spacer(modifier = Modifier.height(4.dp))
         Text(
-            text = "À publier pour collecter vos 3 premières réservations locales avant d'engager le moindre euro de capital social :",
+            text = "Pour maximiser la rentabilité tout en conservant une image 100% professionnelle, SOLARIS France combine 4 canaux complémentaires :",
             color = Color(0xFF94A3B8),
             fontSize = 9.sp
         )
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // 4 Acquisition Pillars Grid
+        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .clip(RoundedCornerShape(6.dp))
+                    .background(Color(0xFF1E293B))
+                    .border(1.dp, Color(0xFF334155), RoundedCornerShape(6.dp))
+                    .padding(6.dp)
+            ) {
+                Text(text = "🌐 1. Site Web Officiel", color = Color(0xFF34D399), fontSize = 8.sp, fontWeight = FontWeight.Bold)
+                Spacer(modifier = Modifier.height(2.dp))
+                Text(text = "Paiement CB sécurisé Stripe, réassurance légale CGV, fiches techniques PDF et SAV.", color = Color(0xFFCBD5E1), fontSize = 7.sp, lineHeight = 9.sp)
+            }
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .clip(RoundedCornerShape(6.dp))
+                    .background(Color(0xFF1E293B))
+                    .border(1.dp, Color(0xFF334155), RoundedCornerShape(6.dp))
+                    .padding(6.dp)
+            ) {
+                Text(text = "🔍 2. Google Search & Local", color = Color(0xFF60A5FA), fontSize = 8.sp, fontWeight = FontWeight.Bold)
+                Spacer(modifier = Modifier.height(2.dp))
+                Text(text = "Fiche Google Établissement Pro, avis vérifiés et capture de requêtes intentionnistes.", color = Color(0xFFCBD5E1), fontSize = 7.sp, lineHeight = 9.sp)
+            }
+        }
+        Spacer(modifier = Modifier.height(6.dp))
+        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .clip(RoundedCornerShape(6.dp))
+                    .background(Color(0xFF1E293B))
+                    .border(1.dp, Color(0xFF334155), RoundedCornerShape(6.dp))
+                    .padding(6.dp)
+            ) {
+                Text(text = "🏢 3. Vitrine Leboncoin PRO", color = Color(0xFFFBBF24), fontSize = 8.sp, fontWeight = FontWeight.Bold)
+                Spacer(modifier = Modifier.height(2.dp))
+                Text(text = "Compte Pro certifié avec SIRET & TVA. 1er comparateur d'équipement en France (CAC = 0 €).", color = Color(0xFFCBD5E1), fontSize = 7.sp, lineHeight = 9.sp)
+            }
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .clip(RoundedCornerShape(6.dp))
+                    .background(Color(0xFF1E293B))
+                    .border(1.dp, Color(0xFF334155), RoundedCornerShape(6.dp))
+                    .padding(6.dp)
+            ) {
+                Text(text = "🤝 4. Réseau & Prescripteurs", color = Color(0xFFA78BFA), fontSize = 8.sp, fontWeight = FontWeight.Bold)
+                Spacer(modifier = Modifier.height(2.dp))
+                Text(text = "Électriciens locaux, artisans de l'habitat et comités d'entreprise (CSE) pour ventes groupées.", color = Color(0xFFCBD5E1), fontSize = 7.sp, lineHeight = 9.sp)
+            }
+        }
+
         Spacer(modifier = Modifier.height(8.dp))
 
         // Ad preview box
@@ -3331,12 +3389,25 @@ Réduisez votre facture d'électricité dès aujourd'hui : 125 € à 180 € d'
                 .border(1.dp, Color(0xFF475569), RoundedCornerShape(8.dp))
                 .padding(10.dp)
         ) {
-            Text(
-                text = "Titre de l'annonce :",
-                color = Color(0xFF94A3B8),
-                fontSize = 8.sp,
-                fontWeight = FontWeight.Bold
-            )
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "Format d'Annonce Certifiée Vitrine PRO :",
+                    color = Color(0xFF94A3B8),
+                    fontSize = 8.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    text = "Compte Entreprise avec SIRET & TVA",
+                    color = Color(0xFF34D399),
+                    fontSize = 8.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+            Spacer(modifier = Modifier.height(2.dp))
             Text(
                 text = adTitle,
                 color = Color.White,
@@ -3345,8 +3416,8 @@ Réduisez votre facture d'électricité dès aujourd'hui : 125 € à 180 € d'
             )
             Spacer(modifier = Modifier.height(4.dp))
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                Text(text = "🏷️ Prix : 349 €", color = Color(0xFFFBBF24), fontSize = 9.sp, fontWeight = FontWeight.Bold)
-                Text(text = "📍 Catégorie : Bricolage / Énergie", color = Color(0xFF38BDF8), fontSize = 9.sp)
+                Text(text = "🏷️ Prix : 349 € TTC (Facture pro)", color = Color(0xFFFBBF24), fontSize = 9.sp, fontWeight = FontWeight.Bold)
+                Text(text = "📍 Localisation : Retrait local ou Fret 48h", color = Color(0xFF38BDF8), fontSize = 9.sp)
             }
 
             Spacer(modifier = Modifier.height(6.dp))
@@ -3363,18 +3434,18 @@ Réduisez votre facture d'électricité dès aujourd'hui : 125 € à 180 € d'
         Button(
             onClick = {
                 val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                val clip = ClipData.newPlainText("Annonce Leboncoin", "$adTitle\n\n$adBody")
+                val clip = ClipData.newPlainText("Annonce Vitrine Pro", "$adTitle\n\n$adBody")
                 clipboard.setPrimaryClip(clip)
-                Toast.makeText(context, "Annonce Leboncoin copiée dans le presse-papier !", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Texte de la vitrine Pro copié dans le presse-papier !", Toast.LENGTH_SHORT).show()
             },
             modifier = Modifier.fillMaxWidth(),
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFD97706)),
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF0284C7)),
             shape = RoundedCornerShape(6.dp)
         ) {
             Icon(Icons.Default.ContentCopy, contentDescription = "Copier", modifier = Modifier.size(14.dp))
             Spacer(modifier = Modifier.width(6.dp))
             Text(
-                text = "Copier l'annonce complète dans le presse-papier",
+                text = "Copier l'annonce Vitrine Pro dans le presse-papier",
                 fontSize = 10.sp,
                 fontWeight = FontWeight.Bold
             )

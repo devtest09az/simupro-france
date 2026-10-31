@@ -57,9 +57,9 @@ object EcomDossiersData {
 - Beem Energy (Nantes) : plus de 40 000 foyers equipes, stations vendues a 749 EUR.
 - Notre force implacable : avec notre pack SOLARIS a 349 EUR TTC, nous vendons EXACTEMENT les memes composants industriels (Trina Solar biverre 440W + micro-onduleur Hoymiles VDE), mais a MOITIE PRIX (-50% vs les leaders).
 
-3. PREUVE MICROECONOMIQUE DU FUNNEL LEBONCOIN LOCAL :
+3. PREUVE DU CANAL D'ACQUISITION LOCAL (VITRINE LEBONCOIN PRO) :
 - Bassin de chalandise moyen (1 departement / metropole) : ~200 000 a 350 000 maisons individuelles avec jardin, terrasse ou balcon.
-- 1 annonce pilote Leboncoin optimisee 'Kit Solaire 440W Pret a brancher 349 EUR (Garantie 25 ans, Moitie prix Sunology)' genere 60 a 100 vues qualifiees / jour.
+- 1 vitrine Leboncoin PRO certifiee avec SIRET 'Kit Solaire 440W Pret a brancher 349 EUR (Garantie 25 ans, Moitie prix Sunology)' genere 60 a 100 vues qualifiees / jour.
 - Taux de prise de contact par message / telephone : ~3% a 4% = 2 a 4 prospects chauds par jour.
 - Taux de conversion en vente (en proposant la remise en main propre locale ou livraison Geodis 48h) : 1 vente tous les 2 a 3 prospects.
 - Resultat : 1 vente par jour ouvre (soit 20 a 22 ventes / mois) sur le seul departement local, completee par 8 a 10 ventes sur les departements limitrophes via expedition Geodis.
