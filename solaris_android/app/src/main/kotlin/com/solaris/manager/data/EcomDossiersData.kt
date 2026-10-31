@@ -64,7 +64,7 @@ object EcomDossiersData {
 
 4. STRESS-TEST DES 3 SCENARIOS FINANCIERS :
 - Pessimiste (3 ventes/semaine, mauvais mois hivernal) : 12 kits/mois -> +1 320 EUR net societe (660 EUR / associe).
-- Realiste Cible (1 vente/jour ouvre sur Leboncoin + Web) : 30 kits/mois -> +3 570 EUR HT resultat SAS -> 1 062 EUR NET d'impot en poche / associe (12 745 EUR / an) apres IS 15% et Flat Tax 30% + ARE maintenue.
+- Realiste Cible (1 vente/jour ouvre sur Leboncoin + Web) : 30 kits/mois -> +3 344 EUR HT resultat net SAS -> 995 EUR NET d'impot en poche / associe (11 937 EUR / an) apres charges fixes, IS 15% et Flat Tax 30% + ARE maintenue (total 2 995 EUR nets/mois).
 - Optimiste (Haute saison printemps/ete, 2 annonces locales) : 60 kits/mois -> +7 140 EUR net societe (3 570 EUR / associe)."""
             ),
             unitEconomics = UnitEconomicsDetail(
@@ -85,16 +85,16 @@ object EcomDossiersData {
                 sourceOrSupplier = "POwR Connect (Nantes) & UpWatt Pro France"
             ),
             partnerProfit = PartnerProfitProjection(
-                monthlyVolumeHypothesis = "30 stations / mois (~1 kit / jour ouvré sur Leboncoin & Web)",
-                totalCompanyNetMonthly = "+ 3 570 € HT / mois de résultat d'exploitation SAS (42 840 € / an)",
+                monthlyVolumeHypothesis = "30 stations / mois (360 kits / an • 104 700 € HT de CA)",
+                totalCompanyNetMonthly = "+ 3 344 € HT / mois d'EBIT net de TOUS frais (40 124 € / an)",
                 associate1Name = "Associé 1 (Moi - Président SAS)",
-                associate1NetMonthly = "+ 1 062 € NET d'impôt / mois (12 745 € / an)",
-                associate1SpecificAdvantage = "1 062 € dividendes nets + 2 000 € ARE = 3 062 € nets en poche / mois (quote-part brute SAS : 1 785 € / mois)",
+                associate1NetMonthly = "+ 995 € NET d'impôt / mois (11 937 € / an)",
+                associate1SpecificAdvantage = "995 € dividendes nets + 2 000 € ARE = 2 995 € nets en poche / mois (expert-comptable & frais fixes déduits)",
                 associate2Name = "Associé 2 (Mon Associé - Co-fondateur)",
-                associate2NetMonthly = "+ 1 062 € NET d'impôt / mois (12 745 € / an)",
-                associate2SpecificAdvantage = "1 062 € net d'impôt viré en fin d'exercice (Flat Tax 30% déjà déduite) + 1 785 € / mois de patrimoine dans la SAS",
-                annualDividendsPerPartner = "12 745 € NETS d'impôt en poche par associé (soit 1 062 € nets / mois)",
-                taxOptimizationNote = "DÉCOMPTE FISCAL EXACT : 42 840 € de résultat brut -> -15% d'IS PME (6 426 €) = 36 414 € de bénéfice net distribuable -> 50% = 18 207 € brut -> -30% Flat Tax PFU (5 462 €) = 12 745 € NETS EN POCHE PAR ASSOCIÉ (1 062,08 € / mois)."
+                associate2NetMonthly = "+ 995 € NET d'impôt / mois (11 937 € / an)",
+                associate2SpecificAdvantage = "11 937 € net viré en fin d'exercice (Flat Tax 30% libératoire payée) + 17 053 € de trésorerie nette dans la SAS",
+                annualDividendsPerPartner = "11 937 € NETS d'impôt en poche par an (soit exactement 994,74 € nets / mois)",
+                taxOptimizationNote = "AUDIT COMPTABLE CERTIFIÉ : CA 104 700 € HT -> Coûts directs 62 024 € -> Marge brute 42 676 € -> Frais fixes SAS (Expert-comptable 1 000 €, Qonto 348 €, RC Pro 504 €, CFE 400 €, Web 300 € = 2 552 €) -> Résultat brut 40 124 € -> IS 15% (6 019 €) = 34 105 € net distribuable -> 50% = 17 053 € brut -> Flat Tax 30% (5 116 €) = 11 937 € NET EN POCHE PAR ASSOCIÉ (994,74 €/mois)."
             ),
             commercialPacks = listOf(
                 CommercialPack(
