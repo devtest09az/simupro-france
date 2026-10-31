@@ -37,6 +37,42 @@ data class PartnerProfitProjection(
     val taxOptimizationNote: String
 )
 
+data class CommercialPack(
+    val name: String,
+    val badge: String,
+    val retailPriceTTC: String,
+    val wholesaleCostHT: String,
+    val netMarginAmount: String,
+    val netMarginPercent: String,
+    val paybackPeriod: String,
+    val contents: String
+)
+
+data class ProductionSimulation(
+    val zoneName: String,
+    val annualKwh: String,
+    val annualSavingsEuros: String,
+    val paybackYears: String,
+    val sourceLabel: String,
+    val sourceUrl: String
+)
+
+data class VerifiedSupplier(
+    val name: String,
+    val location: String,
+    val role: String,
+    val contactB2B: String,
+    val conditions: String,
+    val portalUrl: String
+)
+
+data class PartnerPitchArgument(
+    val number: Int,
+    val title: String,
+    val argument: String,
+    val keyProof: String
+)
+
 data class ObjectionItem(
     val objection: String,
     val rebuttal: String,
@@ -76,6 +112,14 @@ data class EcomDossier(
     val unitEconomics: UnitEconomicsDetail? = null,
     // Projection des bénéfices raisonnables répartis par associé (50/50)
     val partnerProfit: PartnerProfitProjection? = null,
+    // Gamme commerciale de packs (Solo, Duo, Accessoires)
+    val commercialPacks: List<CommercialPack> = emptyList(),
+    // Simulation de production réelle & économies Linky (PVGIS UE)
+    val productionSimulations: List<ProductionSimulation> = emptyList(),
+    // Annuaire des grossistes B2B vérifiés
+    val verifiedSuppliers: List<VerifiedSupplier> = emptyList(),
+    // Pitch de présentation pour l'associé (Les arguments massue en 3 min)
+    val partnerPitchArguments: List<PartnerPitchArgument> = emptyList(),
     // Objections clients réelles & parades mot à mot
     val objections: List<ObjectionItem> = emptyList(),
     // Réglementation, démarches administratives & boucliers

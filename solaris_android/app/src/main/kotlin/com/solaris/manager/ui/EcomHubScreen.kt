@@ -67,16 +67,21 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.solaris.manager.model.ProjectPhase
+import com.solaris.manager.model.CommercialPack
 import com.solaris.manager.model.ConceptionDetail
 import com.solaris.manager.model.CostItem
 import com.solaris.manager.model.EcomDossier
 import com.solaris.manager.model.MarketStudyDetail
 import com.solaris.manager.model.ObjectionItem
+import com.solaris.manager.model.PartnerPitchArgument
 import com.solaris.manager.model.PartnerProfitProjection
-import com.solaris.manager.model.ProjectPhase
+import com.solaris.manager.model.ProductionAction
+import com.solaris.manager.model.ProductionSimulation
 import com.solaris.manager.model.RegulatoryRoadmapItem
 import com.solaris.manager.model.ToolkitItem
 import com.solaris.manager.model.UnitEconomicsDetail
+import com.solaris.manager.model.VerifiedSupplier
 import com.solaris.manager.viewmodel.EcomHubUiState
 import com.solaris.manager.viewmodel.EcomHubViewModel
 
@@ -299,7 +304,39 @@ private fun ConceptionPhaseContent(
                                 Spacer(modifier = Modifier.height(10.dp))
                             }
 
-                            // 4. FAQ OBJECTIONS & PARADES COMMERCIALES
+                            // 4. GAMME COMMERCIALE & PACKS CLIENTS (BEST-SELLERS)
+                            if (dossier.commercialPacks.isNotEmpty()) {
+                                CommercialPacksCard(packs = dossier.commercialPacks)
+                                Spacer(modifier = Modifier.height(14.dp))
+                                HorizontalDivider(color = Color(0xFF334155))
+                                Spacer(modifier = Modifier.height(10.dp))
+                            }
+
+                            // 5. SIMULATEUR DE PRODUCTION RÉELLE & ÉCONOMIES LINKY (PVGIS UE)
+                            if (dossier.productionSimulations.isNotEmpty()) {
+                                ProductionSimulationsCard(simulations = dossier.productionSimulations)
+                                Spacer(modifier = Modifier.height(14.dp))
+                                HorizontalDivider(color = Color(0xFF334155))
+                                Spacer(modifier = Modifier.height(10.dp))
+                            }
+
+                            // 6. ANNUAIRE DES GROSSISTES B2B OFFICIELS
+                            if (dossier.verifiedSuppliers.isNotEmpty()) {
+                                VerifiedSuppliersCard(suppliers = dossier.verifiedSuppliers)
+                                Spacer(modifier = Modifier.height(14.dp))
+                                HorizontalDivider(color = Color(0xFF334155))
+                                Spacer(modifier = Modifier.height(10.dp))
+                            }
+
+                            // 7. PITCH ASSOCIÉ : LES 5 ARGUMENTS MASSUE EN 3 MINUTES
+                            if (dossier.partnerPitchArguments.isNotEmpty()) {
+                                PartnerPitchCard(pitchArgs = dossier.partnerPitchArguments)
+                                Spacer(modifier = Modifier.height(14.dp))
+                                HorizontalDivider(color = Color(0xFF334155))
+                                Spacer(modifier = Modifier.height(10.dp))
+                            }
+
+                            // 8. FAQ OBJECTIONS & PARADES COMMERCIALES
                             if (dossier.objections.isNotEmpty()) {
                                 ObjectionsCard(objections = dossier.objections)
                                 Spacer(modifier = Modifier.height(14.dp))
@@ -307,7 +344,7 @@ private fun ConceptionPhaseContent(
                                 Spacer(modifier = Modifier.height(10.dp))
                             }
 
-                            // 5. CADRE LÉGAL, DÉMARCHES & SÉCURISATION
+                            // 9. CADRE LÉGAL, DÉMARCHES & SÉCURISATION
                             if (dossier.regulatoryRoadmap.isNotEmpty()) {
                                 RegulatoryRoadmapCard(roadmap = dossier.regulatoryRoadmap)
                                 Spacer(modifier = Modifier.height(14.dp))
@@ -315,9 +352,9 @@ private fun ConceptionPhaseContent(
                                 Spacer(modifier = Modifier.height(10.dp))
                             }
 
-                            // 6. COMPOSANTS & SOURCINGS B2B RÉELS (PRIX GROSSISTES VÉRIFIÉS)
+                            // 10. COMPOSANTS & SOURCINGS B2B RÉELS (PRIX GROSSISTES VÉRIFIÉS)
                             Text(
-                                text = "6. Composants & Sourcings B2B (Prix Grossistes Vérifiés) :",
+                                text = "10. Composants & Sourcings B2B (Prix Grossistes Vérifiés) :",
                                 color = Color(0xFF38BDF8),
                                 fontSize = 13.sp,
                                 fontWeight = FontWeight.Bold
@@ -333,9 +370,9 @@ private fun ConceptionPhaseContent(
                             HorizontalDivider(color = Color(0xFF334155))
                             Spacer(modifier = Modifier.height(10.dp))
 
-                            // 7. BOÎTE À OUTILS (SCRIPTS & MODÈLES PRÊTS À L'EMPLOI)
+                            // 11. BOÎTE À OUTILS (SCRIPTS & MODÈLES PRÊTS À L'EMPLOI)
                             Text(
-                                text = "7. Boîte à Outils & Modèles Prêts à Copier :",
+                                text = "11. Boîte à Outils & Modèles Prêts à Copier :",
                                 color = Color(0xFFFBBF24),
                                 fontSize = 13.sp,
                                 fontWeight = FontWeight.Bold
@@ -351,7 +388,7 @@ private fun ConceptionPhaseContent(
                             HorizontalDivider(color = Color(0xFF334155))
                             Spacer(modifier = Modifier.height(10.dp))
 
-                            // 8. JOURNAL DE BORD & PRISE DE NOTES COMMUNE
+                            // 12. JOURNAL DE BORD & PRISE DE NOTES COMMUNE
                             PartnerNotesSection(
                                 dossierId = dossier.id,
                                 noteText = currentNote,
@@ -902,7 +939,6 @@ private fun PartnerProfitCard(profit: PartnerProfitProjection) {
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        // Hypothèse de volume & Bénéfice global société
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -931,12 +967,10 @@ private fun PartnerProfitCard(profit: PartnerProfitProjection) {
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        // 2 Col Partner Comparison
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            // Col 1 : Associé 1 (Moi - Président ARE)
             Column(
                 modifier = Modifier
                     .weight(1f)
@@ -972,7 +1006,6 @@ private fun PartnerProfitCard(profit: PartnerProfitProjection) {
                 )
             }
 
-            // Col 2 : Associé 2 (Mon Associé - DG Salarié)
             Column(
                 modifier = Modifier
                     .weight(1f)
@@ -1011,7 +1044,6 @@ private fun PartnerProfitCard(profit: PartnerProfitProjection) {
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        // Annual Dividends Box
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -1037,6 +1069,453 @@ private fun PartnerProfitCard(profit: PartnerProfitProjection) {
 }
 
 @Composable
+private fun CommercialPacksCard(packs: List<CommercialPack>) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp))
+            .background(Color(0xFF0F172A))
+            .border(1.dp, Color(0xFF38BDF8).copy(alpha = 0.5f), RoundedCornerShape(10.dp))
+            .padding(12.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(text = "📦", fontSize = 16.sp)
+                Spacer(modifier = Modifier.width(6.dp))
+                Text(
+                    text = "4. GAMME COMMERCIALE & PACKS CLIENTS",
+                    color = Color(0xFF38BDF8),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 0.5.sp
+                )
+            }
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(Color(0xFF0C4A6E))
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
+            ) {
+                Text(
+                    text = "OFFRE CATALOGUE",
+                    color = Color(0xFF38BDF8),
+                    fontSize = 9.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        packs.forEach { pack ->
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(Color(0xFF1E293B))
+                    .padding(10.dp)
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = pack.name,
+                        color = Color.White,
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.weight(1f)
+                    )
+                    Box(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(4.dp))
+                            .background(
+                                when (pack.badge) {
+                                    "BEST-SELLER" -> Color(0xFF065F46)
+                                    "MARGE RECORD" -> Color(0xFF78350F)
+                                    else -> Color(0xFF312E81)
+                                }
+                            )
+                            .padding(horizontal = 6.dp, vertical = 2.dp)
+                    ) {
+                        Text(
+                            text = pack.badge,
+                            color = when (pack.badge) {
+                                "BEST-SELLER" -> Color(0xFF34D399)
+                                "MARGE RECORD" -> Color(0xFFFDE68A)
+                                else -> Color(0xFFA5B4FC)
+                            },
+                            fontSize = 9.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(6.dp))
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Column {
+                        Text(text = "Prix de Vente Client :", color = Color(0xFF94A3B8), fontSize = 10.sp)
+                        Text(text = pack.retailPriceTTC, color = Color.White, fontSize = 13.sp, fontWeight = FontWeight.Bold)
+                    }
+                    Column(horizontalAlignment = Alignment.End) {
+                        Text(text = "Marge Nette Vendeur :", color = Color(0xFFA7F3D0), fontSize = 10.sp, fontWeight = FontWeight.SemiBold)
+                        Text(text = pack.netMarginAmount, color = Color(0xFF34D399), fontSize = 12.sp, fontWeight = FontWeight.Black)
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = "Coût matériel grossiste : ${pack.wholesaleCostHT} • ${pack.netMarginPercent}",
+                    color = Color(0xFFFBBF24),
+                    fontSize = 10.sp,
+                    fontWeight = FontWeight.Medium
+                )
+                Text(
+                    text = "Retour sur investissement client : ${pack.paybackPeriod}",
+                    color = Color(0xFF38BDF8),
+                    fontSize = 10.sp
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = "Contenu : ${pack.contents}",
+                    color = Color(0xFFCBD5E1),
+                    fontSize = 10.sp,
+                    lineHeight = 13.sp
+                )
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+        }
+    }
+}
+
+@Composable
+private fun ProductionSimulationsCard(simulations: List<ProductionSimulation>) {
+    val context = LocalContext.current
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp))
+            .background(Color(0xFF0F172A))
+            .border(1.dp, Color(0xFFF59E0B).copy(alpha = 0.5f), RoundedCornerShape(10.dp))
+            .padding(12.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(text = "☀️", fontSize = 16.sp)
+                Spacer(modifier = Modifier.width(6.dp))
+                Text(
+                    text = "5. SIMULATEUR DE PRODUCTION & ÉCONOMIES (PVGIS)",
+                    color = Color(0xFFFBBF24),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 0.5.sp
+                )
+            }
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(Color(0xFF78350F))
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
+            ) {
+                Text(
+                    text = "DONNÉES OFFICIELLES UE",
+                    color = Color(0xFFFDE68A),
+                    fontSize = 9.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(6.dp))
+        Text(
+            text = "Production annuelle réelle calculée avec le logiciel satellite PVGIS de la Commission Européenne (inclinaison 30° Sud) :",
+            color = Color(0xFF94A3B8),
+            fontSize = 10.sp,
+            lineHeight = 14.sp
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+
+        simulations.forEach { sim ->
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(Color(0xFF1E293B))
+                    .padding(10.dp)
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = sim.zoneName,
+                        color = Color.White,
+                        fontSize = 11.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Text(
+                        text = sim.annualSavingsEuros,
+                        color = Color(0xFF34D399),
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.Black
+                    )
+                }
+                Spacer(modifier = Modifier.height(4.dp))
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(text = "Production : ${sim.annualKwh}", color = Color(0xFF38BDF8), fontSize = 10.sp, fontWeight = FontWeight.SemiBold)
+                    Text(text = "Amortissement : ${sim.paybackYears}", color = Color(0xFFFBBF24), fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                }
+                Spacer(modifier = Modifier.height(3.dp))
+                Row(
+                    modifier = Modifier
+                        .clickable {
+                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(sim.sourceUrl))
+                            context.startActivity(intent)
+                        },
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(Icons.Default.OpenInBrowser, contentDescription = "Lien", tint = Color(0xFFA5B4FC), modifier = Modifier.size(12.dp))
+                    Spacer(modifier = Modifier.width(4.dp))
+                    Text(text = "Source : ${sim.sourceLabel} ↗", color = Color(0xFFA5B4FC), fontSize = 9.sp)
+                }
+            }
+            Spacer(modifier = Modifier.height(6.dp))
+        }
+    }
+}
+
+@Composable
+private fun VerifiedSuppliersCard(suppliers: List<VerifiedSupplier>) {
+    val context = LocalContext.current
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp))
+            .background(Color(0xFF0F172A))
+            .border(1.dp, Color(0xFF10B981).copy(alpha = 0.5f), RoundedCornerShape(10.dp))
+            .padding(12.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(text = "🏭", fontSize = 16.sp)
+                Spacer(modifier = Modifier.width(6.dp))
+                Text(
+                    text = "6. ANNUAIRE DES GROSSISTES B2B OFFICIELS",
+                    color = Color(0xFF34D399),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 0.5.sp
+                )
+            }
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(Color(0xFF064E3B))
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
+            ) {
+                Text(
+                    text = "AUDIT FOURNISSEURS",
+                    color = Color(0xFF34D399),
+                    fontSize = 9.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+        Text(
+            text = "Accès directs professionnels vérifiés pour commandes palettes et expéditions directes clients :",
+            color = Color(0xFF94A3B8),
+            fontSize = 10.sp
+        )
+        Spacer(modifier = Modifier.height(10.dp))
+
+        suppliers.forEach { supplier ->
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(Color(0xFF1E293B))
+                    .padding(10.dp)
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(
+                            text = supplier.name,
+                            color = Color.White,
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Text(
+                            text = supplier.location,
+                            color = Color(0xFF38BDF8),
+                            fontSize = 9.sp
+                        )
+                    }
+
+                    Button(
+                        onClick = {
+                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(supplier.portalUrl))
+                            context.startActivity(intent)
+                        },
+                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF0284C7)),
+                        modifier = Modifier.height(28.dp)
+                    ) {
+                        Icon(Icons.Default.OpenInBrowser, contentDescription = "Lien", tint = Color.White, modifier = Modifier.size(12.dp))
+                        Spacer(modifier = Modifier.width(4.dp))
+                        Text(text = "Portail B2B", fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = "Rôle : ${supplier.role}",
+                    color = Color(0xFFCBD5E1),
+                    fontSize = 10.sp
+                )
+                Text(
+                    text = "Contact pro : ${supplier.contactB2B}",
+                    color = Color(0xFFFBBF24),
+                    fontSize = 9.sp,
+                    fontWeight = FontWeight.SemiBold
+                )
+                Spacer(modifier = Modifier.height(3.dp))
+                Text(
+                    text = "Conditions : ${supplier.conditions}",
+                    color = Color(0xFF94A3B8),
+                    fontSize = 9.sp,
+                    lineHeight = 12.sp
+                )
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+        }
+    }
+}
+
+@Composable
+private fun PartnerPitchCard(pitchArgs: List<PartnerPitchArgument>) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp))
+            .background(Color(0xFF0F172A))
+            .border(1.dp, Color(0xFF6366F1).copy(alpha = 0.6f), RoundedCornerShape(10.dp))
+            .padding(12.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(text = "🗣️", fontSize = 16.sp)
+                Spacer(modifier = Modifier.width(6.dp))
+                Text(
+                    text = "7. PITCH ASSOCIÉ : 5 ARGUMENTS MASSUE EN 3 MIN",
+                    color = Color(0xFFA5B4FC),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 0.5.sp
+                )
+            }
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(Color(0xFF312E81))
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
+            ) {
+                Text(
+                    text = "VALIDATION IMMÉDIATE",
+                    color = Color(0xFFA5B4FC),
+                    fontSize = 9.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+        Text(
+            text = "Ce qu'il faut expliquer à votre associé pour décider d'ouvrir la SAS sans aucune peur :",
+            color = Color(0xFF94A3B8),
+            fontSize = 10.sp
+        )
+        Spacer(modifier = Modifier.height(10.dp))
+
+        pitchArgs.forEach { pitch ->
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(Color(0xFF1E293B))
+                    .padding(10.dp)
+            ) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Box(
+                        modifier = Modifier
+                            .size(20.dp)
+                            .clip(RoundedCornerShape(10.dp))
+                            .background(Color(0xFF4F46E5)),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(text = "${pitch.number}", color = Color.White, fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                    }
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        text = pitch.title,
+                        color = Color.White,
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(5.dp))
+                Text(
+                    text = pitch.argument,
+                    color = Color(0xFFCBD5E1),
+                    fontSize = 10.sp,
+                    lineHeight = 14.sp
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = "Preuve vérifiable : ${pitch.keyProof}",
+                    color = Color(0xFF34D399),
+                    fontSize = 9.sp,
+                    fontWeight = FontWeight.SemiBold
+                )
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+        }
+    }
+}
+
+@Composable
 private fun ObjectionsCard(objections: List<ObjectionItem>) {
     val context = LocalContext.current
 
@@ -1057,7 +1536,7 @@ private fun ObjectionsCard(objections: List<ObjectionItem>) {
                 Text(text = "🎯", fontSize = 16.sp)
                 Spacer(modifier = Modifier.width(6.dp))
                 Text(
-                    text = "4. FAQ OBJECTIONS & PARADES COMMERCIALES",
+                    text = "8. FAQ OBJECTIONS & PARADES COMMERCIALES",
                     color = Color(0xFFFBBF24),
                     fontSize = 11.sp,
                     fontWeight = FontWeight.Bold,
@@ -1174,7 +1653,7 @@ private fun RegulatoryRoadmapCard(roadmap: List<RegulatoryRoadmapItem>) {
                 Text(text = "⚖️", fontSize = 16.sp)
                 Spacer(modifier = Modifier.width(6.dp))
                 Text(
-                    text = "5. CADRE LÉGAL, DÉMARCHES & SÉCURISATION",
+                    text = "9. CADRE LÉGAL, DÉMARCHES & SÉCURISATION",
                     color = Color(0xFF38BDF8),
                     fontSize = 11.sp,
                     fontWeight = FontWeight.Bold,

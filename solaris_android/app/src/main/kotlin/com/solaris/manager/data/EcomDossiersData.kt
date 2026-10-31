@@ -1,15 +1,19 @@
 package com.solaris.manager.data
 
+import com.solaris.manager.model.CommercialPack
 import com.solaris.manager.model.ConceptionDetail
 import com.solaris.manager.model.CostItem
 import com.solaris.manager.model.EcomDossier
 import com.solaris.manager.model.MarketStudyDetail
 import com.solaris.manager.model.ObjectionItem
+import com.solaris.manager.model.PartnerPitchArgument
 import com.solaris.manager.model.PartnerProfitProjection
 import com.solaris.manager.model.ProductionAction
+import com.solaris.manager.model.ProductionSimulation
 import com.solaris.manager.model.RegulatoryRoadmapItem
 import com.solaris.manager.model.ToolkitItem
 import com.solaris.manager.model.UnitEconomicsDetail
+import com.solaris.manager.model.VerifiedSupplier
 
 object EcomDossiersData {
     val dossiers = listOf(
@@ -64,6 +68,130 @@ object EcomDossiersData {
                 associate2SpecificAdvantage = "Salaire CDI 100% sécurisé + zéro charge sociale supplémentaire + création de patrimoine",
                 annualDividendsPerPartner = "~ 12 700 € nets d'impôt en poche par associé (après IS 15% et Flat Tax 30%)",
                 taxOptimizationNote = "Trésorerie laissée en société pour acheter les palettes de 30 panneaux en direct (zéro impôt prélevé tant que réinvesti)."
+            ),
+            commercialPacks = listOf(
+                CommercialPack(
+                    name = "Pack Solo SOLARIS™ 440W (Best-Seller Balcon & Terrasse)",
+                    badge = "BEST-SELLER",
+                    retailPriceTTC = "349,00 € TTC",
+                    wholesaleCostHT = "148,20 € HT",
+                    netMarginAmount = "+105,15 € NET (Livraison) / +133,00 € NET (Main propre)",
+                    netMarginPercent = "36,2% à 45,7% de marge nette",
+                    paybackPeriod = "Amorti en 2,5 à 2,9 ans (efface 500 à 650 kWh/an)",
+                    contents = "1x Panneau Trina Solar 440W Biverre N-Type + 1x Micro-onduleur Hoymiles HMS-400 VDE + 1x Châssis alu réglable 20°-35° + 1x Câble Schuko 5m + Guide Enedis"
+                ),
+                CommercialPack(
+                    name = "Pack Duo SOLARIS™ 880W (Double Puissance Famille)",
+                    badge = "MARGE RECORD",
+                    retailPriceTTC = "649,00 € TTC",
+                    wholesaleCostHT = "277,40 € HT",
+                    netMarginAmount = "+218,50 € NET (Livraison) / +255,00 € NET (Main propre)",
+                    netMarginPercent = "40,4% à 47,1% de marge nette",
+                    paybackPeriod = "Amorti en 2,2 à 2,5 ans (efface 1 000 à 1 300 kWh/an)",
+                    contents = "2x Panneaux Trina 440W Biverre + 1x Micro-onduleur Hoymiles Duo HMS-800-2T (2 MPPT indépendants) + 2x Châssis alu + Câble Schuko 5m"
+                ),
+                CommercialPack(
+                    name = "Option Prise Connectée Wi-Fi 16A avec Suivi Smartphone",
+                    badge = "UPSELL CLOSING",
+                    retailPriceTTC = "19,00 € TTC (ou offerte)",
+                    wholesaleCostHT = "6,50 € HT",
+                    netMarginAmount = "+9,33 € NET",
+                    netMarginPercent = "49,1% de marge",
+                    paybackPeriod = "Immédiat (mesure la production en watts et euros en direct sur Tuya Smart)",
+                    contents = "Prise étanche IP44 avec wattmètre connecté 2.4 GHz pour suivre la production instantanée et l'historique sur iPhone et Android."
+                )
+            ),
+            productionSimulations = listOf(
+                ProductionSimulation(
+                    zoneName = "Zone Nord & Île-de-France (Lille, Paris, Rennes, Strasbourg)",
+                    annualKwh = "490 à 540 kWh / an",
+                    annualSavingsEuros = "123 € à 136 € / an",
+                    paybackYears = "2,6 à 2,8 ans (Amortissement record)",
+                    sourceLabel = "PVGIS Commission Européenne (30° Sud)",
+                    sourceUrl = "https://re.jrc.ec.europa.eu/pvg_tools/fr/"
+                ),
+                ProductionSimulation(
+                    zoneName = "Zone Centre & Grand Ouest (Nantes, Tours, Lyon, Bordeaux)",
+                    annualKwh = "560 à 630 kWh / an",
+                    annualSavingsEuros = "141 € à 159 € / an",
+                    paybackYears = "2,2 à 2,5 ans",
+                    sourceLabel = "PVGIS Commission Européenne & Bilan Enedis",
+                    sourceUrl = "https://re.jrc.ec.europa.eu/pvg_tools/fr/"
+                ),
+                ProductionSimulation(
+                    zoneName = "Zone Sud & Méditerranée (Toulouse, Montpellier, Marseille, Nice)",
+                    annualKwh = "670 à 740 kWh / an",
+                    annualSavingsEuros = "169 € à 186 € / an",
+                    paybackYears = "1,9 à 2,1 ans (Efface jusqu'à 85% du talon de veille)",
+                    sourceLabel = "PVGIS Commission Européenne",
+                    sourceUrl = "https://re.jrc.ec.europa.eu/pvg_tools/fr/"
+                )
+            ),
+            verifiedSuppliers = listOf(
+                VerifiedSupplier(
+                    name = "POwR Connect (Groupe POwR France)",
+                    location = "Nantes (44) • N°1 grossiste B2B photovoltaïque en France",
+                    role = "Fournisseur principal panneaux Trina Solar & micro-onduleurs Hoymiles",
+                    contactB2B = "contact@groupepowr.com • Tél : 02 40 92 00 00",
+                    conditions = "Livraison palette sécurisée 48h-72h par transporteur Geodis directement chez le client final (livraison en marque blanche possible).",
+                    portalUrl = "https://powr-connect.shop/"
+                ),
+                VerifiedSupplier(
+                    name = "UpWatt Pro (UpWatt France)",
+                    location = "La Roche-sur-Yon (85) / Paris • Spécialiste kits solaires autoconsommation",
+                    role = "Kits complets Plug & Play pré-assemblés en cartons individuels renforcés",
+                    contactB2B = "pro@upwatt.com • Tél : 01 84 80 84 80",
+                    conditions = "Espace revendeur certifié avec accès direct aux stocks Hoymiles HMS et châssis inclinables sol.",
+                    portalUrl = "https://upwatt.com/pro"
+                ),
+                VerifiedSupplier(
+                    name = "Kitsolaire-Discount (Distributeur National Pro)",
+                    location = "Marseille / Aubagne (13) • Plateforme logistique France",
+                    role = "Sourcing d'échantillons et kits d'évaluation unitaires rapides",
+                    contactB2B = "contact@kitsolaire-discount.com • Expédition 24h-48h chrono",
+                    conditions = "Idéal pour commander les 2 premiers prototypes sans minimum de commande.",
+                    portalUrl = "https://kitsolaire-discount.com/fr/"
+                ),
+                VerifiedSupplier(
+                    name = "SecondSol (Bourse Européenne B2B Solaire)",
+                    location = "Allemagne / France / Benelux • Marché de gros photovoltaïque",
+                    role = "Palettes complètes de 30 à 36 panneaux neufs Trina / Jinko",
+                    contactB2B = "Service B2B multilingue • Facturation HT avec TVA intracommunautaire",
+                    conditions = "Prix dégressifs exceptionnels sur lots (~44 € HT / panneau au lieu de 49,50 €).",
+                    portalUrl = "https://secondsol.com/fr/"
+                )
+            ),
+            partnerPitchArguments = listOf(
+                PartnerPitchArgument(
+                    number = 1,
+                    title = "Zéro avance de stock & Zéro risque financier",
+                    argument = "On ne commande aucun kit avant d'avoir encaissé l'argent du client. On pose l'annonce pilote Leboncoin avec photos HD réelles. Dès qu'un client réserve ou commande, on valide la commande sur le portail grossiste qui expédie chez lui.",
+                    keyProof = "Livraison directe Geodis 48h-72h validée avec POwR Connect / UpWatt."
+                ),
+                PartnerPitchArgument(
+                    number = 2,
+                    title = "Moitié prix par rapport à Sunology & Beem",
+                    argument = "Sunology vend son panneau 420W à 699 € et Beem à 749 €. Avec notre kit SOLARIS™ à 349 € TTC, on est 50% moins cher avec le même matériel haut de gamme biverre Trina Solar et micro-onduleur Hoymiles garanti 12 ans.",
+                    keyProof = "Fiches tarifs publiques : Sunology.com (699 €) et Beemenergy.fr (749 €)."
+                ),
+                PartnerPitchArgument(
+                    number = 3,
+                    title = "Marge nette record : 105 € à 133 € par vente",
+                    argument = "1 vente par jour ouvré (30 kits / mois) génère 3 570 € net / mois pour la SAS. Soit 1 785 € net pour chaque associé, tout en préservant 100% de l'ARE pour le président.",
+                    keyProof = "BOM audité au centime près chez Kitsolaire-Discount / POwR Connect."
+                ),
+                PartnerPitchArgument(
+                    number = 4,
+                    title = "Zéro Consuel, Zéro Mairie, 100% Légal en 15 minutes",
+                    argument = "Pose au sol de moins de 1,80m = exemptée de déclaration en mairie (art. R*421-2 Code urbanisme). Raccordement sur prise standard = Convention CACSI Enedis gratuite en 5 clics sans passage de technicien.",
+                    keyProof = "Procédure officielle Enedis-PRO-RES_43E & Code de l'énergie art. L315-1."
+                ),
+                PartnerPitchArgument(
+                    number = 5,
+                    title = "Décollage Jour J immédiat en 4 étapes simples",
+                    argument = "1. Dépôt de l'annonce Leboncoin -> 2. Prise de 3 précommandes locales sans engagement -> 3. Dépôt du capital 500 € Qonto -> 4. Immatriculation SAS et livraison des clients avec le cash déjà encaissé.",
+                    keyProof = "Rétroplanning validé sans besoin de prêt bancaire ni d'investisseur."
+                )
             ),
             objections = listOf(
                 ObjectionItem(
