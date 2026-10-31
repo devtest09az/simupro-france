@@ -114,6 +114,18 @@ data class HumanPrerequisiteItem(
     var isCompleted: Boolean = false
 )
 
+
+data class ClientLeadItem(
+    val id: String,
+    val clientName: String,
+    val phone: String,
+    val city: String,
+    val packType: String, // "Pack Solo 420W (349 €)" ou "Pack Duo 880W (649 €)"
+    val status: String, // "Nouveau contact", "Devis / Proforma envoyé", "Acompte reçu", "Livré / Payé"
+    val dateCreated: String,
+    val notes: String
+)
+
 data class AssociateVerificationItem(
     val id: String,
     val title: String,

@@ -54,6 +54,11 @@ import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Slider
+import androidx.compose.material3.SliderDefaults
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -68,6 +73,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.solaris.manager.model.ProjectPhase
+import com.solaris.manager.model.ClientLeadItem
 import com.solaris.manager.model.CommercialPack
 import com.solaris.manager.model.ConceptionDetail
 import com.solaris.manager.model.CostItem
@@ -177,7 +183,10 @@ fun EcomHubScreen(
                     onDossierClick = { viewModel.selectDossier(it) },
                     onActionToggle = { dId, aId -> viewModel.toggleAction(dId, aId) },
                     onNoteChange = { dId, text -> viewModel.onNoteChange(dId, text) },
-                    onSaveNote = { viewModel.saveNotes(it) }
+                    onSaveNote = { viewModel.saveNotes(it) },
+                    onAddLead = { name, phone, city, pack, notes -> viewModel.addClientLead(name, phone, city, pack, notes) },
+                    onUpdateLeadStatus = { id, status -> viewModel.updateLeadStatus(id, status) },
+                    onDeleteLead = { id -> viewModel.deleteClientLead(id) }
                 )
             }
         }
@@ -473,7 +482,10 @@ private fun ProductionPhaseContent(
     onDossierClick: (String) -> Unit,
     onActionToggle: (String, String) -> Unit,
     onNoteChange: (String, String) -> Unit,
-    onSaveNote: (String) -> Unit
+    onSaveNote: (String) -> Unit,
+    onAddLead: (String, String, String, String, String) -> Unit,
+    onUpdateLeadStatus: (String, String) -> Unit,
+    onDeleteLead: (String) -> Unit
 ) {
     val context = LocalContext.current
 
@@ -495,13 +507,14 @@ private fun ProductionPhaseContent(
                         1.dp,
                         if (dossier.progressPercent >= 75) Color(0xFF059669) else Color(0xFF1E293B),
                         RoundedCornerShape(14.dp)
-                    )
-                    .clickable { onDossierClick(dossier.id) },
+                    ),
                 colors = CardDefaults.cardColors(containerColor = Color(0xFF1C2541))
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Row(
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable { onDossierClick(dossier.id) },
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
@@ -562,6 +575,29 @@ private fun ProductionPhaseContent(
                         Column(modifier = Modifier.padding(top = 12.dp)) {
                             HorizontalDivider(color = Color(0xFF334155))
                             Spacer(modifier = Modifier.height(8.dp))
+
+                            // 1. SIMULATEUR DE TRÉSORERIE & DIVIDENDES EN DIRECT
+                            LiveTreasuryTrackerCard()
+                            Spacer(modifier = Modifier.height(14.dp))
+                            HorizontalDivider(color = Color(0xFF334155))
+                            Spacer(modifier = Modifier.height(10.dp))
+
+                            // 2. ANNONCE PILOTE LEBONCOIN HAUTE CONVERSION (PRÊTE À POSTER)
+                            LeboncoinPilotAdCard()
+                            Spacer(modifier = Modifier.height(14.dp))
+                            HorizontalDivider(color = Color(0xFF334155))
+                            Spacer(modifier = Modifier.height(10.dp))
+
+                            // 3. CARNET DE COMMANDES & PROSPECTS (LIVE CRM)
+                            ClientLeadsManagerCard(
+                                leads = uiState.clientLeads,
+                                onAddLead = onAddLead,
+                                onUpdateStatus = onUpdateLeadStatus,
+                                onDeleteLead = onDeleteLead
+                            )
+                            Spacer(modifier = Modifier.height(14.dp))
+                            HorizontalDivider(color = Color(0xFF334155))
+                            Spacer(modifier = Modifier.height(10.dp))
 
                             Text(
                                 text = "Feuille de Route Opérationnelle (Attribution des Tâches) :",
@@ -2909,5 +2945,787 @@ private fun PartnerNotesSection(
                 unfocusedTextColor = Color(0xFFCBD5E1)
             )
         )
+    }
+}
+
+@Composable
+private fun LiveTreasuryTrackerCard() {
+    var salesCount by remember { mutableStateOf(30) }
+
+    val caHT = salesCount * 290.83
+    val directCostsHT = salesCount * 187.77
+    val grossMargin = caHT - directCostsHT
+    val monthlyFixedCosts = 212.67 // Expert comptable 83€ + Qonto 29€ + RC Pro 42€ + CFE 33€ + Web 25€
+    val ebit = maxOf(0.0, grossMargin - monthlyFixedCosts)
+    val is15 = ebit * 0.15
+    val netSas = ebit - is15
+    val partnerGrossDividend = netSas / 2.0
+    val flatTax30 = partnerGrossDividend * 0.30
+    val netInPocketPerPartner = partnerGrossDividend - flatTax30
+    val presidentTotalNet = netInPocketPerPartner + 2000.0 // Maintien 100% ARE Chômage
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp))
+            .background(Color(0xFF0F172A))
+            .border(1.dp, Color(0xFF10B981).copy(alpha = 0.7f), RoundedCornerShape(10.dp))
+            .padding(12.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(text = "💶", fontSize = 16.sp)
+                Spacer(modifier = Modifier.width(6.dp))
+                Text(
+                    text = "SIMULATEUR DE TRÉSORERIE & DIVIDENDES LIVE",
+                    color = Color(0xFF34D399),
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 11.sp
+                )
+            }
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(Color(0xFF10B981).copy(alpha = 0.2f))
+                    .border(1.dp, Color(0xFF10B981), RoundedCornerShape(4.dp))
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
+            ) {
+                Text(
+                    text = "$salesCount VENTES / MOIS",
+                    color = Color(0xFF34D399),
+                    fontSize = 8.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(
+            text = "Ajustez le curseur de ventes mensuelles pour voir instantanément l'impact sur le cash en poche et vos dividendes nets (après IS 15% et Flat Tax 30%) :",
+            color = Color(0xFF94A3B8),
+            fontSize = 9.sp
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // Slider
+        Slider(
+            value = salesCount.toFloat(),
+            onValueChange = { salesCount = it.toInt() },
+            valueRange = 5f..60f,
+            steps = 54,
+            colors = SliderDefaults.colors(
+                thumbColor = Color(0xFF10B981),
+                activeTrackColor = Color(0xFF10B981),
+                inactiveTrackColor = Color(0xFF334155)
+            )
+        )
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(text = "Pessimiste : 5/mois", color = Color(0xFF64748B), fontSize = 8.sp)
+            Text(text = "Cible : 30/mois (1/jour)", color = Color(0xFFFBBF24), fontSize = 8.sp, fontWeight = FontWeight.Bold)
+            Text(text = "Haute saison : 60/mois", color = Color(0xFF34D399), fontSize = 8.sp)
+        }
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        // 4 KPI Grid
+        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+            // CA HT
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .clip(RoundedCornerShape(6.dp))
+                    .background(Color(0xFF1E293B))
+                    .padding(8.dp)
+            ) {
+                Column {
+                    Text(text = "CA Mensuel HT", color = Color(0xFF94A3B8), fontSize = 8.sp)
+                    Text(
+                        text = "${caHT.toInt()} € HT",
+                        color = Color.White,
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+            }
+
+            // Marge brute
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .clip(RoundedCornerShape(6.dp))
+                    .background(Color(0xFF1E293B))
+                    .padding(8.dp)
+            ) {
+                Column {
+                    Text(text = "Marge Brute", color = Color(0xFF94A3B8), fontSize = 8.sp)
+                    Text(
+                        text = "+${grossMargin.toInt()} €",
+                        color = Color(0xFF38BDF8),
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+            }
+        }
+
+        Spacer(modifier = Modifier.height(6.dp))
+
+        // Master Result Cards
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(8.dp))
+                .background(Color(0xFF064E3B).copy(alpha = 0.35f))
+                .border(1.dp, Color(0xFF10B981).copy(alpha = 0.5f), RoundedCornerShape(8.dp))
+                .padding(10.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Column {
+                    Text(
+                        text = "DIVIDENDE NET EN POCHE / ASSOCIÉ :",
+                        color = Color(0xFF6EE7B7),
+                        fontSize = 9.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Text(
+                        text = "(Après charges fixes 212 €, IS 15% et Flat Tax 30%)",
+                        color = Color(0xFFA7F3D0),
+                        fontSize = 7.sp
+                    )
+                }
+                Text(
+                    text = "+${netInPocketPerPartner.toInt()} € NETS / mois",
+                    color = Color(0xFF34D399),
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Black
+                )
+            }
+
+            Spacer(modifier = Modifier.height(6.dp))
+            HorizontalDivider(color = Color(0xFF10B981).copy(alpha = 0.3f))
+            Spacer(modifier = Modifier.height(6.dp))
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Column {
+                    Text(
+                        text = "REVENU TOTAL PRÉSIDENT (AVEC ARE) :",
+                        color = Color(0xFFFDE68A),
+                        fontSize = 9.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Text(
+                        text = "(2 000 € ARE chômage maintenue + dividende)",
+                        color = Color(0xFFFEF3C7),
+                        fontSize = 7.sp
+                    )
+                }
+                Text(
+                    text = "+${presidentTotalNet.toInt()} € NETS / mois",
+                    color = Color(0xFFFBBF24),
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Black
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun LeboncoinPilotAdCard() {
+    val context = LocalContext.current
+
+    val adTitle = "Kit Solaire 440W Prêt à Brancher 220V - Moitié prix Sunology (Garantie 25 ans)"
+    val adBody = """☀️ STATION SOLAIRE PLUG & PLAY 440W — PRÊTE À BRANCHER SUR PRISE 220V
+
+Ne payez plus 700 € pour la même technologie ! Vente directe fabricant sans intermédiaires.
+Réduisez votre facture d'électricité dès aujourd'hui : 125 € à 180 € d'économies réelles par an sur votre compteur Linky.
+
+✅ POURQUOI NOTRE PACK EST UNIQUE :
+- 1x Panneau Trina Solar Vertex S+ 440Wc Bi-verre N-Type (Garantie constructeur 25 ans)
+- 1x Micro-onduleur Hoymiles HMS-400 homologué VDE-AR-N 4105 (Coupure instantanée en 0,02s si débranché, zéro risque d'électrocution)
+- 1x Support aluminium noir anodisé réglable (20° à 45°) pour jardin, terrasse, pelouse ou balcon
+- 1x Câble extérieur étanche renforcé 5m avec prise secteur standard 220V avec terre
+- Zéro électricien, zéro travaux : branché en 15 minutes chrono !
+
+⚖️ 100% LÉGAL & SANS CONSUEL :
+- Posé au sol (<1,80m) : dispensé de toute déclaration préalable en mairie (Art. R*421-2 du Code de l'Urbanisme).
+- Déclaration Enedis CACSI gratuite en 5 minutes sur internet (guide pré-rempli fourni).
+
+📦 DISPONIBILITÉ & REMISE :
+- Remise en main propre locale avec conseils personnalisés.
+- Expédition sécurisée sur demi-palette Geodis avec prise de rendez-vous par SMS partout en France.
+- Option Pack Duo 880W (2 panneaux) : 649 € TTC (économisez 49 €).
+- Option prise connectée Wi-Fi (mesure des Watts en direct sur smartphone) : +19 €.
+
+📞 Contactez-nous par message Leboncoin ou par téléphone au 09 72 10 44 20 pour réserver votre kit ou poser vos questions techniques."""
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp))
+            .background(Color(0xFF0F172A))
+            .border(1.dp, Color(0xFFF59E0B).copy(alpha = 0.7f), RoundedCornerShape(10.dp))
+            .padding(12.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(text = "📢", fontSize = 16.sp)
+                Spacer(modifier = Modifier.width(6.dp))
+                Text(
+                    text = "ANNONCE PILOTE LEBONCOIN HAUTE CONVERSION",
+                    color = Color(0xFFFBBF24),
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 11.sp
+                )
+            }
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(Color(0xFFF59E0B).copy(alpha = 0.2f))
+                    .border(1.dp, Color(0xFFF59E0B), RoundedCornerShape(4.dp))
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
+            ) {
+                Text(
+                    text = "PRÊTE À POSTER",
+                    color = Color(0xFFFCD34D),
+                    fontSize = 8.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(
+            text = "À publier pour collecter vos 3 premières réservations locales avant d'engager le moindre euro de capital social :",
+            color = Color(0xFF94A3B8),
+            fontSize = 9.sp
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // Ad preview box
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(8.dp))
+                .background(Color(0xFF1E293B))
+                .border(1.dp, Color(0xFF475569), RoundedCornerShape(8.dp))
+                .padding(10.dp)
+        ) {
+            Text(
+                text = "Titre de l'annonce :",
+                color = Color(0xFF94A3B8),
+                fontSize = 8.sp,
+                fontWeight = FontWeight.Bold
+            )
+            Text(
+                text = adTitle,
+                color = Color.White,
+                fontSize = 10.sp,
+                fontWeight = FontWeight.Bold
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text(text = "🏷️ Prix : 349 €", color = Color(0xFFFBBF24), fontSize = 9.sp, fontWeight = FontWeight.Bold)
+                Text(text = "📍 Catégorie : Bricolage / Énergie", color = Color(0xFF38BDF8), fontSize = 9.sp)
+            }
+
+            Spacer(modifier = Modifier.height(6.dp))
+            Text(
+                text = adBody,
+                color = Color(0xFFCBD5E1),
+                fontSize = 8.sp,
+                lineHeight = 11.sp,
+                maxLines = 8
+            )
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+        Button(
+            onClick = {
+                val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                val clip = ClipData.newPlainText("Annonce Leboncoin", "$adTitle\n\n$adBody")
+                clipboard.setPrimaryClip(clip)
+                Toast.makeText(context, "Annonce Leboncoin copiée dans le presse-papier !", Toast.LENGTH_SHORT).show()
+            },
+            modifier = Modifier.fillMaxWidth(),
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFD97706)),
+            shape = RoundedCornerShape(6.dp)
+        ) {
+            Icon(Icons.Default.ContentCopy, contentDescription = "Copier", modifier = Modifier.size(14.dp))
+            Spacer(modifier = Modifier.width(6.dp))
+            Text(
+                text = "Copier l'annonce complète dans le presse-papier",
+                fontSize = 10.sp,
+                fontWeight = FontWeight.Bold
+            )
+        }
+    }
+}
+
+
+@Composable
+private fun ClientLeadsManagerCard(
+    leads: List<ClientLeadItem>,
+    onAddLead: (String, String, String, String, String) -> Unit,
+    onUpdateStatus: (String, String) -> Unit,
+    onDeleteLead: (String) -> Unit
+) {
+    val context = LocalContext.current
+    var isAddingLead by remember { mutableStateOf(false) }
+
+    var newName by remember { mutableStateOf("") }
+    var newPhone by remember { mutableStateOf("") }
+    var newCity by remember { mutableStateOf("") }
+    var newPack by remember { mutableStateOf("Pack Solo 420W (349 €)") }
+    var newNotes by remember { mutableStateOf("") }
+
+    val totalPotentialCash = leads.sumOf { lead ->
+        if (lead.packType.contains("880") || lead.packType.contains("Duo")) 649 else 349
+    }
+    val securedOrdersCount = leads.count { it.status == "Acompte reçu" || it.status == "Livré / Payé" }
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp))
+            .background(Color(0xFF0F172A))
+            .border(1.dp, Color(0xFF38BDF8).copy(alpha = 0.7f), RoundedCornerShape(10.dp))
+            .padding(12.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(text = "📋", fontSize = 16.sp)
+                Spacer(modifier = Modifier.width(6.dp))
+                Text(
+                    text = "CARNET DE COMMANDES & PROSPECTS (LIVE CRM)",
+                    color = Color(0xFF38BDF8),
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 11.sp
+                )
+            }
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(Color(0xFF38BDF8).copy(alpha = 0.2f))
+                    .border(1.dp, Color(0xFF38BDF8), RoundedCornerShape(4.dp))
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
+            ) {
+                Text(
+                    text = "${leads.size} CONTACTS • $totalPotentialCash € POTENTIEL",
+                    color = Color(0xFF38BDF8),
+                    fontSize = 8.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(
+            text = "Gestion centralisée sur tablette des prospects chauds (Leboncoin, Marketplace & Site Web) pour les 2 associés :",
+            color = Color(0xFF94A3B8),
+            fontSize = 9.sp
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // Summary KPI Row
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .clip(RoundedCornerShape(6.dp))
+                    .background(Color(0xFF1E293B))
+                    .padding(8.dp)
+            ) {
+                Column {
+                    Text(text = "Commandes Sécurisées", color = Color(0xFF94A3B8), fontSize = 8.sp)
+                    Text(
+                        text = "$securedOrdersCount / 3 de l'objectif pilote",
+                        color = if (securedOrdersCount >= 3) Color(0xFF34D399) else Color(0xFFFBBF24),
+                        fontSize = 10.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+            }
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .clip(RoundedCornerShape(6.dp))
+                    .background(Color(0xFF1E293B))
+                    .padding(8.dp)
+            ) {
+                Column {
+                    Text(text = "Potentiel Chiffre d'Affaires", color = Color(0xFF94A3B8), fontSize = 8.sp)
+                    Text(
+                        text = "$totalPotentialCash € TTC",
+                        color = Color(0xFF38BDF8),
+                        fontSize = 10.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+            }
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // Toggle add lead form button
+        Button(
+            onClick = { isAddingLead = !isAddingLead },
+            modifier = Modifier.fillMaxWidth(),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = if (isAddingLead) Color(0xFF475569) else Color(0xFF0284C7)
+            ),
+            shape = RoundedCornerShape(6.dp)
+        ) {
+            Text(
+                text = if (isAddingLead) "▲ Masquer le formulaire de saisie" else "+ Enregistrer un Nouveau Prospect / Commande",
+                fontSize = 10.sp,
+                fontWeight = FontWeight.Bold
+            )
+        }
+
+        if (isAddingLead) {
+            Spacer(modifier = Modifier.height(8.dp))
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(Color(0xFF1E293B))
+                    .border(1.dp, Color(0xFF475569), RoundedCornerShape(8.dp))
+                    .padding(10.dp),
+                verticalArrangement = Arrangement.spacedBy(6.dp)
+            ) {
+                Text(
+                    text = "Ajout Rapide d'un Contact Client :",
+                    color = Color.White,
+                    fontSize = 10.sp,
+                    fontWeight = FontWeight.Bold
+                )
+
+                OutlinedTextField(
+                    value = newName,
+                    onValueChange = { newName = it },
+                    label = { Text("Nom et Prénom du client", fontSize = 9.sp) },
+                    modifier = Modifier.fillMaxWidth(),
+                    singleLine = true,
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedTextColor = Color.White,
+                        unfocusedTextColor = Color.White,
+                        focusedBorderColor = Color(0xFF38BDF8),
+                        unfocusedBorderColor = Color(0xFF64748B)
+                    )
+                )
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                    OutlinedTextField(
+                        value = newPhone,
+                        onValueChange = { newPhone = it },
+                        label = { Text("Téléphone (ex: 06 12 34 56 78)", fontSize = 9.sp) },
+                        modifier = Modifier.weight(1f),
+                        singleLine = true,
+                        colors = OutlinedTextFieldDefaults.colors(
+                            focusedTextColor = Color.White,
+                            unfocusedTextColor = Color.White,
+                            focusedBorderColor = Color(0xFF38BDF8),
+                            unfocusedBorderColor = Color(0xFF64748B)
+                        )
+                    )
+                    OutlinedTextField(
+                        value = newCity,
+                        onValueChange = { newCity = it },
+                        label = { Text("Ville & Dépt (ex: Lyon 69)", fontSize = 9.sp) },
+                        modifier = Modifier.weight(1f),
+                        singleLine = true,
+                        colors = OutlinedTextFieldDefaults.colors(
+                            focusedTextColor = Color.White,
+                            unfocusedTextColor = Color.White,
+                            focusedBorderColor = Color(0xFF38BDF8),
+                            unfocusedBorderColor = Color(0xFF64748B)
+                        )
+                    )
+                }
+
+                // Pack Choice
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                    val isSolo = newPack.contains("Solo")
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .clip(RoundedCornerShape(6.dp))
+                            .background(if (isSolo) Color(0xFF0284C7) else Color(0xFF334155))
+                            .clickable { newPack = "Pack Solo 420W (349 €)" }
+                            .padding(vertical = 6.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "Pack Solo 420W (349 €)",
+                            color = Color.White,
+                            fontSize = 8.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .clip(RoundedCornerShape(6.dp))
+                            .background(if (!isSolo) Color(0xFF0284C7) else Color(0xFF334155))
+                            .clickable { newPack = "Pack Duo 880W (649 €)" }
+                            .padding(vertical = 6.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "Pack Duo 880W (649 €)",
+                            color = Color.White,
+                            fontSize = 8.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                }
+
+                OutlinedTextField(
+                    value = newNotes,
+                    onValueChange = { newNotes = it },
+                    label = { Text("Détails / Besoins client (ex: pose sur abri, questions Enedis)", fontSize = 9.sp) },
+                    modifier = Modifier.fillMaxWidth(),
+                    maxLines = 2,
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedTextColor = Color.White,
+                        unfocusedTextColor = Color.White,
+                        focusedBorderColor = Color(0xFF38BDF8),
+                        unfocusedBorderColor = Color(0xFF64748B)
+                    )
+                )
+
+                Button(
+                    onClick = {
+                        if (newName.isNotBlank() && newPhone.isNotBlank()) {
+                            onAddLead(newName, newPhone, newCity, newPack, newNotes)
+                            newName = ""
+                            newPhone = ""
+                            newCity = ""
+                            newNotes = ""
+                            isAddingLead = false
+                            Toast.makeText(context, "Prospect enregistré avec succès !", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(context, "Veuillez renseigner au moins le nom et le téléphone", Toast.LENGTH_SHORT).show()
+                        }
+                    },
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF10B981)),
+                    shape = RoundedCornerShape(6.dp)
+                ) {
+                    Text(
+                        text = "💾 Enregistrer le Prospect dans la Tablette",
+                        fontSize = 10.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+            }
+        }
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        // Leads List
+        if (leads.isEmpty()) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 12.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = "Aucun prospect enregistré. Cliquez sur le bouton ci-dessus pour ajouter votre premier contact.",
+                    color = Color(0xFF64748B),
+                    fontSize = 9.sp
+                )
+            }
+        } else {
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                leads.forEach { lead ->
+                    val statusColor = when (lead.status) {
+                        "Nouveau contact" -> Color(0xFF38BDF8)
+                        "Devis / Proforma envoyé" -> Color(0xFFF59E0B)
+                        "Acompte reçu" -> Color(0xFFA855F7)
+                        "Livré / Payé" -> Color(0xFF10B981)
+                        else -> Color(0xFF94A3B8)
+                    }
+
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(8.dp))
+                            .background(Color(0xFF1E293B))
+                            .border(1.dp, statusColor.copy(alpha = 0.5f), RoundedCornerShape(8.dp))
+                            .padding(10.dp)
+                    ) {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Column {
+                                Text(
+                                    text = lead.clientName,
+                                    color = Color.White,
+                                    fontSize = 11.sp,
+                                    fontWeight = FontWeight.Bold
+                                )
+                                Text(
+                                    text = "📍 ${if (lead.city.isBlank()) "Ville non précisée" else lead.city} • 📅 ${lead.dateCreated}",
+                                    color = Color(0xFF94A3B8),
+                                    fontSize = 8.sp
+                                )
+                            }
+                            Box(
+                                modifier = Modifier
+                                    .clip(RoundedCornerShape(4.dp))
+                                    .background(statusColor.copy(alpha = 0.2f))
+                                    .border(1.dp, statusColor, RoundedCornerShape(4.dp))
+                                    .padding(horizontal = 6.dp, vertical = 2.dp)
+                            ) {
+                                Text(
+                                    text = lead.status,
+                                    color = statusColor,
+                                    fontSize = 8.sp,
+                                    fontWeight = FontWeight.Bold
+                                )
+                            }
+                        }
+
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(
+                                text = "📦 ${lead.packType}",
+                                color = Color(0xFFFCD34D),
+                                fontSize = 9.sp,
+                                fontWeight = FontWeight.SemiBold
+                            )
+                            Text(
+                                text = "📞 ${lead.phone}",
+                                color = Color(0xFFCBD5E1),
+                                fontSize = 9.sp
+                            )
+                        }
+
+                        if (lead.notes.isNotBlank()) {
+                            Spacer(modifier = Modifier.height(4.dp))
+                            Text(
+                                text = "💬 Note : ${lead.notes}",
+                                color = Color(0xFF94A3B8),
+                                fontSize = 8.sp,
+                                lineHeight = 11.sp
+                            )
+                        }
+
+                        Spacer(modifier = Modifier.height(8.dp))
+
+                        // Action buttons row: Call, SMS, Cycle Status, Delete
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(6.dp)
+                        ) {
+                            // Call button
+                            Button(
+                                onClick = {
+                                    val dialIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:${lead.phone}"))
+                                    context.startActivity(dialIntent)
+                                },
+                                modifier = Modifier.weight(1f),
+                                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF0284C7)),
+                                shape = RoundedCornerShape(4.dp),
+                                contentPadding = androidx.compose.foundation.layout.PaddingValues(vertical = 4.dp, horizontal = 4.dp)
+                            ) {
+                                Text(text = "📞 Appeler", fontSize = 8.sp, fontWeight = FontWeight.Bold)
+                            }
+
+                            // SMS button
+                            Button(
+                                onClick = {
+                                    val smsIntent = Intent(Intent.ACTION_VIEW, Uri.parse("sms:${lead.phone}")).apply {
+                                        putExtra("sms_body", "Bonjour ${lead.clientName}, c'est SOLARIS France au sujet de votre projet de kit solaire plug & play. Avez-vous un moment pour échanger ?")
+                                    }
+                                    context.startActivity(smsIntent)
+                                },
+                                modifier = Modifier.weight(1f),
+                                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF334155)),
+                                shape = RoundedCornerShape(4.dp),
+                                contentPadding = androidx.compose.foundation.layout.PaddingValues(vertical = 4.dp, horizontal = 4.dp)
+                            ) {
+                                Text(text = "💬 SMS", fontSize = 8.sp, fontWeight = FontWeight.Bold)
+                            }
+
+                            // Cycle Status button
+                            Button(
+                                onClick = {
+                                    val nextStatus = when (lead.status) {
+                                        "Nouveau contact" -> "Devis / Proforma envoyé"
+                                        "Devis / Proforma envoyé" -> "Acompte reçu"
+                                        "Acompte reçu" -> "Livré / Payé"
+                                        else -> "Nouveau contact"
+                                    }
+                                    onUpdateStatus(lead.id, nextStatus)
+                                },
+                                modifier = Modifier.weight(1.2f),
+                                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF475569)),
+                                shape = RoundedCornerShape(4.dp),
+                                contentPadding = androidx.compose.foundation.layout.PaddingValues(vertical = 4.dp, horizontal = 4.dp)
+                            ) {
+                                Text(text = "🔄 Statut +", fontSize = 8.sp, fontWeight = FontWeight.Bold)
+                            }
+
+                            // Delete button
+                            Button(
+                                onClick = {
+                                    onDeleteLead(lead.id)
+                                    Toast.makeText(context, "Contact supprimé", Toast.LENGTH_SHORT).show()
+                                },
+                                modifier = Modifier.weight(0.7f),
+                                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFDC2626).copy(alpha = 0.8f)),
+                                shape = RoundedCornerShape(4.dp),
+                                contentPadding = androidx.compose.foundation.layout.PaddingValues(vertical = 4.dp, horizontal = 4.dp)
+                            ) {
+                                Text(text = "🗑️", fontSize = 8.sp)
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

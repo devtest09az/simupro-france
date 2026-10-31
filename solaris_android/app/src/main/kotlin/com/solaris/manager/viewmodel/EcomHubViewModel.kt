@@ -4,8 +4,14 @@ import android.app.Application
 import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import com.solaris.manager.data.EcomDossiersData
+import com.solaris.manager.model.ClientLeadItem
 import com.solaris.manager.model.EcomDossier
 import com.solaris.manager.model.ProjectPhase
+import org.json.JSONArray
+import org.json.JSONObject
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -15,7 +21,8 @@ data class EcomHubUiState(
     val dossiers: List<EcomDossier> = emptyList(),
     val selectedDossierId: String? = "dossier_solaire",
     val activeNotesByDossier: Map<String, String> = emptyMap(),
-    val noteSavedFeedback: String? = null
+    val noteSavedFeedback: String? = null,
+    val clientLeads: List<ClientLeadItem> = emptyList()
 )
 
 class EcomHubViewModel(application: Application) : AndroidViewModel(application) {
@@ -57,12 +64,15 @@ class EcomHubViewModel(application: Application) : AndroidViewModel(application)
 
         val notesMap = initialDossiers.associate { it.id to it.partnerNotes }
 
+        val initialLeads = loadClientLeads()
+
         return EcomHubUiState(
             currentPhase = ProjectPhase.CONCEPTION,
             dossiers = initialDossiers,
             selectedDossierId = "dossier_solaire",
             activeNotesByDossier = notesMap,
-            noteSavedFeedback = null
+            noteSavedFeedback = null,
+            clientLeads = initialLeads
         )
     }
 
@@ -182,4 +192,102 @@ class EcomHubViewModel(application: Application) : AndroidViewModel(application)
         _uiState.value = _uiState.value.copy(dossiers = updatedDossiers)
     }
 
+
+    private fun loadClientLeads(): List<ClientLeadItem> {
+        val jsonStr = prefs.getString("client_leads_json", null)
+        if (jsonStr.isNullOrBlank()) {
+            return listOf(
+                ClientLeadItem(
+                    id = "lead_1",
+                    clientName = "Marc V.",
+                    phone = "06 45 89 12 30",
+                    city = "Toulouse (31)",
+                    packType = "Pack Solo 420W (349 €)",
+                    status = "Devis / Proforma envoyé",
+                    dateCreated = "31/10/2026",
+                    notes = "Intéressé par l'annonce Leboncoin. Veut équiper son abri de jardin orienté plein Sud."
+                ),
+                ClientLeadItem(
+                    id = "lead_2",
+                    clientName = "Stéphane B.",
+                    phone = "06 78 12 90 44",
+                    city = "Nantes (44)",
+                    packType = "Pack Duo 880W (649 €)",
+                    status = "Nouveau contact",
+                    dateCreated = "31/10/2026",
+                    notes = "Demande de rappel téléphonique pour valider l'absence de Consuel sur prise 220V."
+                )
+            )
+        }
+        return try {
+            val array = JSONArray(jsonStr)
+            val list = mutableListOf<ClientLeadItem>()
+            for (i in 0 until array.length()) {
+                val obj = array.getJSONObject(i)
+                list.add(
+                    ClientLeadItem(
+                        id = obj.getString("id"),
+                        clientName = obj.getString("clientName"),
+                        phone = obj.getString("phone"),
+                        city = obj.getString("city"),
+                        packType = obj.getString("packType"),
+                        status = obj.getString("status"),
+                        dateCreated = obj.getString("dateCreated"),
+                        notes = obj.optString("notes", "")
+                    )
+                )
+            }
+            list
+        } catch (e: Exception) {
+            emptyList()
+        }
+    }
+
+    private fun persistLeads(leads: List<ClientLeadItem>) {
+        val array = JSONArray()
+        for (lead in leads) {
+            val obj = JSONObject()
+            obj.put("id", lead.id)
+            obj.put("clientName", lead.clientName)
+            obj.put("phone", lead.phone)
+            obj.put("city", lead.city)
+            obj.put("packType", lead.packType)
+            obj.put("status", lead.status)
+            obj.put("dateCreated", lead.dateCreated)
+            obj.put("notes", lead.notes)
+            array.put(obj)
+        }
+        prefs.edit().putString("client_leads_json", array.toString()).apply()
+    }
+
+    fun addClientLead(clientName: String, phone: String, city: String, packType: String, notes: String) {
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE)
+        val newLead = ClientLeadItem(
+            id = "lead_${System.currentTimeMillis()}",
+            clientName = clientName,
+            phone = phone,
+            city = city,
+            packType = packType,
+            status = "Nouveau contact",
+            dateCreated = dateFormat.format(Date()),
+            notes = notes
+        )
+        val updated = listOf(newLead) + _uiState.value.clientLeads
+        persistLeads(updated)
+        _uiState.value = _uiState.value.copy(clientLeads = updated)
+    }
+
+    fun updateLeadStatus(leadId: String, newStatus: String) {
+        val updated = _uiState.value.clientLeads.map { lead ->
+            if (lead.id == leadId) lead.copy(status = newStatus) else lead
+        }
+        persistLeads(updated)
+        _uiState.value = _uiState.value.copy(clientLeads = updated)
+    }
+
+    fun deleteClientLead(leadId: String) {
+        val updated = _uiState.value.clientLeads.filter { it.id != leadId }
+        persistLeads(updated)
+        _uiState.value = _uiState.value.copy(clientLeads = updated)
+    }
 }

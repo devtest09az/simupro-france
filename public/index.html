@@ -99,8 +99,13 @@
                 <a href="#faq" class="hover:text-white transition">FAQ</a>
             </nav>
 
-            <!-- CTA -->
+            <!-- CTA & Contact -->
             <div class="flex items-center gap-3">
+                <a href="tel:0972104420" class="hidden sm:flex items-center gap-2 text-xs text-slate-300 hover:text-white transition bg-slate-900/90 border border-slate-700/70 hover:border-amber-400/50 px-3.5 py-2.5 rounded-xl shadow-sm">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span class="font-mono font-bold text-amber-400">09 72 10 44 20</span>
+                    <span class="text-[10px] text-slate-400 hidden md:inline">(Lun-Sam 9h-19h)</span>
+                </a>
                 <a href="#packs" class="px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs uppercase tracking-wider transition shadow-lg shadow-amber-400/20 flex items-center gap-2">
                     <span>Commander (349 €)</span>
                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -759,6 +764,78 @@
                     </p>
                 </div>
             </div>
+
+            <!-- Pack Documentaire & Certificats Téléchargeables -->
+            <div class="mt-12 p-6 sm:p-8 rounded-2xl bg-slate-900/90 border border-slate-700/80 space-y-6">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-800 pb-4">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-xl">📁</span>
+                            <h3 class="text-lg font-display font-bold text-white">Pack Documentaire & Certificats Officiels</h3>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-1">
+                            Téléchargez librement les fiches techniques industrielles, certifications de laboratoire et formulaires administratifs pré-remplis :
+                        </p>
+                    </div>
+                    <span class="text-[10px] font-mono uppercase tracking-wider text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1.5 rounded-full font-bold">
+                        100% Transparence
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+                    <!-- Doc 1 -->
+                    <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-amber-400/50 transition flex flex-col justify-between space-y-3">
+                        <div class="space-y-1.5">
+                            <span class="text-[10px] font-mono text-amber-400 font-bold">FICHE TECHNIQUE</span>
+                            <div class="font-bold text-white text-sm">Panneau Trina Solar 440W</div>
+                            <p class="text-[11px] text-slate-400">Vertex S+ Biverre N-Type, rendement 22,0%, garantie 25 ans constructeur.</p>
+                        </div>
+                        <a href="guide-raccordement-enedis-cacsi.html#materiel" class="inline-flex items-center gap-1.5 text-amber-400 hover:text-amber-300 font-semibold text-[11px]">
+                            <span>Consulter la notice</span>
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        </a>
+                    </div>
+
+                    <!-- Doc 2 -->
+                    <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-emerald-400/50 transition flex flex-col justify-between space-y-3">
+                        <div class="space-y-1.5">
+                            <span class="text-[10px] font-mono text-emerald-400 font-bold">HOMOLOGATION RÉSEAU</span>
+                            <div class="font-bold text-white text-sm">Certificat DIN VDE-AR-N 4105</div>
+                            <p class="text-[11px] text-slate-400">Micro-onduleur Hoymiles HMS-400, coupure instantanée anti-îlotage < 20ms.</p>
+                        </div>
+                        <a href="guide-raccordement-enedis-cacsi.html#certificat" class="inline-flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 font-semibold text-[11px]">
+                            <span>Voir le certificat VDE</span>
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        </a>
+                    </div>
+
+                    <!-- Doc 3 -->
+                    <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-cyan-400/50 transition flex flex-col justify-between space-y-3">
+                        <div class="space-y-1.5">
+                            <span class="text-[10px] font-mono text-cyan-400 font-bold">DÉMARCHE ENEDIS 0 €</span>
+                            <div class="font-bold text-white text-sm">Guide Déclaration CACSI</div>
+                            <p class="text-[11px] text-slate-400">Tutoriel pas-à-pas pré-rempli pour déclarer votre kit sur Enedis en 5 minutes sans Consuel.</p>
+                        </div>
+                        <a href="guide-raccordement-enedis-cacsi.html" class="inline-flex items-center gap-1.5 text-cyan-400 hover:text-cyan-300 font-semibold text-[11px]">
+                            <span>Ouvrir le guide CACSI</span>
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        </a>
+                    </div>
+
+                    <!-- Doc 4 -->
+                    <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-indigo-400/50 transition flex flex-col justify-between space-y-3">
+                        <div class="space-y-1.5">
+                            <span class="text-[10px] font-mono text-indigo-400 font-bold">GARANTIE CONSOMMATEUR</span>
+                            <div class="font-bold text-white text-sm">Formulaire Rétractation 14j</div>
+                            <p class="text-[11px] text-slate-400">Modèle officiel de rétractation et conditions de retour (Code Consommation art. L221-18).</p>
+                        </div>
+                        <a href="cgv.html#retractation" class="inline-flex items-center gap-1.5 text-indigo-400 hover:text-indigo-300 font-semibold text-[11px]">
+                            <span>Consulter les CGV & droit de retour</span>
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Command / Reservation Section -->
@@ -1334,7 +1411,112 @@
         }
 
         // Initialize calculator
+        
+        // Callback Modal Handlers
+        function openCallbackModal() {
+            document.getElementById('callbackModal').classList.remove('hidden');
+            document.getElementById('callbackSuccess').classList.add('hidden');
+            document.getElementById('callbackForm').classList.remove('hidden');
+        }
+
+        function closeCallbackModal() {
+            document.getElementById('callbackModal').classList.add('hidden');
+        }
+
+        function handleCallbackSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('callName').value.trim();
+            const phone = document.getElementById('callPhone').value.trim();
+            const topic = document.getElementById('callTopic').value;
+
+            const newLead = {
+                id: 'lead_' + Date.now(),
+                name: name,
+                phone: phone,
+                topic: topic,
+                date: new Date().toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }),
+                status: 'Demande de rappel web'
+            };
+
+            const existingLeads = JSON.parse(localStorage.getItem('solaris_web_leads') || '[]');
+            existingLeads.unshift(newLead);
+            localStorage.setItem('solaris_web_leads', JSON.stringify(existingLeads));
+
+            document.getElementById('callbackForm').classList.add('hidden');
+            document.getElementById('callbackSuccess').classList.remove('hidden');
+            document.getElementById('callbackSuccessMsg').innerText = `Merci ${name} ! Nous vous contactons au ${phone} très rapidement.`;
+        }
+
         updateSolarCalc();
     </script>
+
+    <!-- Floating Assistance & Callback Pill (Fixed Bottom-Right) -->
+    <div id="floatingAssistance" class="fixed bottom-5 right-5 z-40 flex items-center gap-2 p-1.5 pr-2 bg-slate-950/90 backdrop-blur-xl border border-slate-700/80 rounded-full shadow-2xl shadow-black/80 hover:border-amber-400/60 transition-all duration-300">
+        <a href="tel:0972104420" class="flex items-center gap-2 px-3 py-1.5 rounded-full hover:bg-slate-900 transition">
+            <span class="relative flex h-2.5 w-2.5">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+            </span>
+            <span class="text-xs font-mono font-bold text-amber-400">09 72 10 44 20</span>
+        </a>
+        <button onclick="openCallbackModal()" class="px-3.5 py-1.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition shadow-sm flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            <span>Être rappelé</span>
+        </button>
+    </div>
+
+    <!-- Callback Mini-Modal -->
+    <div id="callbackModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-700/80 rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative space-y-5 animate-in fade-in duration-200">
+            <button onclick="closeCallbackModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white text-xl font-bold">✕</button>
+
+            <div class="space-y-1.5">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">📞</span>
+                    <h3 class="text-xl font-display font-bold text-white">Rappel Gratuit & Sans Engagement</h3>
+                </div>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Un conseiller SOLARIS basé en France vous rappelle en 15 minutes pour répondre à vos questions techniques (zéro pression commerciale, zéro spam).
+                </p>
+            </div>
+
+            <form id="callbackForm" onsubmit="handleCallbackSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Votre Prénom & Nom *</label>
+                    <input type="text" id="callName" required placeholder="ex: Jean Dupont" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-white text-xs focus:outline-none focus:border-amber-400">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Votre Numéro de Téléphone *</label>
+                    <input type="tel" id="callPhone" required placeholder="ex: 06 12 34 56 78" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-white text-xs focus:outline-none focus:border-amber-400">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Votre Projet ou Question (Optionnel)</label>
+                    <select id="callTopic" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-white text-xs focus:outline-none focus:border-amber-400">
+                        <option value="estimation">☀️ Valider l'ensoleillement de ma maison</option>
+                        <option value="enedis">📋 Question sur la démarche Enedis CACSI 0 €</option>
+                        <option value="pack_solo">📦 Question sur le Pack Solo 440W (349 €)</option>
+                        <option value="pack_duo">⚡ Question sur le Pack Duo 880W (649 €)</option>
+                        <option value="autre">💬 Autre question technique</option>
+                    </select>
+                </div>
+
+                <div class="p-3 rounded-xl bg-slate-950/70 border border-slate-800 text-[11px] text-slate-400 flex items-center gap-2">
+                    <span class="text-emerald-400 font-bold">🔒</span>
+                    <span>Vos coordonnées ne sont <strong>jamais</strong> revendues ni cédées à des tiers.</span>
+                </div>
+
+                <button type="submit" class="w-full py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs uppercase tracking-wider transition shadow-lg shadow-amber-400/20">
+                    Confirmer ma demande de rappel
+                </button>
+            </form>
+
+            <div id="callbackSuccess" class="hidden p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-center space-y-2">
+                <div class="text-emerald-400 font-bold text-sm">✅ Demande enregistrée avec succès !</div>
+                <p class="text-xs text-slate-300" id="callbackSuccessMsg">Un conseiller vous contacte dans les plus brefs délais.</p>
+                <button onclick="closeCallbackModal()" class="text-xs text-emerald-400 hover:underline pt-2 font-semibold">Fermer</button>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
