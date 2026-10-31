@@ -7,9 +7,12 @@ import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.ui.res.painterResource
+import com.solaris.manager.R
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -178,24 +181,34 @@ private fun HubHeader(uiState: EcomHubUiState) {
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Column {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Icon(Icons.Default.People, contentDescription = "Associés", tint = Color(0xFFF59E0B), modifier = Modifier.size(18.dp))
-                    Spacer(modifier = Modifier.width(6.dp))
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Image(
+                    painter = painterResource(id = R.drawable.ic_kopilot_logo),
+                    contentDescription = "Logo KoPilot E-Com",
+                    modifier = Modifier
+                        .size(46.dp)
+                        .clip(RoundedCornerShape(11.dp))
+                )
+                Spacer(modifier = Modifier.width(10.dp))
+                Column {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icon(Icons.Default.People, contentDescription = "Associés", tint = Color(0xFFF59E0B), modifier = Modifier.size(15.dp))
+                        Spacer(modifier = Modifier.width(5.dp))
+                        Text(
+                            text = "ESPACE ASSOCIÉS • 2 CO-FONDATEURS",
+                            color = Color(0xFFF59E0B),
+                            fontSize = 10.sp,
+                            fontWeight = FontWeight.Bold,
+                            letterSpacing = 0.8.sp
+                        )
+                    }
                     Text(
-                        text = "ESPACE ASSOCIÉS • 2 CO-FONDATEURS",
-                        color = Color(0xFFF59E0B),
-                        fontSize = 11.sp,
-                        fontWeight = FontWeight.Bold,
-                        letterSpacing = 1.sp
+                        text = "KoPilot E-Com",
+                        color = Color.White,
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Black
                     )
                 }
-                Text(
-                    text = "Pilotage Dossiers E-Commerce",
-                    color = Color.White,
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Black
-                )
             }
 
             Box(
@@ -213,12 +226,12 @@ private fun HubHeader(uiState: EcomHubUiState) {
             }
         }
 
-        Spacer(modifier = Modifier.height(4.dp))
+        Spacer(modifier = Modifier.height(6.dp))
         Text(
             text = if (uiState.currentPhase == ProjectPhase.CONCEPTION)
-                "Bases vérifiées : 100% sourcé, prix grossistes, liens usines, droit ARE et calculs de marges."
+                "Pilotage stratégique sourcé : Solaire 420W, Alarmes 4G, SAS multi-marques & Bouclier ARE."
             else
-                "Opérations terrain : checklist partagée, avancement en direct, sites en ligne et prise de notes.",
+                "Exécution terrain : checklist partagée à deux, répartition des tâches, sites en ligne & journal de bord.",
             color = Color(0xFF94A3B8),
             fontSize = 12.sp
         )
