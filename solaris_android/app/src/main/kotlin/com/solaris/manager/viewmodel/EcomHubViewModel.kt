@@ -202,7 +202,7 @@ class EcomHubViewModel(application: Application) : AndroidViewModel(application)
                     clientName = "Marc V.",
                     phone = "06 45 89 12 30",
                     city = "Toulouse (31)",
-                    packType = "Pack Solo 420W (349 €)",
+                    packType = "Pack Solo 440W (349 €)",
                     status = "Devis / Proforma envoyé",
                     dateCreated = "31/10/2026",
                     notes = "Intéressé par l'annonce Leboncoin. Veut équiper son abri de jardin orienté plein Sud."

@@ -97,7 +97,7 @@ fun SolarisApp(
                                 )
                             }
                             Text(
-                                text = "Station Solaire 420W Plug & Play",
+                                text = "Station Solaire 440W Plug & Play",
                                 color = Color(0xFF94A3B8),
                                 fontSize = 10.sp
                             )

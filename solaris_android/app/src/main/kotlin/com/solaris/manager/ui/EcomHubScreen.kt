@@ -3467,7 +3467,7 @@ private fun ClientLeadsManagerCard(
     var newName by remember { mutableStateOf("") }
     var newPhone by remember { mutableStateOf("") }
     var newCity by remember { mutableStateOf("") }
-    var newPack by remember { mutableStateOf("Pack Solo 420W (349 €)") }
+    var newPack by remember { mutableStateOf("Pack Solo 440W (349 €)") }
     var newNotes by remember { mutableStateOf("") }
 
     val totalPotentialCash = leads.sumOf { lead ->
@@ -3656,12 +3656,12 @@ private fun ClientLeadsManagerCard(
                             .weight(1f)
                             .clip(RoundedCornerShape(6.dp))
                             .background(if (isSolo) Color(0xFF0284C7) else Color(0xFF334155))
-                            .clickable { newPack = "Pack Solo 420W (349 €)" }
+                            .clickable { newPack = "Pack Solo 440W (349 €)" }
                             .padding(vertical = 6.dp),
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
-                            text = "Pack Solo 420W (349 €)",
+                            text = "Pack Solo 440W (349 €)",
                             color = Color.White,
                             fontSize = 8.sp,
                             fontWeight = FontWeight.Bold
