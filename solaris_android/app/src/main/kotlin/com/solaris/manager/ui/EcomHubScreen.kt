@@ -437,6 +437,12 @@ private fun ConceptionPhaseContent(
                                 Spacer(modifier = Modifier.height(10.dp))
                             }
 
+                            // 9.BIS PROTOCOLE DE CRÉATION DE LA SAS & GOUVERNANCE QONTO
+                            SasCreationRoadmapCard()
+                            Spacer(modifier = Modifier.height(14.dp))
+                            HorizontalDivider(color = Color(0xFF334155))
+                            Spacer(modifier = Modifier.height(10.dp))
+
                             // 10. COMPOSANTS & SOURCINGS B2B RÉELS (PRIX GROSSISTES VÉRIFIÉS)
                             Text(
                                 text = "10. Composants & Sourcings B2B (Prix Grossistes Vérifiés) :",
@@ -3070,6 +3076,153 @@ private fun ObjectionsCard(objections: List<ObjectionItem>) {
 }
 
 @Composable
+private fun SasCreationRoadmapCard() {
+    val context = LocalContext.current
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp))
+            .background(Color(0xFF0F172A))
+            .border(1.dp, Color(0xFF38BDF8).copy(alpha = 0.6f), RoundedCornerShape(10.dp))
+            .padding(12.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(text = "🏢", fontSize = 16.sp)
+                Spacer(modifier = Modifier.width(6.dp))
+                Text(
+                    text = "PROTOCOLE DE CRÉATION DE LA SAS & STATUTS QONTO",
+                    color = Color(0xFF38BDF8),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 0.5.sp
+                )
+            }
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(Color(0xFF0284C7).copy(alpha = 0.2f))
+                    .border(1.dp, Color(0xFF38BDF8), RoundedCornerShape(4.dp))
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
+            ) {
+                Text(
+                    text = "JURIDIQUE & STATUTS",
+                    color = Color(0xFF7DD3FC),
+                    fontSize = 8.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(
+            text = "Guide opérationnel pour créer la SAS multi-activités (Solaire + Alarmes) sous 1 seul SIRET sans perdre l'ARE :",
+            color = Color(0xFF94A3B8),
+            fontSize = 9.sp
+        )
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        // LES 4 ÉTAPES CLÉS
+        val steps = listOf(
+            Triple("1. Dépôt Capital Qonto (1 000 €)", "Virement 500 € / associé sur compte de séquestre en ligne.", "Certificat officiel de dépôt des fonds délivré sous 24h ouvrées."),
+            Triple("2. Statuts SAS & Objet Social Article 2", "Dénomination sociale neutre (ex: VOLTIS GROUP SAS ou HELIO TRADE SAS).", "Objet social rédigé pour couvrir Solaire 440W + Alarmes 4G sous un seul SIRET."),
+            Triple("3. Mandat Gratuit & Bouclier ARE 100%", "Nomination du Président à titre 100% gratuit (0,00 € salaire).", "Zéro cotisation minimale URSSAF. Maintien intégral de l'allocation chômage chaque mois."),
+            Triple("4. Guichet Unique INPI & Extrait Kbis", "Annonce légale JAL (~130 €) + Frais de Greffe et RBE (~60 €).", "Obtention de l'extrait Kbis officiel sous 3 à 5 jours ouvrés.")
+        )
+
+        steps.forEach { (title, subtitle, detail) ->
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 3.dp)
+                    .clip(RoundedCornerShape(6.dp))
+                    .background(Color(0xFF1E293B))
+                    .border(1.dp, Color(0xFF334155), RoundedCornerShape(6.dp))
+                    .padding(8.dp)
+            ) {
+                Text(
+                    text = title,
+                    color = Color(0xFFFBBF24),
+                    fontSize = 9.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    text = subtitle,
+                    color = Color(0xFFE2E8F0),
+                    fontSize = 8.sp,
+                    fontWeight = FontWeight.Medium
+                )
+                Text(
+                    text = detail,
+                    color = Color(0xFF94A3B8),
+                    fontSize = 7.sp,
+                    lineHeight = 9.sp
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // BANDEAU FISCALITÉ DIVIDENDES
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(6.dp))
+                .background(Color(0xFF059669).copy(alpha = 0.15f))
+                .border(1.dp, Color(0xFF10B981).copy(alpha = 0.4f), RoundedCornerShape(6.dp))
+                .padding(8.dp)
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(text = "💰", fontSize = 11.sp)
+                Spacer(modifier = Modifier.width(4.dp))
+                Text(
+                    text = "FISCALITÉ OPTIMISÉE DES BÉNÉFICES (DIVIDENDES)",
+                    color = Color(0xFF6EE7B7),
+                    fontSize = 8.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+            Spacer(modifier = Modifier.height(2.dp))
+            Text(
+                text = "Les dividendes de SAS ne subissent AUCUNE cotisation sociale URSSAF (contrairement à la SARL). Taxation unique à la Flat Tax (PFU 30%), totalement cumulable avec l'ARE sans diminution d'allocation.",
+                color = Color(0xFFA7F3D0),
+                fontSize = 7.sp,
+                lineHeight = 9.sp
+            )
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // BOUTON ACTION RAPIDE COPIER
+        Button(
+            onClick = {
+                val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                val text = """ARTICLE 2 - OBJET SOCIAL DE LA SAS (Solaire & Sécurité)
+1. Le commerce, vente à distance et e-commerce d'équipements liés aux énergies renouvelables et stations solaires d'autoconsommation ;
+2. Le commerce et la distribution d'équipements de sécurité électronique, alarmes autonomes sans fil, vidéosurveillance et domotique ;
+3. Le conseil, l'assistance technique à distance et le SAV associé.
+(Couvre Solaire + Alarmes sous 1 seul SIRET et 1 compte Qonto)"""
+                val clip = ClipData.newPlainText("Article 2 Objet Social", text)
+                clipboard.setPrimaryClip(clip)
+                Toast.makeText(context, "Article 2 copié dans le presse-papier !", Toast.LENGTH_SHORT).show()
+            },
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF0284C7)),
+            modifier = Modifier.fillMaxWidth().height(36.dp)
+        ) {
+            Icon(Icons.Default.ContentCopy, contentDescription = "Copier", tint = Color.White, modifier = Modifier.size(14.dp))
+            Spacer(modifier = Modifier.width(6.dp))
+            Text(text = "Copier la Clause Article 2 des Statuts pour Qonto", fontSize = 10.sp, fontWeight = FontWeight.Bold)
+        }
+    }
+}
+
+@Composable
 private fun RegulatoryRoadmapCard(roadmap: List<RegulatoryRoadmapItem>) {
     val context = LocalContext.current
 
@@ -3278,13 +3431,14 @@ private fun ConceptionItemRow(item: ConceptionDetail) {
 @Composable
 private fun ToolkitItemRow(tool: ToolkitItem) {
     val context = LocalContext.current
+    var isExpanded by remember { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(8.dp))
             .background(Color(0xFF0F172A))
-            .border(1.dp, Color(0xFF334155), RoundedCornerShape(8.dp))
+            .border(1.dp, if (isExpanded) Color(0xFFFBBF24) else Color(0xFF334155), RoundedCornerShape(8.dp))
             .padding(10.dp)
     ) {
         Row(
@@ -3292,13 +3446,26 @@ private fun ToolkitItemRow(tool: ToolkitItem) {
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = tool.title,
-                    color = Color(0xFFFBBF24),
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.Bold
-                )
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable { isExpanded = !isExpanded }
+            ) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(
+                        text = tool.title,
+                        color = Color(0xFFFBBF24),
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Spacer(modifier = Modifier.width(4.dp))
+                    Icon(
+                        if (isExpanded) Icons.Default.ExpandLess else Icons.Default.ExpandMore,
+                        contentDescription = "Déplier",
+                        tint = Color(0xFFFBBF24),
+                        modifier = Modifier.size(16.dp)
+                    )
+                }
                 Text(
                     text = "${tool.category} • ${tool.sourceOrNorm}",
                     color = Color(0xFF94A3B8),
@@ -3328,11 +3495,12 @@ private fun ToolkitItemRow(tool: ToolkitItem) {
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(6.dp))
                 .background(Color(0xFF030712))
+                .clickable { isExpanded = !isExpanded }
                 .padding(8.dp)
         ) {
             Text(
-                text = tool.contentToCopy.take(160) + if (tool.contentToCopy.length > 160) "..." else "",
-                color = Color(0xFF94A3B8),
+                text = if (isExpanded) tool.contentToCopy else (tool.contentToCopy.take(160) + (if (tool.contentToCopy.length > 160) "\n\n[👉 Appuyez ici pour lire l'intégralité du document]" else "")),
+                color = if (isExpanded) Color(0xFFE2E8F0) else Color(0xFF94A3B8),
                 fontSize = 10.sp,
                 lineHeight = 14.sp
             )
