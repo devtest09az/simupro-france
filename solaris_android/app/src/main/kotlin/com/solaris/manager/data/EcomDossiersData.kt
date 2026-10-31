@@ -190,16 +190,58 @@ object EcomDossiersData {
                     sourceLabel = "Portail Officiel Guichet Unique INPI",
                     verifiedSourceUrl = "https://formalites.entreprises.gouv.fr/",
                     officialReference = "Loi PACTE • Immatriculation centralisée des entreprises"
+                ),
+                ConceptionDetail(
+                    title = "Dépôt de Capital Express 24h (Qonto)",
+                    description = "Dépôt de 500 € (250 € chacun) avec clause de capital variable. Certificat de dépôt des fonds délivré par notaire sous 24 heures.",
+                    keyMetric = "Certificat notarié en 24h • 69 € HT",
+                    sourceLabel = "Qonto Dépôt de Capital Légal",
+                    verifiedSourceUrl = "https://qonto.com/fr/incorporation/capital-deposit",
+                    officialReference = "Code de commerce art. L223-7 & L227-1"
+                ),
+                ConceptionDetail(
+                    title = "Passerelle Stripe & Paiement 3x Alma / Klarna",
+                    description = "Activation immédiate CB + Apple Pay. Le paiement fractionné 3x/4x Alma est le levier de conversion n°1 pour les kits à 349 € et 189 €.",
+                    keyMetric = "1,5% + 0,25 € / tx • Risque impayé 0%",
+                    sourceLabel = "Stripe France Documentation",
+                    verifiedSourceUrl = "https://stripe.com/fr",
+                    officialReference = "Agrément Banque de France / ACPR"
+                ),
+                ConceptionDetail(
+                    title = "Assurance RC Pro Multirisque E-Commerce",
+                    description = "Couvre la responsabilité du fait des produits défectueux (art. 1245 Code civil) pour le matériel électrique et les objets connectés.",
+                    keyMetric = "~35 € à 45 € / mois • Couverture 1M€",
+                    sourceLabel = "Hiscox France Assurances Pro",
+                    verifiedSourceUrl = "https://www.hiscox.fr/",
+                    officialReference = "Code civil art. 1245 • Responsabilité fabricant/distributeur"
+                ),
+                ConceptionDetail(
+                    title = "Éco-Organismes & Numéro IDU Obligatoire",
+                    description = "Enregistrement légal auprès de Soren (solaire) et Citeo (emballages). Obligatoire pour vendre sur Leboncoin et les marketplaces.",
+                    keyMetric = "Numéro IDU requis par la loi AGEC",
+                    sourceLabel = "Soren Solaire & Citeo Emballages",
+                    verifiedSourceUrl = "https://www.soren.eco/",
+                    officialReference = "Code de l'environnement art. L541-10-13 (Loi AGEC)"
                 )
             ),
             productionActions = listOf(
                 ProductionAction("j1", "Rédiger les statuts de SAS à capital variable", true, "URGENT", "Moi"),
                 ProductionAction("j2", "Rédiger le pacte d'associés (Vesting & Bad Leaver)", true, "URGENT", "Associé"),
-                ProductionAction("j3", "Ouvrir le compte pro Qonto et déposer le capital (500 €)", false, "HAUTE", "Les Deux"),
+                ProductionAction("j3", "Déposer le capital social (500 €) sur Qonto", false, "URGENT", "Les Deux"),
                 ProductionAction("j4", "Soumettre l'immatriculation au Guichet Unique INPI", false, "HAUTE", "Moi"),
-                ProductionAction("j5", "Transmettre le PV d'AG 0 € à France Travail", false, "HAUTE", "Moi")
+                ProductionAction("j5", "Transmettre le PV d'AG 0 € à France Travail", false, "HAUTE", "Moi"),
+                ProductionAction("j6", "Activer Stripe + Paiement 3x Alma pour le solaire", false, "HAUTE", "Associé"),
+                ProductionAction("j7", "Souscrire la RC Pro Hiscox (35€/mois)", false, "MOYENNE", "Moi"),
+                ProductionAction("j8", "Ouvrir les comptes pros PoWR Connect & SecondSol", false, "MOYENNE", "Associé")
             ),
             toolkitItems = listOf(
+                ToolkitItem(
+                    id = "tool_checklist_jour_j",
+                    title = "Checklist Opérationnelle Chronologique Jour J",
+                    category = "Organisation & Décollage",
+                    contentToCopy = "CHECKLIST PRÊTS POUR LE JOUR J (SAS COMMUNE) :\n\nJ-7 : Préparation\n- [ ] Rédaction des statuts de SAS avec objet social multi-activités étendu.\n- [ ] Rassemblement des CNI certifiées conformes + justificatifs de domicile.\n- [ ] Choix de la domiciliation (siège social à domicile ou SeDomicilier).\n\nJ-3 : Dépôt du capital\n- [ ] Ouverture du compte chez Qonto et virement de 250 € par associé (500 € total).\n- [ ] Réception sous 24h de l'attestation de dépôt des fonds notariée.\n\nJ-0 : Immatriculation Guichet Unique INPI\n- [ ] Dépôt du dossier sur formalites.entreprises.gouv.fr (frais ~230 €).\n- [ ] Signature du PV d'Assemblée Générale de non-rémunération (0 €).\n\nJ+1 : Décollage immédiat\n- [ ] Réception du Kbis et du SIREN.\n- [ ] Transmission du PV 0 € à France Travail (maintien 100% de l'ARE garanti).\n- [ ] Validation du compte Stripe et activation du paiement en 3x/4x Alma.\n- [ ] Souscription de l'assurance RC Pro Hiscox (~35 €/mois).\n- [ ] Ouverture des comptes pros chez les grossistes PoWR Connect et SecondSol.\n- [ ] Mise en ligne des premières annonces Leboncoin et des campagnes publicitaires.",
+                    sourceOrNorm = "Rétroplanning éprouvé pour un lancement sans accroc"
+                ),
                 ToolkitItem(
                     id = "tool_pv_ag",
                     title = "Modèle Officiel PV d'AG de Non-Rémunération (Bouclier ARE)",
