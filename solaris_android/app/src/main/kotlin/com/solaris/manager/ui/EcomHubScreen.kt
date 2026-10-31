@@ -26,24 +26,19 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Assignment
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.ContentCopy
 import androidx.compose.material.icons.filled.EditNote
 import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.material.icons.filled.ExpandMore
-import androidx.compose.material.icons.filled.Handyman
 import androidx.compose.material.icons.filled.Lightbulb
 import androidx.compose.material.icons.filled.Link
 import androidx.compose.material.icons.filled.OpenInBrowser
 import androidx.compose.material.icons.filled.People
 import androidx.compose.material.icons.filled.RocketLaunch
 import androidx.compose.material.icons.filled.Save
-import androidx.compose.material.icons.filled.Shield
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -73,10 +68,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.solaris.manager.model.ConceptionDetail
+import com.solaris.manager.model.CostItem
 import com.solaris.manager.model.EcomDossier
 import com.solaris.manager.model.MarketStudyDetail
+import com.solaris.manager.model.ObjectionItem
 import com.solaris.manager.model.ProjectPhase
+import com.solaris.manager.model.RegulatoryRoadmapItem
 import com.solaris.manager.model.ToolkitItem
+import com.solaris.manager.model.UnitEconomicsDetail
 import com.solaris.manager.viewmodel.EcomHubUiState
 import com.solaris.manager.viewmodel.EcomHubViewModel
 
@@ -283,9 +282,33 @@ private fun ConceptionPhaseContent(
                                 Spacer(modifier = Modifier.height(10.dp))
                             }
 
-                            // 2. COMPOSANTS & SOURCINGS B2B RÉELS (100% VÉRIFIÉS)
+                            // 2. MODÈLE ÉCONOMIQUE UNITAIRE (P&L RÉEL CHIIFRÉ)
+                            dossier.unitEconomics?.let { economics ->
+                                UnitEconomicsCard(economics = economics)
+                                Spacer(modifier = Modifier.height(14.dp))
+                                HorizontalDivider(color = Color(0xFF334155))
+                                Spacer(modifier = Modifier.height(10.dp))
+                            }
+
+                            // 3. FAQ OBJECTIONS & PARADES COMMERCIALES
+                            if (dossier.objections.isNotEmpty()) {
+                                ObjectionsCard(objections = dossier.objections)
+                                Spacer(modifier = Modifier.height(14.dp))
+                                HorizontalDivider(color = Color(0xFF334155))
+                                Spacer(modifier = Modifier.height(10.dp))
+                            }
+
+                            // 4. CADRE LÉGAL, DÉMARCHES & SÉCURISATION
+                            if (dossier.regulatoryRoadmap.isNotEmpty()) {
+                                RegulatoryRoadmapCard(roadmap = dossier.regulatoryRoadmap)
+                                Spacer(modifier = Modifier.height(14.dp))
+                                HorizontalDivider(color = Color(0xFF334155))
+                                Spacer(modifier = Modifier.height(10.dp))
+                            }
+
+                            // 5. COMPOSANTS & SOURCINGS B2B RÉELS (100% VÉRIFIÉS)
                             Text(
-                                text = "2. Composants & Sourcings B2B (Prix Grossistes) :",
+                                text = "5. Composants & Sourcings B2B (Prix Grossistes Vérifiés) :",
                                 color = Color(0xFF38BDF8),
                                 fontSize = 13.sp,
                                 fontWeight = FontWeight.Bold
@@ -301,9 +324,9 @@ private fun ConceptionPhaseContent(
                             HorizontalDivider(color = Color(0xFF334155))
                             Spacer(modifier = Modifier.height(10.dp))
 
-                            // 3. BOÎTE À OUTILS (SCRIPTS & MODÈLES)
+                            // 6. BOÎTE À OUTILS (SCRIPTS & MODÈLES PRÊTS À L'EMPLOI)
                             Text(
-                                text = "3. Boîte à Outils & Modèles Prêts à Copier :",
+                                text = "6. Boîte à Outils & Modèles Prêts à Copier :",
                                 color = Color(0xFFFBBF24),
                                 fontSize = 13.sp,
                                 fontWeight = FontWeight.Bold
@@ -319,7 +342,7 @@ private fun ConceptionPhaseContent(
                             HorizontalDivider(color = Color(0xFF334155))
                             Spacer(modifier = Modifier.height(10.dp))
 
-                            // 4. JOURNAL DE BORD & PRISE DE NOTES COMMUNE
+                            // 7. JOURNAL DE BORD & PRISE DE NOTES COMMUNE
                             PartnerNotesSection(
                                 dossierId = dossier.id,
                                 noteText = currentNote,
@@ -450,7 +473,7 @@ private fun ProductionPhaseContent(
                                         checked = action.isDone,
                                         onCheckedChange = { onActionToggle(dossier.id, action.id) },
                                         colors = CheckboxDefaults.colors(
-                                            checkedColor = Color(0xFF10B981),
+                                             checkedColor = Color(0xFF10B981),
                                             uncheckedColor = Color(0xFF64748B)
                                         )
                                     )
@@ -693,6 +716,375 @@ private fun MarketStudyCard(study: MarketStudyDetail) {
                 fontSize = 10.sp,
                 fontWeight = FontWeight.Bold
             )
+        }
+    }
+}
+
+@Composable
+private fun UnitEconomicsCard(economics: UnitEconomicsDetail) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp))
+            .background(Color(0xFF0F172A))
+            .border(1.dp, Color(0xFF10B981).copy(alpha = 0.5f), RoundedCornerShape(10.dp))
+            .padding(12.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(text = "💰", fontSize = 16.sp)
+                Spacer(modifier = Modifier.width(6.dp))
+                Text(
+                    text = "2. MODÈLE ÉCONOMIQUE UNITAIRE (P&L RÉEL)",
+                    color = Color(0xFF34D399),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 0.5.sp
+                )
+            }
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(Color(0xFF064E3B))
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
+            ) {
+                Text(
+                    text = "P&L SOURCÉ",
+                    color = Color(0xFF34D399),
+                    fontSize = 9.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        // Row 1: Prix Vente & Sourcing
+        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            KpiChip(label = "Prix Vente Public (TTC / HT)", value = "${economics.retailPriceTTC} • ${economics.retailPriceHT}", modifier = Modifier.weight(1f), color = Color.White)
+            KpiChip(label = "Achat Grossiste HT (BOM)", value = economics.wholesaleBOMHT, modifier = Modifier.weight(1f), color = Color(0xFF38BDF8))
+        }
+        Spacer(modifier = Modifier.height(6.dp))
+        // Row 2: Fret & Stripe
+        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            KpiChip(label = "Fret / Transporteur", value = economics.shippingCost, modifier = Modifier.weight(1f), color = Color(0xFFFDE68A))
+            KpiChip(label = "Passerelle / Frais", value = economics.paymentGatewayFee, modifier = Modifier.weight(1f), color = Color(0xFFFCA5A5))
+        }
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        // Big Highlighted Profit Box
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(8.dp))
+                .background(Color(0xFF064E3B).copy(alpha = 0.6f))
+                .border(1.dp, Color(0xFF10B981), RoundedCornerShape(8.dp))
+                .padding(10.dp)
+        ) {
+            Column {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(text = "BÉNÉFICE NET PAR VENTE :", color = Color(0xFFA7F3D0), fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                    Text(text = economics.netProfitPerUnit, color = Color(0xFF34D399), fontSize = 13.sp, fontWeight = FontWeight.Black)
+                }
+                Spacer(modifier = Modifier.height(4.dp))
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(text = "Objectif Mensuel Associés :", color = Color(0xFFFDE68A), fontSize = 10.sp, fontWeight = FontWeight.SemiBold)
+                    Text(text = economics.targetMonthlyNet, color = Color(0xFFFBBF24), fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                }
+            }
+        }
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        // Breakdown of Cost Items
+        Text(
+            text = "Décomposition des Postes de Coûts Usine & Matériel :",
+            color = Color(0xFFCBD5E1),
+            fontSize = 11.sp,
+            fontWeight = FontWeight.Bold
+        )
+        Spacer(modifier = Modifier.height(6.dp))
+        economics.costItems.forEach { cost ->
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 3.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(text = cost.name, color = Color.White, fontSize = 11.sp, fontWeight = FontWeight.SemiBold)
+                    Text(text = cost.note, color = Color(0xFF94A3B8), fontSize = 9.sp)
+                }
+                Text(text = cost.amountHT, color = Color(0xFF38BDF8), fontSize = 11.sp, fontWeight = FontWeight.Bold)
+            }
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+        Text(
+            text = economics.executiveSummary,
+            color = Color(0xFF94A3B8),
+            fontSize = 10.sp,
+            lineHeight = 14.sp
+        )
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(
+            text = "Fournisseurs vérifiés : ${economics.sourceOrSupplier}",
+            color = Color(0xFFF59E0B),
+            fontSize = 10.sp,
+            fontWeight = FontWeight.Medium
+        )
+    }
+}
+
+@Composable
+private fun ObjectionsCard(objections: List<ObjectionItem>) {
+    val context = LocalContext.current
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp))
+            .background(Color(0xFF0F172A))
+            .border(1.dp, Color(0xFFF59E0B).copy(alpha = 0.5f), RoundedCornerShape(10.dp))
+            .padding(12.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(text = "🎯", fontSize = 16.sp)
+                Spacer(modifier = Modifier.width(6.dp))
+                Text(
+                    text = "3. FAQ OBJECTIONS & PARADES COMMERCIALES",
+                    color = Color(0xFFFBBF24),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 0.5.sp
+                )
+            }
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(Color(0xFF78350F))
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
+            ) {
+                Text(
+                    text = "CLOSING DIRECT",
+                    color = Color(0xFFFDE68A),
+                    fontSize = 9.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(6.dp))
+        Text(
+            text = "Arguments et répliques mot-à-mot à dégainer par téléphone, SMS, Leboncoin ou en face-à-face :",
+            color = Color(0xFF94A3B8),
+            fontSize = 10.sp
+        )
+        Spacer(modifier = Modifier.height(10.dp))
+
+        objections.forEach { item ->
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(Color(0xFF1E293B))
+                    .padding(10.dp)
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.Top
+                ) {
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(
+                            text = item.objection,
+                            color = Color(0xFFFCA5A5),
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Spacer(modifier = Modifier.height(2.dp))
+                        Text(
+                            text = "Angle tactique : ${item.tacticalAngle}",
+                            color = Color(0xFF38BDF8),
+                            fontSize = 10.sp,
+                            fontWeight = FontWeight.SemiBold
+                        )
+                    }
+
+                    Button(
+                        onClick = {
+                            val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                            val clip = ClipData.newPlainText("Réplique commerciale", item.rebuttal)
+                            clipboard.setPrimaryClip(clip)
+                            Toast.makeText(context, "Réplique copiée !", Toast.LENGTH_SHORT).show()
+                        },
+                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF334155)),
+                        modifier = Modifier.height(28.dp)
+                    ) {
+                        Icon(Icons.Default.ContentCopy, contentDescription = "Copier", tint = Color.White, modifier = Modifier.size(12.dp))
+                        Spacer(modifier = Modifier.width(4.dp))
+                        Text(text = "Copier", fontSize = 10.sp)
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(6.dp))
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(6.dp))
+                        .background(Color(0xFF0F172A))
+                        .padding(8.dp)
+                ) {
+                    Text(
+                        text = item.rebuttal,
+                        color = Color(0xFFE2E8F0),
+                        fontSize = 11.sp,
+                        lineHeight = 15.sp
+                    )
+                }
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+        }
+    }
+}
+
+@Composable
+private fun RegulatoryRoadmapCard(roadmap: List<RegulatoryRoadmapItem>) {
+    val context = LocalContext.current
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp))
+            .background(Color(0xFF0F172A))
+            .border(1.dp, Color(0xFF38BDF8).copy(alpha = 0.5f), RoundedCornerShape(10.dp))
+            .padding(12.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(text = "⚖️", fontSize = 16.sp)
+                Spacer(modifier = Modifier.width(6.dp))
+                Text(
+                    text = "4. CADRE LÉGAL, DÉMARCHES & SÉCURISATION",
+                    color = Color(0xFF38BDF8),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 0.5.sp
+                )
+            }
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(Color(0xFF0C4A6E))
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
+            ) {
+                Text(
+                    text = "100% LÉGAL",
+                    color = Color(0xFF38BDF8),
+                    fontSize = 9.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(6.dp))
+        Text(
+            text = "Boucliers juridiques, conformité Enedis, Code du travail et Unédic :",
+            color = Color(0xFF94A3B8),
+            fontSize = 10.sp
+        )
+        Spacer(modifier = Modifier.height(10.dp))
+
+        roadmap.forEach { step ->
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(Color(0xFF1E293B))
+                    .padding(10.dp)
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(4.dp))
+                            .background(Color(0xFF0284C7))
+                            .padding(horizontal = 6.dp, vertical = 2.dp)
+                    ) {
+                        Text(
+                            text = step.badge.uppercase(),
+                            color = Color.White,
+                            fontSize = 9.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+
+                    step.officialLink?.let { url ->
+                        Row(
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(4.dp))
+                                .clickable {
+                                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                                    context.startActivity(intent)
+                                }
+                                .padding(horizontal = 4.dp, vertical = 2.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Icon(Icons.Default.OpenInBrowser, contentDescription = "Lien", tint = Color(0xFF38BDF8), modifier = Modifier.size(13.dp))
+                            Spacer(modifier = Modifier.width(3.dp))
+                            Text(text = "Texte Officiel ↗", color = Color(0xFF38BDF8), fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                        }
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(6.dp))
+                Text(
+                    text = step.title,
+                    color = Color.White,
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    text = "Base juridique : ${step.legalRef}",
+                    color = Color(0xFFFBBF24),
+                    fontSize = 10.sp,
+                    fontWeight = FontWeight.SemiBold
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = step.description,
+                    color = Color(0xFFCBD5E1),
+                    fontSize = 11.sp,
+                    lineHeight = 15.sp
+                )
+            }
+            Spacer(modifier = Modifier.height(8.dp))
         }
     }
 }
