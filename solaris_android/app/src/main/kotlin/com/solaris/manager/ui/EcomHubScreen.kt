@@ -253,7 +253,7 @@ private fun HubHeader(uiState: EcomHubUiState) {
         Spacer(modifier = Modifier.height(6.dp))
         Text(
             text = if (uiState.currentPhase == ProjectPhase.CONCEPTION)
-                "SOLARIS France SAS • Station Solaire 440W Plug & Play • Pilotage Opérationnel Co-fondateurs"
+                "SOLARIS & SECUREVO • SAS Multi-Marques (Solaire 440W & Alarme 4G) • Espace Co-fondateurs"
             else
                 "Exécution terrain : checklist partagée à deux, répartition des tâches, sites en ligne & journal de bord.",
             color = Color(0xFF94A3B8),
@@ -582,28 +582,36 @@ private fun ProductionPhaseContent(
                             HorizontalDivider(color = Color(0xFF334155))
                             Spacer(modifier = Modifier.height(8.dp))
 
-                            // 1. SIMULATEUR DE TRÉSORERIE & DIVIDENDES EN DIRECT
-                            LiveTreasuryTrackerCard()
-                            Spacer(modifier = Modifier.height(14.dp))
-                            HorizontalDivider(color = Color(0xFF334155))
-                            Spacer(modifier = Modifier.height(10.dp))
+                            if (dossier.id == "dossier_solaire") {
+                                // 1. SIMULATEUR DE TRÉSORERIE & DIVIDENDES EN DIRECT (SOLAIRE)
+                                LiveTreasuryTrackerCard()
+                                Spacer(modifier = Modifier.height(14.dp))
+                                HorizontalDivider(color = Color(0xFF334155))
+                                Spacer(modifier = Modifier.height(10.dp))
 
-                            // 2. ANNONCE PILOTE LEBONCOIN HAUTE CONVERSION (PRÊTE À POSTER)
-                            LeboncoinPilotAdCard()
-                            Spacer(modifier = Modifier.height(14.dp))
-                            HorizontalDivider(color = Color(0xFF334155))
-                            Spacer(modifier = Modifier.height(10.dp))
+                                // 2. ANNONCE PILOTE LEBONCOIN HAUTE CONVERSION (PRÊTE À POSTER)
+                                LeboncoinPilotAdCard()
+                                Spacer(modifier = Modifier.height(14.dp))
+                                HorizontalDivider(color = Color(0xFF334155))
+                                Spacer(modifier = Modifier.height(10.dp))
 
-                            // 3. CARNET DE COMMANDES & PROSPECTS (LIVE CRM)
-                            ClientLeadsManagerCard(
-                                leads = uiState.clientLeads,
-                                onAddLead = onAddLead,
-                                onUpdateStatus = onUpdateLeadStatus,
-                                onDeleteLead = onDeleteLead
-                            )
-                            Spacer(modifier = Modifier.height(14.dp))
-                            HorizontalDivider(color = Color(0xFF334155))
-                            Spacer(modifier = Modifier.height(10.dp))
+                                // 3. CARNET DE COMMANDES & PROSPECTS (LIVE CRM)
+                                ClientLeadsManagerCard(
+                                    leads = uiState.clientLeads,
+                                    onAddLead = onAddLead,
+                                    onUpdateStatus = onUpdateLeadStatus,
+                                    onDeleteLead = onDeleteLead
+                                )
+                                Spacer(modifier = Modifier.height(14.dp))
+                                HorizontalDivider(color = Color(0xFF334155))
+                                Spacer(modifier = Modifier.height(10.dp))
+                            } else {
+                                // PROJET 2 : CARTE DE DÉPLOIEMENT ALARME 4G (SECUREVO FRANCE)
+                                AlarmeProductionSummaryCard()
+                                Spacer(modifier = Modifier.height(14.dp))
+                                HorizontalDivider(color = Color(0xFF334155))
+                                Spacer(modifier = Modifier.height(10.dp))
+                            }
 
                             Text(
                                 text = "Feuille de Route Opérationnelle (Attribution des Tâches) :",
@@ -3680,6 +3688,93 @@ Amorti en moins de 3 ans (face aux offres concurrentes vendues plus de 700 € p
     }
 }
 
+
+@Composable
+private fun AlarmeProductionSummaryCard() {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp))
+            .background(Color(0xFF0F172A))
+            .border(1.dp, Color(0xFFF43F5E).copy(alpha = 0.5f), RoundedCornerShape(10.dp))
+            .padding(12.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(text = "🚨", fontSize = 16.sp)
+                Spacer(modifier = Modifier.width(6.dp))
+                Text(
+                    text = "SECUREVO FRANCE — ALARME 4G SANS ABONNEMENT",
+                    color = Color(0xFFFB7185),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(Color(0xFFF43F5E).copy(alpha = 0.2f))
+                    .border(1.dp, Color(0xFFF43F5E), RoundedCornerShape(4.dp))
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
+            ) {
+                Text(
+                    text = "EXPANSION PHASE 2",
+                    color = Color(0xFFFDA4AF),
+                    fontSize = 8.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(6.dp))
+        Text(
+            text = "Deuxième marque de notre SAS : synergie totale avec la cible maison individuelle, couverte par le même SIRET et le même compte bancaire sans aucuns frais supplémentaires.",
+            color = Color(0xFFCBD5E1),
+            fontSize = 9.sp,
+            lineHeight = 12.sp
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+            KpiChip(label = "Prix Vente TTC", value = "149,00 € TTC", modifier = Modifier.weight(1f), color = Color(0xFF38BDF8))
+            KpiChip(label = "Coût Revient Direct", value = "44,79 € HT", modifier = Modifier.weight(1f), color = Color(0xFFFCA5A5))
+            KpiChip(label = "Marge Brute / Pack", value = "+79,38 € HT (64%)", modifier = Modifier.weight(1f), color = Color(0xFF34D399))
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(6.dp))
+                .background(Color(0xFF1E293B))
+                .border(1.dp, Color(0xFF334155), RoundedCornerShape(6.dp))
+                .padding(8.dp)
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(text = "🏛️", fontSize = 12.sp)
+                Spacer(modifier = Modifier.width(4.dp))
+                Text(
+                    text = "Bénéfice Stratégique de la SAS Multi-Activités :",
+                    color = Color(0xFFFBBF24),
+                    fontSize = 8.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+            Spacer(modifier = Modifier.height(2.dp))
+            Text(
+                text = "L'Article 2 des Statuts de notre SAS (Objet Social) a été expressément rédigé pour inclure la vente de matériel de sécurité électronique en plus des kits solaires. Nos frais fixes (expert-comptable 83 €, Qonto 29 €, RC Pro 42 €) étant déjà payés par SOLARIS, chaque vente d'alarme (+79 €) tombe directement en dividende net distribué à 50/50 entre les associés.",
+                color = Color(0xFFE2E8F0),
+                fontSize = 7.sp,
+                lineHeight = 10.sp
+            )
+        }
+    }
+}
 
 @Composable
 private fun ClientLeadsManagerCard(

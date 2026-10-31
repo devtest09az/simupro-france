@@ -725,7 +725,28 @@ object EcomDossiersData {
                 ProductionAction("s6", "Livrer les 3 premières commandes fermes en direct", false, "MOYENNE", "Les Deux")
             ),
             toolkitItems = listOf(
-                ToolkitItem(
+                                ToolkitItem(
+                    id = "tool_statuts_objet_social",
+                    title = "Clause d'Objet Social Multi-Activités pour les Statuts de la SAS (Solaire + Alarmes)",
+                    category = "Juridique & Statuts",
+                    contentToCopy = """ARTICLE 2 - OBJET SOCIAL DE LA SAS (Solaire & Sécurité)
+
+La Société a pour objet, tant en France qu'à l'étranger :
+
+1. Le commerce de détail, de gros, l'importation, l'exportation, la conception, l'assemblage et la distribution, par tous moyens notamment par voie électronique, vente à distance et sur internet (e-commerce), de tous matériels, équipements, kits et accessoires liés aux énergies renouvelables, aux stations solaires d'autoconsommation, à l'habitat et au bricolage ;
+
+2. Le commerce, la distribution, la vente et l'installation sans travaux lourds de tous équipements et systèmes électroniques de sécurité domestique et professionnelle, alarmes autonomes sans fil, vidéosurveillance, capteurs, domotique, objets connectés et protection des biens et des personnes ;
+
+3. La prestation de conseil, d'assistance technique, de configuration, de support à distance et de service après-vente (SAV) se rapportant aux équipements et matériels susmentionnés ;
+
+4. La création, l'acquisition, l'exploitation, la concession ou la cession de toutes marques, licences, brevets, dessins, modèles et plateformes logicielles liés à ces activités ;
+
+5. Et plus généralement, toutes opérations commerciales, industrielles, financières, mobilières ou immobilières se rattachant directement ou indirectement à l'objet social ci-dessus spécifié ou à tout autre objet similaire ou connexe.
+
+NOTE D'EXCELLENCE : Cette rédaction légale permet d'exploiter immédiatement SOLARIS France (Solaire) ET SECUREVO France (Alarmes) sous un seul et même SIRET, un compte bancaire unique Qonto et une seule comptabilité, sans aucuns frais de modification d'objet social au Greffe.""",
+                    sourceOrNorm = "Code de commerce Art. L210-1 & L227-1 (Greffe du Tribunal de Commerce)"
+                ),
+ToolkitItem(
                     id = "tool_ad_leboncoin",
                     title = "Script Annonce Leboncoin / Marketplace (Prêt à poster)",
                     category = "Marketing & Vente",
@@ -754,6 +775,189 @@ object EcomDossiersData {
                     sourceOrNorm = "Trame éprouvée pour validation d'accès revendeur sans KBIS initial"
                 )
             )
+,
+        // =========================================================================
+        // 2. PACK ALARME MAISON SANS ABONNEMENT 4G/WI-FI (SECUREVO FRANCE)
+        // =========================================================================
+        EcomDossier(
+            id = "dossier_alarme",
+            title = "Pack Alarme Maison 4G/Wi-Fi Sans Abonnement",
+            subtitle = "Marque SECUREVO France • Centrale tactile & sirène extérieure solaire",
+            category = "Sécurité Domestique & Protection",
+            iconEmoji = "🚨",
+            progressPercent = 50,
+            estimatedNetMargin = "+79 € HT / pack (63,9% de marge brute)",
+            targetMonthlyRevenue = "6 208 € HT / mois (50 packs • 7 450 € TTC)",
+            liveWebsiteUrl = null,
+            partnerNotes = "NOTE COMMUNE (Associés) :\n- 2ème marque exploitée sous la MÊME SAS (SIRET unique, compte Qonto unique, zéro frais de greffe supplémentaires grâce à notre objet social multi-activités).\n- Synergie client totale : même cible (propriétaires de maisons avec jardin/terrasse).\n- Angle d'attaque implacable : 'Pourquoi verser 55 €/mois à vie à Verisure (660 €/an) alors qu'un pack propriétaire complet coûte 149 € une seule fois sans aucun abonnement ?'.\n- La sirène extérieure de notre pack est elle-même solaire et 100% autonome.",
+            marketStudy = MarketStudyDetail(
+                marketSize = "211 400 cambriolages de logements / an en France",
+                growthRate = "+18% de croissance par an sur les alarmes sans abonnement",
+                targetPainPoint = "Rente mensuelle abusive Verisure / Sector Alarm (49 € à 65 €/mois, soit 600 € à 780 € / an à vie avec engagement)",
+                competitiveEdge = "Pack 11 pièces 4G/Wi-Fi à 149 € TTC sans aucun abonnement, piloté par smartphone Tuya, sirène solaire, amorti en 3 mois",
+                officialSourceLabel = "Ministère de l'Intérieur (SSMSI) & ONDRP",
+                officialSourceUrl = "https://www.interieur.gouv.fr/actualites/statistiques-du-ministere-de-linterieur",
+                fullAnalysis = """OPPORTUNITÉ COMMERCIALE ALARME 4G SANS ABONNEMENT (SECUREVO) :
+
+1. DONNÉES DU MARCHÉ FRANÇAIS :
+- En France, un cambriolage a lieu toutes les 2,5 minutes (211 400 faits recensés en 2023-2024 par le Ministère de l'Intérieur).
+- 82% des maisons individuelles ne sont toujours pas équipées d'alarme, principalement en raison du coût exorbitant des abonnements mensuels.
+- Les leaders (Verisure, Sector Alarm, Homiris) imposent des forfaits de 49 € à 65 €/mois avec engagement de 36 mois, soit un coût de possession supérieur à 2 000 € sur 3 ans.
+
+2. NOTRE PROPOSITION DE VALEUR SECUREVO :
+- Vente d'un kit complet 11 pièces prêt-à-poser à 149 € TTC une seule fois pour toute la vie de la maison.
+- Alerte instantanée en 3 secondes sur smartphone via notification push et appel téléphonique/SMS grâce à la double connexion Wi-Fi et puce GSM 4G (carte SIM à 2 €/mois ou carte M2M multi-opérateurs).
+- Sirène extérieure puissante 120 dB alimentée par son propre panneau solaire étanche IP65 : zéro fil à tirer sur la façade.
+
+3. STRUCTURE DE COÛTS & RENTABILITÉ :
+- Prix public : 149 € TTC (124,17 € HT).
+- Coût de revient complet : 44,79 € HT (BOM matériel 35,50 € + Colissimo 6,80 € + Stripe 2,49 €).
+- Marge brute unitaire : +79,38 € HT (63,9% de marge brute).
+- Volume de croisière de 50 packs/mois = 3 969 € de marge brute mensuelle supplémentaire sous la même SAS."""
+            ),
+            unitEconomics = UnitEconomicsDetail(
+                retailPriceTTC = "149,00 € TTC",
+                retailPriceHT = "124,17 € HT (TVA 20% : 24,83 €)",
+                wholesaleBOMHT = "35,50 € HT (BOM matériel 5 composants usine)",
+                shippingCost = "6,80 € HT (Colissimo suivi 48h ou Mondial Relay)",
+                paymentGatewayFee = "2,49 € HT (Stripe CB 1,5% + 0,25 €)",
+                netProfitPerUnit = "+79,38 € HT / pack (63,9% de marge brute)",
+                targetMonthlyNet = "50 packs / mois = +3 969 € de marge brute SAS",
+                costItems = listOf(
+                    CostItem("Centrale tactile IPS 4.3 pouces 4G+WiFi (Tuya PGST)", "17,20 € HT", "Écran tactile couleur, batterie de secours 8h, sirène 85dB intégrée"),
+                    CostItem("Sirène extérieure solaire 120 dB + flash stroboscopique", "7,00 € HT", "Étanche IP65, panneau solaire autonome intégré, zéro câble"),
+                    CostItem("4x Détecteurs d'ouverture portes/fenêtres magnétiques", "4,50 € HT", "Sans fil 433 MHz longue portée 100m, pile CR2032 longue durée 2 ans"),
+                    CostItem("2x Détecteurs de mouvement PIR immunité animaux <20kg", "3,80 € HT", "Infrarouge passif grand angle 110°, portée 10m, zéro fausse alerte"),
+                    CostItem("2x Télécommandes porte-clés SOS & désarmement rapide", "3,00 € HT", "Bouton d'urgence panique pour personnes âgées ou enfants")
+                ),
+                executiveSummary = "Positionnement anti-Verisure ultra rentable : à 79,38 € de marge brute unitaire, 50 ventes mensuelles génèrent près de 4 000 € de marge brute sous la même structure juridique SAS, sans charges fixes supplémentaires.",
+                sourceOrSupplier = "PGST Technology Shenzhen (Certifié CE RED / Tuya Smart France)"
+            ),
+            partnerProfit = PartnerProfitProjection(
+                monthlyVolumeHypothesis = "50 packs 11 pièces / mois (soit moins de 2 ventes / jour)",
+                totalCompanyNetMonthly = "+ 3 373 € NET après IS 15% (40 483 € net / an)",
+                associate1Name = "Associé 1 (Président SAS)",
+                associate1NetMonthly = "+ 1 180 € NET d'impôt / mois (14 169 € net / an)",
+                associate1SpecificAdvantage = "Même mandat social gratuit (0 € salaire) : cumul 100% légal avec les dividendes de la SAS et maintien intégral de l'ARE",
+                associate2Name = "Associé 2 (Co-fondateur 50%)",
+                associate2NetMonthly = "+ 1 180 € NET d'impôt / mois (14 169 € net / an)",
+                associate2SpecificAdvantage = "Partage égalitaire des dividendes nets (Flat Tax 30%) sans surcoût de gestion administrative",
+                annualDividendsPerPartner = "14 169 € NETS d'impôt en poche par associé / an",
+                taxOptimizationNote = "Zéro frais fixe supplémentaire : expert-comptable, Qonto et assurance RC Pro sont déjà payés par l'activité solaire de la SAS. Chaque euro de marge brute alarme tombe directement en bénéfice net."
+            ),
+            commercialPacks = listOf(
+                CommercialPack(
+                    name = "Pack Essentiel SECUREVO™ 11 Pièces (Maison & Appartement)",
+                    badge = "BEST-SELLER",
+                    retailPriceTTC = "149,00 € TTC",
+                    wholesaleCostHT = "35,50 € HT",
+                    netMarginAmount = "+79,38 € HT",
+                    netMarginPercent = "63,9% de marge brute",
+                    paybackPeriod = "Amorti en 2,5 mois vs abonnement Verisure (55 €/m)",
+                    contents = "1x Centrale tactile 4G/WiFi + 1x Sirène solaire 120dB extérieure + 4x Détecteurs d'ouverture + 2x Détecteurs PIR animaux + 2x Télécommandes"
+                ),
+                CommercialPack(
+                    name = "Pack Intégral SECUREVO™ 16 Pièces avec Caméra Extérieure HD",
+                    badge = "HAUTE SÉCURITÉ",
+                    retailPriceTTC = "229,00 € TTC",
+                    wholesaleCostHT = "58,00 € HT",
+                    netMarginAmount = "+128,40 € HT",
+                    netMarginPercent = "67,3% de marge brute",
+                    paybackPeriod = "Amorti en 4 mois vs abonnement télésurveillance",
+                    contents = "Pack 11 pièces + 1x Caméra Wi-Fi solaire extérieure 2K vision nocturne + 2x Détecteurs d'ouverture supplémentaires + 2x Badges RFID"
+                )
+            ),
+            productionSimulations = emptyList(),
+            verifiedSuppliers = listOf(
+                VerifiedSupplier(
+                    name = "PGST Technology Co., Ltd.",
+                    location = "Shenzhen, Chine (Partenaire OEM Tuya)",
+                    role = "Fabricant OEM certifié CE RED des centrales tactiles et détecteurs",
+                    contactB2B = "sales08@cn-pgst.com • WhatsApp B2B : +86 13397149596",
+                    conditions = "Échantillons disponibles en 5 jours • Délai fret DDP dédouané 10 jours • Marquage logo SECUREVO disponible",
+                    portalUrl = "http://www.cn-pgst.com/"
+                )
+            ),
+            partnerPitchArguments = listOf(
+                PartnerPitchArgument(
+                    number = 1,
+                    title = "Une seule société, zéro surcoût de structure",
+                    argument = "Notre SAS possède un objet social multi-activités couvrant l'énergie ET la sécurité. Le compte Qonto et le comptable Pennylane sont déjà payés. Lancer SECUREVO coûte 0 € de frais juridiques.",
+                    keyProof = "Article 2 des Statuts SAS validé au Greffe."
+                ),
+                PartnerPitchArgument(
+                    number = 2,
+                    title = "Marge brute record de 64% (Anti-Verisure)",
+                    argument = "On achète le pack 35,50 € HT et on le vend 149 € TTC (124 € HT). Chaque vente laisse près de 80 € nets dans la caisse de la société, tout en faisant économiser 600 €/an au client.",
+                    keyProof = "Tarif usine PGST vérifié et fiches de prix publiques Verisure (55 €/mois)."
+                )
+            ),
+            riskMitigations = listOf(
+                RiskMitigationItem(
+                    title = "Blocage réseau ou coupure Wi-Fi",
+                    probabilityLevel = "FAIBLE",
+                    potentialImpact = "Perte de notification",
+                    failureModeDescription = "La box internet du client se coupe lors d'un orage ou d'une coupure électrique.",
+                    viableSolution = "Double liaison intégrée : la centrale bascule automatiquement en GSM 4G grâce à la carte SIM de secours et envoie immédiatement un SMS et un appel vocal.",
+                    legalOrTechnicalProof = "Centrale bi-mode Wi-Fi 2.4 GHz + Module GSM 4G LTE mondial."
+                )
+            ),
+            operationalPhases = listOf(
+                OperationalPhaseStep(
+                    stepNumber = "1.1",
+                    phaseName = "EXPANSION (Phase 2)",
+                    taskTitle = "Commande du pack prototype SECUREVO pour test",
+                    assignee = "Moi",
+                    timing = "Mois 2",
+                    costOrRevenue = "45 € TTC",
+                    actionDetails = "Commander un pack prototype chez PGST avec sirène solaire pour tester la portée 433 MHz, l'application Tuya en français et l'alerte SMS 4G.",
+                    expectedDeliverable = "Vidéo de démonstration en direct du déclenchement sirène et notification smartphone.",
+                    officialSourceOrLegal = "Norme CE RED (Radio Equipment Directive 2014/53/EU)."
+                )
+            ),
+            growthLevers = emptyList(),
+            associateVerifications = emptyList(),
+            humanPrerequisites = emptyList(),
+            objections = listOf(
+                ObjectionItem(
+                    objection = "« Est-ce aussi fiable qu'une alarme télésurveillée Verisure ? »",
+                    rebuttal = "« Verisure envoie simplement un vigile 45 minutes après l'intrusion, quand les cambrioleurs sont déjà partis. Avec SECUREVO, la sirène extérieure solaire 120 dB se déclenche instantanément, fait fuir 95% des intrus dans les 60 premières secondes, et vous recevez l'alerte directe sur votre téléphone sans payer 600 € par an à vie. »",
+                    tacticalAngle = "Dissuasion sonore immédiate vs vigile en retard payant."
+                )
+            ),
+            regulatoryRoadmap = listOf(
+                RegulatoryRoadmapItem(
+                    badge = "Norme CE RED",
+                    title = "Directive Européenne Équipements Radioélectriques",
+                    legalRef = "Directive 2014/53/UE (RED)",
+                    description = "Obligation de conformité des fréquences radio 433 MHz et 4G pour la commercialisation légale sur le territoire européen.",
+                    officialLink = "https://www.economie.gouv.fr/entreprises/directive-equipements-radioelectriques-red"
+                )
+            ),
+            conceptionItems = listOf(
+                ConceptionDetail(
+                    title = "Centrale d'Alarme Tuya Smart Life 4G",
+                    description = "Centrale tactile couleur avec protocole Tuya, permettant de connecter caméras, détecteurs et domotique sur la même application française.",
+                    keyMetric = "17,20 € HT usine • Revente 149 € TTC pack complet",
+                    sourceLabel = "Fiche Constructeur PGST Technology",
+                    verifiedSourceUrl = "http://www.cn-pgst.com/",
+                    officialReference = "Conformité CE RED & RoHS"
+                )
+            ),
+            productionActions = listOf(
+                ProductionAction("a1", "Création de la vitrine e-commerce SECUREVO", false, "MOYENNE", "Moi"),
+                ProductionAction("a2", "Campagne publicitaire vidéo anti-Verisure", false, "BASSE", "Associé")
+            ),
+            toolkitItems = listOf(
+                ToolkitItem(
+                    id = "tool_pitch_alarme",
+                    title = "Pitch Téléphonique Anti-Abonnement SECUREVO",
+                    category = "Marketing & Vente",
+                    contentToCopy = "« Bonjour, payez-vous actuellement un abonnement mensuel de 50 € chez Verisure ou un télésurveilleur ?\nSaviez-vous qu'avec notre pack SECUREVO à 149 €, vous avez exactement la même protection sans fil 4G avec sirène solaire extérieure, mais vous économisez 600 € chaque année à vie, sans aucun abonnement ? »",
+                    sourceOrNorm = "Argumentaire focalisé sur l'économie de rente"
+                )
+            )
+        )
         )
     )
 }
