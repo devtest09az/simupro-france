@@ -259,6 +259,14 @@ object EcomDossiersData {
                     failureModeDescription = "Mise sur le marché de matériel photovoltaïque sans adhésion à la filière REP (Responsabilité Élargie du Producteur).",
                     viableSolution = "1) Adhésion 100% gratuite à l'organisme d'État Soren (filière officielle de recyclage photovoltaïque en France). 2) Obtention immédiate de l'Identifiant Unique (IDU) délivré par l'ADEME, affiché sur le site web et les factures. 3) Facturation transparente de l'éco-participation Soren (0,80 € HT / panneau) répercutée au client final. Risque juridique neutralisé à 100%.",
                     legalOrTechnicalProof = "Décret n° 2014-928 & Agrément officiel ministériel Soren (filière REP)."
+                ),
+                RiskMitigationItem(
+                    title = "9. Conflit Marque & NDD 'SOLARIS' (Présence de Solaris SAS depuis 2002)",
+                    probabilityLevel = "CRITIQUE (si exploitation de 'Solaris' sans vérification)",
+                    potentialImpact = "Mise en demeure pour contrefaçon (Art. L713-2 CPI), blocage INPI et invisibilité SEO Google",
+                    failureModeDescription = "solaris.fr est pris par GrandVision. solaris-store.com est détenu depuis 2002 par Solaris SAS (Saint-André-de-Corcy, Ain), distributeur officiel de matériel solaire. Utiliser le nom Solaris dans le photovoltaïque crée une contrefaçon et une concurrence déloyale flagrante.",
+                    viableSolution = "1) Dénomination sociale SAS neutre au Greffe (ex: VOLTIS GROUP SAS ou HELIO TRADE SAS) couvrant Solaire + Alarmes. 2) Marque commerciale e-commerce propre et déposée à l'INPI avec NDD .FR libre vérifié AFNIC : SOLAVOLT.FR, PLUGWATT.FR, VOLTEVO.FR ou SOLARKIT.FR. Coût NDD : 7,99 €/an sur OVHcloud. Risque juridique neutralisé à 100%.",
+                    legalOrTechnicalProof = "Art. L713-2 du Code de la Propriété Intellectuelle & Base Marques INPI."
                 )
             ),
             partnerPitchArguments = listOf(
@@ -747,6 +755,35 @@ NOTE D'EXCELLENCE : Cette rédaction légale permet d'exploiter immédiatement S
                     sourceOrNorm = "Code de commerce Art. L210-1 & L227-1 (Greffe du Tribunal de Commerce)"
                 ),
 ToolkitItem(
+                    id = "tool_brand_naming_audit",
+                    title = "Audit Stratégique Noms de Domaine & Risque INPI (Solaris vs .FR Libres)",
+                    category = "Propriété Intellectuelle & NDD",
+                    contentToCopy = """AUDIT STRATÉGIQUE NOM DE MARQUE & DISPONIBILITÉ NDD (AFNIC & INPI)
+
+1. DIAGNOSTIC RISQUE "SOLARIS" :
+- solaris.fr : Détenu par GrandVision / EssilorLuxottica (Lunettes de soleil Solaris).
+- solaris-store.com : Détenu par SOLARIS SAS (Saint-André-de-Corcy, Ain). Société française fondée en 2002 spécialisée dans le matériel solaire, kits autonomes et plug & play.
+- RISQUE JURIDIQUE : Utiliser "Solaris" pour du solaire en France expose à une action immédiate en contrefaçon de marque (Classes 9 et 35 INPI) et concurrence déloyale / parasitisme commercial (Art. L713-2 CPI).
+- RISQUE SEO : solaris-store.com a 22 ans d'antériorité et domine les résultats Google France sur "kit solaire solaris".
+
+2. LA RÈGLE 80/20 (SOCIÉTÉ vs MARQUE COMMERCIALE) :
+- Dénomination sociale SAS (au Greffe) : Choisir un nom institutionnel neutre (ex: VOLTIS GROUP SAS ou HELIO TRADE SAS) qui englobe le solaire et les alarmes.
+- Nom commercial & Marque e-commerce : Déposer une marque propre, libre de toute contestation et avec un domaine .FR disponible.
+
+3. SÉLECTION DES NOMS .FR DISPONIBLES (VÉRIFIÉS AFNIC WHOIS) :
+- SOLAVOLT.FR [LIBRE] : Racine solaire + voltage. Premium, sobre, excellente mémorisation.
+- PLUGWATT.FR [LIBRE] : "Plug & Play" + "Watts". Clarté instantanée pour le grand public.
+- VOLTEVO.FR [LIBRE] : Évolution électrique, tonalité technologique moderne.
+- SOLARKIT.FR [LIBRE] : Terme de recherche #1 tapé par les acheteurs sur Google.
+- SUNIVIA.FR [LIBRE] : Élégant, accessible, positionnement type Sunology/Beem.
+- VOLTOPLUG.FR [LIBRE] : 100% orienté station solaire prête à brancher sur prise.
+
+4. PLAN D'ACTION IMMÉDIAT (COÛT : ~7 € SUR OVH / GANDI) :
+1. Réserver le nom de domaine .fr retenu (ex: solavolt.fr ou plugwatt.fr).
+2. Dépôt de marque à l'INPI en ligne (Classes 9, 35) : 190 € pour une protection blindée de 10 ans.""",
+                    sourceOrNorm = "AFNIC Whois direct & Code de la Propriété Intellectuelle (Art. L713-2)"
+                ),
+                ToolkitItem(
                     id = "tool_ad_leboncoin",
                     title = "Script Annonce Leboncoin / Marketplace (Prêt à poster)",
                     category = "Marketing & Vente",
@@ -775,7 +812,7 @@ ToolkitItem(
                     sourceOrNorm = "Trame éprouvée pour validation d'accès revendeur sans KBIS initial"
                 )
             )
-,
+        ),
         // =========================================================================
         // 2. PACK ALARME MAISON SANS ABONNEMENT 4G/WI-FI (SECUREVO FRANCE)
         // =========================================================================
@@ -957,7 +994,6 @@ ToolkitItem(
                     sourceOrNorm = "Argumentaire focalisé sur l'économie de rente"
                 )
             )
-        )
         )
     )
 }

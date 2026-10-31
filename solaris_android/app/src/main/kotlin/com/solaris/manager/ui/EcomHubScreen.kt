@@ -315,6 +315,12 @@ private fun ConceptionPhaseContent(
                             HorizontalDivider(color = Color(0xFF334155))
                             Spacer(modifier = Modifier.height(10.dp))
 
+                            // 1.TER AUDIT NOM DE MARQUE & DISPONIBILITÉ NDD .FR (AFNIC & INPI)
+                            BrandNamingAuditCard()
+                            Spacer(modifier = Modifier.height(14.dp))
+                            HorizontalDivider(color = Color(0xFF334155))
+                            Spacer(modifier = Modifier.height(10.dp))
+
                             // 2. MODÈLE ÉCONOMIQUE UNITAIRE (P&L RÉEL CHIFFRÉ)
                             dossier.unitEconomics?.let { economics ->
                                 UnitEconomicsCard(economics = economics)
@@ -1096,6 +1102,217 @@ private fun CompetitorBenchmarkCard() {
                 color = Color(0xFFE0F2FE),
                 fontSize = 7.sp,
                 lineHeight = 10.sp
+            )
+        }
+    }
+}
+
+
+@Composable
+private fun BrandNamingAuditCard() {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp))
+            .background(Color(0xFF0F172A))
+            .border(1.dp, Color(0xFFF59E0B).copy(alpha = 0.5f), RoundedCornerShape(10.dp))
+            .padding(12.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(text = "⚖️", fontSize = 16.sp)
+                Spacer(modifier = Modifier.width(6.dp))
+                Text(
+                    text = "AUDIT NOM DE MARQUE : 'SOLARIS' vs DOMAINES .FR LIBRES",
+                    color = Color(0xFFFBBF24),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 0.5.sp
+                )
+            }
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(Color(0xFFEF4444).copy(alpha = 0.2f))
+                    .border(1.dp, Color(0xFFEF4444), RoundedCornerShape(4.dp))
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
+            ) {
+                Text(
+                    text = "ALERTE INPI & NDD",
+                    color = Color(0xFFFCA5A5),
+                    fontSize = 8.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(
+            text = "Diagnostic de risque légal sur la marque 'SOLARIS' et benchmark des 6 domaines .FR vérifiés libres à l'AFNIC :",
+            color = Color(0xFF94A3B8),
+            fontSize = 9.sp
+        )
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        // ALERTE ROUGE SOLARIS
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(6.dp))
+                .background(Color(0xFF7F1D1D).copy(alpha = 0.25f))
+                .border(1.dp, Color(0xFFEF4444).copy(alpha = 0.6f), RoundedCornerShape(6.dp))
+                .padding(8.dp)
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(text = "🚨", fontSize = 12.sp)
+                Spacer(modifier = Modifier.width(4.dp))
+                Text(
+                    text = "LE NOM 'SOLARIS' EST DÉJÀ PRÉEMPTÉ DANS LE SOLAIRE EN FRANCE",
+                    color = Color(0xFFFCA5A5),
+                    fontSize = 9.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = """• solaris.fr : Détenu par GrandVision (lunettes de soleil Solaris).
+• solaris-store.com : Détenu par SOLARIS SAS (Saint-André-de-Corcy, Ain), distributeur majeur de matériel solaire et kits autonomes depuis 2002 !
+• RISQUE JURIDIQUE : Utiliser 'Solaris' pour des kits solaires en France expose à une action directe en contrefaçon de marque (Classes 9 & 35 INPI) et concurrence déloyale (Art. L713-2 CPI).
+• RISQUE SEO : solaris-store.com bénéficie de 22 ans d'antériorité et truste la première page Google sur le solaire.""",
+                color = Color(0xFFFECACA),
+                fontSize = 8.sp,
+                lineHeight = 11.sp
+            )
+        }
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        // SOLUTION 80/20
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(6.dp))
+                .background(Color(0xFF0284C7).copy(alpha = 0.15f))
+                .border(1.dp, Color(0xFF38BDF8).copy(alpha = 0.4f), RoundedCornerShape(6.dp))
+                .padding(8.dp)
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(text = "💡", fontSize = 12.sp)
+                Spacer(modifier = Modifier.width(4.dp))
+                Text(
+                    text = "LA RÈGLE D'OR 80/20 (SOCIÉTÉ vs MARQUE COMMERCIALE)",
+                    color = Color(0xFF7DD3FC),
+                    fontSize = 9.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = """1) Dénomination Sociale SAS (au Greffe) : Nom institutionnel neutre (ex: VOLTIS GROUP SAS ou HELIO TRADE SAS). Elle englobe Solaire + Alarmes sous un seul SIRET sans risque.
+2) Marque Commerciale E-commerce : Marque commerciale propre, déposée à l'INPI et associée à un domaine .FR disponible immédiatement.""",
+                color = Color(0xFFE0F2FE),
+                fontSize = 8.sp,
+                lineHeight = 11.sp
+            )
+        }
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Text(
+            text = "6 NOMS DE DOMAINE .FR VÉRIFIÉS LIBRES À L'AFNIC :",
+            color = Color(0xFF34D399),
+            fontSize = 9.sp,
+            fontWeight = FontWeight.Bold
+        )
+
+        Spacer(modifier = Modifier.height(6.dp))
+
+        // GRILLE DES 6 NOMS CANDIDATS
+        val candidates = listOf(
+            Triple("SOLAVOLT.FR", "Racine Solaire + Voltage", "Sobre, haut de gamme, excellente mémorisation. Protégeable INPI."),
+            Triple("PLUGWATT.FR", "Plug & Play + Puissance Watt", "Positionnement ultra direct : compréhensible en 1 seconde par le client."),
+            Triple("VOLTEVO.FR", "Évolution Électrique / Tech", "Sonorité technologique moderne type Anker/Tesla. Idéal pour scaler."),
+            Triple("SOLARKIT.FR", "Mot-clé #1 Recherché sur Google", "Bonus SEO immédiat sur les requêtes d'achat 'kit solaire autoconsommation'."),
+            Triple("SUNIVIA.FR", "Élégant, Lumineux, Grand Public", "Positionnement grand public premium en concurrence frontale avec Sunology."),
+            Triple("VOLTOPLUG.FR", "100% Station Solaire sur Prise", "Descriptif fort sans ambiguïté technique pour les bricoleurs.")
+        )
+
+        candidates.forEach { (domain, sub, desc) ->
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 3.dp)
+                    .clip(RoundedCornerShape(6.dp))
+                    .background(Color(0xFF1E293B))
+                    .border(1.dp, Color(0xFF334155), RoundedCornerShape(6.dp))
+                    .padding(8.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Column(modifier = Modifier.weight(1f)) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(
+                            text = domain,
+                            color = Color(0xFFF8FAFC),
+                            fontSize = 10.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Spacer(modifier = Modifier.width(6.dp))
+                        Box(
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(3.dp))
+                                .background(Color(0xFF059669).copy(alpha = 0.2f))
+                                .border(1.dp, Color(0xFF10B981), RoundedCornerShape(3.dp))
+                                .padding(horizontal = 4.dp, vertical = 1.dp)
+                        ) {
+                            Text(
+                                text = "LIBRE AFNIC",
+                                color = Color(0xFF6EE7B7),
+                                fontSize = 7.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                        }
+                    }
+                    Text(
+                        text = sub,
+                        color = Color(0xFFFBBF24),
+                        fontSize = 8.sp,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                    Text(
+                        text = desc,
+                        color = Color(0xFF94A3B8),
+                        fontSize = 7.sp,
+                        lineHeight = 9.sp
+                    )
+                }
+            }
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // FOOTER ACTION
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(6.dp))
+                .background(Color(0xFF059669).copy(alpha = 0.15f))
+                .border(1.dp, Color(0xFF10B981).copy(alpha = 0.3f), RoundedCornerShape(6.dp))
+                .padding(6.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(text = "✅", fontSize = 11.sp)
+            Spacer(modifier = Modifier.width(6.dp))
+            Text(
+                text = "ACTION IMMÉDIATE : Réservation du .FR sur OVHcloud (~7,99 €/an) + Dépôt INPI Classes 9 & 35 (190 € pour 10 ans de protection blindée).",
+                color = Color(0xFFA7F3D0),
+                fontSize = 8.sp,
+                fontWeight = FontWeight.SemiBold
             )
         }
     }
