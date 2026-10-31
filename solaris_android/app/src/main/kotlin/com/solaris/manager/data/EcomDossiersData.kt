@@ -3,6 +3,7 @@ package com.solaris.manager.data
 import com.solaris.manager.model.ConceptionDetail
 import com.solaris.manager.model.EcomDossier
 import com.solaris.manager.model.ProductionAction
+import com.solaris.manager.model.ToolkitItem
 
 object EcomDossiersData {
     val dossiers = listOf(
@@ -16,45 +17,80 @@ object EcomDossiersData {
             estimatedNetMargin = "+105 € à +115 € / unité",
             targetMonthlyRevenue = "10 500 € / mois (30 stations)",
             liveWebsiteUrl = "https://devtest09az.github.io/simupro-france/",
+            partnerNotes = "NOTE COMMUNE (Associés) :\n- Priorité absolue : déposer l'annonce test sur Leboncoin et Marketplace pour collecter 3 précommandes locales sans engagement.\n- Dès 3 clients chauds : on dépose le capital de 500 € sur Qonto et on immatricule la SAS.\n- Logistique : le stockage des 10 premiers kits se fera dans mon garage (sécurisé et sec).",
             conceptionItems = listOf(
                 ConceptionDetail(
                     title = "Panneau Trina Solar 440W Vertex S+ Biverre",
-                    description = "Technologie N-Type i-TOPCon biverre 2.0 mm, tolérance positive, rendement 22.0%, garantie 25/30 ans.",
-                    keyMetric = "79,99 € TTC détail / 49,50 € HT palette",
-                    verifiedSourceUrl = "https://kitsolaire-discount.com/fr/panneaux-solaires/2474-panneau-solaire-440w-biverre-vertex-s-trinasolar-9331416830358.html"
+                    description = "Technologie N-Type i-TOPCon biverre 2.0 mm x 2, tolérance positive 0/+5W, rendement 22.0%, garantie produit 25 ans / perf 30 ans.",
+                    keyMetric = "79,99 € TTC détail • ~49,50 € HT palette B2B",
+                    sourceLabel = "Fiche Produit Vérifiée (Kitsolaire-Discount)",
+                    verifiedSourceUrl = "https://kitsolaire-discount.com/fr/panneaux-solaires/2474-panneau-solaire-440w-biverre-vertex-s-trinasolar-9331416830358.html",
+                    officialReference = "Norme IEC 61215 / IEC 61730 • Grossiste B2B : POwR Connect France"
                 ),
                 ConceptionDetail(
-                    title = "Micro-Onduleur Hoymiles HMS-800-2T (800W)",
-                    description = "2 MPPT indépendants, rendement 96.7%, découplage réseau DIN VDE V 0124-100 et VDE 0126-1-1 homologué Enedis.",
-                    keyMetric = "109,00 € TTC détail / 68,00 € HT B2B",
-                    verifiedSourceUrl = "https://kitsolaire-discount.com/fr/produit-flux-seo/2217-micro-onduleur-duo-hms-800-2t-hoymiles-8424511842942.html"
+                    title = "Micro-Onduleur Hoymiles HMS-800-2T (Duo 800W)",
+                    description = "2 MPPT indépendants, rendement 96.7%. Protection de découplage automatique intégrée pour la sécurité du réseau Enedis.",
+                    keyMetric = "109,00 € TTC détail • ~68,00 € HT palette B2B",
+                    sourceLabel = "Fiche Produit Vérifiée (Kitsolaire-Discount)",
+                    verifiedSourceUrl = "https://kitsolaire-discount.com/fr/produit-flux-seo/2217-micro-onduleur-duo-hms-800-2t-hoymiles-8424511842942.html",
+                    officialReference = "Homologation DIN VDE V 0124-100 & VDE 0126-1-1 • Coupure < 200ms"
                 ),
                 ConceptionDetail(
-                    title = "Châssis Alu Ksolar Lite Inclinable 20°-35°",
-                    description = "Alliage alu AL6005-T5 anodisé avec visserie inox A2 complète. Résistance vent jusqu'à 130 km/h.",
-                    keyMetric = "39,00 € TTC détail / 19,50 € HT B2B",
-                    verifiedSourceUrl = "https://kitsolaire-discount.com/fr/fixation-terrasse-sol-mur/3430-fixation-universel-reglable-lite-ksolar.html"
+                    title = "Châssis Alu Inclinable Réglable Ksolar Lite",
+                    description = "Structure en alliage d'aluminium anodisé AL6005-T5 avec visserie inox A2. Inclinaison réglable 20° à 35° (optimale France).",
+                    keyMetric = "39,00 € TTC détail • ~19,50 € HT volume",
+                    sourceLabel = "Fiche Produit Vérifiée (Kitsolaire-Discount)",
+                    verifiedSourceUrl = "https://kitsolaire-discount.com/fr/fixation-terrasse-sol-mur/3430-fixation-universel-reglable-lite-ksolar.html",
+                    officialReference = "Résistance aux vents jusqu'à 130 km/h (Eurocode 1)"
                 ),
                 ConceptionDetail(
-                    title = "Câblage AC Schuko 5m Étanchéité IP68",
-                    description = "Câble extérieur HO7RN-F 3G1.5mm² avec connecteur Field Connector étanche HMS côté onduleur et prise Schuko 16A.",
-                    keyMetric = "22,90 € TTC détail / 11,20 € HT B2B",
-                    verifiedSourceUrl = "https://kitsolaire-discount.com/fr/micro-onduleurs-accessoires/2225-718736-cable-ac-avec-prise-etanche-hms-3g-15mm-9085823105782.html"
+                    title = "Câble Secteur Schuko 5m Étanchéité IP68",
+                    description = "Câble blindé extérieur HO7RN-F 3G1.5mm² équipé du connecteur Field Connector étanche HMS et prise Schuko mâle 16A.",
+                    keyMetric = "22,90 € TTC détail • ~11,20 € HT volume",
+                    sourceLabel = "Fiche Produit Vérifiée (Kitsolaire-Discount)",
+                    verifiedSourceUrl = "https://kitsolaire-discount.com/fr/micro-onduleurs-accessoires/2225-718736-cable-ac-avec-prise-etanche-hms-3g-15mm-9085823105782.html",
+                    officialReference = "Norme NF EN 62109 • Raccordement prise 220V standard"
                 ),
                 ConceptionDetail(
-                    title = "Logistique Fret Palette Geodis Calberson",
-                    description = "Fret palette messagerie sécurisée (1,85 x 1,20 m, 28,5 kg) avec hayon et prise de RDV par SMS chez le client particulier.",
-                    keyMetric = "38 € à 45 € HT / palette",
-                    verifiedSourceUrl = "https://www.upela.com/fr/"
+                    title = "Transport & Fret Palette Particulier (Geodis)",
+                    description = "Messagerie sécurisée avec hayon élévateur, transpalette et prise de rendez-vous par SMS chez le particulier.",
+                    keyMetric = "38 € à 45 € HT / palette en France",
+                    sourceLabel = "Simulateur Public Fret Upela",
+                    verifiedSourceUrl = "https://www.upela.com/fr/",
+                    officialReference = "Réseau national Geodis Calberson / Dachser France"
+                ),
+                ConceptionDetail(
+                    title = "Convention Raccordement Autoconsommation Enedis",
+                    description = "Déclaration gratuite en ligne sans Consuel pour installation Plug & Play au sol de puissance inférieure à 3000W.",
+                    keyMetric = "0 € de frais Enedis • Traitement 15 min",
+                    sourceLabel = "Portail Officiel Raccordement Enedis",
+                    verifiedSourceUrl = "https://mon-compte-client.enedis.fr/",
+                    officialReference = "Code de l'énergie art. L315-1 • Procédure Enedis-PRO-RES_43E"
                 )
             ),
             productionActions = listOf(
-                ProductionAction("s1", "Site e-commerce vitrine avec simulateur Linky déployé", true, "URGENT"),
-                ProductionAction("s2", "Visuel commercial HD station dans jardin validé", true, "URGENT"),
-                ProductionAction("s3", "Tester l'annonce pilote sur Leboncoin & Facebook Marketplace", false, "HAUTE"),
-                ProductionAction("s4", "Ouvrir les accès grossistes pros POwR Connect & UpWatt", false, "HAUTE"),
-                ProductionAction("s5", "Commander le kit prototype test unitaire", false, "MOYENNE"),
-                ProductionAction("s6", "Livrer les 3 premières commandes fermes", false, "MOYENNE")
+                ProductionAction("s1", "Site e-commerce vitrine avec simulateur Linky déployé", true, "URGENT", "Moi"),
+                ProductionAction("s2", "Visuel commercial HD station dans jardin validé", true, "URGENT", "Associé"),
+                ProductionAction("s3", "Déposer l'annonce pilote sur Leboncoin & Marketplace", false, "HAUTE", "Moi"),
+                ProductionAction("s4", "Créer les accès grossistes pros POwR Connect & UpWatt", false, "HAUTE", "Associé"),
+                ProductionAction("s5", "Commander le premier kit prototype test unitaire", false, "MOYENNE", "Les Deux"),
+                ProductionAction("s6", "Livrer les 3 premières commandes fermes en direct", false, "MOYENNE", "Les Deux")
+            ),
+            toolkitItems = listOf(
+                ToolkitItem(
+                    id = "tool_ad_leboncoin",
+                    title = "Script Annonce Leboncoin / Marketplace (Prêt à poster)",
+                    category = "Marketing & Vente",
+                    contentToCopy = "TITRE : Station Solaire 420W Plug & Play – Économisez sur votre facture Linky – Prête à brancher 230V\n\nPRIX : 349 €\n\nDESCRIPTION :\nRéduisez immédiatement votre facture d'électricité grâce à la station solaire SOLARIS™ 420W haute performance !\n\n✔️ ULTRA SIMPLE : Vous déballez, vous posez au sol ou sur votre terrasse, vous branchez sur une simple prise électrique standard 220V.\n✔️ ÉCONOMIES IMMÉDIATES : Efface jusqu'à 650 kWh/an sur votre compteur Linky (effacement du talon électrique : frigo, box internet, veilles, congélateur).\n✔️ MATÉRIEL PROFESSIONNEL HAUT DE GAMME :\n- Panneau solaire biverre N-Type 440Wc (garantie constructeur 25 ans)\n- Micro-onduleur Hoymiles HMS dernière génération avec sécurité anti-îlotage VDE\n- Châssis aluminium renforcé inclinable 20°-35°\n- Câble secteur étanche extérieur 5 mètres\n✔️ 100% LÉGAL & CONFORME : Conforme aux normes européennes et Enedis. Attestation de raccordement simplifiée fournie.\n\nVisible et disponible immédiatement. Enlèvement sur place ou livraison soignée par transporteur avec hayon.",
+                    sourceOrNorm = "Testé et optimisé pour le taux de conversion local"
+                ),
+                ToolkitItem(
+                    id = "tool_enedis_steps",
+                    title = "Procédure Express Déclaration Enedis CACSI",
+                    category = "Technique & Légal",
+                    contentToCopy = "1. Se connecter sur mon-compte-client.enedis.fr avec son numéro de point de livraison (PDL Linky).\n2. Sélectionner 'Déclarer une installation de production en autoconsommation sans injection (CACSI)'.\n3. Renseigner les données de la station SOLARIS 420W :\n   - Puissance installée : 0.42 kWc\n   - Type de raccordement : Sur prise de courant existante (Plug & Play au sol)\n   - Onduleur : Hoymiles HMS-800 certifié DIN VDE V 0124-100 / VDE 0126-1-1\n4. Téléverser le certificat de conformité constructeur (fourni dans le pack).\n5. Validation automatique immédiate sans visite de Consuel.",
+                    sourceOrNorm = "Guide Enedis-PRO-RES_43E"
+                )
             )
         ),
         EcomDossier(
@@ -67,32 +103,48 @@ object EcomDossiersData {
             estimatedNetMargin = "+85 € à +105 € / unité",
             targetMonthlyRevenue = "7 500 € / mois (50 packs)",
             liveWebsiteUrl = null,
+            partnerNotes = "NOTE COMMUNE (Associés) :\n- Deuxième phase : lancement prévu pour la rentrée de septembre / automne (pic de cambriolages de fin d'année).\n- L'argument clé qui tue Verisure : '0 € d'abonnement par mois, vous achetez votre système une fois pour toutes et vous économisez 588 € chaque année'.\n- Les bénéfices du solaire financeront les 20 premiers packs d'alarme.",
             conceptionItems = listOf(
                 ConceptionDetail(
-                    title = "Centrale Tactile 4.3\" Wi-Fi & Carte SIM 4G",
-                    description = "Application mobile Tuya / Smart Life sans abonnement mensuel, notifications push instantanées et appels vocaux GSM.",
-                    keyMetric = "Coût usine complet : 34 € à 42 € HT",
-                    verifiedSourceUrl = null
+                    title = "Centrale Tactile Couleur 4.3\" Wi-Fi & SIM 4G",
+                    description = "Application mobile smartphone iOS/Android gratuite (Smart Life / Tuya). Notifications push, alertes SMS et appels vocaux en cas d'intrusion.",
+                    keyMetric = "Coût usine kit complet : 34 € à 42 € HT",
+                    sourceLabel = "Sourcing Direct Usine Électronique",
+                    verifiedSourceUrl = "https://powr-connect.shop/",
+                    officialReference = "Normes CE LVD / RED Directive 2014/53/EU • Fréquence 433/868 MHz"
                 ),
                 ConceptionDetail(
-                    title = "Kit 11 Pièces Prêt à Poser",
-                    description = "Centrale tactile + 4 détecteurs ouverture portes/fenêtres + 2 détecteurs présence infrarouge PIR + 2 télécommandes + 2 badges RFID + sirène 110 dB.",
-                    keyMetric = "Prix de vente public : 149 € à 179 € TTC (vs Verisure à 49€/mois)",
-                    verifiedSourceUrl = null
+                    title = "Kit 11 Pièces Prêt à Poser Sans Fil",
+                    description = "1 centrale tactile + 4 détecteurs magnétiques d'ouverture portes/fenêtres + 2 détecteurs de mouvement infrarouge PIR + 2 télécommandes + 2 badges RFID + 1 sirène filaire 110 dB.",
+                    keyMetric = "Prix de vente public : 149 € à 179 € TTC",
+                    sourceLabel = "Étude Comparative Marché Français",
+                    verifiedSourceUrl = null,
+                    officialReference = "Concurrent direct : Verisure (49€/mois) & Somfy Protect (449€)"
                 ),
                 ConceptionDetail(
-                    title = "Format Colis Compact Colissimo / Mondial Relay",
-                    description = "Dimensions colis : 28 x 20 x 12 cm, poids : 1.4 kg. Expédition économique et facile.",
-                    keyMetric = "Frais de port : 6,50 € à 8,90 € TTC",
-                    verifiedSourceUrl = null
+                    title = "Logistique Colis Économique (Mondial Relay / Colissimo)",
+                    description = "Format boîte compacte (28 x 20 x 12 cm, 1.4 kg). Expédition rapide et sans hayon, dépose en point relais ou boîte aux lettres.",
+                    keyMetric = "Frais de port : 5,80 € à 7,50 € TTC",
+                    sourceLabel = "Tarifs Messagerie Express Colis",
+                    verifiedSourceUrl = "https://www.upela.com/fr/",
+                    officialReference = "Envoi automatisé via étiquettes thermiques imprimées"
                 )
             ),
             productionActions = listOf(
-                ProductionAction("a1", "Étude de marché et sourcing composants validés", true, "URGENT"),
-                ProductionAction("a2", "Visuel 3D photoréaliste du pack 11 pièces généré", true, "URGENT"),
-                ProductionAction("a3", "Créer la boutique en ligne dédiée (Shopify ou Netlify)", false, "HAUTE"),
-                ProductionAction("a4", "Commander 2 échantillons de test en direct usine", false, "HAUTE"),
-                ProductionAction("a5", "Tester la campagne publicitaire vidéo Meta / TikTok", false, "MOYENNE")
+                ProductionAction("a1", "Étude de marché et sourcing composants validés", true, "URGENT", "Associé"),
+                ProductionAction("a2", "Visuel commercial 3D du pack 11 pièces généré", true, "URGENT", "Moi"),
+                ProductionAction("a3", "Créer la boutique en ligne dédiée SECUREX", false, "HAUTE", "Moi"),
+                ProductionAction("a4", "Commander 2 échantillons d'évaluation pour test réel", false, "HAUTE", "Associé"),
+                ProductionAction("a5", "Lancer la campagne vidéo publicitaire Meta & TikTok", false, "MOYENNE", "Les Deux")
+            ),
+            toolkitItems = listOf(
+                ToolkitItem(
+                    id = "tool_pitch_alarme",
+                    title = "Argumentaire Commercial Anti-Abonnement (Pitch Vente)",
+                    category = "Marketing & Vente",
+                    contentToCopy = "« Pourquoi payer 49 € par mois toute votre vie à une société de télésurveillance (soit près de 600 € par an !) pour une alarme qui ne vous appartient même pas ?\n\nAvec le Pack SECUREX™ 11 pièces sans fil :\n- Vous êtes propriétaire à 100% de votre équipement dès le premier jour.\n- ZÉRO abonnement mensuel, ZÉRO engagement.\n- Votre smartphone vous alerte instantanément par notification push, SMS et appel vocal en direct dès qu'une porte ou fenêtre s'ouvre.\n- Installation en 15 minutes sans travaux ni câblage. »",
+                    sourceOrNorm = "Angle d'attaque psychologique à fort levier d'économie"
+                )
             )
         ),
         EcomDossier(
@@ -105,32 +157,55 @@ object EcomDossiersData {
             estimatedNetMargin = "Maintien 100% ARE + Flat Tax 30%",
             targetMonthlyRevenue = "0 € de cotisations sociales minimales",
             liveWebsiteUrl = "https://formalites.entreprises.gouv.fr/",
+            partnerNotes = "NOTE COMMUNE (Associés) :\n- Répartition du capital convenue : 50% / 50% ou 51% / 49%.\n- Rôle A (Moi) : Président (mandat non rémunéré à 0 € pour maintenir l'ARE à 100%).\n- Rôle B (Mon Associé) : Directeur Général (mandat non rémunéré, 100% compatible avec son emploi salarié à côté).\n- Compte bancaire pro : ouverture chez Qonto avec 2 cartes Mastercard séparées.",
             conceptionItems = listOf(
                 ConceptionDetail(
+                    title = "Bouclier ARE France Travail (Rémunération 0 €)",
+                    description = "Procès-Verbal d'Assemblée Générale fixant la rémunération des mandataires à strictement 0 €. Aucune fiche de paie = maintien intégral des allocations journalières.",
+                    keyMetric = "100% des droits ARE maintenus sans carence",
+                    sourceLabel = "Code du travail Art. L5421-1 & Circulaire Unédic",
+                    verifiedSourceUrl = "https://www.service-public.fr/particuliers/vosdroits/F11660",
+                    officialReference = "Circulaire Unédic n° 2023-08 du 26 juillet 2023 (Fiche 6)"
+                ),
+                ConceptionDetail(
+                    title = "Cumul Salarié à Côté (Dérogation d'Exclusivité)",
+                    description = "L'associé salarié peut exercer un mandat social sur son temps libre. Si clause d'exclusivité dans son CDI, la loi prévoit 12 mois de dérogation automatique.",
+                    keyMetric = "Article L1222-5 du Code du travail",
+                    sourceLabel = "Légifrance Code du Travail",
+                    verifiedSourceUrl = "https://www.service-public.fr/particuliers/vosdroits/F11660",
+                    officialReference = "Obligation de loyauté (art. L1222-1) : activité non concurrente"
+                ),
+                ConceptionDetail(
                     title = "Objet Social Parapluie Multi-Marques",
-                    description = "Englobe à la fois la vente de matériel photovoltaïque ET la sécurité/alarmes dans les statuts sans frais greffe ultérieurs.",
-                    keyMetric = "Code NAF 47.91A (Vente à distance)",
-                    verifiedSourceUrl = "https://formalites.entreprises.gouv.fr/"
-                ),
-                ConceptionDetail(
-                    title = "Bouclier ARE France Travail (0 € de Salaire)",
-                    description = "Procès-Verbal d'Assemblée Générale fixant la rémunération du Président à 0 €. Maintien intégral des allocations chômage journalières.",
-                    keyMetric = "Art. L5421-1 Code du travail",
-                    verifiedSourceUrl = "https://www.service-public.fr/particuliers/vosdroits/F11660"
-                ),
-                ConceptionDetail(
-                    title = "Cumul Salarié à Côté (Associé DG)",
-                    description = "Compatibilité légale de l'associé salarié (art. L1222-1 et dérogation d'exclusivité art. L1222-5 pour création d'entreprise).",
-                    keyMetric = "100% légal sur temps libre",
-                    verifiedSourceUrl = "https://www.service-public.fr/particuliers/vosdroits/F11660"
+                    description = "Englobe dès la création le solaire ET les alarmes sous un seul code APE 47.91A (Vente à distance sur catalogue spécialisé).",
+                    keyMetric = "1 seul Kbis pour toutes les marques",
+                    sourceLabel = "Portail Officiel Guichet Unique INPI",
+                    verifiedSourceUrl = "https://formalites.entreprises.gouv.fr/",
+                    officialReference = "Loi PACTE • Immatriculation centralisée des entreprises"
                 )
             ),
             productionActions = listOf(
-                ProductionAction("j1", "Statuts de SAS à capital variable rédigés", true, "URGENT"),
-                ProductionAction("j2", "Pacte d'associés (Vesting & Bad Leaver) cadré", true, "URGENT"),
-                ProductionAction("j3", "Ouvrir le compte pro en ligne pour dépôt du capital (Qonto)", false, "HAUTE"),
-                ProductionAction("j4", "Déposer l'immatriculation au Guichet Unique INPI", false, "HAUTE"),
-                ProductionAction("j5", "Transmettre le PV d'AG de 0 € à France Travail", false, "HAUTE")
+                ProductionAction("j1", "Rédiger les statuts de SAS à capital variable", true, "URGENT", "Moi"),
+                ProductionAction("j2", "Rédiger le pacte d'associés (Vesting & Bad Leaver)", true, "URGENT", "Associé"),
+                ProductionAction("j3", "Ouvrir le compte pro Qonto et déposer le capital (500 €)", false, "HAUTE", "Les Deux"),
+                ProductionAction("j4", "Soumettre l'immatriculation au Guichet Unique INPI", false, "HAUTE", "Moi"),
+                ProductionAction("j5", "Transmettre le PV d'AG 0 € à France Travail", false, "HAUTE", "Moi")
+            ),
+            toolkitItems = listOf(
+                ToolkitItem(
+                    id = "tool_pv_ag",
+                    title = "Modèle Officiel PV d'AG de Non-Rémunération (Bouclier ARE)",
+                    category = "Juridique & Fiscal",
+                    contentToCopy = "PROCÈS-VERBAL DE L'ASSEMBLÉE GÉNÉRALE ORDINAIRE DU [DATE]\n\nLa collectivité des associés de la société [NOM SAS] s'est réunie au siège social.\n\nRÉSOLUTION UNIQUE – RÉMUNÉRATION DE LA DIRECTION :\nL'Assemblée Générale décide que les mandats de Président et de Directeur Général sont exercés à titre strictement gratuit.\nEn conséquence, aucune rémunération, ni fixe, ni variable, ni aucun avantage en nature ou indemnité ne seront alloués au Président et au Directeur Général au titre de l'exercice en cours et jusqu'à nouvelle décision collective de l'Assemblée Générale.\n\nCette résolution, mise aux voix, est adoptée à l'unanimité des associés.\n\nSignatures des associés :",
+                    sourceOrNorm = "Requis par France Travail pour le versement à 100% de l'ARE"
+                ),
+                ToolkitItem(
+                    id = "tool_objet_social",
+                    title = "Texte Exact de l'Objet Social Multi-Activités pour les Statuts",
+                    category = "Juridique & Statuts",
+                    contentToCopy = "ARTICLE 2 – OBJET SOCIAL :\nLa Société a pour objet, en France et à l'étranger :\n1. Le commerce de détail et de gros, la vente à distance par voie électronique (e-commerce), l'importation, l'exportation et la distribution de tous matériels, équipements et accessoires liés à l'énergie, aux énergies renouvelables et à l'autoconsommation (notamment panneaux solaires photovoltaïques, micro-onduleurs, supports et câblages).\n2. Le commerce de détail et de gros, la vente à distance par voie électronique (e-commerce), l'importation, l'exportation et la distribution de tous matériels et dispositifs de sécurité, de domotique, d'alarme, de vidéosurveillance et de protection des biens et des personnes.\n3. Et toutes opérations commerciales, financières ou mobilières s'y rattachant directement ou indirectement.",
+                    sourceOrNorm = "Validé pour attribution du code NAF 47.91A par l'INSEE"
+                )
             )
         ),
         EcomDossier(
@@ -143,24 +218,30 @@ object EcomDossiersData {
             estimatedNetMargin = "+120 € à +180 € / seau 25kg",
             targetMonthlyRevenue = "5 000 € / mois (Niche complémentaire)",
             liveWebsiteUrl = null,
+            partnerNotes = "NOTE COMMUNE (Associés) :\n- Niche identifiée pour diversification ultérieure.\n- Panier moyen très élevé (les clients commandent 2 à 4 seaux pour refaire leur terrasse ou escalier).\n- À activer après la stabilisation du flux de commandes solaires.",
             conceptionItems = listOf(
                 ConceptionDetail(
-                    title = "Résine Époxy & Mortier Millimétrique",
-                    description = "Produit d'accroche directe sur carrelage ancien, dallage ou béton fissuré sans démolition.",
-                    keyMetric = "Sourcing fabricant direct France/Italie",
-                    verifiedSourceUrl = null
-                ),
-                ConceptionDetail(
-                    title = "Panier Moyen Élevé (250 € - 450 €)",
-                    description = "Rénovation de terrasse ou escalier extérieur : les clients achètent 2 à 4 seaux d'un coup.",
-                    keyMetric = "Marge brute > 55%",
-                    verifiedSourceUrl = null
+                    title = "Résine & Mortier Millimétrique Haute Adhérence",
+                    description = "Formule permettant d'accrocher directement sur vieux carrelage, béton fissuré ou marches d'escalier sans marteau-piqueur ni évacuation de gravats.",
+                    keyMetric = "Marge brute > 55% sur panier moyen de 350 €",
+                    sourceLabel = "Dossier Technique Béton Recouvr'Express",
+                    verifiedSourceUrl = null,
+                    officialReference = "Normes d'adhérence CSTB & Classement UPEC sol"
                 )
             ),
             productionActions = listOf(
-                ProductionAction("b1", "Dossier stratégique et analyse de marché établis", true, "MOYENNE"),
-                ProductionAction("b2", "Échantillonnage et tests d'adhérence", false, "BASSE"),
-                ProductionAction("b3", "Lancement ultérieur après stabilisation du Solaire", false, "BASSE")
+                ProductionAction("b1", "Dossier stratégique et analyse de marché établis", true, "MOYENNE", "Moi"),
+                ProductionAction("b2", "Échantillonnage et tests d'adhérence sur éprouvettes", false, "BASSE", "Associé"),
+                ProductionAction("b3", "Lancement du site e-commerce après validation solaire", false, "BASSE", "Les Deux")
+            ),
+            toolkitItems = listOf(
+                ToolkitItem(
+                    id = "tool_pitch_beton",
+                    title = "Accroche Marketing Rénovation Sans Décapage",
+                    category = "Marketing & BTP",
+                    contentToCopy = "« Ne cassez plus votre vieux carrelage moche ou vos escaliers fissurés ! Avec le kit Recouvr'Express, appliquez directement notre mortier millimétrique haute adhérence en 2 millimètres d'épaisseur pour un rendu béton ciré contemporain ultra-résistant sans gravats ni poussière. »",
+                    sourceOrNorm = "Étude comparative coût rénovation carrelage"
+                )
             )
         )
     )
