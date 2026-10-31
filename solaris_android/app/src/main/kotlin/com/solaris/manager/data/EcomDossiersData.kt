@@ -276,21 +276,21 @@ object EcomDossiersData {
                 ),
                 PartnerPitchArgument(
                     number = 3,
-                    title = "Marge nette record : 105 € à 133 € par vente",
-                    argument = "1 vente par jour ouvré (30 kits / mois) génère 3 570 € net / mois pour la SAS. Soit 1 785 € net pour chaque associé, tout en préservant 100% de l'ARE pour le président.",
-                    keyProof = "BOM audité au centime près chez Kitsolaire-Discount / POwR Connect."
+                    title = "Marge brute de 97 € à 132 € / station (Point mort : 2,2 kits)",
+                    argument = "À 30 ventes / mois, la SAS réalise 8 725 € CA HT et 2 285 € de bénéfice net après IS 15%. Soit 800 € net de dividende en poche par associé (9 596 €/an en 100% Geodis, ou 909 € net avec 30% de retrait local). Statut président à 0 € de salaire préservant 100% de son ARE personnelle.",
+                    keyProof = "BOM unitaire certifié à 194,14 € HT avec Geodis (ou 159,14 € HT en local) et 212,67 € de frais fixes mensuels."
                 ),
                 PartnerPitchArgument(
                     number = 4,
                     title = "Zéro Consuel, Zéro Mairie, 100% Légal en 15 minutes",
-                    argument = "Pose au sol de moins de 1,80m = exemptée de déclaration en mairie (art. R*421-2 Code urbanisme). Raccordement sur prise standard = Convention CACSI Enedis gratuite en 5 clics sans passage de technicien.",
+                    argument = "Pose au sol de moins de 1,80m = exemptée de déclaration préalable en mairie (art. R*421-2 Code urbanisme). Raccordement sur prise standard 220V = Convention CACSI Enedis gratuite en 5 clics sans passage de technicien.",
                     keyProof = "Procédure officielle Enedis-PRO-RES_43E & Code de l'énergie art. L315-1."
                 ),
                 PartnerPitchArgument(
                     number = 5,
-                    title = "Décollage Jour J immédiat en 4 étapes simples",
-                    argument = "1. Dépôt de l'annonce Leboncoin -> 2. Prise de 3 précommandes locales sans engagement -> 3. Dépôt du capital 500 € Qonto -> 4. Immatriculation SAS et livraison des clients avec le cash déjà encaissé.",
-                    keyProof = "Rétroplanning validé sans besoin de prêt bancaire ni d'investisseur."
+                    title = "Décollage sécurisé en 4 étapes sans emprunt bancaire",
+                    argument = "1. Activation de la vitrine Pro certifiée & du site web -> 2. Sécurisation de 3 précommandes locales sans engagement -> 3. Dépôt du capital social de 500 € sur Qonto -> 4. Immatriculation SAS et livraison des premiers clients.",
+                    keyProof = "Rétroplanning autofinancé sans besoin de prêt bancaire ni d'investisseur externe."
                 )
             ),
                                                 operationalPhases = listOf(
