@@ -639,6 +639,16 @@ object EcomDossiersData {
                     objection = "« Dois-je payer des taxes ou déclarer mon installation en mairie ? »",
                     rebuttal = "« Aucune taxe, aucune déclaration en mairie pour une pose au sol (< 1,80m). Il suffit d'une déclaration gratuite en 5 clics sur le portail Enedis (Convention CACSI sans frais). L'attestation de conformité du micro-onduleur que nous vous fournissons valide le dossier automatiquement. »",
                     tacticalAngle = "Simplicité administrative : 0 € de taxe & déclaration 100% gratuite"
+                ),
+                ObjectionItem(
+                    objection = "« Pourquoi votre station est à 349 € alors que Sunology et Leroy Merlin la vendent à 700 € ? Est-ce du matériel au rabais ? »",
+                    rebuttal = "« Pas du tout, c'est rigoureusement la même base industrielle : nous utilisons les mêmes panneaux solaires biverre Trina Solar (Top 3 mondial Bloomberg Tier-1) et le même micro-onduleur Hoymiles homologué VDE que les leaders. La seule différence, c'est que les marques en grande surface reversent 25% à 30% de marge à Leroy Merlin ou Boulanger (~170 €) et dépensent des millions en spots télé. Nous vendons en circuit direct usine sans intermédiaires, ce qui vous fait économiser 350 € pour exactement la même technologie et la même garantie 25 ans. »",
+                    tacticalAngle = "Transparence industrielle : suppression de la marge de 30% des distributeurs physiques."
+                ),
+                ObjectionItem(
+                    objection = "« Qui assure la garantie de 25 ans et le SAV si vous n'êtes pas un grand magasin physique ? »",
+                    rebuttal = "« La garantie de 25 ans sur le panneau et 12 à 25 ans sur le micro-onduleur est une garantie constructeur directe assurée par Trina Solar et Hoymiles, avec nos grossistes nationaux officiels POwR Connect et UpWatt basés en France. De plus, notre société SOLARIS France SAS fournit une facture légale avec TVA déductible et un numéro d'assistance technique basé en France pour tout échange standard immédiat sous 48h. »",
+                    tacticalAngle = "Garantie constructeur Tier-1 directe + support local réactif."
                 )
             ),
             regulatoryRoadmap = listOf(
