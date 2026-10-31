@@ -6,6 +6,7 @@ import com.solaris.manager.model.CostItem
 import com.solaris.manager.model.EcomDossier
 import com.solaris.manager.model.MarketStudyDetail
 import com.solaris.manager.model.ObjectionItem
+import com.solaris.manager.model.GrowthLever
 import com.solaris.manager.model.AssociateVerificationItem
 import com.solaris.manager.model.RiskMitigationItem
 import com.solaris.manager.model.PartnerPitchArgument
@@ -285,7 +286,37 @@ object EcomDossiersData {
                     keyProof = "Rétroplanning validé sans besoin de prêt bancaire ni d'investisseur."
                 )
             ),
-                        associateVerifications = listOf(
+                                    growthLevers = listOf(
+                GrowthLever(
+                    title = "1. Achat par Palettes de 36 Panneaux (-21% Coût Grossiste)",
+                    timeToDeploy = "Dès 3 000 € de trésorerie accumulée (Mois 2)",
+                    netProfitImpact = "+18,00 € à +32,00 € de marge pure supplémentaire par kit",
+                    operationalStrategy = "Au lieu d'acheter les panneaux à l'unité chez POwR Connect à 49,50 € HT, commander une palette de 36 panneaux Trina sur SecondSol ou POwR B2B à 39,00 € HT. Le coût de transport est mutualisé (2,36 € / panneau au lieu de 35 €). Le bénéfice net unitaire bondit de 105 € à 123 € (livré) et de 133 € à 151 € (main propre).",
+                    keyActionStep = "Dès que 15 précommandes sont encaissées, valider la première commande de palette complète livrée dans le garage sécurisé."
+                ),
+                GrowthLever(
+                    title = "2. Maximisation du Panier Moyen (Upsells Pack Duo & Prise Wi-Fi)",
+                    timeToDeploy = "Immédiat (Jour J au lancement)",
+                    netProfitImpact = "+47% de bénéfice net par commande (Panier moyen à 485 €)",
+                    operationalStrategy = "1) Proposer systématiquement le Pack Duo 880W à 649 € (+218 € à +255 € net de marge) pour effacer la consommation de la machine à laver et du lave-vaisselle (choisi par 35% des clients). 2) Upsell Prise connectée Wi-Fi Tuya 16A à 19 € (coût d'achat 6,50 € HT = +9,33 € net à 60% de marge brute, choisie par 80% des acheteurs). 3) Câble rallonge étanche 10m à 29 € (+14 € net).",
+                    keyActionStep = "Intégrer les boutons d'options 'Pack Duo Famille' et 'Prise connectée recommandée' dans l'annonce pilote et sur le bon de commande."
+                ),
+                GrowthLever(
+                    title = "3. Boucle Virale de Parrainage Voisinage Cash (Coût d'Acquisition = 0 €)",
+                    timeToDeploy = "Mois 1 (Dès les 5 premières livraisons)",
+                    netProfitImpact = "+30% à +50% de volume de vente sans aucun budget publicitaire",
+                    operationalStrategy = "L'effet de voisinage est le levier n°1 du solaire : dès qu'un propriétaire installe un panneau visible sur sa terrasse ou pelouse, 3 voisins viennent lui poser des questions sous 30 jours. On insère dans chaque carton 3 coupons postaux 'Offre Voisin Privilégié' : le voisin bénéficie de 20 € de remise, et le client parrain reçoit 30 € par virement instantané Wero / bancaire dès validation.",
+                    keyActionStep = "Imprimer 100 flyers cartonnés de parrainage 'Offre Voisinage SOLARIS' avec code unique à glisser dans chaque carton d'expédition."
+                ),
+                GrowthLever(
+                    title = "4. Ventes Groupées B2B : CSE d'Entreprises & Conciergeries Airbnb",
+                    timeToDeploy = "Mois 2 et Mois 3",
+                    netProfitImpact = "+15 à +40 kits vendus d'un coup par contrat groupé",
+                    operationalStrategy = "1) Démarcher les CSE (Comités Sociaux et Économiques) d'entreprises locales (+100 salariés : banques, hôpitaux, industries) avec une offre négociée 'Pouvoir d'Achat Énergie Verte' pour les salariés (Pack Solo à 329 € avec prise offerte). 2) Proposer aux conciergeries et gîtes Airbnb une offre pour neutraliser la clim et les jacuzzis des vacanciers. 3) Option 'Mise en service VIP 15 min' à 49 € pour les clients locaux (100% de marge horaire).",
+                    keyActionStep = "Envoyer le dossier de présentation PDF 'Avantage Salariés Énergie Verte' aux 5 plus gros CSE de votre département."
+                )
+            ),
+            associateVerifications = listOf(
                 AssociateVerificationItem(
                     id = "audit_grossiste_conditions",
                     title = "1. Appel Grossiste B2B : Validation Compte & Conditions Fret Palette",
@@ -506,7 +537,37 @@ object EcomDossiersData {
                 annualDividendsPerPartner = "~ 11 600 € nets d'impôt en poche par associé (après IS 15% et Flat Tax 30%)",
                 taxOptimizationNote = "Marge nette record (52,5%) : rentabilité immédiate pour autofinancer l'acquisition sans découvert."
             ),
-                        associateVerifications = listOf(
+                                    growthLevers = listOf(
+                GrowthLever(
+                    title = "1. Achat par Palettes de 36 Panneaux (-21% Coût Grossiste)",
+                    timeToDeploy = "Dès 3 000 € de trésorerie accumulée (Mois 2)",
+                    netProfitImpact = "+18,00 € à +32,00 € de marge pure supplémentaire par kit",
+                    operationalStrategy = "Au lieu d'acheter les panneaux à l'unité chez POwR Connect à 49,50 € HT, commander une palette de 36 panneaux Trina sur SecondSol ou POwR B2B à 39,00 € HT. Le coût de transport est mutualisé (2,36 € / panneau au lieu de 35 €). Le bénéfice net unitaire bondit de 105 € à 123 € (livré) et de 133 € à 151 € (main propre).",
+                    keyActionStep = "Dès que 15 précommandes sont encaissées, valider la première commande de palette complète livrée dans le garage sécurisé."
+                ),
+                GrowthLever(
+                    title = "2. Maximisation du Panier Moyen (Upsells Pack Duo & Prise Wi-Fi)",
+                    timeToDeploy = "Immédiat (Jour J au lancement)",
+                    netProfitImpact = "+47% de bénéfice net par commande (Panier moyen à 485 €)",
+                    operationalStrategy = "1) Proposer systématiquement le Pack Duo 880W à 649 € (+218 € à +255 € net de marge) pour effacer la consommation de la machine à laver et du lave-vaisselle (choisi par 35% des clients). 2) Upsell Prise connectée Wi-Fi Tuya 16A à 19 € (coût d'achat 6,50 € HT = +9,33 € net à 60% de marge brute, choisie par 80% des acheteurs). 3) Câble rallonge étanche 10m à 29 € (+14 € net).",
+                    keyActionStep = "Intégrer les boutons d'options 'Pack Duo Famille' et 'Prise connectée recommandée' dans l'annonce pilote et sur le bon de commande."
+                ),
+                GrowthLever(
+                    title = "3. Boucle Virale de Parrainage Voisinage Cash (Coût d'Acquisition = 0 €)",
+                    timeToDeploy = "Mois 1 (Dès les 5 premières livraisons)",
+                    netProfitImpact = "+30% à +50% de volume de vente sans aucun budget publicitaire",
+                    operationalStrategy = "L'effet de voisinage est le levier n°1 du solaire : dès qu'un propriétaire installe un panneau visible sur sa terrasse ou pelouse, 3 voisins viennent lui poser des questions sous 30 jours. On insère dans chaque carton 3 coupons postaux 'Offre Voisin Privilégié' : le voisin bénéficie de 20 € de remise, et le client parrain reçoit 30 € par virement instantané Wero / bancaire dès validation.",
+                    keyActionStep = "Imprimer 100 flyers cartonnés de parrainage 'Offre Voisinage SOLARIS' avec code unique à glisser dans chaque carton d'expédition."
+                ),
+                GrowthLever(
+                    title = "4. Ventes Groupées B2B : CSE d'Entreprises & Conciergeries Airbnb",
+                    timeToDeploy = "Mois 2 et Mois 3",
+                    netProfitImpact = "+15 à +40 kits vendus d'un coup par contrat groupé",
+                    operationalStrategy = "1) Démarcher les CSE (Comités Sociaux et Économiques) d'entreprises locales (+100 salariés : banques, hôpitaux, industries) avec une offre négociée 'Pouvoir d'Achat Énergie Verte' pour les salariés (Pack Solo à 329 € avec prise offerte). 2) Proposer aux conciergeries et gîtes Airbnb une offre pour neutraliser la clim et les jacuzzis des vacanciers. 3) Option 'Mise en service VIP 15 min' à 49 € pour les clients locaux (100% de marge horaire).",
+                    keyActionStep = "Envoyer le dossier de présentation PDF 'Avantage Salariés Énergie Verte' aux 5 plus gros CSE de votre département."
+                )
+            ),
+            associateVerifications = listOf(
                 AssociateVerificationItem(
                     id = "audit_grossiste_conditions",
                     title = "1. Appel Grossiste B2B : Validation Compte & Conditions Fret Palette",
@@ -696,7 +757,37 @@ object EcomDossiersData {
                 annualDividendsPerPartner = "~ 24 300 € nets d'impôt en poche par associé (après IS 15% jusqu'à 42.5k€ et Flat Tax 30%)",
                 taxOptimizationNote = "Structure unique multi-marques (code NAF 47.91A) : un seul compte bancaire, une comptabilité, zéro frottement fiscal."
             ),
-                        associateVerifications = listOf(
+                                    growthLevers = listOf(
+                GrowthLever(
+                    title = "1. Achat par Palettes de 36 Panneaux (-21% Coût Grossiste)",
+                    timeToDeploy = "Dès 3 000 € de trésorerie accumulée (Mois 2)",
+                    netProfitImpact = "+18,00 € à +32,00 € de marge pure supplémentaire par kit",
+                    operationalStrategy = "Au lieu d'acheter les panneaux à l'unité chez POwR Connect à 49,50 € HT, commander une palette de 36 panneaux Trina sur SecondSol ou POwR B2B à 39,00 € HT. Le coût de transport est mutualisé (2,36 € / panneau au lieu de 35 €). Le bénéfice net unitaire bondit de 105 € à 123 € (livré) et de 133 € à 151 € (main propre).",
+                    keyActionStep = "Dès que 15 précommandes sont encaissées, valider la première commande de palette complète livrée dans le garage sécurisé."
+                ),
+                GrowthLever(
+                    title = "2. Maximisation du Panier Moyen (Upsells Pack Duo & Prise Wi-Fi)",
+                    timeToDeploy = "Immédiat (Jour J au lancement)",
+                    netProfitImpact = "+47% de bénéfice net par commande (Panier moyen à 485 €)",
+                    operationalStrategy = "1) Proposer systématiquement le Pack Duo 880W à 649 € (+218 € à +255 € net de marge) pour effacer la consommation de la machine à laver et du lave-vaisselle (choisi par 35% des clients). 2) Upsell Prise connectée Wi-Fi Tuya 16A à 19 € (coût d'achat 6,50 € HT = +9,33 € net à 60% de marge brute, choisie par 80% des acheteurs). 3) Câble rallonge étanche 10m à 29 € (+14 € net).",
+                    keyActionStep = "Intégrer les boutons d'options 'Pack Duo Famille' et 'Prise connectée recommandée' dans l'annonce pilote et sur le bon de commande."
+                ),
+                GrowthLever(
+                    title = "3. Boucle Virale de Parrainage Voisinage Cash (Coût d'Acquisition = 0 €)",
+                    timeToDeploy = "Mois 1 (Dès les 5 premières livraisons)",
+                    netProfitImpact = "+30% à +50% de volume de vente sans aucun budget publicitaire",
+                    operationalStrategy = "L'effet de voisinage est le levier n°1 du solaire : dès qu'un propriétaire installe un panneau visible sur sa terrasse ou pelouse, 3 voisins viennent lui poser des questions sous 30 jours. On insère dans chaque carton 3 coupons postaux 'Offre Voisin Privilégié' : le voisin bénéficie de 20 € de remise, et le client parrain reçoit 30 € par virement instantané Wero / bancaire dès validation.",
+                    keyActionStep = "Imprimer 100 flyers cartonnés de parrainage 'Offre Voisinage SOLARIS' avec code unique à glisser dans chaque carton d'expédition."
+                ),
+                GrowthLever(
+                    title = "4. Ventes Groupées B2B : CSE d'Entreprises & Conciergeries Airbnb",
+                    timeToDeploy = "Mois 2 et Mois 3",
+                    netProfitImpact = "+15 à +40 kits vendus d'un coup par contrat groupé",
+                    operationalStrategy = "1) Démarcher les CSE (Comités Sociaux et Économiques) d'entreprises locales (+100 salariés : banques, hôpitaux, industries) avec une offre négociée 'Pouvoir d'Achat Énergie Verte' pour les salariés (Pack Solo à 329 € avec prise offerte). 2) Proposer aux conciergeries et gîtes Airbnb une offre pour neutraliser la clim et les jacuzzis des vacanciers. 3) Option 'Mise en service VIP 15 min' à 49 € pour les clients locaux (100% de marge horaire).",
+                    keyActionStep = "Envoyer le dossier de présentation PDF 'Avantage Salariés Énergie Verte' aux 5 plus gros CSE de votre département."
+                )
+            ),
+            associateVerifications = listOf(
                 AssociateVerificationItem(
                     id = "audit_grossiste_conditions",
                     title = "1. Appel Grossiste B2B : Validation Compte & Conditions Fret Palette",
@@ -935,7 +1026,37 @@ object EcomDossiersData {
                 annualDividendsPerPartner = "~ 10 200 € nets d'impôt en poche par associé (après IS 15% et Flat Tax 30%)",
                 taxOptimizationNote = "Produit de renfort après stabilisation du solaire : apporte environ 1 430 € net / mois supplémentaire par associé."
             ),
-                        associateVerifications = listOf(
+                                    growthLevers = listOf(
+                GrowthLever(
+                    title = "1. Achat par Palettes de 36 Panneaux (-21% Coût Grossiste)",
+                    timeToDeploy = "Dès 3 000 € de trésorerie accumulée (Mois 2)",
+                    netProfitImpact = "+18,00 € à +32,00 € de marge pure supplémentaire par kit",
+                    operationalStrategy = "Au lieu d'acheter les panneaux à l'unité chez POwR Connect à 49,50 € HT, commander une palette de 36 panneaux Trina sur SecondSol ou POwR B2B à 39,00 € HT. Le coût de transport est mutualisé (2,36 € / panneau au lieu de 35 €). Le bénéfice net unitaire bondit de 105 € à 123 € (livré) et de 133 € à 151 € (main propre).",
+                    keyActionStep = "Dès que 15 précommandes sont encaissées, valider la première commande de palette complète livrée dans le garage sécurisé."
+                ),
+                GrowthLever(
+                    title = "2. Maximisation du Panier Moyen (Upsells Pack Duo & Prise Wi-Fi)",
+                    timeToDeploy = "Immédiat (Jour J au lancement)",
+                    netProfitImpact = "+47% de bénéfice net par commande (Panier moyen à 485 €)",
+                    operationalStrategy = "1) Proposer systématiquement le Pack Duo 880W à 649 € (+218 € à +255 € net de marge) pour effacer la consommation de la machine à laver et du lave-vaisselle (choisi par 35% des clients). 2) Upsell Prise connectée Wi-Fi Tuya 16A à 19 € (coût d'achat 6,50 € HT = +9,33 € net à 60% de marge brute, choisie par 80% des acheteurs). 3) Câble rallonge étanche 10m à 29 € (+14 € net).",
+                    keyActionStep = "Intégrer les boutons d'options 'Pack Duo Famille' et 'Prise connectée recommandée' dans l'annonce pilote et sur le bon de commande."
+                ),
+                GrowthLever(
+                    title = "3. Boucle Virale de Parrainage Voisinage Cash (Coût d'Acquisition = 0 €)",
+                    timeToDeploy = "Mois 1 (Dès les 5 premières livraisons)",
+                    netProfitImpact = "+30% à +50% de volume de vente sans aucun budget publicitaire",
+                    operationalStrategy = "L'effet de voisinage est le levier n°1 du solaire : dès qu'un propriétaire installe un panneau visible sur sa terrasse ou pelouse, 3 voisins viennent lui poser des questions sous 30 jours. On insère dans chaque carton 3 coupons postaux 'Offre Voisin Privilégié' : le voisin bénéficie de 20 € de remise, et le client parrain reçoit 30 € par virement instantané Wero / bancaire dès validation.",
+                    keyActionStep = "Imprimer 100 flyers cartonnés de parrainage 'Offre Voisinage SOLARIS' avec code unique à glisser dans chaque carton d'expédition."
+                ),
+                GrowthLever(
+                    title = "4. Ventes Groupées B2B : CSE d'Entreprises & Conciergeries Airbnb",
+                    timeToDeploy = "Mois 2 et Mois 3",
+                    netProfitImpact = "+15 à +40 kits vendus d'un coup par contrat groupé",
+                    operationalStrategy = "1) Démarcher les CSE (Comités Sociaux et Économiques) d'entreprises locales (+100 salariés : banques, hôpitaux, industries) avec une offre négociée 'Pouvoir d'Achat Énergie Verte' pour les salariés (Pack Solo à 329 € avec prise offerte). 2) Proposer aux conciergeries et gîtes Airbnb une offre pour neutraliser la clim et les jacuzzis des vacanciers. 3) Option 'Mise en service VIP 15 min' à 49 € pour les clients locaux (100% de marge horaire).",
+                    keyActionStep = "Envoyer le dossier de présentation PDF 'Avantage Salariés Énergie Verte' aux 5 plus gros CSE de votre département."
+                )
+            ),
+            associateVerifications = listOf(
                 AssociateVerificationItem(
                     id = "audit_grossiste_conditions",
                     title = "1. Appel Grossiste B2B : Validation Compte & Conditions Fret Palette",

@@ -74,6 +74,7 @@ import com.solaris.manager.model.CostItem
 import com.solaris.manager.model.EcomDossier
 import com.solaris.manager.model.MarketStudyDetail
 import com.solaris.manager.model.ObjectionItem
+import com.solaris.manager.model.GrowthLever
 import com.solaris.manager.model.AssociateVerificationItem
 import com.solaris.manager.model.RiskMitigationItem
 import com.solaris.manager.model.PartnerPitchArgument
@@ -360,7 +361,16 @@ private fun ConceptionPhaseContent(
                             }
 
 
-                            // 9. FAQ OBJECTIONS & PARADES COMMERCIALES
+
+                            // 10. ACCÉLÉRATION DU PROFIT & SCALE RAPIDE
+                            if (dossier.growthLevers.isNotEmpty()) {
+                                GrowthStrategyCard(levers = dossier.growthLevers)
+                                Spacer(modifier = Modifier.height(14.dp))
+                                HorizontalDivider(color = Color(0xFF334155))
+                                Spacer(modifier = Modifier.height(10.dp))
+                            }
+
+                            // 11. FAQ OBJECTIONS & PARADES COMMERCIALES
                             if (dossier.objections.isNotEmpty()) {
                                 ObjectionsCard(objections = dossier.objections)
                                 Spacer(modifier = Modifier.height(14.dp))
@@ -1710,6 +1720,151 @@ private fun RiskMitigationsCard(risks: List<RiskMitigationItem>) {
 }
 
 
+
+@Composable
+private fun GrowthStrategyCard(levers: List<GrowthLever>) {
+    val context = LocalContext.current
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp))
+            .background(Color(0xFF0F172A))
+            .border(1.dp, Color(0xFF10B981).copy(alpha = 0.6f), RoundedCornerShape(10.dp))
+            .padding(12.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(text = "🚀", fontSize = 16.sp)
+                Spacer(modifier = Modifier.width(6.dp))
+                Text(
+                    text = "10. ACCÉLÉRATION DU PROFIT & SCALE RAPIDE",
+                    color = Color(0xFF34D399),
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 11.sp
+                )
+            }
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(Color(0xFF065F46))
+                    .border(1.dp, Color(0xFF10B981), RoundedCornerShape(4.dp))
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
+            ) {
+                Text(
+                    text = "+47% À +100% BÉNÉFICE",
+                    color = Color(0xFFA7F3D0),
+                    fontSize = 8.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(
+            text = "Les 4 leviers à fort effet de levier (80/20) pour faire exploser les marges et les parts de marché :",
+            color = Color(0xFF94A3B8),
+            fontSize = 9.sp
+        )
+        Spacer(modifier = Modifier.height(10.dp))
+
+        levers.forEach { lever ->
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(Color(0xFF1E293B))
+                    .border(1.dp, Color(0xFF334155), RoundedCornerShape(8.dp))
+                    .padding(10.dp)
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = lever.title,
+                        color = Color.White,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 11.sp,
+                        modifier = Modifier.weight(1f)
+                    )
+                    Spacer(modifier = Modifier.width(6.dp))
+                    Box(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(4.dp))
+                            .background(Color(0xFF0369A1).copy(alpha = 0.25f))
+                            .border(1.dp, Color(0xFF38BDF8), RoundedCornerShape(4.dp))
+                            .padding(horizontal = 5.dp, vertical = 2.dp)
+                    ) {
+                        Text(
+                            text = lever.timeToDeploy,
+                            color = Color(0xFF7DD3FC),
+                            fontSize = 7.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(4.dp))
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(4.dp))
+                        .background(Color(0xFF064E3B).copy(alpha = 0.35f))
+                        .border(1.dp, Color(0xFF10B981).copy(alpha = 0.5f), RoundedCornerShape(4.dp))
+                        .padding(horizontal = 8.dp, vertical = 4.dp)
+                ) {
+                    Text(
+                        text = "💰 IMPACT BÉNÉFICE : ${lever.netProfitImpact}",
+                        color = Color(0xFF34D399),
+                        fontSize = 9.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(6.dp))
+                Text(
+                    text = lever.operationalStrategy,
+                    color = Color(0xFFCBD5E1),
+                    fontSize = 9.sp,
+                    lineHeight = 13.sp
+                )
+
+                Spacer(modifier = Modifier.height(6.dp))
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(6.dp))
+                        .background(Color(0xFF0F172A))
+                        .border(1.dp, Color(0xFF475569), RoundedCornerShape(6.dp))
+                        .padding(6.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.RocketLaunch,
+                        contentDescription = "Action",
+                        tint = Color(0xFFFBBF24),
+                        modifier = Modifier.size(13.dp)
+                    )
+                    Spacer(modifier = Modifier.width(5.dp))
+                    Text(
+                        text = "Étape clé : ${lever.keyActionStep}",
+                        color = Color(0xFFFDE68A),
+                        fontSize = 8.sp,
+                        fontWeight = FontWeight.Medium
+                    )
+                }
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+        }
+    }
+}
+
 @Composable
 private fun AssociateVerificationsCard(
     verifications: List<AssociateVerificationItem>,
@@ -1910,7 +2065,7 @@ private fun ObjectionsCard(objections: List<ObjectionItem>) {
                 Text(text = "🎯", fontSize = 16.sp)
                 Spacer(modifier = Modifier.width(6.dp))
                 Text(
-                    text = "10. FAQ OBJECTIONS & PARADES COMMERCIALES",
+                    text = "11. FAQ OBJECTIONS & PARADES COMMERCIALES",
                     color = Color(0xFFFBBF24),
                     fontSize = 11.sp,
                     fontWeight = FontWeight.Bold,
@@ -2027,7 +2182,7 @@ private fun RegulatoryRoadmapCard(roadmap: List<RegulatoryRoadmapItem>) {
                 Text(text = "⚖️", fontSize = 16.sp)
                 Spacer(modifier = Modifier.width(6.dp))
                 Text(
-                    text = "11. CADRE LÉGAL, DÉMARCHES & SÉCURISATION",
+                    text = "12. CADRE LÉGAL, DÉMARCHES & SÉCURISATION",
                     color = Color(0xFF38BDF8),
                     fontSize = 11.sp,
                     fontWeight = FontWeight.Bold,
