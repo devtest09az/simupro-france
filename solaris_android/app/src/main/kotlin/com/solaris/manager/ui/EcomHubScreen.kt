@@ -77,6 +77,8 @@ import com.solaris.manager.model.ObjectionItem
 import com.solaris.manager.model.OperationalPhaseStep
 import com.solaris.manager.model.GrowthLever
 import com.solaris.manager.model.AssociateVerificationItem
+import com.solaris.manager.model.HumanPrerequisiteItem
+import androidx.compose.foundation.BorderStroke
 import com.solaris.manager.model.RiskMitigationItem
 import com.solaris.manager.model.PartnerPitchArgument
 import com.solaris.manager.model.PartnerProfitProjection
@@ -166,6 +168,7 @@ fun EcomHubScreen(
                     onDossierClick = { viewModel.selectDossier(it) },
                     onVerificationToggle = { dId, vId -> viewModel.toggleVerification(dId, vId) },
                     onPhaseStepToggle = { dId, sNum -> viewModel.togglePhaseStep(dId, sNum) },
+                    onHumanPrerequisiteToggle = { dId, pId -> viewModel.toggleHumanPrerequisite(dId, pId) },
                     onNoteChange = { dId, text -> viewModel.onNoteChange(dId, text) },
                     onSaveNote = { viewModel.saveNotes(it) }
                 )
@@ -256,6 +259,7 @@ private fun ConceptionPhaseContent(
     onDossierClick: (String) -> Unit,
     onVerificationToggle: (String, String) -> Unit,
     onPhaseStepToggle: (String, String) -> Unit,
+    onHumanPrerequisiteToggle: (String, String) -> Unit,
     onNoteChange: (String, String) -> Unit,
     onSaveNote: (String) -> Unit
 ) {
@@ -357,6 +361,17 @@ private fun ConceptionPhaseContent(
                                 AssociateVerificationsCard(
                                     verifications = dossier.associateVerifications,
                                     onToggle = { vId -> onVerificationToggle(dossier.id, vId) }
+                                )
+                                Spacer(modifier = Modifier.height(14.dp))
+                                HorizontalDivider(color = Color(0xFF334155))
+                                Spacer(modifier = Modifier.height(10.dp))
+                            }
+
+                            // 9.bis CE QUE L'IA NE PEUT PAS FAIRE (ACTIONS HUMAINES OBLIGATOIRES DES ASSOCIÉS)
+                            if (dossier.humanPrerequisites.isNotEmpty()) {
+                                HumanPrerequisitesCard(
+                                    items = dossier.humanPrerequisites,
+                                    onToggle = { pId -> onHumanPrerequisiteToggle(dossier.id, pId) }
                                 )
                                 Spacer(modifier = Modifier.height(14.dp))
                                 HorizontalDivider(color = Color(0xFF334155))
@@ -2245,6 +2260,209 @@ private fun AssociateVerificationsCard(
         }
     }
 }
+
+@Composable
+private fun HumanPrerequisitesCard(
+    items: List<HumanPrerequisiteItem>,
+    onToggle: (String) -> Unit
+) {
+    val context = LocalContext.current
+    val completedCount = items.count { it.isCompleted }
+    val totalCount = items.size
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp))
+            .background(Color(0xFF0F172A))
+            .border(1.dp, Color(0xFFF43F5E).copy(alpha = 0.7f), RoundedCornerShape(10.dp))
+            .padding(12.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(text = "🛑", fontSize = 16.sp)
+                Spacer(modifier = Modifier.width(6.dp))
+                Text(
+                    text = "ACTIONS HUMAINES OBLIGATOIRES (HORS IA)",
+                    color = Color(0xFFFB7185),
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 11.sp
+                )
+            }
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(if (completedCount == totalCount) Color(0xFF10B981).copy(alpha = 0.2f) else Color(0xFFF43F5E).copy(alpha = 0.2f))
+                    .border(1.dp, if (completedCount == totalCount) Color(0xFF10B981) else Color(0xFFFB7185), RoundedCornerShape(4.dp))
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
+            ) {
+                Text(
+                    text = "$completedCount / $totalCount RÉALISÉES",
+                    color = if (completedCount == totalCount) Color(0xFF34D399) else Color(0xFFFDA4AF),
+                    fontSize = 8.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(
+            text = "Pour un lancement 100% prêt : les démarches légales, bancaires et physiques strictes que seuls les associés humains peuvent accomplir en droit français :",
+            color = Color(0xFF94A3B8),
+            fontSize = 9.sp
+        )
+        Spacer(modifier = Modifier.height(10.dp))
+
+        items.forEach { item ->
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(Color(0xFF1E293B))
+                    .border(
+                        1.dp,
+                        if (item.isCompleted) Color(0xFF10B981).copy(alpha = 0.7f) else Color(0xFF475569),
+                        RoundedCornerShape(8.dp)
+                    )
+                    .padding(10.dp)
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { onToggle(item.id) },
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Checkbox(
+                        checked = item.isCompleted,
+                        onCheckedChange = { onToggle(item.id) },
+                        colors = CheckboxDefaults.colors(
+                            checkedColor = Color(0xFF10B981),
+                            uncheckedColor = Color(0xFFFB7185)
+                        )
+                    )
+                    Spacer(modifier = Modifier.width(4.dp))
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(
+                            text = item.title,
+                            color = if (item.isCompleted) Color(0xFF94A3B8) else Color.White,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 11.sp
+                        )
+                        Spacer(modifier = Modifier.height(3.dp))
+                        Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                            Box(
+                                modifier = Modifier
+                                    .clip(RoundedCornerShape(4.dp))
+                                    .background(Color(0xFF334155))
+                                    .padding(horizontal = 4.dp, vertical = 1.dp)
+                            ) {
+                                Text(
+                                    text = "👤 ${item.assignedTo}",
+                                    color = Color(0xFFFCD34D),
+                                    fontSize = 8.sp,
+                                    fontWeight = FontWeight.SemiBold
+                                )
+                            }
+                            Box(
+                                modifier = Modifier
+                                    .clip(RoundedCornerShape(4.dp))
+                                    .background(Color(0xFF0F172A))
+                                    .border(1.dp, Color(0xFF38BDF8).copy(alpha = 0.5f), RoundedCornerShape(4.dp))
+                                    .padding(horizontal = 4.dp, vertical = 1.dp)
+                            ) {
+                                Text(
+                                    text = "💰 ${item.estimatedCost}",
+                                    color = Color(0xFF38BDF8),
+                                    fontSize = 8.sp,
+                                    fontWeight = FontWeight.Bold
+                                )
+                            }
+                        }
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(6.dp))
+
+                // Pourquoi l'IA ne peut pas le faire
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(6.dp))
+                        .background(Color(0xFF881337).copy(alpha = 0.25f))
+                        .border(1.dp, Color(0xFFF43F5E).copy(alpha = 0.35f), RoundedCornerShape(6.dp))
+                        .padding(8.dp)
+                ) {
+                    Text(
+                        text = "❌ POURQUOI L'IA NE PEUT PAS LE FAIRE :",
+                        color = Color(0xFFFDA4AF),
+                        fontSize = 8.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Spacer(modifier = Modifier.height(2.dp))
+                    Text(
+                        text = item.whyAiCannotDoIt,
+                        color = Color(0xFFFECDD3),
+                        fontSize = 9.sp,
+                        lineHeight = 13.sp
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(6.dp))
+
+                // Action humaine requise
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(6.dp))
+                        .background(Color(0xFF064E3B).copy(alpha = 0.25f))
+                        .border(1.dp, Color(0xFF10B981).copy(alpha = 0.35f), RoundedCornerShape(6.dp))
+                        .padding(8.dp)
+                ) {
+                    Text(
+                        text = "✅ ACTION HUMAINE CONCRÈTE REQUISE :",
+                        color = Color(0xFF6EE7B7),
+                        fontSize = 8.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Spacer(modifier = Modifier.height(2.dp))
+                    Text(
+                        text = item.actionRequiredByPartner,
+                        color = Color(0xFFA7F3D0),
+                        fontSize = 9.sp,
+                        lineHeight = 13.sp
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(6.dp))
+                Button(
+                    onClick = {
+                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(item.officialUrl))
+                        context.startActivity(intent)
+                    },
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF1E293B)),
+                    shape = RoundedCornerShape(6.dp),
+                    border = BorderStroke(1.dp, Color(0xFF38BDF8).copy(alpha = 0.5f))
+                ) {
+                    Icon(Icons.Default.OpenInBrowser, contentDescription = "Ouvrir", modifier = Modifier.size(12.dp), tint = Color(0xFF38BDF8))
+                    Spacer(modifier = Modifier.width(6.dp))
+                    Text(
+                        text = "Ouvrir le portail officiel pour cette démarche",
+                        color = Color(0xFF38BDF8),
+                        fontSize = 9.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+        }
+    }
+}
+
 
 @Composable
 private fun ObjectionsCard(objections: List<ObjectionItem>) {

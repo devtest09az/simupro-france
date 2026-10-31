@@ -39,6 +39,10 @@ class EcomHubViewModel(application: Application) : AndroidViewModel(application)
                 val isDone = prefs.getBoolean("phase_${dossier.id}_${step.stepNumber}", step.isCompleted)
                 step.copy(isCompleted = isDone)
             }
+            val restoredHumanPrerequisites = dossier.humanPrerequisites.map { item ->
+                val isDone = prefs.getBoolean("human_${dossier.id}_${item.id}", item.isCompleted)
+                item.copy(isCompleted = isDone)
+            }
             val completedCount = restoredActions.count { it.isDone }
             val percent = if (restoredActions.isNotEmpty()) ((completedCount.toDouble() / restoredActions.size) * 100).toInt() else 0
             dossier.copy(
@@ -46,6 +50,7 @@ class EcomHubViewModel(application: Application) : AndroidViewModel(application)
                 productionActions = restoredActions,
                 associateVerifications = restoredVerifications,
                 operationalPhases = restoredPhases,
+                humanPrerequisites = restoredHumanPrerequisites,
                 progressPercent = percent
             )
         }
@@ -150,6 +155,26 @@ class EcomHubViewModel(application: Application) : AndroidViewModel(application)
                     }
                 }
                 dossier.copy(operationalPhases = updatedSteps)
+            } else {
+                dossier
+            }
+        }
+        _uiState.value = _uiState.value.copy(dossiers = updatedDossiers)
+    }
+
+    fun toggleHumanPrerequisite(dossierId: String, prerequisiteId: String) {
+        val updatedDossiers = _uiState.value.dossiers.map { dossier ->
+            if (dossier.id == dossierId) {
+                val updatedItems = dossier.humanPrerequisites.map { item ->
+                    if (item.id == prerequisiteId) {
+                        val next = !item.isCompleted
+                        prefs.edit().putBoolean("human_${dossier.id}_${item.id}", next).apply()
+                        item.copy(isCompleted = next)
+                    } else {
+                        item
+                    }
+                }
+                dossier.copy(humanPrerequisites = updatedItems)
             } else {
                 dossier
             }

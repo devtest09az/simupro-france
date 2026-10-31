@@ -9,6 +9,7 @@ import com.solaris.manager.model.ObjectionItem
 import com.solaris.manager.model.OperationalPhaseStep
 import com.solaris.manager.model.GrowthLever
 import com.solaris.manager.model.AssociateVerificationItem
+import com.solaris.manager.model.HumanPrerequisiteItem
 import com.solaris.manager.model.RiskMitigationItem
 import com.solaris.manager.model.PartnerPitchArgument
 import com.solaris.manager.model.PartnerProfitProjection
@@ -504,6 +505,71 @@ object EcomDossiersData {
                     netProfitImpact = "+15 à +40 kits vendus d'un coup par contrat groupé",
                     operationalStrategy = "1) Démarcher les CSE (Comités Sociaux et Économiques) d'entreprises locales (+100 salariés : banques, hôpitaux, industries) avec une offre négociée 'Pouvoir d'Achat Énergie Verte' pour les salariés (Pack Solo à 329 € avec prise offerte). 2) Proposer aux conciergeries et gîtes Airbnb une offre pour neutraliser la clim et les jacuzzis des vacanciers. 3) Option 'Mise en service VIP 15 min' à 49 € pour les clients locaux (100% de marge horaire).",
                     keyActionStep = "Envoyer le dossier de présentation PDF 'Avantage Salariés Énergie Verte' aux 5 plus gros CSE de votre département."
+                )
+            ),
+            humanPrerequisites = listOf(
+                HumanPrerequisiteItem(
+                    id = "human_stripe_kyc",
+                    title = "1. Activation de l'Encaissement Stripe CB en Production (KYC / AML)",
+                    assignedTo = "Associé 1 (Président SAS)",
+                    estimatedCost = "0 € d'ouverture (Commission 1,5% + 0,25 € par vente)",
+                    whyAiCannotDoIt = "Obligation légale bancaire européenne (directive DSP2 / KYC) : Stripe exige la pièce d'identité officielle en cours de validité (CNI ou Passeport) du dirigeant légal, un selfie de vérification d'identité et le RIB Qonto de la SAS. Aucune IA ne peut signer ni usurper cette identité juridique.",
+                    actionRequiredByPartner = "Se connecter sur dashboard.stripe.com avec l'email pro de la société, renseigner le SIREN, télécharger la CNI recto/verso du Président et lier le compte bancaire Qonto pour recevoir les virements automatiques.",
+                    officialUrl = "https://dashboard.stripe.com/register"
+                ),
+                HumanPrerequisiteItem(
+                    id = "human_geodis_account",
+                    title = "2. Signature du Contrat Cadre Fret Geodis Pro (Tarif 35 € HT / palette)",
+                    assignedTo = "Associé 2 (Logistique & Opérations)",
+                    estimatedCost = "0 € d'ouverture (Paiement à la palette expédiée)",
+                    whyAiCannotDoIt = "Geodis exige un contrat commercial signé par le dirigeant avec extrait Kbis pour ouvrir un compte chargeur pro et appliquer la grille tarifaire négociée B2B (35 € HT par demi-palette avec hayon et RDV SMS au lieu de 95 € HT tarif grand public).",
+                    actionRequiredByPartner = "Appeler l'agence commerciale Geodis Distribution du département (ou via espace-client.geodis.com), transmettre le Kbis de la SAS et valider la convention d'enlèvement en atelier/garage.",
+                    officialUrl = "https://espace-client.geodis.com/"
+                ),
+                HumanPrerequisiteItem(
+                    id = "human_domain_dns",
+                    title = "3. Achat du Nom de Domaine Définitif & Configuration DNS OVH",
+                    assignedTo = "Associé 1 (Président / Web)",
+                    estimatedCost = "8,39 € TTC / an (OVHcloud)",
+                    whyAiCannotDoIt = "L'enregistrement d'un nom de domaine en .fr auprès du registre national AFNIC nécessite un paiement par carte bancaire de la société et la validation des coordonnées du titulaire légal.",
+                    actionRequiredByPartner = "Acheter le domaine solaris-france.fr (ou solaris-solaire.fr) sur ovhcloud.com, puis dans la zone DNS ajouter un enregistrement CNAME pointant vers le site GitHub Pages ou Netlify.",
+                    officialUrl = "https://www.ovhcloud.com/fr/domains/"
+                ),
+                HumanPrerequisiteItem(
+                    id = "human_voip_09",
+                    title = "4. Souscription Ligne Téléphonique VoIP Professionnelle (Numéro 09)",
+                    assignedTo = "Les 2 Associés",
+                    estimatedCost = "1,20 € HT / mois (OVH Télécom)",
+                    whyAiCannotDoIt = "Attribution d'une ligne téléphonique française régie par l'ARCEP nécessitant la souscription d'un abonnement télécom avec justificatif de domicile de la société.",
+                    actionRequiredByPartner = "Créer un compte OVH Télécom VoIP (offre à 1,20 € HT/mois), choisir un numéro 09 non surtaxé et configurer l'application SIP (Zoiper) ou le renvoi d'appel simultané sur les smartphones des deux associés.",
+                    officialUrl = "https://www.ovhtelecom.fr/telephonie/voip/"
+                ),
+                HumanPrerequisiteItem(
+                    id = "human_soren_eco",
+                    title = "5. Adhésion Éco-organisme SOREN (Filière Recyclage DEEE Panneaux)",
+                    assignedTo = "Associé 1 (Président SAS)",
+                    estimatedCost = "0 € d'adhésion (Éco-participation répercutée sur le prix de vente)",
+                    whyAiCannotDoIt = "Obligation légale environnementale (Code de l'Environnement art. R543-172). Tout metteur sur le marché de panneaux photovoltaïques doit être immatriculé auprès de SOREN sous peine d'amende administrative de 7 500 €.",
+                    actionRequiredByPartner = "Créer le compte metteur sur le marché sur le portail soren.eco, signer la convention d'adhésion dématérialisée et déclarer les volumes annuels prévisionnels (environ 360 panneaux pour l'année 1).",
+                    officialUrl = "https://www.soren.eco/"
+                ),
+                HumanPrerequisiteItem(
+                    id = "human_rc_pro",
+                    title = "6. Souscription Assurance RC Pro Exploitation & Vente de Matériel",
+                    assignedTo = "Associé 1 (Président SAS)",
+                    estimatedCost = "~42 € / mois (Hiscox ou AXA Pro)",
+                    whyAiCannotDoIt = "Un contrat d'assurance engage la responsabilité civile et pénale de la société. Il exige la signature du mandat de prélèvement SEPA et la déclaration de l'activité exacte de vente d'équipements photovoltaïques.",
+                    actionRequiredByPartner = "Finaliser la souscription en ligne sur hiscox.fr (ou chez un courtier local) pour la police 'RC Pro Négociation et Vente d'équipements pour énergies renouvelables'. Transmettre l'attestation aux grossistes.",
+                    officialUrl = "https://www.hiscox.fr/assurance-responsabilite-civile-professionnelle"
+                ),
+                HumanPrerequisiteItem(
+                    id = "human_prototype_garage",
+                    title = "7. Réception Physique & Crash-Test du Kit Prototype dans le Garage",
+                    assignedTo = "Associé 2 (Technique & Logistique)",
+                    estimatedCost = "180 € TTC (Avance 50/50 remboursée sur la première vente)",
+                    whyAiCannotDoIt = "L'inspection physique de la qualité des découpes d'aluminium, la vérification du câble Schuko, la prise de photos réelles HD du kit posé sur la pelouse/terrasse et le test au multimètre de la coupure VDE < 200ms nécessitent des mains humaines sur le terrain.",
+                    actionRequiredByPartner = "Commander 1 kit prototype chez POwR Connect ou Kitsolaire-Discount, le déballer dans le garage, filmer la vidéo de débranchement pour les réseaux sociaux et tester la baisse de puissance sur le compteur Linky de la maison.",
+                    officialUrl = "https://www.kitsolaire-discount.com/"
                 )
             ),
             associateVerifications = listOf(

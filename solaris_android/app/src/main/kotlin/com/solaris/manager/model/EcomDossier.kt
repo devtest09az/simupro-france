@@ -103,6 +103,17 @@ data class GrowthLever(
     val keyActionStep: String
 )
 
+data class HumanPrerequisiteItem(
+    val id: String,
+    val title: String,
+    val assignedTo: String,
+    val estimatedCost: String,
+    val whyAiCannotDoIt: String,
+    val actionRequiredByPartner: String,
+    val officialUrl: String,
+    var isCompleted: Boolean = false
+)
+
 data class AssociateVerificationItem(
     val id: String,
     val title: String,
@@ -165,6 +176,8 @@ data class EcomDossier(
     val operationalPhases: List<OperationalPhaseStep> = emptyList(),
     val growthLevers: List<GrowthLever> = emptyList(),
     val associateVerifications: List<AssociateVerificationItem> = emptyList(),
+    // Ce que l'IA ne peut pas faire (Actions humaines obligatoires des associés)
+    val humanPrerequisites: List<HumanPrerequisiteItem> = emptyList(),
     val objections: List<ObjectionItem> = emptyList(),
     // Réglementation, démarches administratives & boucliers
     val regulatoryRoadmap: List<RegulatoryRoadmapItem> = emptyList(),
