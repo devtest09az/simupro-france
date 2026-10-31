@@ -23,6 +23,365 @@ import com.solaris.manager.model.VerifiedSupplier
 object EcomDossiersData {
     val dossiers = listOf(
         // =========================================================================
+        // 0. SOCIÉTÉ SAS COMMUNE (VOLTIS GROUP)
+        // =========================================================================
+        EcomDossier(
+            id = "dossier_sas",
+            title = "Société SAS Commune (VOLTIS GROUP)",
+            subtitle = "Société Mère Multi-Activités • 1 Seul SIRET & Compte Qonto Unique pour Solaire & Alarme",
+            category = "Juridique, Statuts & Dépôt Qonto",
+            iconEmoji = "🏢",
+            progressPercent = 90,
+            estimatedNetMargin = "1 Seul SIRET • 0 € de structure supplémentaire",
+            targetMonthlyRevenue = "14 933 € HT / mois (Cumul Solaire + Alarme)",
+            liveWebsiteUrl = "https://formalites.entreprises.gouv.fr/",
+            partnerNotes = """NOTE COMMUNE (Associés) :
+- La SAS est la société mère qui porte les 2 marques commerciales (SOLAVOLT pour le solaire, SECUREVO pour les alarmes).
+- Capital : 1 000 € (500 € par associé, 1 000 actions de 1 €), réparti 50% / 50%.
+- Gouvernance : Président (Associé 1) avec mandat à titre 100% gratuit (0,00 € salaire) pour garantir le maintien intégral de l'ARE France Travail.
+- Dépôt de capital en ligne sur Qonto en 24h, obtention du Kbis en 3 à 5 jours ouvrés via le Guichet Unique INPI.
+- Dividendes nets de fin d'exercice imposés à la Flat Tax (30%) sans cotisations sociales URSSAF.""",
+            marketStudy = MarketStudyDetail(
+                marketSize = "France Métropolitaine • RCS & Greffe du Tribunal de Commerce",
+                growthRate = "Multi-activités e-commerce sous SIRET unique",
+                targetPainPoint = "Éviter les frais d'avocat (1 500 € à 2 500 €) et les conflits de cotisations sociales de la SARL",
+                competitiveEdge = "Montage SAS 50/50 optimisé : maintien à 100% de l'ARE chômage du Président + exonération de cotisations sociales sur les dividendes",
+                officialSourceLabel = "Code de commerce (Art. L227-1) & Guichet Unique INPI",
+                officialSourceUrl = "https://formalites.entreprises.gouv.fr/",
+                fullAnalysis = """ORGANISATION JURIDIQUE & COMMERCIALE DE LA SAS :
+1. RAISON D'ÊTRE DU MONTAGE SAS :
+- La création d'une SAS (Société par Actions Simplifiée) permet d'exploiter immédiatement plusieurs marques commerciales (Solaire 440W et Alarme 4G) sous une seule entité juridique.
+- 1 seul compte bancaire professionnel (Qonto), 1 seule comptabilité (Pennylane), 1 seule déclaration fiscale annuelle.
+- Absorption totale des charges fixes (expert-comptable 83 €, compte Qonto 29 €, assurance RC Pro 42 €) dès les premières ventes solaires.
+
+2. LE BOUCLIER TOTAL ARE FRANCE TRAVAIL :
+- En SAS, le dirigeant relève du régime des assimilés salariés.
+- Si le Procès-Verbal d'Assemblée Générale Constitutif stipule une rémunération de 0,00 €, le dirigeant ne perçoit aucun salaire et ne reçoit aucune fiche de paie.
+- France Travail maintient 100% des allocations chômage mensuelles (zéro déduction).
+- À l'inverse, en SARL 50/50, la gérance majoritaire impose des cotisations sociales minimales forfaitaires dès le 1er jour, même avec 0 € de chiffre d'affaires, créant un blocage administratif avec France Travail.
+
+3. DÉNOMINATION SOCIALE AU GREFFE vs MARQUES COMMERCIALES :
+- La dénomination sociale au Greffe doit être institutionnelle et neutre : 'VOLTIS GROUP SAS' (ou 'HELIO TRADE SAS').
+- Elle ne rentre ainsi en conflit avec aucun tiers (contrairement à 'Solaris SAS' qui existe déjà au RCS de Bourg-en-Bresse).
+- Les marques commerciales 'SOLAVOLT.FR' et 'SECUREVO.FR' sont déposées à l'INPI et exploitées en toute conformité."""
+            ),
+            unitEconomics = UnitEconomicsDetail(
+                retailPriceTTC = "14 933 € HT / mois",
+                retailPriceHT = "Chiffre d'Affaires Combiné (30 kits solaires + 50 packs alarme)",
+                wholesaleBOMHT = "6 220 € HT (Achats matériels combinés)",
+                shippingCost = "630 € HT (Geodis + Colissimo)",
+                paymentGatewayFee = "283 € HT (Stripe 1,5% + 0,25 €)",
+                netProfitPerUnit = "+6 254 € HT / mois",
+                targetMonthlyNet = "+2 285 € net/associé (Solaire) + +1 180 € net/associé (Alarme) = +3 465 € net/mois/associé",
+                costItems = listOf(
+                    CostItem("Abonnement Compte Pro Qonto", "29,00 € HT", "Compte pro en ligne avec cartes Mastercard et sous-comptes"),
+                    CostItem("Expert-Comptable Pennylane / Dougs", "83,00 € HT", "Tenue comptable, bilan annuel et liasse fiscale certifiée"),
+                    CostItem("Assurance RC Pro E-Commerce Multi-Activités", "42,00 € HT", "Couverture responsabilité civile exploitation basse tension & alarmes"),
+                    CostItem("Frais Web, Domaines & Hébergement", "25,00 € HT", "Noms de domaine .FR sur OVHcloud et serveurs sécurisés"),
+                    CostItem("Cotisation CFE forfaitaire", "33,00 € HT", "Cotisation Foncière des Entreprises provisionnée")
+                ),
+                executiveSummary = "Charges fixes globales de la SAS : 212 € HT / mois. Ce montant est amorti dès le 3ème kit solaire vendu dans le mois. La marge générée par l'alarme est 100% nette de frais fixes.",
+                sourceOrSupplier = "Tarifs officiels Qonto Pro, Pennylane & AXA Assurance"
+            ),
+            partnerProfit = PartnerProfitProjection(
+                monthlyVolumeHypothesis = "Activité combinée SAS (30 stations solaires + 50 packs alarme / mois)",
+                totalCompanyNetMonthly = "+ 5 658 € NET après IS 15% (67 896 € net / an)",
+                associate1Name = "Associé 1 (Président SAS)",
+                associate1NetMonthly = "+ 1 980 € NET d'impôt / mois (23 760 € net / an)",
+                associate1SpecificAdvantage = "Mandat gratuit (0 € salaire) : cumul 100% avec les dividendes de la SAS et maintien intégral de l'ARE",
+                associate2Name = "Associé 2 (Co-fondateur 50%)",
+                associate2NetMonthly = "+ 1 980 € NET d'impôt / mois (23 760 € net / an)",
+                associate2SpecificAdvantage = "Partage égalitaire 50/50 des dividendes nets (Flat Tax 30%)",
+                annualDividendsPerPartner = "23 760 € nets / an / associé",
+                taxOptimizationNote = "Les dividendes de SAS ne subissent aucune cotisation sociale URSSAF (contrairement à la SARL majoritaire). Maintien intégral de l'ARE chômage garanti."
+            ),
+            commercialPacks = emptyList(),
+            productionSimulations = emptyList(),
+            verifiedSuppliers = listOf(
+                VerifiedSupplier(
+                    name = "Qonto (Établissement Bancaire Pro Agréé ACPR)",
+                    location = "Paris (75) • Dépôt de capital 100% en ligne",
+                    role = "Compte séquestre des fonds & Compte pro bancaire de la SAS",
+                    contactB2B = "qonto.com • Support client réactif 7j/7",
+                    conditions = "Dépôt de capital en 24h ouvrées. Certificat de dépôt officiel immédiat pour le Greffe.",
+                    portalUrl = "https://qonto.com/fr"
+                ),
+                VerifiedSupplier(
+                    name = "Guichet Unique INPI (Portail Officiel de l'État)",
+                    location = "INPI France • formalites.entreprises.gouv.fr",
+                    role = "Immatriculation officielle au Registre du Commerce et des Sociétés (RCS)",
+                    contactB2B = "Assistance INPI : 01 56 65 89 98",
+                    conditions = "Dépôt des statuts, attestation JAL et certificat Qonto. Extrait Kbis délivré sous 3 à 5 jours ouvrés.",
+                    portalUrl = "https://formalites.entreprises.gouv.fr/"
+                ),
+                VerifiedSupplier(
+                    name = "Journal Spécial des Sociétés (JSS / Le Parisien Annonces)",
+                    location = "France entière • Plateforme d'annonces légales habilitée",
+                    role = "Publication de l'avis de constitution au Journal d'Annonces Légales (JAL)",
+                    contactB2B = "Tarif légal forfaitaire fixé par arrêté ministériel",
+                    conditions = "Attestation de parution délivrée instantanément en PDF pour le dossier de greffe.",
+                    portalUrl = "https://www.jss.fr/"
+                ),
+                VerifiedSupplier(
+                    name = "Pennylane / Dougs (Expertise-Comptable Connectée)",
+                    location = "Paris / Lyon • Ordre des Experts-Comptables de France",
+                    role = "Tenue de la comptabilité de la SAS et attestation annuelle de non-rémunération",
+                    contactB2B = "Synchronisation automatique des flux bancaires Qonto et Stripe",
+                    conditions = "Génération de la liasse fiscale et du bilan certifié en fin d'exercice.",
+                    portalUrl = "https://www.pennylane.com/fr/"
+                )
+            ),
+            partnerPitchArguments = listOf(
+                PartnerPitchArgument(
+                    number = 1,
+                    title = "1 Seul SIRET & 1 Seul Compte Bancaire pour 2 Activités",
+                    argument = "Pas besoin de monter deux sociétés ni de payer deux fois des frais d'expert-comptable ou de compte pro. La SAS chapeaute à la fois le Solaire (SOLAVOLT) et l'Alarme (SECUREVO) avec un objet social multi-activités prêt dès le 1er jour.",
+                    keyProof = "Article 2 des Statuts certifié conforme Code de commerce."
+                ),
+                PartnerPitchArgument(
+                    number = 2,
+                    title = "Maintien à 100% des Allocations Chômage (ARE)",
+                    argument = "En SAS, le mandat de Président à 0,00 € garantit que France Travail verse l'intégralité de l'allocation chaque mois sans aucune déduction ni cotisation minimale URSSAF (contrairement au piège de la gérance majoritaire de SARL).",
+                    keyProof = "Circulaire Unédic 2024 & PV d'AG de non-rémunération."
+                ),
+                PartnerPitchArgument(
+                    number = 3,
+                    title = "Capital Social de 1 000 € déposé en 24h sur Qonto",
+                    argument = "Chaque associé verse 500 € depuis son compte personnel. L'attestation de dépôt est délivrée sous 24h pour déposer au Greffe sans rendez-vous physique en agence bancaire.",
+                    keyProof = "Procédure express Qonto certifiée ACPR / Banque de France."
+                )
+            ),
+            riskMitigations = listOf(
+                RiskMitigationItem(
+                    title = "1. Maintien de l'ARE France Travail",
+                    probabilityLevel = "NUL (si mandat gratuit bien acté)",
+                    potentialImpact = "Perte des allocations mensuelles",
+                    failureModeDescription = "Prendre un salaire de dirigeant ou s'enregistrer en SARL majoritaire avec cotisations TNS d'office.",
+                    viableSolution = "1) Statuts en SAS. 2) PV d'AG constitutif stipulant expressément la gratuité du mandat (0,00 € salaire). 3) Déclaration mensuelle France Travail : '0h travaillée, 0 € de salaire perçu'.",
+                    legalOrTechnicalProof = "Circulaire Unédic 2024 & Régime des assimilés salariés."
+                ),
+                RiskMitigationItem(
+                    title = "2. Rejet de Dénomination au Greffe ('Solaris SAS')",
+                    probabilityLevel = "CERTAIN si utilisation de 'Solaris SAS'",
+                    potentialImpact = "Blocage de l'immatriculation au Greffe",
+                    failureModeDescription = "Tenter d'immatriculer 'SOLARIS SAS' alors que la société existe déjà au RCS de Bourg-en-Bresse (SIREN 442 600 011).",
+                    viableSolution = "Déposer une dénomination sociale neutre et institutionnelle au Greffe (VOLTIS GROUP SAS ou HELIO TRADE SAS), puis exploiter les marques commerciales déposées à l'INPI (SOLAVOLT.FR et SECUREVO.FR).",
+                    legalOrTechnicalProof = "Base Sirene INSEE & Registre du Commerce et des Sociétés."
+                )
+            ),
+            humanPrerequisites = listOf(
+                HumanPrerequisiteItem(
+                    id = "h_sas_1",
+                    title = "Virement de 500 € par associé sur le compte de séquestre Qonto",
+                    assignedTo = "Associés",
+                    estimatedCost = "1 000 € (500 € / associé)",
+                    whyAiCannotDoIt = "Action bancaire nominative requérant l'authentification forte des deux associés.",
+                    actionRequiredByPartner = "Effectuer le virement de 500 € depuis son compte bancaire personnel vers le RIB Qonto.",
+                    officialUrl = "https://qonto.com/fr"
+                ),
+                HumanPrerequisiteItem(
+                    id = "h_sas_2",
+                    title = "Réunir CNI recto-verso et justificatif de domicile de moins de 3 mois pour chaque associé",
+                    assignedTo = "Associés",
+                    estimatedCost = "0 €",
+                    whyAiCannotDoIt = "Documents d'identité personnels officiels requis par le Greffe du Tribunal de Commerce.",
+                    actionRequiredByPartner = "Téléverser les fichiers PDF nets sur l'espace de création Qonto.",
+                    officialUrl = "https://formalites.entreprises.gouv.fr/"
+                ),
+                HumanPrerequisiteItem(
+                    id = "h_sas_3",
+                    title = "Signature électronique des statuts SAS avec l'Article 2 Multi-Activités",
+                    assignedTo = "Les Deux",
+                    estimatedCost = "0 € (Inclus)",
+                    whyAiCannotDoIt = "Signature engageant juridiquement la responsabilité civile des associés fondateurs.",
+                    actionRequiredByPartner = "Signer électroniquement les statuts complets générés via Yousign/DocuSign sur Qonto.",
+                    officialUrl = "https://qonto.com/fr"
+                ),
+                HumanPrerequisiteItem(
+                    id = "h_sas_4",
+                    title = "Déposer la demande d'immatriculation sur formalites.entreprises.gouv.fr",
+                    assignedTo = "Moi",
+                    estimatedCost = "~60 € TTC (Frais de Greffe)",
+                    whyAiCannotDoIt = "Validation finale du dossier Guichet Unique avec code d'authentification FranceConnect+.",
+                    actionRequiredByPartner = "Valider le téléversement final sur le portail Guichet Unique INPI.",
+                    officialUrl = "https://formalites.entreprises.gouv.fr/"
+                )
+            ),
+            growthLevers = emptyList(),
+            operationalPhases = listOf(
+                OperationalPhaseStep(
+                    stepNumber = "1",
+                    phaseName = "Phase 1 (J-15)",
+                    taskTitle = "Dépôt du Capital Social (1 000 €)",
+                    assignee = "Les Deux",
+                    timing = "24h à 48h",
+                    costOrRevenue = "1 000 € (Capital libéré)",
+                    actionDetails = "Ouverture du compte Qonto, virement de 500 € par associé, obtention de l'attestation de dépôt.",
+                    expectedDeliverable = "Attestation de dépôt des fonds officielle ACPR",
+                    officialSourceOrLegal = "Code de commerce Art. L227-1"
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "2",
+                    phaseName = "Phase 2 (J-10)",
+                    taskTitle = "Signature des Statuts & Annonce Légale",
+                    assignee = "Les Deux",
+                    timing = "24h",
+                    costOrRevenue = "~130 € TTC",
+                    actionDetails = "Validation de l'Article 2 multi-activités et publication de l'avis de constitution au Journal d'Annonces Légales.",
+                    expectedDeliverable = "Attestation de parution JAL",
+                    officialSourceOrLegal = "Arrêté ministériel tarifs annonces légales"
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "3",
+                    phaseName = "Phase 3 (J-5)",
+                    taskTitle = "Dépôt Guichet Unique INPI",
+                    assignee = "Moi",
+                    timing = "3 à 5 jours",
+                    costOrRevenue = "~60 € TTC",
+                    actionDetails = "Téléversement des pièces d'identité, statuts signés, certificat Qonto et attestation JAL.",
+                    expectedDeliverable = "Récépissé de dépôt de création d'entreprise",
+                    officialSourceOrLegal = "Guichet Unique INPI"
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "4",
+                    phaseName = "Phase 4 (J-1)",
+                    taskTitle = "Réception du Kbis & Ouverture Comptes Grossistes",
+                    assignee = "Les Deux",
+                    timing = "24h",
+                    costOrRevenue = "0 €",
+                    actionDetails = "Attribution du numéro SIRET et ouverture des comptes revendeurs officiels chez POwR Connect et UpWatt.",
+                    expectedDeliverable = "Extrait Kbis officiel + SIRET actif",
+                    officialSourceOrLegal = "RCS Tribunal de Commerce"
+                )
+            ),
+            objections = listOf(
+                ObjectionItem(
+                    objection = "Pourquoi créer une SAS et pas une SARL à 50/50 ?",
+                    rebuttal = "En SARL, deux associés à 50% forment une gérance majoritaire assujettie d'office aux cotisations minimales URSSAF même sans salaire, ce qui fait sauter l'ARE chômage ! En SAS, le mandat gratuit (0 €) préserve 100% de l'ARE, et les dividendes ne subissent aucune cotisation sociale.",
+                    tacticalAngle = "Sécurisation intégrale de l'allocation chômage mensuelle personnelle."
+                ),
+                ObjectionItem(
+                    objection = "Pourquoi mettre 1 000 € de capital au lieu de 1 € symbolique ?",
+                    rebuttal = "Un capital de 1 € disqualifie immédiatement l'entreprise auprès des grossistes officiels (POwR, UpWatt) qui refusent l'ouverture de compte revendeur. 1 000 € (500 € chacun) confère une crédibilité immédiate tout en restant un montant accessible qui sert de fonds de roulement.",
+                    tacticalAngle = "Crédibilité bancaire et fournisseurs B2B."
+                )
+            ),
+            regulatoryRoadmap = listOf(
+                RegulatoryRoadmapItem(
+                    badge = "Greffe SAS",
+                    title = "Statuts SAS Multi-Activités & Maintien 100% ARE France Travail",
+                    legalRef = "Code de commerce Art. L227-1 & Circulaire Unédic 2024",
+                    description = "Dépôt capital 1 000 € Qonto (500 €/associé). Mandat social Président à titre gratuit (0 € rémunération) garantissant le maintien intégral de l'allocation chômage sans déduction. Objet social couvrant Solaire + Alarmes sous 1 seul SIRET.",
+                    officialLink = "https://formalites.entreprises.gouv.fr/"
+                ),
+                RegulatoryRoadmapItem(
+                    badge = "RBE INPI",
+                    title = "Déclaration des Bénéficiaires Effectifs (RBE)",
+                    legalRef = "Code monétaire et financier Art. L561-46",
+                    description = "Déclaration obligatoire des 2 associés détenant chacun 50% des parts sociales. Démarche intégrée dans le dépôt Guichet Unique INPI.",
+                    officialLink = "https://formalites.entreprises.gouv.fr/"
+                )
+            ),
+            conceptionItems = emptyList(),
+            toolkitItems = listOf(
+                ToolkitItem(
+                    id = "tool_fiche_juridique_sas_detail",
+                    title = "Fiche Stratégique & Fiscale Complète de la SAS 50/50",
+                    category = "Juridique & Fiscalité",
+                    contentToCopy = """GUIDE OPÉRATIONNEL DE CRÉATION DE LA SAS MULTI-ACTIVITÉS
+
+1. DÉNOMINATION SOCIALE AU GREFFE :
+- Dénomination Sociale Institutionnelle : VOLTIS GROUP SAS (ou HELIO TRADE SAS).
+- Raison : 'SOLARIS SAS' existe déjà au RCS de Bourg-en-Bresse (SIREN 442 600 011).
+- Marques commerciales exploitées sous ce SIRET unique : SOLAVOLT.FR (Solaire) et SECUREVO.FR (Alarme).
+
+2. CAPITAL SOCIAL & RÉPARTITION :
+- Capital : 1 000 € (500 € chacun, 1 000 actions de 1 €), réparti 50% / 50%.
+- Dépôt des fonds : 100% en ligne sur compte séquestre Qonto en 24h ouvrées.
+
+3. GOUVERNANCE & BOUCLIER TOTAL ARE FRANCE TRAVAIL :
+- Président : Associé 1 (Mandat social gratuit, rémunération = 0,00 € stipulée dans le PV d'AG constitutif).
+- Absence de fiche de paie = 100% de maintien de l'allocation chômage mensuelle (zéro abattement).
+- Zéro cotisation sociale minimale URSSAF.
+
+4. SORTIE DES BÉNÉFICES (DIVIDENDES) :
+- Les dividendes de SAS ne subissent AUCUNE cotisation sociale URSSAF (contrairement à la SARL).
+- Taxation unique : Flat Tax (PFU 30% : 12,8% IR + 17,2% prélèvements sociaux).
+
+5. COÛT DE CRÉATION INCOMPRESSIBLE :
+- Annonce Légale (JAL) : ~130 € TTC.
+- Frais de Greffe + RBE : ~60 € TTC.
+- Kbis officiel délivré sous 3 à 5 jours ouvrés via le Guichet Unique INPI.""",
+                    sourceOrNorm = "Code de commerce Art. L227-1 & Circulaire Unédic 2024"
+                ),
+                ToolkitItem(
+                    id = "tool_statuts_objet_social_sas",
+                    title = "Article 2 des Statuts : Objet Social Multi-Activités (Solaire + Alarmes)",
+                    category = "Juridique & Statuts",
+                    contentToCopy = """ARTICLE 2 - OBJET SOCIAL DE LA SAS (Solaire & Sécurité)
+
+La Société a pour objet, tant en France qu'à l'étranger :
+
+1. Le commerce de détail, de gros, l'importation, l'exportation, la conception, l'assemblage et la distribution, par tous moyens notamment par voie électronique, vente à distance et sur internet (e-commerce), de tous matériels, équipements, kits et accessoires liés aux énergies renouvelables, aux stations solaires d'autoconsommation, à l'habitat et au bricolage ;
+
+2. Le commerce, la distribution, la vente et l'installation sans travaux lourds de tous équipements et systèmes électroniques de sécurité domestique et professionnelle, alarmes autonomes sans fil, vidéosurveillance, capteurs, domotique, objets connectés et protection des biens et des personnes ;
+
+3. La prestation de conseil, d'assistance technique, de configuration, de support à distance et de service après-vente (SAV) se rapportant aux équipements et matériels susmentionnés ;
+
+4. La création, l'acquisition, l'exploitation, la concession ou la cession de toutes marques, licences, brevets, dessins, modèles et plateformes logicielles liés à ces activités ;
+
+5. Et plus généralement, toutes opérations commerciales, industrielles, financières, mobilières ou immobilières se rattachant directement ou indirectement à l'objet social ci-dessus spécifié ou à tout autre objet similaire ou connexe.
+
+NOTE : Cette rédaction légale permet d'exploiter immédiatement SOLARIS / SOLAVOLT (Solaire) ET SECUREVO (Alarmes) sous un seul et même SIRET, un compte bancaire unique Qonto et une seule comptabilité, sans aucuns frais de modification d'objet social au Greffe.""",
+                    sourceOrNorm = "Code de commerce Art. L210-1 & L227-1"
+                ),
+                ToolkitItem(
+                    id = "tool_pv_non_remuneration",
+                    title = "Modèle de PV d'Assemblée Générale de Non-Rémunération du Président (Bouclier ARE)",
+                    category = "Gouvernance & France Travail",
+                    contentToCopy = """PROCES-VERBAL DE L'ASSEMBLEE GENERALE CONSTITUTIVE
+De la société VOLTIS GROUP SAS au capital de 1 000 euros
+
+RESOLUTIONS RELATIVES A LA REMUNERATION DE LA PRESIDENCE :
+
+L'Assemblée Générale des associés, réunie ce jour, décide à l'unanimité :
+1. De nommer en qualité de premier Président de la Société : [Nom de l'Associé 1], demeurant à [Adresse].
+2. Il est expressément convenu et arrêté que le mandat de Président sera exercé à TITRE PUREMENT GRATUIT, sans aucune rémunération, fixe ou variable, ni indemnité de quelque nature que ce soit, et ce jusqu'à décision contraire de la collectivité des associés.
+3. Le Président ne percevra aucun salaire, aucune gratification, et ne sera émis aucun bulletin de paie au titre de ce mandat social.
+4. Cette décision prend effet immédiatement à compter de l'immatriculation de la Société au Registre du Commerce et des Sociétés.
+
+Fait pour valoir ce que de droit auprès de France Travail (Pôle Emploi) et de l'administration fiscale.
+Signatures des deux associés co-fondateurs.""",
+                    sourceOrNorm = "Code de commerce & Règlementation Unédic ARE"
+                ),
+                ToolkitItem(
+                    id = "tool_checklist_pieces_sas",
+                    title = "Checklist des Pièces Justificatives des Associés (Prêtes pour Qonto)",
+                    category = "Démarches Administratives",
+                    contentToCopy = """CHECKLIST PIECES JUSTIFICATIVES SAS (Pour Qonto & Guichet Unique INPI) :
+
+POUR CHACUN DES DEUX ASSOCIÉS :
+[ ] 1. Pièce d'identité en cours de validité (CNI recto-verso couleur ou passeport).
+[ ] 2. Justificatif de domicile personnel de moins de 3 mois (facture EDF/Engie, eau, télécom ou avis d'imposition).
+[ ] 3. Virement de 500 € depuis le compte bancaire personnel vers le compte de séquestre Qonto.
+[ ] 4. Déclaration sur l'honneur de non-condamnation et de filiation signée (modèle fourni sur Qonto).
+
+POUR LA SOCIÉTÉ (GÉNÉRÉ PAR QONTO / GUICHET UNIQUE) :
+[ ] 5. Statuts complets de la SAS signés avec l'Article 2 Multi-Activités.
+[ ] 6. Attestation de dépôt des fonds délivrée par Qonto (sous 24h ouvrées).
+[ ] 7. Attestation de parution de l'avis de constitution au Journal d'Annonces Légales (JAL).
+[ ] 8. Formulaire M0 complété sur formalites.entreprises.gouv.fr (délai Kbis : 3 à 5 jours).""",
+                    sourceOrNorm = "Greffe du Tribunal de Commerce & Qonto"
+                )
+            ),
+            productionActions = listOf(
+                ProductionAction("sas_1", "Ouvrir le compte de dépôt de capital sur Qonto", true, "URGENT", "Moi"),
+                ProductionAction("sas_2", "Effectuer le virement de 500 € chacun", false, "URGENT", "Les Deux"),
+                ProductionAction("sas_3", "Signer les statuts avec l'Article 2 multi-activités", false, "HAUTE", "Les Deux"),
+                ProductionAction("sas_4", "Déposer le dossier sur formalites.entreprises.gouv.fr", false, "HAUTE", "Moi")
+            )
+        ),
+        // =========================================================================
         // 1. STATION SOLAIRE 420W PLUG & PLAY (SOLARIS FRANCE)
         // =========================================================================
         EcomDossier(

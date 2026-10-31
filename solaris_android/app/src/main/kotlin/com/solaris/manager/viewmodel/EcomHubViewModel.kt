@@ -19,7 +19,7 @@ import kotlinx.coroutines.flow.asStateFlow
 data class EcomHubUiState(
     val currentPhase: ProjectPhase = ProjectPhase.CONCEPTION,
     val dossiers: List<EcomDossier> = emptyList(),
-    val selectedDossierId: String? = "dossier_solaire",
+    val selectedDossierId: String? = "dossier_sas",
     val activeNotesByDossier: Map<String, String> = emptyMap(),
     val noteSavedFeedback: String? = null,
     val clientLeads: List<ClientLeadItem> = emptyList()
@@ -69,7 +69,7 @@ class EcomHubViewModel(application: Application) : AndroidViewModel(application)
         return EcomHubUiState(
             currentPhase = ProjectPhase.CONCEPTION,
             dossiers = initialDossiers,
-            selectedDossierId = "dossier_solaire",
+            selectedDossierId = "dossier_sas",
             activeNotesByDossier = notesMap,
             noteSavedFeedback = null,
             clientLeads = initialLeads

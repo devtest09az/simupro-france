@@ -278,6 +278,50 @@ private fun ConceptionPhaseContent(
             .padding(horizontal = 16.dp),
         verticalArrangement = Arrangement.spacedBy(14.dp)
     ) {
+        item {
+            // SÉLECTEUR RAPIDE DES 3 DOSSIERS (SAS, SOLAIRE, ALARME)
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 4.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                uiState.dossiers.forEach { d ->
+                    val isSelected = uiState.selectedDossierId == d.id
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .clip(RoundedCornerShape(10.dp))
+                            .background(if (isSelected) Color(0xFF0284C7) else Color(0xFF1E293B))
+                            .border(
+                                1.dp,
+                                if (isSelected) Color(0xFF38BDF8) else Color(0xFF334155),
+                                RoundedCornerShape(10.dp)
+                            )
+                            .clickable { onDossierClick(d.id) }
+                            .padding(vertical = 8.dp, horizontal = 4.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                            Text(text = d.iconEmoji, fontSize = 20.sp)
+                            Spacer(modifier = Modifier.height(3.dp))
+                            Text(
+                                text = when (d.id) {
+                                    "dossier_sas" -> "1. Société SAS"
+                                    "dossier_solaire" -> "2. Solaire 440W"
+                                    "dossier_alarme" -> "3. Alarme 4G"
+                                    else -> d.title.take(12)
+                                },
+                                color = if (isSelected) Color.White else Color(0xFF94A3B8),
+                                fontSize = 11.sp,
+                                fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Medium
+                            )
+                        }
+                    }
+                }
+            }
+        }
+
         items(uiState.dossiers) { dossier ->
             val isExpanded = uiState.selectedDossierId == dossier.id
             val currentNote = uiState.activeNotesByDossier[dossier.id] ?: dossier.partnerNotes
@@ -310,10 +354,12 @@ private fun ConceptionPhaseContent(
                             }
 
                             // 1.BIS BENCHMARK CONCURRENTIEL OFFICIEL (SUNOLOGY, BEEM, DIY VS SOLARIS)
-                            CompetitorBenchmarkCard()
-                            Spacer(modifier = Modifier.height(14.dp))
-                            HorizontalDivider(color = Color(0xFF334155))
-                            Spacer(modifier = Modifier.height(10.dp))
+                            if (dossier.id == "dossier_solaire") {
+                                CompetitorBenchmarkCard()
+                                Spacer(modifier = Modifier.height(14.dp))
+                                HorizontalDivider(color = Color(0xFF334155))
+                                Spacer(modifier = Modifier.height(10.dp))
+                            }
 
                             // 1.TER AUDIT NOM DE MARQUE & DISPONIBILITÉ NDD .FR (AFNIC & INPI)
                             BrandNamingAuditCard()
