@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth bg-slate-950 text-slate-100 antialiased selection:bg-amber-400 selection:text-slate-950">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide Raccordement Enedis CACSI en 5 Minutes — SOLARIS™ France</title>
+    <meta name="description" content="Guide officiel pas-à-pas pour déclarer votre station solaire Plug & Play sur le portail Enedis CACSI. 100% gratuit, zéro Consuel.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .font-display { font-family: 'Space Grotesk', sans-serif; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .solar-gradient {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 100%);
+        }
+    </style>
+</head>
+<body class="bg-[#070a13] text-slate-100 min-h-screen flex flex-col font-sans">
+
+    <!-- Header -->
+    <header class="bg-[#070a13]/90 backdrop-blur-xl border-b border-white/[0.06] sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3.5 group">
+                <div class="w-10 h-10 rounded-xl solar-gradient flex items-center justify-center text-slate-950 font-black shadow-lg shadow-amber-500/20 group-hover:scale-105 transition">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                </div>
+                <div>
+                    <span class="font-display font-extrabold text-2xl tracking-tight text-white block leading-none">SOLARIS<span class="text-amber-400">™</span> <span class="text-xs font-mono font-normal text-amber-300/80 uppercase tracking-widest ml-1">France</span></span>
+                    <span class="text-[9px] mono uppercase tracking-widest text-slate-400 font-semibold">Autoconsommation Plug & Play</span>
+                </div>
+            </a>
+            <div class="flex items-center gap-4 text-xs font-semibold">
+                <a href="index.html" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-1.5">
+                    ← Retour au site
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 py-16 space-y-10">
+        <div class="space-y-3">
+            <span class="mono text-xs font-bold uppercase tracking-widest text-amber-400">Démarche Enedis 100% Gratuite</span>
+            <h1 class="font-display text-3xl sm:text-4xl font-black text-white">Guide de Raccordement Enedis (CACSI)</h1>
+            <p class="text-xs text-slate-400">Comment déclarer votre station solaire en 5 minutes chrono sur le portail national Enedis sans payer 1 centime de Consuel.</p>
+        </div>
+
+        <!-- 3 Essential Reassurance Pills -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div class="glass-card p-4 rounded-xl text-center space-y-1 border-emerald-500/30">
+                <div class="font-bold text-emerald-400 text-sm">0 € de Frais</div>
+                <div class="text-[11px] text-slate-400">Déclaration en ligne 100% gratuite</div>
+            </div>
+            <div class="glass-card p-4 rounded-xl text-center space-y-1 border-amber-500/30">
+                <div class="font-bold text-amber-400 text-sm">Zéro Consuel</div>
+                <div class="text-[11px] text-slate-400">Aucun passage d'électricien exigé</div>
+            </div>
+            <div class="glass-card p-4 rounded-xl text-center space-y-1 border-cyan-500/30">
+                <div class="font-bold text-cyan-400 text-sm">5 Minutes Chrono</div>
+                <div class="text-[11px] text-slate-400">Prise en compte immédiate par Enedis</div>
+            </div>
+        </div>
+
+        <div class="glass-card p-8 rounded-3xl space-y-8 text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <!-- Qu'est-ce que la CACSI -->
+            <section class="space-y-3">
+                <h2 class="font-display text-lg font-bold text-white border-b border-white/10 pb-2">Qu'est-ce que la CACSI ?</h2>
+                <p>
+                    La <strong>CACSI</strong> (Convention d'Autoconsommation Sans Injection) est un simple formulaire déclaratif officiel mis en place par le gestionnaire du réseau de distribution français <strong>Enedis</strong>.
+                </p>
+                <p>
+                    Elle a pour unique but d'informer Enedis qu'une micro-centrale solaire de moins de 3 000 Watts est branchée sur votre installation électrique privée.
+                </p>
+            </section>
+
+            <!-- Les 4 étapes pas à pas -->
+            <section class="space-y-6">
+                <h2 class="font-display text-lg font-bold text-amber-400 border-b border-white/10 pb-2">Les 4 Étapes pour Déclarer votre Station en Ligne</h2>
+
+                <!-- Étape 1 -->
+                <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/10 space-y-2">
+                    <div class="flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-full bg-amber-400 text-slate-950 font-bold flex items-center justify-center text-xs">1</span>
+                        <h3 class="font-display font-bold text-white text-base">Rendez-vous sur le portail officiel Enedis</h3>
+                    </div>
+                    <p class="text-slate-300">
+                        Allez sur le site officiel de raccordement : <a href="https://mon-compte-client.enedis.fr/" target="_blank" class="text-amber-400 underline font-bold">mon-compte-client.enedis.fr</a>. Connectez-vous avec vos identifiants Linky habituels (ou via FranceConnect).
+                    </p>
+                </div>
+
+                <!-- Étape 2 -->
+                <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/10 space-y-2">
+                    <div class="flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-full bg-amber-400 text-slate-950 font-bold flex items-center justify-center text-xs">2</span>
+                        <h3 class="font-display font-bold text-white text-base">Cliquez sur « Raccorder une production » puis « Autoconsommation »</h3>
+                    </div>
+                    <p class="text-slate-300">
+                        Sélectionnez l'option <strong>« Autoconsommation totale sans vente de surplus »</strong>. Votre numéro de point de livraison (PRM Linky à 14 chiffres) sera automatiquement détecté depuis votre adresse.
+                    </p>
+                </div>
+
+                <!-- Étape 3 -->
+                <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/10 space-y-2">
+                    <div class="flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-full bg-amber-400 text-slate-950 font-bold flex items-center justify-center text-xs">3</span>
+                        <h3 class="font-display font-bold text-white text-base">Renseignez les données techniques fournies dans votre carton</h3>
+                    </div>
+                    <ul class="list-disc pl-5 space-y-1 text-slate-300">
+                        <li><strong>Type d'installation :</strong> Équipement photovoltaïque prêt à brancher posé au sol ou terrasse.</li>
+                        <li><strong>Puissance crête installée :</strong> 0,44 kVA (pour 1 station 440W) ou 0,88 kVA (pour 2 stations 880W).</li>
+                        <li><strong>Marque de l'onduleur :</strong> Hoymiles HMS-400W (ou HMS-800W).</li>
+                        <li><strong>Norme de découplage anti-îlotage :</strong> Cochez la case <em>« Conforme DIN VDE-AR-N 4105 / VDE 0126-1-1 »</em>.</li>
+                    </ul>
+                </div>
+
+                <!-- Étape 4 -->
+                <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/10 space-y-2">
+                    <div class="flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-full bg-emerald-400 text-slate-950 font-bold flex items-center justify-center text-xs">4</span>
+                        <h3 class="font-display font-bold text-emerald-300 text-base">Validez votre convention en 1 clic</h3>
+                    </div>
+                    <p class="text-slate-300">
+                        Signez électroniquement en cochant la case d'acceptation. Vous recevez instantanément par email votre récépissé officiel Enedis avec votre numéro d'attestation CACSI. Votre démarche est terminée pour 25 ans !
+                    </p>
+                </div>
+            </section>
+
+            <!-- Attestation de conformité à imprimer -->
+            <section class="space-y-4">
+                <h2 class="font-display text-lg font-bold text-white border-b border-white/10 pb-2">Certificat de Conformité Téléchargeable</h2>
+                <p>
+                    Si Enedis ou votre assureur habitation vous demande le certificat officiel de découplage réseau, vous pouvez télécharger et conserver notre attestation fabricant officielle :
+                </p>
+                <div class="p-5 rounded-2xl bg-slate-900 border border-amber-500/30 flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <div>
+                        <div class="font-bold text-white text-sm">Certificat Officiel DIN VDE-AR-N 4105 Hoymiles</div>
+                        <div class="text-xs text-slate-400">Homologation Enedis & Bureau Veritas • Document PDF officiel</div>
+                    </div>
+                    <button onclick="window.print()" class="px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs uppercase tracking-wider transition flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                        <span>Imprimer cette Notice</span>
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/[0.08] bg-[#04060d] py-8 px-4 text-center text-xs text-slate-500">
+        © 2026 SOLARIS™ France — Tous droits réservés • <a href="index.html" class="text-amber-400 hover:underline">Accueil</a> • <a href="cgv.html" class="text-amber-400 hover:underline">CGV</a> • <a href="mentions-legales.html" class="text-amber-400 hover:underline">Mentions Légales</a>
+    </footer>
+</body>
+</html>
