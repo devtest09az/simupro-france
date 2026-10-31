@@ -680,6 +680,13 @@ object EcomDossiersData {
                     legalRef = "Norme DIN VDE V 0124-100 & NF EN 62109",
                     description = "Coupure automatique de la tension aux bornes de la fiche secteur en moins de 200 millisecondes en cas de coupure de réseau ou de débranchement.",
                     officialLink = "https://www.hoymiles.com/"
+                ),
+                RegulatoryRoadmapItem(
+                    badge = "Greffe SAS",
+                    title = "Statuts SAS Multi-Activités & Maintien 100% ARE France Travail",
+                    legalRef = "Code de commerce Art. L227-1 & Circulaire Unédic 2024",
+                    description = "Dépôt capital 1 000 € Qonto (500 €/associé). Mandat social Président à titre gratuit (0 € rémunération) garantissant le maintien intégral de l'allocation chômage sans déduction. Objet social couvrant Solaire + Alarmes sous 1 seul SIRET.",
+                    officialLink = "https://formalites.entreprises.gouv.fr/"
                 )
             ),
             conceptionItems = listOf(
@@ -734,6 +741,40 @@ object EcomDossiersData {
             ),
             toolkitItems = listOf(
                                 ToolkitItem(
+                    id = "tool_fiche_juridique_sas",
+                    title = "Fiche Stratégique & Fiscale SAS 50/50 (Nom Greffe, 1000 € Capital, Bouclier ARE)",
+                    category = "Juridique & Fiscalité",
+                    contentToCopy = """GUIDE OPÉRATIONNEL DE CRÉATION DE LA SAS MULTI-ACTIVITÉS
+
+1. DÉNOMINATION SOCIALE AU GREFFE (POURQUOI PAS SOLARIS SAS ?) :
+- 'SOLARIS SAS' existe déjà au RCS de Bourg-en-Bresse (SIREN 442 600 011, fondée en 2002 dans l'Ain, grossiste solaire).
+- Recommandation Dénomination Sociale : VOLTIS GROUP SAS ou HELIO TRADE SAS (neutre, institutionnel, pérenne).
+- Les marques commerciales d'exploitation e-commerce (ex: SOLAVOLT.FR pour le solaire, SECUREVO.FR pour les alarmes) sont rattachées sous ce SIRET unique.
+
+2. CAPITAL SOCIAL & RÉPARTITION :
+- Capital : 1 000 € (500 € par associé, 1 000 actions de 1 €).
+- Répartition : 50% / 50% égalitaire entre les 2 co-fondateurs.
+- Dépôt des fonds : Réalisé en ligne sur Qonto en 24h (attestation de dépôt immédiate).
+
+3. GOUVERNANCE & BOUCLIER TOTAL ARE FRANCE TRAVAIL :
+- Président : Associé 1 (Mandat social gratuit, rémunération = 0,00 € stipulée dans le PV d'AG constitutif).
+- Règle France Travail : Absence de fiche de paie = 100% de maintien de l'allocation chômage mensuelle (zéro carence, zéro abattement).
+- Associé 2 : Directeur Général ou associé non rémunéré.
+- Zéro cotisation sociale minimale URSSAF (contrairement à la gérance majoritaire de SARL).
+
+4. SORTIE DES BÉNÉFICES (FISCALITÉ DIVIDENDES EN SAS) :
+- Les dividendes de SAS ne sont PAS assujettis aux cotisations sociales indépendantes (URSSAF).
+- Taxation unique : Flat Tax (PFU de 30% : 12,8% IR + 17,2% prélèvements sociaux).
+- Cumul total avec l'ARE sans aucune déduction de l'allocation chômage.
+
+5. FRAIS INCOMPRESSIBLES DE CRÉATION :
+- Annonce Légale (JAL) : ~130 € TTC (tarif légal forfaitaire).
+- Frais de Greffe du Tribunal de Commerce + RBE : ~60 € TTC.
+- Dépôt de capital Qonto : Inclus dans le pack création Qonto (~149 € HT).
+- Délai d'obtention du Kbis : 3 à 5 jours ouvrés via le Guichet Unique INPI.""",
+                    sourceOrNorm = "Code de commerce Art. L227-1 (Régime SAS) & Circulaire Unédic ARE 2024"
+                ),
+                ToolkitItem(
                     id = "tool_statuts_objet_social",
                     title = "Clause d'Objet Social Multi-Activités pour les Statuts de la SAS (Solaire + Alarmes)",
                     category = "Juridique & Statuts",
