@@ -35,12 +35,17 @@ class EcomHubViewModel(application: Application) : AndroidViewModel(application)
                 val isVerified = prefs.getBoolean("verif_${dossier.id}_${v.id}", v.isVerified)
                 v.copy(isVerified = isVerified)
             }
+            val restoredPhases = dossier.operationalPhases.map { step ->
+                val isDone = prefs.getBoolean("phase_${dossier.id}_${step.stepNumber}", step.isCompleted)
+                step.copy(isCompleted = isDone)
+            }
             val completedCount = restoredActions.count { it.isDone }
             val percent = if (restoredActions.isNotEmpty()) ((completedCount.toDouble() / restoredActions.size) * 100).toInt() else 0
             dossier.copy(
                 partnerNotes = persistedNotes,
                 productionActions = restoredActions,
                 associateVerifications = restoredVerifications,
+                operationalPhases = restoredPhases,
                 progressPercent = percent
             )
         }
@@ -124,6 +129,27 @@ class EcomHubViewModel(application: Application) : AndroidViewModel(application)
                     }
                 }
                 dossier.copy(associateVerifications = updatedVerifs)
+            } else {
+                dossier
+            }
+        }
+        _uiState.value = _uiState.value.copy(dossiers = updatedDossiers)
+    }
+
+
+    fun togglePhaseStep(dossierId: String, stepNumber: String) {
+        val updatedDossiers = _uiState.value.dossiers.map { dossier ->
+            if (dossier.id == dossierId) {
+                val updatedSteps = dossier.operationalPhases.map { step ->
+                    if (step.stepNumber == stepNumber) {
+                        val next = !step.isCompleted
+                        prefs.edit().putBoolean("phase_${dossier.id}_${step.stepNumber}", next).apply()
+                        step.copy(isCompleted = next)
+                    } else {
+                        step
+                    }
+                }
+                dossier.copy(operationalPhases = updatedSteps)
             } else {
                 dossier
             }

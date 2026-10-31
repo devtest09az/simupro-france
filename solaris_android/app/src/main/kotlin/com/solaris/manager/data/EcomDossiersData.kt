@@ -6,6 +6,7 @@ import com.solaris.manager.model.CostItem
 import com.solaris.manager.model.EcomDossier
 import com.solaris.manager.model.MarketStudyDetail
 import com.solaris.manager.model.ObjectionItem
+import com.solaris.manager.model.OperationalPhaseStep
 import com.solaris.manager.model.GrowthLever
 import com.solaris.manager.model.AssociateVerificationItem
 import com.solaris.manager.model.RiskMitigationItem
@@ -286,7 +287,196 @@ object EcomDossiersData {
                     keyProof = "Rétroplanning validé sans besoin de prêt bancaire ni d'investisseur."
                 )
             ),
-                                    growthLevers = listOf(
+                                                operationalPhases = listOf(
+                // PHASE 1 : CRASH-TEST TECHNIQUE & QUALITÉ (J-15 À J-7)
+                OperationalPhaseStep(
+                    stepNumber = "1.1",
+                    phaseName = "PHASE 1 (J-15 à J-7) : CRASH-TEST TECHNIQUE",
+                    taskTitle = "Commande du Kit Prototype de Démonstration",
+                    assignee = "Les 2 Associés",
+                    timing = "J-15 (Livraison 48h)",
+                    costOrRevenue = "180 € TTC (Avance 50/50)",
+                    actionDetails = "Commander 1 kit complet (panneau Trina Solar 440Wc biverre + micro-onduleur Hoymiles HMS-400 + châssis alu inclinable + câble Schuko 5m) chez Kitsolaire-Discount ou UpWatt pour évaluation physique directe.",
+                    expectedDeliverable = "Kit physique complet reçu, déballé et inspecté au millimètre dans le garage.",
+                    officialSourceOrLegal = "Fiche technique constructeur Trina Solar Vertex S+ & Certificat Hoymiles."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "1.2",
+                    phaseName = "PHASE 1 (J-15 à J-7) : CRASH-TEST TECHNIQUE",
+                    taskTitle = "Crash-Test Électrique Réel & Coupure Anti-Îlotage VDE",
+                    assignee = "Associé 2 (Technique)",
+                    timing = "J-12",
+                    costOrRevenue = "0 € (Multimètre & wattmètre)",
+                    actionDetails = "1) Brancher sur prise murale : constater au wattmètre et sur le compteur Linky la baisse immédiate de 300 à 400 VA. 2) Débrancher brutalement la prise : mesurer au multimètre que la tension aux broches tombe à 0V en moins de 200 ms (sécurité anti-électrocution DIN VDE 0126-1-1).",
+                    expectedDeliverable = "Vidéo HD de 45 secondes du test Linky et de la coupure instantanée.",
+                    officialSourceOrLegal = "Norme DIN VDE 0126-1-1 / VFR 2019 (homologation obligatoire Enedis)."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "1.3",
+                    phaseName = "PHASE 1 (J-15 à J-7) : CRASH-TEST TECHNIQUE",
+                    taskTitle = "Shooting Photo Commercial HD en Situation Réelle",
+                    assignee = "Associé 1 (Marketing)",
+                    timing = "J-10",
+                    costOrRevenue = "0 € (Smartphone 4K)",
+                    actionDetails = "Prendre 6 photos nettes et lumineuses de la station : 1) Vue d'ensemble sur gazon/terrasse, 2) Gros plan biverre noir antireflet, 3) Gros plan micro-onduleur Hoymiles, 4) Châssis alu réglé à 30°, 5) Branchement prise Schuko étanche, 6) Écran smartphone mesurant la production.",
+                    expectedDeliverable = "Pack de 6 visuels HD commerciaux réels (zéro image 3D artificielle).",
+                    officialSourceOrLegal = "Charte qualité visuelle des annonces premium Leboncoin & Marketplace."
+                ),
+
+                // PHASE 2 : TEST MARCHÉ 0 € & 3 PRÉCOMMANDES LOCALES (J-7 À J-1)
+                OperationalPhaseStep(
+                    stepNumber = "2.1",
+                    phaseName = "PHASE 2 (J-7 à J-1) : TEST MARCHÉ 0 €",
+                    taskTitle = "Dépôt de l'Annonce Pilote Leboncoin & Marketplace",
+                    assignee = "Associé 1 (Président)",
+                    timing = "J-7",
+                    costOrRevenue = "0 € (Annonce gratuite)",
+                    actionDetails = "Publier l'annonce optimisée avec vos vraies photos et le titre percutant : 'Station Solaire 440W Plug & Play - Prête à brancher 230V - 349 € (Moitié prix Sunology, Garantie 25 ans)'. Cibler votre département et métropole locale.",
+                    expectedDeliverable = "Annonce validée en ligne générant 60 à 100 vues qualifiées par jour.",
+                    officialSourceOrLegal = "Script optimisé du dossier Boîte à Outils de l'application KoPilot."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "2.2",
+                    phaseName = "PHASE 2 (J-7 à J-1) : TEST MARCHÉ 0 €",
+                    taskTitle = "Closing des 3 Premières Précommandes Locales Fermes",
+                    assignee = "Associé 1 & 2",
+                    timing = "J-5 à J-1",
+                    costOrRevenue = "0 € (Trafic organique)",
+                    actionDetails = "Répondre aux messages en moins de 15 min par SMS/téléphone avec la fiche technique PDF et la vidéo Linky. Verrouiller 3 réservations fermes avec remise en main propre locale ou livraison gratuite sous 10 jours.",
+                    expectedDeliverable = "3 accords fermes de précommandes confirmés par SMS / email avec coordonnées clients.",
+                    officialSourceOrLegal = "Condition de sortie Phase 2 : AUCUN centime dépensé avant d'avoir ces 3 précommandes."
+                ),
+
+                // PHASE 3 : CONSTITUTION OFFICIELLE SAS & CAPITAL (JOUR J À J+3)
+                OperationalPhaseStep(
+                    stepNumber = "3.1",
+                    phaseName = "PHASE 3 (Jour J à J+3) : CONSTITUTION SAS",
+                    taskTitle = "Dépôt du Capital Social de 500 € sur Qonto",
+                    assignee = "Les 2 Associés (250 € chacun)",
+                    timing = "Jour J (Matin)",
+                    costOrRevenue = "500 € de capital (Trésorerie SAS)",
+                    actionDetails = "Ouvrir le compte pro en ligne sur Qonto.com. Virement de 250 € par associé. Qonto séquestre le capital et délivre l'Attestation de Dépôt des Fonds officielle en moins de 12h.",
+                    expectedDeliverable = "Attestation de Dépôt des Fonds certifiée pour le greffe du tribunal.",
+                    officialSourceOrLegal = "Code de commerce art. L227-1 et suivants (Société par Actions Simplifiée)."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "3.2",
+                    phaseName = "PHASE 3 (Jour J à J+3) : CONSTITUTION SAS",
+                    taskTitle = "Rédaction des Statuts SAS & PV d'AG Mandat Gratuit",
+                    assignee = "Associé 1 (Président)",
+                    timing = "Jour J (Après-midi)",
+                    costOrRevenue = "0 € (Modèle certifié)",
+                    actionDetails = "Rédiger les statuts SAS à 500 € de capital (50/50). Rédiger le Procès-Verbal d'Assemblée Générale n°1 actant que le mandat de Président est exercé à titre strictement bénévole et gratuit (0 € salaire, 0 € avantage).",
+                    expectedDeliverable = "Statuts paraphés et signés électroniquement + PV d'AG bouclier ARE.",
+                    officialSourceOrLegal = "Circulaire Unédic n° 2014-26 du 30/09/2014 (Maintien intégral 100% de l'ARE)."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "3.3",
+                    phaseName = "PHASE 3 (Jour J à J+3) : CONSTITUTION SAS",
+                    taskTitle = "Immatriculation en Ligne sur le Guichet Unique INPI",
+                    assignee = "Associé 1",
+                    timing = "J+1",
+                    costOrRevenue = "~177 € (Frais greffe + annonce légale)",
+                    actionDetails = "Déposer le dossier sur formalites.entreprises.gouv.fr (Guichet Unique INPI) : statuts signés, attestation Qonto, pièce d'identité et attestation de non-condamnation.",
+                    expectedDeliverable = "Récépissé de dépôt immédiat avec numéro SIREN attribué sous 24h-48h.",
+                    officialSourceOrLegal = "Guichet Unique des Formalités d'Entreprises (Loi PACTE)."
+                ),
+
+                // PHASE 4 : FOURNISSEURS, LOGISTIQUE & PREMIÈRES VENTES (J+4 À J+15)
+                OperationalPhaseStep(
+                    stepNumber = "4.1",
+                    phaseName = "PHASE 4 (J+4 à J+15) : VENTES & FOURNISSEURS",
+                    taskTitle = "Validation des Comptes Grossistes B2B (POwR & UpWatt)",
+                    assignee = "Associé 2",
+                    timing = "J+4",
+                    costOrRevenue = "0 € d'ouverture",
+                    actionDetails = "Envoyer le Kbis ou récépissé SIREN chez POwR Connect Nantes (contact@groupepowr.com) et UpWatt Pro (pro@upwatt.com). Demander l'ouverture du compte revendeur direct avec facturation HT.",
+                    expectedDeliverable = "Identifiants d'accès au portail B2B avec grilles tarifaires remisées.",
+                    officialSourceOrLegal = "Conditions Générales de Vente Revendeurs POwR Connect & UpWatt France."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "4.2",
+                    phaseName = "PHASE 4 (J+4 à J+15) : VENTES & FOURNISSEURS",
+                    taskTitle = "Encaissement des 3 Précommandes & Commande Matériel",
+                    assignee = "Les 2 Associés",
+                    timing = "J+7",
+                    costOrRevenue = "+1 047 € encaissés / -445 € décaissés",
+                    actionDetails = "Encaisser les 3 clients (3 x 349 € = 1 047 € TTC) par virement instantané Qonto ou CB. Commander aussitôt les 3 kits chez le grossiste avec l'argent déjà reçu (3 x 148,20 € HT = 444,60 € HT).",
+                    expectedDeliverable = "+315 € à +399 € de marge nette pure générée sans avance de trésorerie.",
+                    officialSourceOrLegal = "Modèle commercial à flux tendu sécurisé (Zéro risque de stock mort)."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "4.3",
+                    phaseName = "PHASE 4 (J+4 à J+15) : VENTES & FOURNISSEURS",
+                    taskTitle = "Livraison Clients, Kit CACSI Enedis & Coupons Parrainage",
+                    assignee = "Les 2 Associés",
+                    timing = "J+10 à J+15",
+                    costOrRevenue = "0 € de frais supplémentaires",
+                    actionDetails = "Livrer les 3 stations complètes. Remettre en main propre : 1) La station prête à brancher, 2) Le certificat VDE Hoymiles, 3) Le guide Enedis CACSI plastifié, 4) Les 3 coupons de parrainage voisin 30 €.",
+                    expectedDeliverable = "Bons de livraison signés et 3 clients ambassadeurs hyper satisfaits.",
+                    officialSourceOrLegal = "Procédure officielle Enedis-PRO-RES_43E & Code de la consommation."
+                ),
+
+                // PHASE 5 : CONFORMITÉ RÉGLEMENTAIRE & PROTECTION FISCALE (J+16 À J+30)
+                OperationalPhaseStep(
+                    stepNumber = "5.1",
+                    phaseName = "PHASE 5 (J+16 à J+30) : BOUCLIERS LÉGAUX",
+                    taskTitle = "Adhésion Gratuite à l'Éco-Organisme Soren (Loi AGEC)",
+                    assignee = "Associé 2",
+                    timing = "J+16",
+                    costOrRevenue = "0 € d'adhésion (0,80 € HT / panneau)",
+                    actionDetails = "Créer le compte adhérent sur soren.eco (filière agréée de recyclage photovoltaïque en France). Obtenir le numéro d'Identifiant Unique (IDU) ADEME à inscrire sur les futures factures.",
+                    expectedDeliverable = "Attestation d'adhésion Soren et numéro IDU délivré par l'ADEME.",
+                    officialSourceOrLegal = "Code de l'environnement art. R543-172 & Décret 2014-928."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "5.2",
+                    phaseName = "PHASE 5 (J+16 à J+30) : BOUCLIERS LÉGAUX",
+                    taskTitle = "Souscription Assurance RC Pro Matériel Électrique",
+                    assignee = "Associé 1",
+                    timing = "J+20",
+                    costOrRevenue = "~42 € / mois",
+                    actionDetails = "Souscrire en ligne la police d'assurance RC Pro Exploitation + Après Livraison chez Hiscox ou AXA (code NAF 47.91A, couverture 1 500 000 €). Vérifier l'absence d'obligation de décennale bâtiment.",
+                    expectedDeliverable = "Attestation d'assurance RC Pro opposable aux tiers et clients.",
+                    officialSourceOrLegal = "Code des assurances art. L112-1 & Code civil art. 1245."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "5.3",
+                    phaseName = "PHASE 5 (J+16 à J+30) : BOUCLIERS LÉGAUX",
+                    taskTitle = "Actualisation Mensuelle France Travail (Maintien 100% ARE)",
+                    assignee = "Associé 1 (Président)",
+                    timing = "Fin du Mois 1",
+                    costOrRevenue = "+2 000 € / mois d'ARE maintenue",
+                    actionDetails = "Lors de l'actualisation sur francetravail.fr : Déclarer '0 heure salariée, 0 € de rémunération'. Téléverser le PV d'AG de mandat gratuit et l'attestation de non-rémunération signée.",
+                    expectedDeliverable = "Versement intégral de l'allocation chômage mensuelle sur compte personnel.",
+                    officialSourceOrLegal = "Circulaire Unédic n° 2014-26 (Fiche 2 - Maintien intégral sans abattement)."
+                ),
+
+                // PHASE 6 : INDUSTRIALISATION & ÉCHELLE (J+31 À J+90)
+                OperationalPhaseStep(
+                    stepNumber = "6.1",
+                    phaseName = "PHASE 6 (J+31 à J+90) : ÉCHELLE & SCALE",
+                    taskTitle = "Achat de la Première Palette de 36 Panneaux (-21% Coût)",
+                    assignee = "Les 2 Associés",
+                    timing = "Dès 3 000 € de trésorerie (J+45)",
+                    costOrRevenue = "1 404 € HT palette (Gain +18 €/kit)",
+                    actionDetails = "Commander une palette complète de 36 panneaux Trina 440W sur POwR Connect ou SecondSol à 39,00 € HT l'unité (au lieu de 49,50 €). Stocker dans le garage sécurisé. Fret mutualisé à 2,36 € / panneau.",
+                    expectedDeliverable = "Gain de marge brute immédiate de +18 € à +32 € sur chaque kit vendu.",
+                    officialSourceOrLegal = "Tarif dégressif B2B grossiste palette certifiée Eurocode."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "6.2",
+                    phaseName = "PHASE 6 (J+31 à J+90) : ÉCHELLE & SCALE",
+                    taskTitle = "Démarchage des CSE d'Entreprises & Conciergeries Locales",
+                    assignee = "Associé 2 (Développement)",
+                    timing = "Mois 2 & Mois 3",
+                    costOrRevenue = "+15 à +40 kits / contrat groupé",
+                    actionDetails = "Envoyer le dossier de présentation 'Pouvoir d'Achat Énergie' aux 5 plus gros Comités Sociaux et Économiques (CSE) de votre département (+100 salariés) : Pack Solo négocié à 329 € avec prise Wi-Fi offerte.",
+                    expectedDeliverable = "Première convention signée avec un CSE générant 15 à 30 commandes groupées d'un coup.",
+                    officialSourceOrLegal = "Code du travail art. L2312-78 (Attributions sociales et culturelles des CSE)."
+                )
+            ),
+            growthLevers = listOf(
                 GrowthLever(
                     title = "1. Achat par Palettes de 36 Panneaux (-21% Coût Grossiste)",
                     timeToDeploy = "Dès 3 000 € de trésorerie accumulée (Mois 2)",
@@ -537,7 +727,196 @@ object EcomDossiersData {
                 annualDividendsPerPartner = "~ 11 600 € nets d'impôt en poche par associé (après IS 15% et Flat Tax 30%)",
                 taxOptimizationNote = "Marge nette record (52,5%) : rentabilité immédiate pour autofinancer l'acquisition sans découvert."
             ),
-                                    growthLevers = listOf(
+                                                operationalPhases = listOf(
+                // PHASE 1 : CRASH-TEST TECHNIQUE & QUALITÉ (J-15 À J-7)
+                OperationalPhaseStep(
+                    stepNumber = "1.1",
+                    phaseName = "PHASE 1 (J-15 à J-7) : CRASH-TEST TECHNIQUE",
+                    taskTitle = "Commande du Kit Prototype de Démonstration",
+                    assignee = "Les 2 Associés",
+                    timing = "J-15 (Livraison 48h)",
+                    costOrRevenue = "180 € TTC (Avance 50/50)",
+                    actionDetails = "Commander 1 kit complet (panneau Trina Solar 440Wc biverre + micro-onduleur Hoymiles HMS-400 + châssis alu inclinable + câble Schuko 5m) chez Kitsolaire-Discount ou UpWatt pour évaluation physique directe.",
+                    expectedDeliverable = "Kit physique complet reçu, déballé et inspecté au millimètre dans le garage.",
+                    officialSourceOrLegal = "Fiche technique constructeur Trina Solar Vertex S+ & Certificat Hoymiles."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "1.2",
+                    phaseName = "PHASE 1 (J-15 à J-7) : CRASH-TEST TECHNIQUE",
+                    taskTitle = "Crash-Test Électrique Réel & Coupure Anti-Îlotage VDE",
+                    assignee = "Associé 2 (Technique)",
+                    timing = "J-12",
+                    costOrRevenue = "0 € (Multimètre & wattmètre)",
+                    actionDetails = "1) Brancher sur prise murale : constater au wattmètre et sur le compteur Linky la baisse immédiate de 300 à 400 VA. 2) Débrancher brutalement la prise : mesurer au multimètre que la tension aux broches tombe à 0V en moins de 200 ms (sécurité anti-électrocution DIN VDE 0126-1-1).",
+                    expectedDeliverable = "Vidéo HD de 45 secondes du test Linky et de la coupure instantanée.",
+                    officialSourceOrLegal = "Norme DIN VDE 0126-1-1 / VFR 2019 (homologation obligatoire Enedis)."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "1.3",
+                    phaseName = "PHASE 1 (J-15 à J-7) : CRASH-TEST TECHNIQUE",
+                    taskTitle = "Shooting Photo Commercial HD en Situation Réelle",
+                    assignee = "Associé 1 (Marketing)",
+                    timing = "J-10",
+                    costOrRevenue = "0 € (Smartphone 4K)",
+                    actionDetails = "Prendre 6 photos nettes et lumineuses de la station : 1) Vue d'ensemble sur gazon/terrasse, 2) Gros plan biverre noir antireflet, 3) Gros plan micro-onduleur Hoymiles, 4) Châssis alu réglé à 30°, 5) Branchement prise Schuko étanche, 6) Écran smartphone mesurant la production.",
+                    expectedDeliverable = "Pack de 6 visuels HD commerciaux réels (zéro image 3D artificielle).",
+                    officialSourceOrLegal = "Charte qualité visuelle des annonces premium Leboncoin & Marketplace."
+                ),
+
+                // PHASE 2 : TEST MARCHÉ 0 € & 3 PRÉCOMMANDES LOCALES (J-7 À J-1)
+                OperationalPhaseStep(
+                    stepNumber = "2.1",
+                    phaseName = "PHASE 2 (J-7 à J-1) : TEST MARCHÉ 0 €",
+                    taskTitle = "Dépôt de l'Annonce Pilote Leboncoin & Marketplace",
+                    assignee = "Associé 1 (Président)",
+                    timing = "J-7",
+                    costOrRevenue = "0 € (Annonce gratuite)",
+                    actionDetails = "Publier l'annonce optimisée avec vos vraies photos et le titre percutant : 'Station Solaire 440W Plug & Play - Prête à brancher 230V - 349 € (Moitié prix Sunology, Garantie 25 ans)'. Cibler votre département et métropole locale.",
+                    expectedDeliverable = "Annonce validée en ligne générant 60 à 100 vues qualifiées par jour.",
+                    officialSourceOrLegal = "Script optimisé du dossier Boîte à Outils de l'application KoPilot."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "2.2",
+                    phaseName = "PHASE 2 (J-7 à J-1) : TEST MARCHÉ 0 €",
+                    taskTitle = "Closing des 3 Premières Précommandes Locales Fermes",
+                    assignee = "Associé 1 & 2",
+                    timing = "J-5 à J-1",
+                    costOrRevenue = "0 € (Trafic organique)",
+                    actionDetails = "Répondre aux messages en moins de 15 min par SMS/téléphone avec la fiche technique PDF et la vidéo Linky. Verrouiller 3 réservations fermes avec remise en main propre locale ou livraison gratuite sous 10 jours.",
+                    expectedDeliverable = "3 accords fermes de précommandes confirmés par SMS / email avec coordonnées clients.",
+                    officialSourceOrLegal = "Condition de sortie Phase 2 : AUCUN centime dépensé avant d'avoir ces 3 précommandes."
+                ),
+
+                // PHASE 3 : CONSTITUTION OFFICIELLE SAS & CAPITAL (JOUR J À J+3)
+                OperationalPhaseStep(
+                    stepNumber = "3.1",
+                    phaseName = "PHASE 3 (Jour J à J+3) : CONSTITUTION SAS",
+                    taskTitle = "Dépôt du Capital Social de 500 € sur Qonto",
+                    assignee = "Les 2 Associés (250 € chacun)",
+                    timing = "Jour J (Matin)",
+                    costOrRevenue = "500 € de capital (Trésorerie SAS)",
+                    actionDetails = "Ouvrir le compte pro en ligne sur Qonto.com. Virement de 250 € par associé. Qonto séquestre le capital et délivre l'Attestation de Dépôt des Fonds officielle en moins de 12h.",
+                    expectedDeliverable = "Attestation de Dépôt des Fonds certifiée pour le greffe du tribunal.",
+                    officialSourceOrLegal = "Code de commerce art. L227-1 et suivants (Société par Actions Simplifiée)."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "3.2",
+                    phaseName = "PHASE 3 (Jour J à J+3) : CONSTITUTION SAS",
+                    taskTitle = "Rédaction des Statuts SAS & PV d'AG Mandat Gratuit",
+                    assignee = "Associé 1 (Président)",
+                    timing = "Jour J (Après-midi)",
+                    costOrRevenue = "0 € (Modèle certifié)",
+                    actionDetails = "Rédiger les statuts SAS à 500 € de capital (50/50). Rédiger le Procès-Verbal d'Assemblée Générale n°1 actant que le mandat de Président est exercé à titre strictement bénévole et gratuit (0 € salaire, 0 € avantage).",
+                    expectedDeliverable = "Statuts paraphés et signés électroniquement + PV d'AG bouclier ARE.",
+                    officialSourceOrLegal = "Circulaire Unédic n° 2014-26 du 30/09/2014 (Maintien intégral 100% de l'ARE)."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "3.3",
+                    phaseName = "PHASE 3 (Jour J à J+3) : CONSTITUTION SAS",
+                    taskTitle = "Immatriculation en Ligne sur le Guichet Unique INPI",
+                    assignee = "Associé 1",
+                    timing = "J+1",
+                    costOrRevenue = "~177 € (Frais greffe + annonce légale)",
+                    actionDetails = "Déposer le dossier sur formalites.entreprises.gouv.fr (Guichet Unique INPI) : statuts signés, attestation Qonto, pièce d'identité et attestation de non-condamnation.",
+                    expectedDeliverable = "Récépissé de dépôt immédiat avec numéro SIREN attribué sous 24h-48h.",
+                    officialSourceOrLegal = "Guichet Unique des Formalités d'Entreprises (Loi PACTE)."
+                ),
+
+                // PHASE 4 : FOURNISSEURS, LOGISTIQUE & PREMIÈRES VENTES (J+4 À J+15)
+                OperationalPhaseStep(
+                    stepNumber = "4.1",
+                    phaseName = "PHASE 4 (J+4 à J+15) : VENTES & FOURNISSEURS",
+                    taskTitle = "Validation des Comptes Grossistes B2B (POwR & UpWatt)",
+                    assignee = "Associé 2",
+                    timing = "J+4",
+                    costOrRevenue = "0 € d'ouverture",
+                    actionDetails = "Envoyer le Kbis ou récépissé SIREN chez POwR Connect Nantes (contact@groupepowr.com) et UpWatt Pro (pro@upwatt.com). Demander l'ouverture du compte revendeur direct avec facturation HT.",
+                    expectedDeliverable = "Identifiants d'accès au portail B2B avec grilles tarifaires remisées.",
+                    officialSourceOrLegal = "Conditions Générales de Vente Revendeurs POwR Connect & UpWatt France."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "4.2",
+                    phaseName = "PHASE 4 (J+4 à J+15) : VENTES & FOURNISSEURS",
+                    taskTitle = "Encaissement des 3 Précommandes & Commande Matériel",
+                    assignee = "Les 2 Associés",
+                    timing = "J+7",
+                    costOrRevenue = "+1 047 € encaissés / -445 € décaissés",
+                    actionDetails = "Encaisser les 3 clients (3 x 349 € = 1 047 € TTC) par virement instantané Qonto ou CB. Commander aussitôt les 3 kits chez le grossiste avec l'argent déjà reçu (3 x 148,20 € HT = 444,60 € HT).",
+                    expectedDeliverable = "+315 € à +399 € de marge nette pure générée sans avance de trésorerie.",
+                    officialSourceOrLegal = "Modèle commercial à flux tendu sécurisé (Zéro risque de stock mort)."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "4.3",
+                    phaseName = "PHASE 4 (J+4 à J+15) : VENTES & FOURNISSEURS",
+                    taskTitle = "Livraison Clients, Kit CACSI Enedis & Coupons Parrainage",
+                    assignee = "Les 2 Associés",
+                    timing = "J+10 à J+15",
+                    costOrRevenue = "0 € de frais supplémentaires",
+                    actionDetails = "Livrer les 3 stations complètes. Remettre en main propre : 1) La station prête à brancher, 2) Le certificat VDE Hoymiles, 3) Le guide Enedis CACSI plastifié, 4) Les 3 coupons de parrainage voisin 30 €.",
+                    expectedDeliverable = "Bons de livraison signés et 3 clients ambassadeurs hyper satisfaits.",
+                    officialSourceOrLegal = "Procédure officielle Enedis-PRO-RES_43E & Code de la consommation."
+                ),
+
+                // PHASE 5 : CONFORMITÉ RÉGLEMENTAIRE & PROTECTION FISCALE (J+16 À J+30)
+                OperationalPhaseStep(
+                    stepNumber = "5.1",
+                    phaseName = "PHASE 5 (J+16 à J+30) : BOUCLIERS LÉGAUX",
+                    taskTitle = "Adhésion Gratuite à l'Éco-Organisme Soren (Loi AGEC)",
+                    assignee = "Associé 2",
+                    timing = "J+16",
+                    costOrRevenue = "0 € d'adhésion (0,80 € HT / panneau)",
+                    actionDetails = "Créer le compte adhérent sur soren.eco (filière agréée de recyclage photovoltaïque en France). Obtenir le numéro d'Identifiant Unique (IDU) ADEME à inscrire sur les futures factures.",
+                    expectedDeliverable = "Attestation d'adhésion Soren et numéro IDU délivré par l'ADEME.",
+                    officialSourceOrLegal = "Code de l'environnement art. R543-172 & Décret 2014-928."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "5.2",
+                    phaseName = "PHASE 5 (J+16 à J+30) : BOUCLIERS LÉGAUX",
+                    taskTitle = "Souscription Assurance RC Pro Matériel Électrique",
+                    assignee = "Associé 1",
+                    timing = "J+20",
+                    costOrRevenue = "~42 € / mois",
+                    actionDetails = "Souscrire en ligne la police d'assurance RC Pro Exploitation + Après Livraison chez Hiscox ou AXA (code NAF 47.91A, couverture 1 500 000 €). Vérifier l'absence d'obligation de décennale bâtiment.",
+                    expectedDeliverable = "Attestation d'assurance RC Pro opposable aux tiers et clients.",
+                    officialSourceOrLegal = "Code des assurances art. L112-1 & Code civil art. 1245."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "5.3",
+                    phaseName = "PHASE 5 (J+16 à J+30) : BOUCLIERS LÉGAUX",
+                    taskTitle = "Actualisation Mensuelle France Travail (Maintien 100% ARE)",
+                    assignee = "Associé 1 (Président)",
+                    timing = "Fin du Mois 1",
+                    costOrRevenue = "+2 000 € / mois d'ARE maintenue",
+                    actionDetails = "Lors de l'actualisation sur francetravail.fr : Déclarer '0 heure salariée, 0 € de rémunération'. Téléverser le PV d'AG de mandat gratuit et l'attestation de non-rémunération signée.",
+                    expectedDeliverable = "Versement intégral de l'allocation chômage mensuelle sur compte personnel.",
+                    officialSourceOrLegal = "Circulaire Unédic n° 2014-26 (Fiche 2 - Maintien intégral sans abattement)."
+                ),
+
+                // PHASE 6 : INDUSTRIALISATION & ÉCHELLE (J+31 À J+90)
+                OperationalPhaseStep(
+                    stepNumber = "6.1",
+                    phaseName = "PHASE 6 (J+31 à J+90) : ÉCHELLE & SCALE",
+                    taskTitle = "Achat de la Première Palette de 36 Panneaux (-21% Coût)",
+                    assignee = "Les 2 Associés",
+                    timing = "Dès 3 000 € de trésorerie (J+45)",
+                    costOrRevenue = "1 404 € HT palette (Gain +18 €/kit)",
+                    actionDetails = "Commander une palette complète de 36 panneaux Trina 440W sur POwR Connect ou SecondSol à 39,00 € HT l'unité (au lieu de 49,50 €). Stocker dans le garage sécurisé. Fret mutualisé à 2,36 € / panneau.",
+                    expectedDeliverable = "Gain de marge brute immédiate de +18 € à +32 € sur chaque kit vendu.",
+                    officialSourceOrLegal = "Tarif dégressif B2B grossiste palette certifiée Eurocode."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "6.2",
+                    phaseName = "PHASE 6 (J+31 à J+90) : ÉCHELLE & SCALE",
+                    taskTitle = "Démarchage des CSE d'Entreprises & Conciergeries Locales",
+                    assignee = "Associé 2 (Développement)",
+                    timing = "Mois 2 & Mois 3",
+                    costOrRevenue = "+15 à +40 kits / contrat groupé",
+                    actionDetails = "Envoyer le dossier de présentation 'Pouvoir d'Achat Énergie' aux 5 plus gros Comités Sociaux et Économiques (CSE) de votre département (+100 salariés) : Pack Solo négocié à 329 € avec prise Wi-Fi offerte.",
+                    expectedDeliverable = "Première convention signée avec un CSE générant 15 à 30 commandes groupées d'un coup.",
+                    officialSourceOrLegal = "Code du travail art. L2312-78 (Attributions sociales et culturelles des CSE)."
+                )
+            ),
+            growthLevers = listOf(
                 GrowthLever(
                     title = "1. Achat par Palettes de 36 Panneaux (-21% Coût Grossiste)",
                     timeToDeploy = "Dès 3 000 € de trésorerie accumulée (Mois 2)",
@@ -757,7 +1136,196 @@ object EcomDossiersData {
                 annualDividendsPerPartner = "~ 24 300 € nets d'impôt en poche par associé (après IS 15% jusqu'à 42.5k€ et Flat Tax 30%)",
                 taxOptimizationNote = "Structure unique multi-marques (code NAF 47.91A) : un seul compte bancaire, une comptabilité, zéro frottement fiscal."
             ),
-                                    growthLevers = listOf(
+                                                operationalPhases = listOf(
+                // PHASE 1 : CRASH-TEST TECHNIQUE & QUALITÉ (J-15 À J-7)
+                OperationalPhaseStep(
+                    stepNumber = "1.1",
+                    phaseName = "PHASE 1 (J-15 à J-7) : CRASH-TEST TECHNIQUE",
+                    taskTitle = "Commande du Kit Prototype de Démonstration",
+                    assignee = "Les 2 Associés",
+                    timing = "J-15 (Livraison 48h)",
+                    costOrRevenue = "180 € TTC (Avance 50/50)",
+                    actionDetails = "Commander 1 kit complet (panneau Trina Solar 440Wc biverre + micro-onduleur Hoymiles HMS-400 + châssis alu inclinable + câble Schuko 5m) chez Kitsolaire-Discount ou UpWatt pour évaluation physique directe.",
+                    expectedDeliverable = "Kit physique complet reçu, déballé et inspecté au millimètre dans le garage.",
+                    officialSourceOrLegal = "Fiche technique constructeur Trina Solar Vertex S+ & Certificat Hoymiles."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "1.2",
+                    phaseName = "PHASE 1 (J-15 à J-7) : CRASH-TEST TECHNIQUE",
+                    taskTitle = "Crash-Test Électrique Réel & Coupure Anti-Îlotage VDE",
+                    assignee = "Associé 2 (Technique)",
+                    timing = "J-12",
+                    costOrRevenue = "0 € (Multimètre & wattmètre)",
+                    actionDetails = "1) Brancher sur prise murale : constater au wattmètre et sur le compteur Linky la baisse immédiate de 300 à 400 VA. 2) Débrancher brutalement la prise : mesurer au multimètre que la tension aux broches tombe à 0V en moins de 200 ms (sécurité anti-électrocution DIN VDE 0126-1-1).",
+                    expectedDeliverable = "Vidéo HD de 45 secondes du test Linky et de la coupure instantanée.",
+                    officialSourceOrLegal = "Norme DIN VDE 0126-1-1 / VFR 2019 (homologation obligatoire Enedis)."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "1.3",
+                    phaseName = "PHASE 1 (J-15 à J-7) : CRASH-TEST TECHNIQUE",
+                    taskTitle = "Shooting Photo Commercial HD en Situation Réelle",
+                    assignee = "Associé 1 (Marketing)",
+                    timing = "J-10",
+                    costOrRevenue = "0 € (Smartphone 4K)",
+                    actionDetails = "Prendre 6 photos nettes et lumineuses de la station : 1) Vue d'ensemble sur gazon/terrasse, 2) Gros plan biverre noir antireflet, 3) Gros plan micro-onduleur Hoymiles, 4) Châssis alu réglé à 30°, 5) Branchement prise Schuko étanche, 6) Écran smartphone mesurant la production.",
+                    expectedDeliverable = "Pack de 6 visuels HD commerciaux réels (zéro image 3D artificielle).",
+                    officialSourceOrLegal = "Charte qualité visuelle des annonces premium Leboncoin & Marketplace."
+                ),
+
+                // PHASE 2 : TEST MARCHÉ 0 € & 3 PRÉCOMMANDES LOCALES (J-7 À J-1)
+                OperationalPhaseStep(
+                    stepNumber = "2.1",
+                    phaseName = "PHASE 2 (J-7 à J-1) : TEST MARCHÉ 0 €",
+                    taskTitle = "Dépôt de l'Annonce Pilote Leboncoin & Marketplace",
+                    assignee = "Associé 1 (Président)",
+                    timing = "J-7",
+                    costOrRevenue = "0 € (Annonce gratuite)",
+                    actionDetails = "Publier l'annonce optimisée avec vos vraies photos et le titre percutant : 'Station Solaire 440W Plug & Play - Prête à brancher 230V - 349 € (Moitié prix Sunology, Garantie 25 ans)'. Cibler votre département et métropole locale.",
+                    expectedDeliverable = "Annonce validée en ligne générant 60 à 100 vues qualifiées par jour.",
+                    officialSourceOrLegal = "Script optimisé du dossier Boîte à Outils de l'application KoPilot."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "2.2",
+                    phaseName = "PHASE 2 (J-7 à J-1) : TEST MARCHÉ 0 €",
+                    taskTitle = "Closing des 3 Premières Précommandes Locales Fermes",
+                    assignee = "Associé 1 & 2",
+                    timing = "J-5 à J-1",
+                    costOrRevenue = "0 € (Trafic organique)",
+                    actionDetails = "Répondre aux messages en moins de 15 min par SMS/téléphone avec la fiche technique PDF et la vidéo Linky. Verrouiller 3 réservations fermes avec remise en main propre locale ou livraison gratuite sous 10 jours.",
+                    expectedDeliverable = "3 accords fermes de précommandes confirmés par SMS / email avec coordonnées clients.",
+                    officialSourceOrLegal = "Condition de sortie Phase 2 : AUCUN centime dépensé avant d'avoir ces 3 précommandes."
+                ),
+
+                // PHASE 3 : CONSTITUTION OFFICIELLE SAS & CAPITAL (JOUR J À J+3)
+                OperationalPhaseStep(
+                    stepNumber = "3.1",
+                    phaseName = "PHASE 3 (Jour J à J+3) : CONSTITUTION SAS",
+                    taskTitle = "Dépôt du Capital Social de 500 € sur Qonto",
+                    assignee = "Les 2 Associés (250 € chacun)",
+                    timing = "Jour J (Matin)",
+                    costOrRevenue = "500 € de capital (Trésorerie SAS)",
+                    actionDetails = "Ouvrir le compte pro en ligne sur Qonto.com. Virement de 250 € par associé. Qonto séquestre le capital et délivre l'Attestation de Dépôt des Fonds officielle en moins de 12h.",
+                    expectedDeliverable = "Attestation de Dépôt des Fonds certifiée pour le greffe du tribunal.",
+                    officialSourceOrLegal = "Code de commerce art. L227-1 et suivants (Société par Actions Simplifiée)."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "3.2",
+                    phaseName = "PHASE 3 (Jour J à J+3) : CONSTITUTION SAS",
+                    taskTitle = "Rédaction des Statuts SAS & PV d'AG Mandat Gratuit",
+                    assignee = "Associé 1 (Président)",
+                    timing = "Jour J (Après-midi)",
+                    costOrRevenue = "0 € (Modèle certifié)",
+                    actionDetails = "Rédiger les statuts SAS à 500 € de capital (50/50). Rédiger le Procès-Verbal d'Assemblée Générale n°1 actant que le mandat de Président est exercé à titre strictement bénévole et gratuit (0 € salaire, 0 € avantage).",
+                    expectedDeliverable = "Statuts paraphés et signés électroniquement + PV d'AG bouclier ARE.",
+                    officialSourceOrLegal = "Circulaire Unédic n° 2014-26 du 30/09/2014 (Maintien intégral 100% de l'ARE)."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "3.3",
+                    phaseName = "PHASE 3 (Jour J à J+3) : CONSTITUTION SAS",
+                    taskTitle = "Immatriculation en Ligne sur le Guichet Unique INPI",
+                    assignee = "Associé 1",
+                    timing = "J+1",
+                    costOrRevenue = "~177 € (Frais greffe + annonce légale)",
+                    actionDetails = "Déposer le dossier sur formalites.entreprises.gouv.fr (Guichet Unique INPI) : statuts signés, attestation Qonto, pièce d'identité et attestation de non-condamnation.",
+                    expectedDeliverable = "Récépissé de dépôt immédiat avec numéro SIREN attribué sous 24h-48h.",
+                    officialSourceOrLegal = "Guichet Unique des Formalités d'Entreprises (Loi PACTE)."
+                ),
+
+                // PHASE 4 : FOURNISSEURS, LOGISTIQUE & PREMIÈRES VENTES (J+4 À J+15)
+                OperationalPhaseStep(
+                    stepNumber = "4.1",
+                    phaseName = "PHASE 4 (J+4 à J+15) : VENTES & FOURNISSEURS",
+                    taskTitle = "Validation des Comptes Grossistes B2B (POwR & UpWatt)",
+                    assignee = "Associé 2",
+                    timing = "J+4",
+                    costOrRevenue = "0 € d'ouverture",
+                    actionDetails = "Envoyer le Kbis ou récépissé SIREN chez POwR Connect Nantes (contact@groupepowr.com) et UpWatt Pro (pro@upwatt.com). Demander l'ouverture du compte revendeur direct avec facturation HT.",
+                    expectedDeliverable = "Identifiants d'accès au portail B2B avec grilles tarifaires remisées.",
+                    officialSourceOrLegal = "Conditions Générales de Vente Revendeurs POwR Connect & UpWatt France."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "4.2",
+                    phaseName = "PHASE 4 (J+4 à J+15) : VENTES & FOURNISSEURS",
+                    taskTitle = "Encaissement des 3 Précommandes & Commande Matériel",
+                    assignee = "Les 2 Associés",
+                    timing = "J+7",
+                    costOrRevenue = "+1 047 € encaissés / -445 € décaissés",
+                    actionDetails = "Encaisser les 3 clients (3 x 349 € = 1 047 € TTC) par virement instantané Qonto ou CB. Commander aussitôt les 3 kits chez le grossiste avec l'argent déjà reçu (3 x 148,20 € HT = 444,60 € HT).",
+                    expectedDeliverable = "+315 € à +399 € de marge nette pure générée sans avance de trésorerie.",
+                    officialSourceOrLegal = "Modèle commercial à flux tendu sécurisé (Zéro risque de stock mort)."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "4.3",
+                    phaseName = "PHASE 4 (J+4 à J+15) : VENTES & FOURNISSEURS",
+                    taskTitle = "Livraison Clients, Kit CACSI Enedis & Coupons Parrainage",
+                    assignee = "Les 2 Associés",
+                    timing = "J+10 à J+15",
+                    costOrRevenue = "0 € de frais supplémentaires",
+                    actionDetails = "Livrer les 3 stations complètes. Remettre en main propre : 1) La station prête à brancher, 2) Le certificat VDE Hoymiles, 3) Le guide Enedis CACSI plastifié, 4) Les 3 coupons de parrainage voisin 30 €.",
+                    expectedDeliverable = "Bons de livraison signés et 3 clients ambassadeurs hyper satisfaits.",
+                    officialSourceOrLegal = "Procédure officielle Enedis-PRO-RES_43E & Code de la consommation."
+                ),
+
+                // PHASE 5 : CONFORMITÉ RÉGLEMENTAIRE & PROTECTION FISCALE (J+16 À J+30)
+                OperationalPhaseStep(
+                    stepNumber = "5.1",
+                    phaseName = "PHASE 5 (J+16 à J+30) : BOUCLIERS LÉGAUX",
+                    taskTitle = "Adhésion Gratuite à l'Éco-Organisme Soren (Loi AGEC)",
+                    assignee = "Associé 2",
+                    timing = "J+16",
+                    costOrRevenue = "0 € d'adhésion (0,80 € HT / panneau)",
+                    actionDetails = "Créer le compte adhérent sur soren.eco (filière agréée de recyclage photovoltaïque en France). Obtenir le numéro d'Identifiant Unique (IDU) ADEME à inscrire sur les futures factures.",
+                    expectedDeliverable = "Attestation d'adhésion Soren et numéro IDU délivré par l'ADEME.",
+                    officialSourceOrLegal = "Code de l'environnement art. R543-172 & Décret 2014-928."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "5.2",
+                    phaseName = "PHASE 5 (J+16 à J+30) : BOUCLIERS LÉGAUX",
+                    taskTitle = "Souscription Assurance RC Pro Matériel Électrique",
+                    assignee = "Associé 1",
+                    timing = "J+20",
+                    costOrRevenue = "~42 € / mois",
+                    actionDetails = "Souscrire en ligne la police d'assurance RC Pro Exploitation + Après Livraison chez Hiscox ou AXA (code NAF 47.91A, couverture 1 500 000 €). Vérifier l'absence d'obligation de décennale bâtiment.",
+                    expectedDeliverable = "Attestation d'assurance RC Pro opposable aux tiers et clients.",
+                    officialSourceOrLegal = "Code des assurances art. L112-1 & Code civil art. 1245."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "5.3",
+                    phaseName = "PHASE 5 (J+16 à J+30) : BOUCLIERS LÉGAUX",
+                    taskTitle = "Actualisation Mensuelle France Travail (Maintien 100% ARE)",
+                    assignee = "Associé 1 (Président)",
+                    timing = "Fin du Mois 1",
+                    costOrRevenue = "+2 000 € / mois d'ARE maintenue",
+                    actionDetails = "Lors de l'actualisation sur francetravail.fr : Déclarer '0 heure salariée, 0 € de rémunération'. Téléverser le PV d'AG de mandat gratuit et l'attestation de non-rémunération signée.",
+                    expectedDeliverable = "Versement intégral de l'allocation chômage mensuelle sur compte personnel.",
+                    officialSourceOrLegal = "Circulaire Unédic n° 2014-26 (Fiche 2 - Maintien intégral sans abattement)."
+                ),
+
+                // PHASE 6 : INDUSTRIALISATION & ÉCHELLE (J+31 À J+90)
+                OperationalPhaseStep(
+                    stepNumber = "6.1",
+                    phaseName = "PHASE 6 (J+31 à J+90) : ÉCHELLE & SCALE",
+                    taskTitle = "Achat de la Première Palette de 36 Panneaux (-21% Coût)",
+                    assignee = "Les 2 Associés",
+                    timing = "Dès 3 000 € de trésorerie (J+45)",
+                    costOrRevenue = "1 404 € HT palette (Gain +18 €/kit)",
+                    actionDetails = "Commander une palette complète de 36 panneaux Trina 440W sur POwR Connect ou SecondSol à 39,00 € HT l'unité (au lieu de 49,50 €). Stocker dans le garage sécurisé. Fret mutualisé à 2,36 € / panneau.",
+                    expectedDeliverable = "Gain de marge brute immédiate de +18 € à +32 € sur chaque kit vendu.",
+                    officialSourceOrLegal = "Tarif dégressif B2B grossiste palette certifiée Eurocode."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "6.2",
+                    phaseName = "PHASE 6 (J+31 à J+90) : ÉCHELLE & SCALE",
+                    taskTitle = "Démarchage des CSE d'Entreprises & Conciergeries Locales",
+                    assignee = "Associé 2 (Développement)",
+                    timing = "Mois 2 & Mois 3",
+                    costOrRevenue = "+15 à +40 kits / contrat groupé",
+                    actionDetails = "Envoyer le dossier de présentation 'Pouvoir d'Achat Énergie' aux 5 plus gros Comités Sociaux et Économiques (CSE) de votre département (+100 salariés) : Pack Solo négocié à 329 € avec prise Wi-Fi offerte.",
+                    expectedDeliverable = "Première convention signée avec un CSE générant 15 à 30 commandes groupées d'un coup.",
+                    officialSourceOrLegal = "Code du travail art. L2312-78 (Attributions sociales et culturelles des CSE)."
+                )
+            ),
+            growthLevers = listOf(
                 GrowthLever(
                     title = "1. Achat par Palettes de 36 Panneaux (-21% Coût Grossiste)",
                     timeToDeploy = "Dès 3 000 € de trésorerie accumulée (Mois 2)",
@@ -1026,7 +1594,196 @@ object EcomDossiersData {
                 annualDividendsPerPartner = "~ 10 200 € nets d'impôt en poche par associé (après IS 15% et Flat Tax 30%)",
                 taxOptimizationNote = "Produit de renfort après stabilisation du solaire : apporte environ 1 430 € net / mois supplémentaire par associé."
             ),
-                                    growthLevers = listOf(
+                                                operationalPhases = listOf(
+                // PHASE 1 : CRASH-TEST TECHNIQUE & QUALITÉ (J-15 À J-7)
+                OperationalPhaseStep(
+                    stepNumber = "1.1",
+                    phaseName = "PHASE 1 (J-15 à J-7) : CRASH-TEST TECHNIQUE",
+                    taskTitle = "Commande du Kit Prototype de Démonstration",
+                    assignee = "Les 2 Associés",
+                    timing = "J-15 (Livraison 48h)",
+                    costOrRevenue = "180 € TTC (Avance 50/50)",
+                    actionDetails = "Commander 1 kit complet (panneau Trina Solar 440Wc biverre + micro-onduleur Hoymiles HMS-400 + châssis alu inclinable + câble Schuko 5m) chez Kitsolaire-Discount ou UpWatt pour évaluation physique directe.",
+                    expectedDeliverable = "Kit physique complet reçu, déballé et inspecté au millimètre dans le garage.",
+                    officialSourceOrLegal = "Fiche technique constructeur Trina Solar Vertex S+ & Certificat Hoymiles."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "1.2",
+                    phaseName = "PHASE 1 (J-15 à J-7) : CRASH-TEST TECHNIQUE",
+                    taskTitle = "Crash-Test Électrique Réel & Coupure Anti-Îlotage VDE",
+                    assignee = "Associé 2 (Technique)",
+                    timing = "J-12",
+                    costOrRevenue = "0 € (Multimètre & wattmètre)",
+                    actionDetails = "1) Brancher sur prise murale : constater au wattmètre et sur le compteur Linky la baisse immédiate de 300 à 400 VA. 2) Débrancher brutalement la prise : mesurer au multimètre que la tension aux broches tombe à 0V en moins de 200 ms (sécurité anti-électrocution DIN VDE 0126-1-1).",
+                    expectedDeliverable = "Vidéo HD de 45 secondes du test Linky et de la coupure instantanée.",
+                    officialSourceOrLegal = "Norme DIN VDE 0126-1-1 / VFR 2019 (homologation obligatoire Enedis)."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "1.3",
+                    phaseName = "PHASE 1 (J-15 à J-7) : CRASH-TEST TECHNIQUE",
+                    taskTitle = "Shooting Photo Commercial HD en Situation Réelle",
+                    assignee = "Associé 1 (Marketing)",
+                    timing = "J-10",
+                    costOrRevenue = "0 € (Smartphone 4K)",
+                    actionDetails = "Prendre 6 photos nettes et lumineuses de la station : 1) Vue d'ensemble sur gazon/terrasse, 2) Gros plan biverre noir antireflet, 3) Gros plan micro-onduleur Hoymiles, 4) Châssis alu réglé à 30°, 5) Branchement prise Schuko étanche, 6) Écran smartphone mesurant la production.",
+                    expectedDeliverable = "Pack de 6 visuels HD commerciaux réels (zéro image 3D artificielle).",
+                    officialSourceOrLegal = "Charte qualité visuelle des annonces premium Leboncoin & Marketplace."
+                ),
+
+                // PHASE 2 : TEST MARCHÉ 0 € & 3 PRÉCOMMANDES LOCALES (J-7 À J-1)
+                OperationalPhaseStep(
+                    stepNumber = "2.1",
+                    phaseName = "PHASE 2 (J-7 à J-1) : TEST MARCHÉ 0 €",
+                    taskTitle = "Dépôt de l'Annonce Pilote Leboncoin & Marketplace",
+                    assignee = "Associé 1 (Président)",
+                    timing = "J-7",
+                    costOrRevenue = "0 € (Annonce gratuite)",
+                    actionDetails = "Publier l'annonce optimisée avec vos vraies photos et le titre percutant : 'Station Solaire 440W Plug & Play - Prête à brancher 230V - 349 € (Moitié prix Sunology, Garantie 25 ans)'. Cibler votre département et métropole locale.",
+                    expectedDeliverable = "Annonce validée en ligne générant 60 à 100 vues qualifiées par jour.",
+                    officialSourceOrLegal = "Script optimisé du dossier Boîte à Outils de l'application KoPilot."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "2.2",
+                    phaseName = "PHASE 2 (J-7 à J-1) : TEST MARCHÉ 0 €",
+                    taskTitle = "Closing des 3 Premières Précommandes Locales Fermes",
+                    assignee = "Associé 1 & 2",
+                    timing = "J-5 à J-1",
+                    costOrRevenue = "0 € (Trafic organique)",
+                    actionDetails = "Répondre aux messages en moins de 15 min par SMS/téléphone avec la fiche technique PDF et la vidéo Linky. Verrouiller 3 réservations fermes avec remise en main propre locale ou livraison gratuite sous 10 jours.",
+                    expectedDeliverable = "3 accords fermes de précommandes confirmés par SMS / email avec coordonnées clients.",
+                    officialSourceOrLegal = "Condition de sortie Phase 2 : AUCUN centime dépensé avant d'avoir ces 3 précommandes."
+                ),
+
+                // PHASE 3 : CONSTITUTION OFFICIELLE SAS & CAPITAL (JOUR J À J+3)
+                OperationalPhaseStep(
+                    stepNumber = "3.1",
+                    phaseName = "PHASE 3 (Jour J à J+3) : CONSTITUTION SAS",
+                    taskTitle = "Dépôt du Capital Social de 500 € sur Qonto",
+                    assignee = "Les 2 Associés (250 € chacun)",
+                    timing = "Jour J (Matin)",
+                    costOrRevenue = "500 € de capital (Trésorerie SAS)",
+                    actionDetails = "Ouvrir le compte pro en ligne sur Qonto.com. Virement de 250 € par associé. Qonto séquestre le capital et délivre l'Attestation de Dépôt des Fonds officielle en moins de 12h.",
+                    expectedDeliverable = "Attestation de Dépôt des Fonds certifiée pour le greffe du tribunal.",
+                    officialSourceOrLegal = "Code de commerce art. L227-1 et suivants (Société par Actions Simplifiée)."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "3.2",
+                    phaseName = "PHASE 3 (Jour J à J+3) : CONSTITUTION SAS",
+                    taskTitle = "Rédaction des Statuts SAS & PV d'AG Mandat Gratuit",
+                    assignee = "Associé 1 (Président)",
+                    timing = "Jour J (Après-midi)",
+                    costOrRevenue = "0 € (Modèle certifié)",
+                    actionDetails = "Rédiger les statuts SAS à 500 € de capital (50/50). Rédiger le Procès-Verbal d'Assemblée Générale n°1 actant que le mandat de Président est exercé à titre strictement bénévole et gratuit (0 € salaire, 0 € avantage).",
+                    expectedDeliverable = "Statuts paraphés et signés électroniquement + PV d'AG bouclier ARE.",
+                    officialSourceOrLegal = "Circulaire Unédic n° 2014-26 du 30/09/2014 (Maintien intégral 100% de l'ARE)."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "3.3",
+                    phaseName = "PHASE 3 (Jour J à J+3) : CONSTITUTION SAS",
+                    taskTitle = "Immatriculation en Ligne sur le Guichet Unique INPI",
+                    assignee = "Associé 1",
+                    timing = "J+1",
+                    costOrRevenue = "~177 € (Frais greffe + annonce légale)",
+                    actionDetails = "Déposer le dossier sur formalites.entreprises.gouv.fr (Guichet Unique INPI) : statuts signés, attestation Qonto, pièce d'identité et attestation de non-condamnation.",
+                    expectedDeliverable = "Récépissé de dépôt immédiat avec numéro SIREN attribué sous 24h-48h.",
+                    officialSourceOrLegal = "Guichet Unique des Formalités d'Entreprises (Loi PACTE)."
+                ),
+
+                // PHASE 4 : FOURNISSEURS, LOGISTIQUE & PREMIÈRES VENTES (J+4 À J+15)
+                OperationalPhaseStep(
+                    stepNumber = "4.1",
+                    phaseName = "PHASE 4 (J+4 à J+15) : VENTES & FOURNISSEURS",
+                    taskTitle = "Validation des Comptes Grossistes B2B (POwR & UpWatt)",
+                    assignee = "Associé 2",
+                    timing = "J+4",
+                    costOrRevenue = "0 € d'ouverture",
+                    actionDetails = "Envoyer le Kbis ou récépissé SIREN chez POwR Connect Nantes (contact@groupepowr.com) et UpWatt Pro (pro@upwatt.com). Demander l'ouverture du compte revendeur direct avec facturation HT.",
+                    expectedDeliverable = "Identifiants d'accès au portail B2B avec grilles tarifaires remisées.",
+                    officialSourceOrLegal = "Conditions Générales de Vente Revendeurs POwR Connect & UpWatt France."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "4.2",
+                    phaseName = "PHASE 4 (J+4 à J+15) : VENTES & FOURNISSEURS",
+                    taskTitle = "Encaissement des 3 Précommandes & Commande Matériel",
+                    assignee = "Les 2 Associés",
+                    timing = "J+7",
+                    costOrRevenue = "+1 047 € encaissés / -445 € décaissés",
+                    actionDetails = "Encaisser les 3 clients (3 x 349 € = 1 047 € TTC) par virement instantané Qonto ou CB. Commander aussitôt les 3 kits chez le grossiste avec l'argent déjà reçu (3 x 148,20 € HT = 444,60 € HT).",
+                    expectedDeliverable = "+315 € à +399 € de marge nette pure générée sans avance de trésorerie.",
+                    officialSourceOrLegal = "Modèle commercial à flux tendu sécurisé (Zéro risque de stock mort)."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "4.3",
+                    phaseName = "PHASE 4 (J+4 à J+15) : VENTES & FOURNISSEURS",
+                    taskTitle = "Livraison Clients, Kit CACSI Enedis & Coupons Parrainage",
+                    assignee = "Les 2 Associés",
+                    timing = "J+10 à J+15",
+                    costOrRevenue = "0 € de frais supplémentaires",
+                    actionDetails = "Livrer les 3 stations complètes. Remettre en main propre : 1) La station prête à brancher, 2) Le certificat VDE Hoymiles, 3) Le guide Enedis CACSI plastifié, 4) Les 3 coupons de parrainage voisin 30 €.",
+                    expectedDeliverable = "Bons de livraison signés et 3 clients ambassadeurs hyper satisfaits.",
+                    officialSourceOrLegal = "Procédure officielle Enedis-PRO-RES_43E & Code de la consommation."
+                ),
+
+                // PHASE 5 : CONFORMITÉ RÉGLEMENTAIRE & PROTECTION FISCALE (J+16 À J+30)
+                OperationalPhaseStep(
+                    stepNumber = "5.1",
+                    phaseName = "PHASE 5 (J+16 à J+30) : BOUCLIERS LÉGAUX",
+                    taskTitle = "Adhésion Gratuite à l'Éco-Organisme Soren (Loi AGEC)",
+                    assignee = "Associé 2",
+                    timing = "J+16",
+                    costOrRevenue = "0 € d'adhésion (0,80 € HT / panneau)",
+                    actionDetails = "Créer le compte adhérent sur soren.eco (filière agréée de recyclage photovoltaïque en France). Obtenir le numéro d'Identifiant Unique (IDU) ADEME à inscrire sur les futures factures.",
+                    expectedDeliverable = "Attestation d'adhésion Soren et numéro IDU délivré par l'ADEME.",
+                    officialSourceOrLegal = "Code de l'environnement art. R543-172 & Décret 2014-928."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "5.2",
+                    phaseName = "PHASE 5 (J+16 à J+30) : BOUCLIERS LÉGAUX",
+                    taskTitle = "Souscription Assurance RC Pro Matériel Électrique",
+                    assignee = "Associé 1",
+                    timing = "J+20",
+                    costOrRevenue = "~42 € / mois",
+                    actionDetails = "Souscrire en ligne la police d'assurance RC Pro Exploitation + Après Livraison chez Hiscox ou AXA (code NAF 47.91A, couverture 1 500 000 €). Vérifier l'absence d'obligation de décennale bâtiment.",
+                    expectedDeliverable = "Attestation d'assurance RC Pro opposable aux tiers et clients.",
+                    officialSourceOrLegal = "Code des assurances art. L112-1 & Code civil art. 1245."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "5.3",
+                    phaseName = "PHASE 5 (J+16 à J+30) : BOUCLIERS LÉGAUX",
+                    taskTitle = "Actualisation Mensuelle France Travail (Maintien 100% ARE)",
+                    assignee = "Associé 1 (Président)",
+                    timing = "Fin du Mois 1",
+                    costOrRevenue = "+2 000 € / mois d'ARE maintenue",
+                    actionDetails = "Lors de l'actualisation sur francetravail.fr : Déclarer '0 heure salariée, 0 € de rémunération'. Téléverser le PV d'AG de mandat gratuit et l'attestation de non-rémunération signée.",
+                    expectedDeliverable = "Versement intégral de l'allocation chômage mensuelle sur compte personnel.",
+                    officialSourceOrLegal = "Circulaire Unédic n° 2014-26 (Fiche 2 - Maintien intégral sans abattement)."
+                ),
+
+                // PHASE 6 : INDUSTRIALISATION & ÉCHELLE (J+31 À J+90)
+                OperationalPhaseStep(
+                    stepNumber = "6.1",
+                    phaseName = "PHASE 6 (J+31 à J+90) : ÉCHELLE & SCALE",
+                    taskTitle = "Achat de la Première Palette de 36 Panneaux (-21% Coût)",
+                    assignee = "Les 2 Associés",
+                    timing = "Dès 3 000 € de trésorerie (J+45)",
+                    costOrRevenue = "1 404 € HT palette (Gain +18 €/kit)",
+                    actionDetails = "Commander une palette complète de 36 panneaux Trina 440W sur POwR Connect ou SecondSol à 39,00 € HT l'unité (au lieu de 49,50 €). Stocker dans le garage sécurisé. Fret mutualisé à 2,36 € / panneau.",
+                    expectedDeliverable = "Gain de marge brute immédiate de +18 € à +32 € sur chaque kit vendu.",
+                    officialSourceOrLegal = "Tarif dégressif B2B grossiste palette certifiée Eurocode."
+                ),
+                OperationalPhaseStep(
+                    stepNumber = "6.2",
+                    phaseName = "PHASE 6 (J+31 à J+90) : ÉCHELLE & SCALE",
+                    taskTitle = "Démarchage des CSE d'Entreprises & Conciergeries Locales",
+                    assignee = "Associé 2 (Développement)",
+                    timing = "Mois 2 & Mois 3",
+                    costOrRevenue = "+15 à +40 kits / contrat groupé",
+                    actionDetails = "Envoyer le dossier de présentation 'Pouvoir d'Achat Énergie' aux 5 plus gros Comités Sociaux et Économiques (CSE) de votre département (+100 salariés) : Pack Solo négocié à 329 € avec prise Wi-Fi offerte.",
+                    expectedDeliverable = "Première convention signée avec un CSE générant 15 à 30 commandes groupées d'un coup.",
+                    officialSourceOrLegal = "Code du travail art. L2312-78 (Attributions sociales et culturelles des CSE)."
+                )
+            ),
+            growthLevers = listOf(
                 GrowthLever(
                     title = "1. Achat par Palettes de 36 Panneaux (-21% Coût Grossiste)",
                     timeToDeploy = "Dès 3 000 € de trésorerie accumulée (Mois 2)",

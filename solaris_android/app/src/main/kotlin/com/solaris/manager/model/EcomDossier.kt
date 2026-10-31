@@ -82,6 +82,19 @@ data class PartnerPitchArgument(
     val keyProof: String
 )
 
+data class OperationalPhaseStep(
+    val stepNumber: String,
+    val phaseName: String,
+    val taskTitle: String,
+    val assignee: String,
+    val timing: String,
+    val costOrRevenue: String,
+    val actionDetails: String,
+    val expectedDeliverable: String,
+    val officialSourceOrLegal: String,
+    var isCompleted: Boolean = false
+)
+
 data class GrowthLever(
     val title: String,
     val timeToDeploy: String,
@@ -149,6 +162,7 @@ data class EcomDossier(
     val partnerPitchArguments: List<PartnerPitchArgument> = emptyList(),
     // Objections clients réelles & parades mot à mot
     val riskMitigations: List<RiskMitigationItem> = emptyList(),
+    val operationalPhases: List<OperationalPhaseStep> = emptyList(),
     val growthLevers: List<GrowthLever> = emptyList(),
     val associateVerifications: List<AssociateVerificationItem> = emptyList(),
     val objections: List<ObjectionItem> = emptyList(),

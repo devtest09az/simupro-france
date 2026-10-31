@@ -74,6 +74,7 @@ import com.solaris.manager.model.CostItem
 import com.solaris.manager.model.EcomDossier
 import com.solaris.manager.model.MarketStudyDetail
 import com.solaris.manager.model.ObjectionItem
+import com.solaris.manager.model.OperationalPhaseStep
 import com.solaris.manager.model.GrowthLever
 import com.solaris.manager.model.AssociateVerificationItem
 import com.solaris.manager.model.RiskMitigationItem
@@ -164,6 +165,7 @@ fun EcomHubScreen(
                     uiState = uiState,
                     onDossierClick = { viewModel.selectDossier(it) },
                     onVerificationToggle = { dId, vId -> viewModel.toggleVerification(dId, vId) },
+                    onPhaseStepToggle = { dId, sNum -> viewModel.togglePhaseStep(dId, sNum) },
                     onNoteChange = { dId, text -> viewModel.onNoteChange(dId, text) },
                     onSaveNote = { viewModel.saveNotes(it) }
                 )
@@ -253,6 +255,7 @@ private fun ConceptionPhaseContent(
     uiState: EcomHubUiState,
     onDossierClick: (String) -> Unit,
     onVerificationToggle: (String, String) -> Unit,
+    onPhaseStepToggle: (String, String) -> Unit,
     onNoteChange: (String, String) -> Unit,
     onSaveNote: (String) -> Unit
 ) {
@@ -370,7 +373,19 @@ private fun ConceptionPhaseContent(
                                 Spacer(modifier = Modifier.height(10.dp))
                             }
 
-                            // 11. FAQ OBJECTIONS & PARADES COMMERCIALES
+
+                            // 11. PLAN D'ACTION OPÉRATIONNEL CHRONOLOGIQUE (J-15 À J+90)
+                            if (dossier.operationalPhases.isNotEmpty()) {
+                                OperationalPhasesCard(
+                                    steps = dossier.operationalPhases,
+                                    onToggle = { sNum -> onPhaseStepToggle(dossier.id, sNum) }
+                                )
+                                Spacer(modifier = Modifier.height(14.dp))
+                                HorizontalDivider(color = Color(0xFF334155))
+                                Spacer(modifier = Modifier.height(10.dp))
+                            }
+
+                            // 12. FAQ OBJECTIONS & PARADES COMMERCIALES
                             if (dossier.objections.isNotEmpty()) {
                                 ObjectionsCard(objections = dossier.objections)
                                 Spacer(modifier = Modifier.height(14.dp))
@@ -1721,6 +1736,193 @@ private fun RiskMitigationsCard(risks: List<RiskMitigationItem>) {
 
 
 
+
+@Composable
+private fun OperationalPhasesCard(
+    steps: List<OperationalPhaseStep>,
+    onToggle: (String) -> Unit
+) {
+    val completedCount = steps.count { it.isCompleted }
+    val totalCount = steps.size
+    val progress = if (totalCount > 0) completedCount.toFloat() / totalCount.toFloat() else 0f
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp))
+            .background(Color(0xFF0F172A))
+            .border(1.dp, Color(0xFF8B5CF6).copy(alpha = 0.6f), RoundedCornerShape(10.dp))
+            .padding(12.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(text = "📋", fontSize = 16.sp)
+                Spacer(modifier = Modifier.width(6.dp))
+                Text(
+                    text = "11. PLAN D'ACTION OPÉRATIONNEL (J-15 À J+90)",
+                    color = Color(0xFFA78BFA),
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 11.sp
+                )
+            }
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(if (completedCount == totalCount) Color(0xFF10B981).copy(alpha = 0.2f) else Color(0xFF6D28D9).copy(alpha = 0.2f))
+                    .border(1.dp, if (completedCount == totalCount) Color(0xFF10B981) else Color(0xFF8B5CF6), RoundedCornerShape(4.dp))
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
+            ) {
+                Text(
+                    text = "$completedCount / $totalCount ÉTAPES",
+                    color = if (completedCount == totalCount) Color(0xFF34D399) else Color(0xFFDDD6FE),
+                    fontSize = 8.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(
+            text = "Rétroplanning en 6 phases chronologiques 100% sourcées pour réussir le premier projet :",
+            color = Color(0xFF94A3B8),
+            fontSize = 9.sp
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+
+        LinearProgressIndicator(
+            progress = { progress },
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(5.dp)
+                .clip(RoundedCornerShape(3.dp)),
+            color = Color(0xFF10B981),
+            trackColor = Color(0xFF334155)
+        )
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        steps.forEach { step ->
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(Color(0xFF1E293B))
+                    .border(
+                        1.dp,
+                        if (step.isCompleted) Color(0xFF10B981).copy(alpha = 0.7f) else Color(0xFF334155),
+                        RoundedCornerShape(8.dp)
+                    )
+                    .padding(10.dp)
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { onToggle(step.stepNumber) },
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Checkbox(
+                        checked = step.isCompleted,
+                        onCheckedChange = { onToggle(step.stepNumber) },
+                        colors = CheckboxDefaults.colors(
+                            checkedColor = Color(0xFF10B981),
+                            uncheckedColor = Color(0xFF64748B)
+                        )
+                    )
+                    Spacer(modifier = Modifier.width(4.dp))
+                    Column(modifier = Modifier.weight(1f)) {
+                        Box(
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(3.dp))
+                                .background(Color(0xFF4C1D95).copy(alpha = 0.5f))
+                                .padding(horizontal = 4.dp, vertical = 1.dp)
+                        ) {
+                            Text(
+                                text = step.phaseName,
+                                color = Color(0xFFDDD6FE),
+                                fontSize = 7.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(2.dp))
+                        Text(
+                            text = "Étape ${step.stepNumber} : ${step.taskTitle}",
+                            color = if (step.isCompleted) Color(0xFF94A3B8) else Color.White,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 11.sp
+                        )
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(6.dp))
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(4.dp))
+                            .background(Color(0xFF0369A1).copy(alpha = 0.2f))
+                            .border(1.dp, Color(0xFF0284C7), RoundedCornerShape(4.dp))
+                            .padding(horizontal = 5.dp, vertical = 2.dp)
+                    ) {
+                        Text(text = "📅 ${step.timing}", color = Color(0xFF7DD3FC), fontSize = 8.sp, fontWeight = FontWeight.SemiBold)
+                    }
+                    Box(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(4.dp))
+                            .background(Color(0xFF334155))
+                            .padding(horizontal = 5.dp, vertical = 2.dp)
+                    ) {
+                        Text(text = "👤 ${step.assignee}", color = Color(0xFFFDE68A), fontSize = 8.sp, fontWeight = FontWeight.SemiBold)
+                    }
+                    Box(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(4.dp))
+                            .background(Color(0xFF064E3B).copy(alpha = 0.3f))
+                            .border(1.dp, Color(0xFF10B981), RoundedCornerShape(4.dp))
+                            .padding(horizontal = 5.dp, vertical = 2.dp)
+                    ) {
+                        Text(text = "💶 ${step.costOrRevenue}", color = Color(0xFF34D399), fontSize = 8.sp, fontWeight = FontWeight.Bold)
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(6.dp))
+                Text(
+                    text = step.actionDetails,
+                    color = Color(0xFFCBD5E1),
+                    fontSize = 9.sp,
+                    lineHeight = 13.sp
+                )
+
+                Spacer(modifier = Modifier.height(6.dp))
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(4.dp))
+                        .background(Color(0xFF0F172A))
+                        .padding(6.dp)
+                ) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(text = "📦 Livrable clé : ", color = Color(0xFF34D399), fontSize = 8.sp, fontWeight = FontWeight.Bold)
+                        Text(text = step.expectedDeliverable, color = Color(0xFFA7F3D0), fontSize = 8.sp)
+                    }
+                    Spacer(modifier = Modifier.height(2.dp))
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(text = "⚖️ Source / Légal : ", color = Color(0xFF94A3B8), fontSize = 8.sp, fontWeight = FontWeight.Bold)
+                        Text(text = step.officialSourceOrLegal, color = Color(0xFFCBD5E1), fontSize = 8.sp)
+                    }
+                }
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+        }
+    }
+}
+
 @Composable
 private fun GrowthStrategyCard(levers: List<GrowthLever>) {
     val context = LocalContext.current
@@ -2065,7 +2267,7 @@ private fun ObjectionsCard(objections: List<ObjectionItem>) {
                 Text(text = "🎯", fontSize = 16.sp)
                 Spacer(modifier = Modifier.width(6.dp))
                 Text(
-                    text = "11. FAQ OBJECTIONS & PARADES COMMERCIALES",
+                    text = "12. FAQ OBJECTIONS & PARADES COMMERCIALES",
                     color = Color(0xFFFBBF24),
                     fontSize = 11.sp,
                     fontWeight = FontWeight.Bold,
@@ -2182,7 +2384,7 @@ private fun RegulatoryRoadmapCard(roadmap: List<RegulatoryRoadmapItem>) {
                 Text(text = "⚖️", fontSize = 16.sp)
                 Spacer(modifier = Modifier.width(6.dp))
                 Text(
-                    text = "12. CADRE LÉGAL, DÉMARCHES & SÉCURISATION",
+                    text = "13. CADRE LÉGAL, DÉMARCHES & SÉCURISATION",
                     color = Color(0xFF38BDF8),
                     fontSize = 11.sp,
                     fontWeight = FontWeight.Bold,
