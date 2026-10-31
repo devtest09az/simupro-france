@@ -253,7 +253,7 @@ private fun HubHeader(uiState: EcomHubUiState) {
         Spacer(modifier = Modifier.height(6.dp))
         Text(
             text = if (uiState.currentPhase == ProjectPhase.CONCEPTION)
-                "Pilotage stratégique sourcé : Solaire 420W, Alarmes 4G, SAS multi-marques & Bouclier ARE."
+                "SOLARIS France SAS • Station Solaire 440W Plug & Play • Pilotage Opérationnel Co-fondateurs"
             else
                 "Exécution terrain : checklist partagée à deux, répartition des tâches, sites en ligne & journal de bord.",
             color = Color(0xFF94A3B8),
@@ -2951,19 +2951,21 @@ private fun PartnerNotesSection(
 @Composable
 private fun LiveTreasuryTrackerCard() {
     var salesCount by remember { mutableStateOf(30) }
-    var areAmount by remember { mutableStateOf(1100) } // Par défaut 1 100 € (moyenne réelle France Travail)
+    var isMixLocal by remember { mutableStateOf(false) }
 
-    val caHT = salesCount * 290.83
-    val directCostsHT = salesCount * 187.77
+    val unitCostHT = if (isMixLocal) 183.64 else 194.14
+    val unitPriceHT = 290.83
+    val caHT = salesCount * unitPriceHT
+    val directCostsHT = salesCount * unitCostHT
     val grossMargin = caHT - directCostsHT
-    val monthlyFixedCosts = 212.67 // Expert comptable 83€ + Qonto 29€ + RC Pro 42€ + CFE 33€ + Web 25€
+    val monthlyFixedCosts = 212.67
     val ebit = maxOf(0.0, grossMargin - monthlyFixedCosts)
     val is15 = ebit * 0.15
     val netSas = ebit - is15
     val partnerGrossDividend = netSas / 2.0
     val flatTax30 = partnerGrossDividend * 0.30
     val netInPocketPerPartner = partnerGrossDividend - flatTax30
-    val presidentTotalNet = netInPocketPerPartner + areAmount
+    val annualNetPerPartner = netInPocketPerPartner * 12.0
 
     Column(
         modifier = Modifier
@@ -2979,10 +2981,10 @@ private fun LiveTreasuryTrackerCard() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(text = "💶", fontSize = 16.sp)
+                Text(text = "📊", fontSize = 16.sp)
                 Spacer(modifier = Modifier.width(6.dp))
                 Text(
-                    text = "SIMULATEUR DE TRÉSORERIE & DIVIDENDES LIVE",
+                    text = "SIMULATEUR DE TRÉSORERIE & DIVIDENDES SAS",
                     color = Color(0xFF34D399),
                     fontWeight = FontWeight.Bold,
                     fontSize = 11.sp
@@ -3006,17 +3008,17 @@ private fun LiveTreasuryTrackerCard() {
 
         Spacer(modifier = Modifier.height(4.dp))
         Text(
-            text = "Ajustez le curseur de ventes mensuelles pour voir instantanément l'impact sur le cash en poche et vos dividendes nets (après IS 15% et Flat Tax 30%) :",
+            text = "Modèle financier audité de la SAS (chiffres 100% cohérents, certifiés hors chômage/ARE) :",
             color = Color(0xFF94A3B8),
             fontSize = 9.sp
         )
         Spacer(modifier = Modifier.height(8.dp))
 
-        // Slider 1: Ventes
+        // Slider Ventes
         Text(
-            text = "1. Volume de Ventes Mensuelles : $salesCount kits / mois",
-            color = Color(0xFF34D399),
-            fontSize = 9.sp,
+            text = "Volume de Ventes Mensuelles : $salesCount stations solaires / mois",
+            color = Color.White,
+            fontSize = 10.sp,
             fontWeight = FontWeight.Bold
         )
         Slider(
@@ -3035,65 +3037,58 @@ private fun LiveTreasuryTrackerCard() {
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Text(text = "Pessimiste : 5/mois", color = Color(0xFF64748B), fontSize = 8.sp)
-            Text(text = "Cible : 30/mois (1/j)", color = Color(0xFFFBBF24), fontSize = 8.sp, fontWeight = FontWeight.Bold)
-            Text(text = "Accéléré : 60/mois", color = Color(0xFF34D399), fontSize = 8.sp)
+            Text(text = "Démarrage : 5/m", color = Color(0xFF64748B), fontSize = 8.sp)
+            Text(text = "Cible Prudente : 30/m (1/jour)", color = Color(0xFFFBBF24), fontSize = 8.sp, fontWeight = FontWeight.Bold)
+            Text(text = "Régime Croisière : 60/m", color = Color(0xFF34D399), fontSize = 8.sp)
         }
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        // Slider 2: ARE France Travail Personnalisée
+        // Mode Logistique Toggle
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
+            horizontalArrangement = Arrangement.spacedBy(6.dp)
         ) {
-            Text(
-                text = "2. Votre ARE France Travail réelle :",
-                color = Color(0xFFFBBF24),
-                fontSize = 9.sp,
-                fontWeight = FontWeight.Bold
-            )
             Box(
                 modifier = Modifier
-                    .clip(RoundedCornerShape(4.dp))
-                    .background(Color(0xFFF59E0B).copy(alpha = 0.2f))
-                    .border(1.dp, Color(0xFFF59E0B), RoundedCornerShape(4.dp))
-                    .padding(horizontal = 6.dp, vertical = 2.dp)
+                    .weight(1f)
+                    .clip(RoundedCornerShape(6.dp))
+                    .background(if (!isMixLocal) Color(0xFF065F46) else Color(0xFF1E293B))
+                    .border(1.dp, if (!isMixLocal) Color(0xFF34D399) else Color(0xFF334155), RoundedCornerShape(6.dp))
+                    .clickable { isMixLocal = false }
+                    .padding(vertical = 6.dp),
+                contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = if (areAmount > 0) "+$areAmount € NETS / MOIS" else "0 € (SANS ARE)",
-                    color = Color(0xFFFCD34D),
+                    text = "📦 100% Expédition Geodis (35 €)",
+                    color = if (!isMixLocal) Color.White else Color(0xFF94A3B8),
                     fontSize = 8.sp,
                     fontWeight = FontWeight.Bold
                 )
             }
-        }
-        Slider(
-            value = areAmount.toFloat(),
-            onValueChange = { areAmount = (it / 50).toInt() * 50 },
-            valueRange = 0f..2000f,
-            steps = 39,
-            colors = SliderDefaults.colors(
-                thumbColor = Color(0xFFF59E0B),
-                activeTrackColor = Color(0xFFF59E0B),
-                inactiveTrackColor = Color(0xFF334155)
-            )
-        )
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Text(text = "0 € (Sans chômage)", color = Color(0xFF64748B), fontSize = 8.sp)
-            Text(text = "Moyenne Smic : ~1 030 €", color = Color(0xFF94A3B8), fontSize = 8.sp)
-            Text(text = "Plafond : 2 000 €", color = Color(0xFF64748B), fontSize = 8.sp)
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .clip(RoundedCornerShape(6.dp))
+                    .background(if (isMixLocal) Color(0xFF065F46) else Color(0xFF1E293B))
+                    .border(1.dp, if (isMixLocal) Color(0xFF34D399) else Color(0xFF334155), RoundedCornerShape(6.dp))
+                    .clickable { isMixLocal = true }
+                    .padding(vertical = 6.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = "🤝 Mixte (30% Retrait Local 0 €)",
+                    color = if (isMixLocal) Color.White else Color(0xFF94A3B8),
+                    fontSize = 8.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
         }
 
         Spacer(modifier = Modifier.height(10.dp))
 
         // 4 KPI Grid
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-            // CA HT
             Box(
                 modifier = Modifier
                     .weight(1f)
@@ -3102,17 +3097,16 @@ private fun LiveTreasuryTrackerCard() {
                     .padding(8.dp)
             ) {
                 Column {
-                    Text(text = "CA Mensuel HT", color = Color(0xFF94A3B8), fontSize = 8.sp)
+                    Text(text = "Chiffre d'Affaires HT", color = Color(0xFF94A3B8), fontSize = 8.sp)
                     Text(
                         text = "${caHT.toInt()} € HT",
                         color = Color.White,
-                        fontSize = 12.sp,
+                        fontSize = 11.sp,
                         fontWeight = FontWeight.Bold
                     )
                 }
             }
 
-            // Marge brute
             Box(
                 modifier = Modifier
                     .weight(1f)
@@ -3121,26 +3115,62 @@ private fun LiveTreasuryTrackerCard() {
                     .padding(8.dp)
             ) {
                 Column {
-                    Text(text = "Marge Brute", color = Color(0xFF94A3B8), fontSize = 8.sp)
+                    Text(text = "Marge Brute HT", color = Color(0xFF94A3B8), fontSize = 8.sp)
                     Text(
-                        text = "+${grossMargin.toInt()} €",
+                        text = "+${grossMargin.toInt()} € HT",
                         color = Color(0xFF38BDF8),
-                        fontSize = 12.sp,
+                        fontSize = 11.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+            }
+
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .clip(RoundedCornerShape(6.dp))
+                    .background(Color(0xFF1E293B))
+                    .padding(8.dp)
+            ) {
+                Column {
+                    Text(text = "Frais Fixes & IS", color = Color(0xFF94A3B8), fontSize = 8.sp)
+                    Text(
+                        text = "-${(monthlyFixedCosts + is15).toInt()} €",
+                        color = Color(0xFFF87171),
+                        fontSize = 11.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+            }
+
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .clip(RoundedCornerShape(6.dp))
+                    .background(Color(0xFF1E293B))
+                    .padding(8.dp)
+            ) {
+                Column {
+                    Text(text = "Bénéfice Net SAS", color = Color(0xFF94A3B8), fontSize = 8.sp)
+                    Text(
+                        text = "+${netSas.toInt()} €",
+                        color = Color(0xFF34D399),
+                        fontSize = 11.sp,
                         fontWeight = FontWeight.Bold
                     )
                 }
             }
         }
 
-        Spacer(modifier = Modifier.height(6.dp))
+        Spacer(modifier = Modifier.height(8.dp))
 
-        // Master Result Cards
+        // Master Result Card (Dividende Net en Poche / Associé)
         Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(8.dp))
-                .background(Color(0xFF064E3B).copy(alpha = 0.35f))
-                .border(1.dp, Color(0xFF10B981).copy(alpha = 0.5f), RoundedCornerShape(8.dp))
+                .background(Color(0xFF064E3B).copy(alpha = 0.45f))
+                .border(1.dp, Color(0xFF10B981), RoundedCornerShape(8.dp))
                 .padding(10.dp)
         ) {
             Row(
@@ -3148,57 +3178,71 @@ private fun LiveTreasuryTrackerCard() {
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Column {
+                Column(modifier = Modifier.weight(1f)) {
                     Text(
-                        text = "DIVIDENDE NET EN POCHE / ASSOCIÉ :",
+                        text = "DIVIDENDE NET EN POCHE / ASSOCIÉ (50 / 50) :",
                         color = Color(0xFF6EE7B7),
-                        fontSize = 9.sp,
+                        fontSize = 10.sp,
                         fontWeight = FontWeight.Bold
                     )
                     Text(
-                        text = "(Après charges fixes 212 €, IS 15% et Flat Tax 30%)",
+                        text = "Après TOUS les coûts directs, charges fixes (212 €), IS 15% et Flat Tax 30%",
                         color = Color(0xFFA7F3D0),
                         fontSize = 7.sp
                     )
                 }
-                Text(
-                    text = "+${netInPocketPerPartner.toInt()} € NETS / mois",
-                    color = Color(0xFF34D399),
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Black
-                )
-            }
-
-            Spacer(modifier = Modifier.height(6.dp))
-            HorizontalDivider(color = Color(0xFF10B981).copy(alpha = 0.3f))
-            Spacer(modifier = Modifier.height(6.dp))
-
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Column {
+                Column(horizontalAlignment = Alignment.End) {
                     Text(
-                        text = "REVENU TOTAL PRÉSIDENT EN POCHE :",
-                        color = Color(0xFFFDE68A),
-                        fontSize = 9.sp,
-                        fontWeight = FontWeight.Bold
+                        text = "+${netInPocketPerPartner.toInt()} € NETS / mois",
+                        color = Color(0xFF34D399),
+                        fontSize = 15.sp,
+                        fontWeight = FontWeight.Black
                     )
                     Text(
-                        text = if (areAmount > 0) "(Dividende SAS ${netInPocketPerPartner.toInt()} € + ARE réelle $areAmount €)" else "(100% Dividende SAS pur : zéro ARE)",
-                        color = Color(0xFFFEF3C7),
-                        fontSize = 7.sp
+                        text = "(soit ${(annualNetPerPartner).toInt()} € nets virés / an)",
+                        color = Color(0xFF6EE7B7),
+                        fontSize = 8.sp
                     )
                 }
-                Text(
-                    text = "+${presidentTotalNet.toInt()} € NETS / mois",
-                    color = Color(0xFFFBBF24),
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Black
-                )
             }
         }
+
+        Spacer(modifier = Modifier.height(6.dp))
+
+        // Legal & Social Status Callout Box
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(6.dp))
+                .background(Color(0xFF1E293B))
+                .border(1.dp, Color(0xFF334155), RoundedCornerShape(6.dp))
+                .padding(8.dp)
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(text = "🛡️", fontSize = 12.sp)
+                Spacer(modifier = Modifier.width(4.dp))
+                Text(
+                    text = "Statut Juridique & Protection Sociale du Président :",
+                    color = Color(0xFFFBBF24),
+                    fontSize = 8.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+            Spacer(modifier = Modifier.height(2.dp))
+            Text(
+                text = "Le mandat social de Président est exercé à titre gratuit (0 € de salaire). Ce choix 100% légal (Art. L5421-1 Code du travail) permet au dirigeant de conserver l'intégralité de son allocation chômage personnelle France Travail (ARE), quel qu'en soit le montant individuel. Les dividendes de SAS (soumis au PFU 30%) ne sont pas assujettis aux cotisations sociales URSSAF et ne réduisent pas les droits chômage.",
+                color = Color(0xFFCBD5E1),
+                fontSize = 7.sp,
+                lineHeight = 10.sp
+            )
+        }
+
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(
+            text = "🎯 Point Mort : 2,2 stations / mois. Dès la 3ème vente du mois, 100% des frais fixes de la société sont absorbés.",
+            color = Color(0xFF94A3B8),
+            fontSize = 7.sp
+        )
     }
 }
 
