@@ -2951,6 +2951,7 @@ private fun PartnerNotesSection(
 @Composable
 private fun LiveTreasuryTrackerCard() {
     var salesCount by remember { mutableStateOf(30) }
+    var areAmount by remember { mutableStateOf(1100) } // Par défaut 1 100 € (moyenne réelle France Travail)
 
     val caHT = salesCount * 290.83
     val directCostsHT = salesCount * 187.77
@@ -2962,7 +2963,7 @@ private fun LiveTreasuryTrackerCard() {
     val partnerGrossDividend = netSas / 2.0
     val flatTax30 = partnerGrossDividend * 0.30
     val netInPocketPerPartner = partnerGrossDividend - flatTax30
-    val presidentTotalNet = netInPocketPerPartner + 2000.0 // Maintien 100% ARE Chômage
+    val presidentTotalNet = netInPocketPerPartner + areAmount
 
     Column(
         modifier = Modifier
@@ -3011,7 +3012,13 @@ private fun LiveTreasuryTrackerCard() {
         )
         Spacer(modifier = Modifier.height(8.dp))
 
-        // Slider
+        // Slider 1: Ventes
+        Text(
+            text = "1. Volume de Ventes Mensuelles : $salesCount kits / mois",
+            color = Color(0xFF34D399),
+            fontSize = 9.sp,
+            fontWeight = FontWeight.Bold
+        )
         Slider(
             value = salesCount.toFloat(),
             onValueChange = { salesCount = it.toInt() },
@@ -3029,8 +3036,57 @@ private fun LiveTreasuryTrackerCard() {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(text = "Pessimiste : 5/mois", color = Color(0xFF64748B), fontSize = 8.sp)
-            Text(text = "Cible : 30/mois (1/jour)", color = Color(0xFFFBBF24), fontSize = 8.sp, fontWeight = FontWeight.Bold)
-            Text(text = "Haute saison : 60/mois", color = Color(0xFF34D399), fontSize = 8.sp)
+            Text(text = "Cible : 30/mois (1/j)", color = Color(0xFFFBBF24), fontSize = 8.sp, fontWeight = FontWeight.Bold)
+            Text(text = "Accéléré : 60/mois", color = Color(0xFF34D399), fontSize = 8.sp)
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // Slider 2: ARE France Travail Personnalisée
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = "2. Votre ARE France Travail réelle :",
+                color = Color(0xFFFBBF24),
+                fontSize = 9.sp,
+                fontWeight = FontWeight.Bold
+            )
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(Color(0xFFF59E0B).copy(alpha = 0.2f))
+                    .border(1.dp, Color(0xFFF59E0B), RoundedCornerShape(4.dp))
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
+            ) {
+                Text(
+                    text = if (areAmount > 0) "+$areAmount € NETS / MOIS" else "0 € (SANS ARE)",
+                    color = Color(0xFFFCD34D),
+                    fontSize = 8.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+        Slider(
+            value = areAmount.toFloat(),
+            onValueChange = { areAmount = (it / 50).toInt() * 50 },
+            valueRange = 0f..2000f,
+            steps = 39,
+            colors = SliderDefaults.colors(
+                thumbColor = Color(0xFFF59E0B),
+                activeTrackColor = Color(0xFFF59E0B),
+                inactiveTrackColor = Color(0xFF334155)
+            )
+        )
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(text = "0 € (Sans chômage)", color = Color(0xFF64748B), fontSize = 8.sp)
+            Text(text = "Moyenne Smic : ~1 030 €", color = Color(0xFF94A3B8), fontSize = 8.sp)
+            Text(text = "Plafond : 2 000 €", color = Color(0xFF64748B), fontSize = 8.sp)
         }
 
         Spacer(modifier = Modifier.height(10.dp))
@@ -3124,13 +3180,13 @@ private fun LiveTreasuryTrackerCard() {
             ) {
                 Column {
                     Text(
-                        text = "REVENU TOTAL PRÉSIDENT (AVEC ARE) :",
+                        text = "REVENU TOTAL PRÉSIDENT EN POCHE :",
                         color = Color(0xFFFDE68A),
                         fontSize = 9.sp,
                         fontWeight = FontWeight.Bold
                     )
                     Text(
-                        text = "(2 000 € ARE chômage maintenue + dividende)",
+                        text = if (areAmount > 0) "(Dividende SAS ${netInPocketPerPartner.toInt()} € + ARE réelle $areAmount €)" else "(100% Dividende SAS pur : zéro ARE)",
                         color = Color(0xFFFEF3C7),
                         fontSize = 7.sp
                     )
