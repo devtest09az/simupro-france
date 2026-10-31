@@ -992,9 +992,9 @@ private fun CompetitorBenchmarkCard() {
             }
             Spacer(modifier = Modifier.height(3.dp))
             Text(
-                text = "• Matériel : Panneau 450W TopCon + Micro-onduleur Hoymiles (exactement la même base que SOLARIS) + Châssis alu.
+                text = """• Matériel : Panneau 450W TopCon + Micro-onduleur Hoymiles (exactement la même base que SOLARIS) + Châssis alu.
 • Amortissement Linky : 5,5 ans (2 fois plus long que SOLARIS pour rentabiliser l'achat).
-• Pourquoi ce prix ? : Marge distributeur Leroy Merlin/Boulanger (25% à 30% = ~170 €) + lourds budgets de publicité TV/médias.",
+• Pourquoi ce prix ? : Marge distributeur Leroy Merlin/Boulanger (25% à 30% = ~170 €) + lourds budgets de publicité TV/médias.""",
                 color = Color(0xFFCBD5E1),
                 fontSize = 8.sp,
                 lineHeight = 11.sp
@@ -1022,9 +1022,9 @@ private fun CompetitorBenchmarkCard() {
             }
             Spacer(modifier = Modifier.height(3.dp))
             Text(
-                text = "• Matériel : Panneau 460W + Micro-onduleur Hoymiles + Support mural/sol.
+                text = """• Matériel : Panneau 460W + Micro-onduleur Hoymiles + Support mural/sol.
 • Amortissement Linky : 6 ans.
-• Pourquoi ce prix ? : Positionnement design lifestyle, application propriétaire, réseau physique Boulanger/Castorama.",
+• Pourquoi ce prix ? : Positionnement design lifestyle, application propriétaire, réseau physique Boulanger/Castorama.""",
                 color = Color(0xFFCBD5E1),
                 fontSize = 8.sp,
                 lineHeight = 11.sp
@@ -1052,9 +1052,9 @@ private fun CompetitorBenchmarkCard() {
             }
             Spacer(modifier = Modifier.height(3.dp))
             Text(
-                text = "• Coûts cachés : Prix d'appel de 320 € sans transport (+70 € à +90 € de port palette) + support inclinable en option (+50 €).
+                text = """• Coûts cachés : Prix d'appel de 320 € sans transport (+70 € à +90 € de port palette) + support inclinable en option (+50 €).
 • Zéro prêt à brancher : Matériel livré en vrac non monté, connecteurs MC4 à sertir, câbles AC à assembler soi-même.
-• Cible : Bricoleurs et électriciens uniquement. Inaccessible pour le grand public sans compétences.",
+• Cible : Bricoleurs et électriciens uniquement. Inaccessible pour le grand public sans compétences.""",
                 color = Color(0xFF94A3B8),
                 fontSize = 8.sp,
                 lineHeight = 11.sp
