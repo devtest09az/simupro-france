@@ -24,6 +24,19 @@ data class UnitEconomicsDetail(
     val sourceOrSupplier: String
 )
 
+data class PartnerProfitProjection(
+    val monthlyVolumeHypothesis: String,
+    val totalCompanyNetMonthly: String,
+    val associate1Name: String,
+    val associate1NetMonthly: String,
+    val associate1SpecificAdvantage: String,
+    val associate2Name: String,
+    val associate2NetMonthly: String,
+    val associate2SpecificAdvantage: String,
+    val annualDividendsPerPartner: String,
+    val taxOptimizationNote: String
+)
+
 data class ObjectionItem(
     val objection: String,
     val rebuttal: String,
@@ -61,6 +74,8 @@ data class EcomDossier(
     val marketStudy: MarketStudyDetail? = null,
     // Modèle économique unitaire détaillé (P&L réel)
     val unitEconomics: UnitEconomicsDetail? = null,
+    // Projection des bénéfices raisonnables répartis par associé (50/50)
+    val partnerProfit: PartnerProfitProjection? = null,
     // Objections clients réelles & parades mot à mot
     val objections: List<ObjectionItem> = emptyList(),
     // Réglementation, démarches administratives & boucliers

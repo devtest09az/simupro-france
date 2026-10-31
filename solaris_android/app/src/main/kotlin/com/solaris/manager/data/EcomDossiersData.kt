@@ -5,6 +5,7 @@ import com.solaris.manager.model.CostItem
 import com.solaris.manager.model.EcomDossier
 import com.solaris.manager.model.MarketStudyDetail
 import com.solaris.manager.model.ObjectionItem
+import com.solaris.manager.model.PartnerProfitProjection
 import com.solaris.manager.model.ProductionAction
 import com.solaris.manager.model.RegulatoryRoadmapItem
 import com.solaris.manager.model.ToolkitItem
@@ -51,6 +52,18 @@ object EcomDossiersData {
                 ),
                 executiveSummary = "Modèle à zéro avance de stock en dropshipping grossiste B2B : la commande du kit est validée chez POwR Connect ou UpWatt dès l'encaissement du client. Expédition directe chez le client sur palette Geodis avec prise de RDV par SMS, ou remise en main propre locale (zéro frais de port = +28 € de marge supplémentaire).",
                 sourceOrSupplier = "POwR Connect (Nantes) & UpWatt Pro France"
+            ),
+            partnerProfit = PartnerProfitProjection(
+                monthlyVolumeHypothesis = "30 stations / mois (~1 kit / jour ouvré sur Leboncoin & Web)",
+                totalCompanyNetMonthly = "+ 3 570 € net / mois pour la SAS (~42 840 € / an)",
+                associate1Name = "Associé 1 (Moi - Président SAS)",
+                associate1NetMonthly = "+ 1 785 € net / mois (50% société)",
+                associate1SpecificAdvantage = "Maintien 100% ARE France Travail (~2 000 €/m) = 3 785 € de ressources personnelles totales",
+                associate2Name = "Associé 2 (Mon Associé - DG Salarié)",
+                associate2NetMonthly = "+ 1 785 € net / mois (50% société)",
+                associate2SpecificAdvantage = "Salaire CDI 100% sécurisé + zéro charge sociale supplémentaire + création de patrimoine",
+                annualDividendsPerPartner = "~ 12 700 € nets d'impôt en poche par associé (après IS 15% et Flat Tax 30%)",
+                taxOptimizationNote = "Trésorerie laissée en société pour acheter les palettes de 30 panneaux en direct (zéro impôt prélevé tant que réinvesti)."
             ),
             objections = listOf(
                 ObjectionItem(
@@ -219,6 +232,18 @@ object EcomDossiersData {
                 executiveSummary = "Positionnement anti-Verisure ultra rentable : à 65,13 € de bénéfice net par commande, 3 ventes quotidiennes génèrent 5 500 € net par mois. Sourcing direct auprès du fabricant PGST à Shenzhen avec conformité CE RED et application mobile Tuya en français.",
                 sourceOrSupplier = "PGST Technology Shenzhen (sales08@cn-pgst.com / WhatsApp: +86 13397149596)"
             ),
+            partnerProfit = PartnerProfitProjection(
+                monthlyVolumeHypothesis = "50 packs 11 pièces / mois (1 à 2 packs / jour via pub vidéo & SEO local)",
+                totalCompanyNetMonthly = "+ 3 256 € net / mois pour la SAS (~39 072 € / an)",
+                associate1Name = "Associé 1 (Moi - Président SAS)",
+                associate1NetMonthly = "+ 1 628 € net / mois (50% société)",
+                associate1SpecificAdvantage = "Maintien 100% ARE France Travail (~2 000 €/m) = 3 628 € / mois de ressources personnelles totales",
+                associate2Name = "Associé 2 (Mon Associé - DG Salarié)",
+                associate2NetMonthly = "+ 1 628 € net / mois (50% société)",
+                associate2SpecificAdvantage = "Gestion expéditions le soir ou week-end sans impacter son travail salarié",
+                annualDividendsPerPartner = "~ 11 600 € nets d'impôt en poche par associé (après IS 15% et Flat Tax 30%)",
+                taxOptimizationNote = "Marge nette record (52,5%) : rentabilité immédiate pour autofinancer l'acquisition sans découvert."
+            ),
             objections = listOf(
                 ObjectionItem(
                     objection = "« Si je ne paie pas d'abonnement, qui appelle la police en cas d'intrusion ? »",
@@ -354,6 +379,18 @@ object EcomDossiersData {
                 ),
                 executiveSummary = "Structure d'accueil à immunité financière totale : le statut d'assimilé salarié non rémunéré garantit qu'aucun appel de cotisation minimale URSSAF ne sera émis. France Travail continue de verser 100% de l'ARE sur présentation du PV d'AG de gratuité du mandat.",
                 sourceOrSupplier = "Légifrance Code du Travail & Circulaire Unédic 2023-08 (Fiche 6)"
+            ),
+            partnerProfit = PartnerProfitProjection(
+                monthlyVolumeHypothesis = "Vitesse de croisière cumulée SAS (30 stations solaires + 50 packs alarme / mois)",
+                totalCompanyNetMonthly = "+ 6 826 € net / mois pour la SAS (~81 912 € / an)",
+                associate1Name = "Associé 1 (Moi - Président SAS)",
+                associate1NetMonthly = "+ 3 413 € net / mois (50% société)",
+                associate1SpecificAdvantage = "Bouclier ARE 100% actif (~2 000 €/m) = 5 413 € / mois de cash-flow personnel sécurisé",
+                associate2Name = "Associé 2 (Mon Associé - DG Salarié)",
+                associate2NetMonthly = "+ 3 413 € net / mois (50% société)",
+                associate2SpecificAdvantage = "Cumul légal parfait (Code du travail art. L1222-5) + salaire CDI mensuel intact",
+                annualDividendsPerPartner = "~ 24 300 € nets d'impôt en poche par associé (après IS 15% jusqu'à 42.5k€ et Flat Tax 30%)",
+                taxOptimizationNote = "Structure unique multi-marques (code NAF 47.91A) : un seul compte bancaire, une comptabilité, zéro frottement fiscal."
             ),
             objections = listOf(
                 ObjectionItem(
@@ -539,6 +576,18 @@ object EcomDossiersData {
                 ),
                 executiveSummary = "Panier moyen record et zéro SAV mécanique : le client achète la certitude de ne pas démolir son carrelage au marteau-piqueur. Formulation et fabrication française chez Arcane Industries à Aubagne.",
                 sourceOrSupplier = "Arcane Industries (Aubagne 13) - Certifié CSTB"
+            ),
+            partnerProfit = PartnerProfitProjection(
+                monthlyVolumeHypothesis = "20 kits sol/escalier / mois (niche bricolage / rénovation sans casser)",
+                totalCompanyNetMonthly = "+ 2 860 € net / mois pour la SAS (~34 320 € / an)",
+                associate1Name = "Associé 1 (Moi - Président SAS)",
+                associate1NetMonthly = "+ 1 430 € net / mois (50% société)",
+                associate1SpecificAdvantage = "Diversification à panier moyen élevé (289 €) et marge nette de 59,4%",
+                associate2Name = "Associé 2 (Mon Associé - DG Salarié)",
+                associate2NetMonthly = "+ 1 430 € net / mois (50% société)",
+                associate2SpecificAdvantage = "Zéro composant électronique, zéro bug logiciel, aucun SAV complexe à gérer",
+                annualDividendsPerPartner = "~ 10 200 € nets d'impôt en poche par associé (après IS 15% et Flat Tax 30%)",
+                taxOptimizationNote = "Produit de renfort après stabilisation du solaire : apporte environ 1 430 € net / mois supplémentaire par associé."
             ),
             objections = listOf(
                 ObjectionItem(

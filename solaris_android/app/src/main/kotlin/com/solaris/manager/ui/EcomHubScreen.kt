@@ -72,6 +72,7 @@ import com.solaris.manager.model.CostItem
 import com.solaris.manager.model.EcomDossier
 import com.solaris.manager.model.MarketStudyDetail
 import com.solaris.manager.model.ObjectionItem
+import com.solaris.manager.model.PartnerProfitProjection
 import com.solaris.manager.model.ProjectPhase
 import com.solaris.manager.model.RegulatoryRoadmapItem
 import com.solaris.manager.model.ToolkitItem
@@ -282,7 +283,7 @@ private fun ConceptionPhaseContent(
                                 Spacer(modifier = Modifier.height(10.dp))
                             }
 
-                            // 2. MODÈLE ÉCONOMIQUE UNITAIRE (P&L RÉEL CHIIFRÉ)
+                            // 2. MODÈLE ÉCONOMIQUE UNITAIRE (P&L RÉEL CHIFFRÉ)
                             dossier.unitEconomics?.let { economics ->
                                 UnitEconomicsCard(economics = economics)
                                 Spacer(modifier = Modifier.height(14.dp))
@@ -290,7 +291,15 @@ private fun ConceptionPhaseContent(
                                 Spacer(modifier = Modifier.height(10.dp))
                             }
 
-                            // 3. FAQ OBJECTIONS & PARADES COMMERCIALES
+                            // 3. BÉNÉFICES ESPÉRÉS PAR ASSOCIÉ (RÉPARTITION 50/50 & BOUCLIER ARE)
+                            dossier.partnerProfit?.let { profit ->
+                                PartnerProfitCard(profit = profit)
+                                Spacer(modifier = Modifier.height(14.dp))
+                                HorizontalDivider(color = Color(0xFF334155))
+                                Spacer(modifier = Modifier.height(10.dp))
+                            }
+
+                            // 4. FAQ OBJECTIONS & PARADES COMMERCIALES
                             if (dossier.objections.isNotEmpty()) {
                                 ObjectionsCard(objections = dossier.objections)
                                 Spacer(modifier = Modifier.height(14.dp))
@@ -298,7 +307,7 @@ private fun ConceptionPhaseContent(
                                 Spacer(modifier = Modifier.height(10.dp))
                             }
 
-                            // 4. CADRE LÉGAL, DÉMARCHES & SÉCURISATION
+                            // 5. CADRE LÉGAL, DÉMARCHES & SÉCURISATION
                             if (dossier.regulatoryRoadmap.isNotEmpty()) {
                                 RegulatoryRoadmapCard(roadmap = dossier.regulatoryRoadmap)
                                 Spacer(modifier = Modifier.height(14.dp))
@@ -306,9 +315,9 @@ private fun ConceptionPhaseContent(
                                 Spacer(modifier = Modifier.height(10.dp))
                             }
 
-                            // 5. COMPOSANTS & SOURCINGS B2B RÉELS (100% VÉRIFIÉS)
+                            // 6. COMPOSANTS & SOURCINGS B2B RÉELS (PRIX GROSSISTES VÉRIFIÉS)
                             Text(
-                                text = "5. Composants & Sourcings B2B (Prix Grossistes Vérifiés) :",
+                                text = "6. Composants & Sourcings B2B (Prix Grossistes Vérifiés) :",
                                 color = Color(0xFF38BDF8),
                                 fontSize = 13.sp,
                                 fontWeight = FontWeight.Bold
@@ -324,9 +333,9 @@ private fun ConceptionPhaseContent(
                             HorizontalDivider(color = Color(0xFF334155))
                             Spacer(modifier = Modifier.height(10.dp))
 
-                            // 6. BOÎTE À OUTILS (SCRIPTS & MODÈLES PRÊTS À L'EMPLOI)
+                            // 7. BOÎTE À OUTILS (SCRIPTS & MODÈLES PRÊTS À L'EMPLOI)
                             Text(
-                                text = "6. Boîte à Outils & Modèles Prêts à Copier :",
+                                text = "7. Boîte à Outils & Modèles Prêts à Copier :",
                                 color = Color(0xFFFBBF24),
                                 fontSize = 13.sp,
                                 fontWeight = FontWeight.Bold
@@ -342,7 +351,7 @@ private fun ConceptionPhaseContent(
                             HorizontalDivider(color = Color(0xFF334155))
                             Spacer(modifier = Modifier.height(10.dp))
 
-                            // 7. JOURNAL DE BORD & PRISE DE NOTES COMMUNE
+                            // 8. JOURNAL DE BORD & PRISE DE NOTES COMMUNE
                             PartnerNotesSection(
                                 dossierId = dossier.id,
                                 noteText = currentNote,
@@ -473,7 +482,7 @@ private fun ProductionPhaseContent(
                                         checked = action.isDone,
                                         onCheckedChange = { onActionToggle(dossier.id, action.id) },
                                         colors = CheckboxDefaults.colors(
-                                             checkedColor = Color(0xFF10B981),
+                                            checkedColor = Color(0xFF10B981),
                                             uncheckedColor = Color(0xFF64748B)
                                         )
                                     )
@@ -851,6 +860,183 @@ private fun UnitEconomicsCard(economics: UnitEconomicsDetail) {
 }
 
 @Composable
+private fun PartnerProfitCard(profit: PartnerProfitProjection) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp))
+            .background(Color(0xFF0F172A))
+            .border(1.dp, Color(0xFFF59E0B).copy(alpha = 0.6f), RoundedCornerShape(10.dp))
+            .padding(12.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(text = "👥", fontSize = 16.sp)
+                Spacer(modifier = Modifier.width(6.dp))
+                Text(
+                    text = "3. BÉNÉFICES ESPÉRÉS PAR ASSOCIÉ (50% / 50%)",
+                    color = Color(0xFFFBBF24),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 0.5.sp
+                )
+            }
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(Color(0xFF78350F))
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
+            ) {
+                Text(
+                    text = "SCÉNARIO RÉALISTE",
+                    color = Color(0xFFFDE68A),
+                    fontSize = 9.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // Hypothèse de volume & Bénéfice global société
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(6.dp))
+                .background(Color(0xFF1E293B))
+                .padding(8.dp)
+        ) {
+            Column {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(text = "Hypothèse de vente prudente :", color = Color(0xFF94A3B8), fontSize = 10.sp)
+                    Text(text = profit.monthlyVolumeHypothesis, color = Color.White, fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                }
+                Spacer(modifier = Modifier.height(2.dp))
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(text = "Bénéfice net global société :", color = Color(0xFF94A3B8), fontSize = 10.sp)
+                    Text(text = profit.totalCompanyNetMonthly, color = Color(0xFF34D399), fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                }
+            }
+        }
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        // 2 Col Partner Comparison
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            // Col 1 : Associé 1 (Moi - Président ARE)
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(Color(0xFF0369A1).copy(alpha = 0.15f))
+                    .border(1.dp, Color(0xFF0284C7), RoundedCornerShape(8.dp))
+                    .padding(10.dp)
+            ) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(text = "👑", fontSize = 12.sp)
+                    Spacer(modifier = Modifier.width(4.dp))
+                    Text(
+                        text = "ASSOCIÉ 1 (MOI)",
+                        color = Color(0xFF38BDF8),
+                        fontSize = 10.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+                Text(text = "Président SAS • Mandat 0 €", color = Color(0xFF94A3B8), fontSize = 9.sp)
+                Spacer(modifier = Modifier.height(6.dp))
+                Text(
+                    text = profit.associate1NetMonthly,
+                    color = Color(0xFF38BDF8),
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.Black
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = profit.associate1SpecificAdvantage,
+                    color = Color(0xFFE2E8F0),
+                    fontSize = 9.sp,
+                    lineHeight = 13.sp
+                )
+            }
+
+            // Col 2 : Associé 2 (Mon Associé - DG Salarié)
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(Color(0xFF059669).copy(alpha = 0.15f))
+                    .border(1.dp, Color(0xFF10B981), RoundedCornerShape(8.dp))
+                    .padding(10.dp)
+            ) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(text = "🤝", fontSize = 12.sp)
+                    Spacer(modifier = Modifier.width(4.dp))
+                    Text(
+                        text = "ASSOCIÉ 2 (ASSOCIÉ)",
+                        color = Color(0xFF34D399),
+                        fontSize = 10.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+                Text(text = "Directeur Général • Salarié", color = Color(0xFF94A3B8), fontSize = 9.sp)
+                Spacer(modifier = Modifier.height(6.dp))
+                Text(
+                    text = profit.associate2NetMonthly,
+                    color = Color(0xFF34D399),
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.Black
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = profit.associate2SpecificAdvantage,
+                    color = Color(0xFFE2E8F0),
+                    fontSize = 9.sp,
+                    lineHeight = 13.sp
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        // Annual Dividends Box
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(6.dp))
+                .background(Color(0xFF312E81).copy(alpha = 0.4f))
+                .border(1.dp, Color(0xFF6366F1), RoundedCornerShape(6.dp))
+                .padding(8.dp)
+        ) {
+            Column {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(text = "Dividendes annuels espérés / associé :", color = Color(0xFFA5B4FC), fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                    Text(text = profit.annualDividendsPerPartner, color = Color.White, fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                }
+                Spacer(modifier = Modifier.height(3.dp))
+                Text(text = profit.taxOptimizationNote, color = Color(0xFF94A3B8), fontSize = 9.sp, lineHeight = 12.sp)
+            }
+        }
+    }
+}
+
+@Composable
 private fun ObjectionsCard(objections: List<ObjectionItem>) {
     val context = LocalContext.current
 
@@ -871,7 +1057,7 @@ private fun ObjectionsCard(objections: List<ObjectionItem>) {
                 Text(text = "🎯", fontSize = 16.sp)
                 Spacer(modifier = Modifier.width(6.dp))
                 Text(
-                    text = "3. FAQ OBJECTIONS & PARADES COMMERCIALES",
+                    text = "4. FAQ OBJECTIONS & PARADES COMMERCIALES",
                     color = Color(0xFFFBBF24),
                     fontSize = 11.sp,
                     fontWeight = FontWeight.Bold,
@@ -988,7 +1174,7 @@ private fun RegulatoryRoadmapCard(roadmap: List<RegulatoryRoadmapItem>) {
                 Text(text = "⚖️", fontSize = 16.sp)
                 Spacer(modifier = Modifier.width(6.dp))
                 Text(
-                    text = "4. CADRE LÉGAL, DÉMARCHES & SÉCURISATION",
+                    text = "5. CADRE LÉGAL, DÉMARCHES & SÉCURISATION",
                     color = Color(0xFF38BDF8),
                     fontSize = 11.sp,
                     fontWeight = FontWeight.Bold,
