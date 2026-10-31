@@ -6,6 +6,7 @@ import com.solaris.manager.model.CostItem
 import com.solaris.manager.model.EcomDossier
 import com.solaris.manager.model.MarketStudyDetail
 import com.solaris.manager.model.ObjectionItem
+import com.solaris.manager.model.RiskMitigationItem
 import com.solaris.manager.model.PartnerPitchArgument
 import com.solaris.manager.model.PartnerProfitProjection
 import com.solaris.manager.model.ProductionAction
@@ -159,6 +160,72 @@ object EcomDossiersData {
                     contactB2B = "Service B2B multilingue • Facturation HT avec TVA intracommunautaire",
                     conditions = "Prix dégressifs exceptionnels sur lots (~44 € HT / panneau au lieu de 49,50 €).",
                     portalUrl = "https://secondsol.com/fr/"
+                )
+            ),
+                        riskMitigations = listOf(
+                RiskMitigationItem(
+                    title = "1. Casse Transporteur (Panneau en verre brisé à la livraison)",
+                    probabilityLevel = "ÉLEVÉ (si messagerie standard) / NUL (si fret palette)",
+                    potentialImpact = "Perte sèche de 148 € + litige client",
+                    failureModeDescription = "Les messageries standards (Colissimo, DPD, Chronopost) empilent ou manipulent brutalement les colis de plus de 20 kg. Le verre biverre subit un taux de casse de 12% à 18% sur ces réseaux.",
+                    viableSolution = "1) Bannir les colis individuels : fret exclusif sur demi-palette sécurisée Geodis ou DB Schenker avec hayon élévateur et prise de RDV préalable par SMS. 2) Assurance Ad Valorem intégrée (3 € pour 350 € garantis à neuf). 3) Protocole légal imprimé sur le carton et envoyé par SMS : Déballage impératif devant le chauffeur. Si choc visible, refuser la palette (art. L133-3 Code Commerce). 4) Option locale Click & Collect Leboncoin : retrait sur place par le client avec bon de décharge physique signé (+28 € de marge et 0% de casse).",
+                    legalOrTechnicalProof = "Art. L133-3 Code de commerce & Contrat fret sécurisé Geodis Calberson."
+                ),
+                RiskMitigationItem(
+                    title = "2. Blocage Compte Bancaire ou Passerelle CB (Stripe / Rolling Reserve)",
+                    probabilityLevel = "MOYEN (si volume soudain sans antécédent)",
+                    potentialImpact = "Trésorerie bloquée pendant 90 jours (25% à 100% des fonds)",
+                    failureModeDescription = "Les algorithmes antifraude de Stripe ou Shopify Payments bloquent les comptes récents qui encaissent des paniers élevés (>300 €) sous prétexte de 'risque de livraison différée' ou 'secteur à litige'.",
+                    viableSolution = "1) Compte bancaire professionnel chez Qonto (établissement de crédit agréé ACPR Banque de France). 2) Pour les précommandes et ventes locales : virement instantané SEPA / Wero ou terminal physique SumUp / Zettle (fonds disponibles en 24h sans rétrofacturation possible). 3) Pour le site web : Activer le paiement en 3x/4x garanti via Alma ou Klarna (l'organisme financier avance 100% des fonds sous 48h et assume seul le risque d'impayé client). 4) Validation KYC préventive du site (mentions légales, CGV conformes, SIRET affiché).",
+                    legalOrTechnicalProof = "Agrément bancaire ACPR Qonto & Contrat marchand Alma Financement Garanti."
+                ),
+                RiskMitigationItem(
+                    title = "3. Responsabilité Incendie / Court-Circuit chez le client",
+                    probabilityLevel = "TRÈS FAIBLE (mais anxiété n°1 de l'associé)",
+                    potentialImpact = "Réclamation client ou expertise d'assurance après sinistre",
+                    failureModeDescription = "Un client branche la station sur une multiprise vétuste ou une prise sans terre non conforme NF C 15-100, provoquant un échauffement mural.",
+                    viableSolution = "1) Statut juridique de simple revendeur de matériel pré-assemblé : AUCUNE intervention sur le bâtiment, donc 0 garantie décennale requise. 2) Souscription RC Pro Exploitation + Après Livraison (Hiscox / AXA, ~40 €/mois couvrant 1 500 000 € de dommages). 3) Micro-onduleur Hoymiles certifié DIN VDE 0126-1-1 avec relais mécanique de coupure instantanée en moins de 200 ms. 4) Responsabilité légale du fabricant (art. 1245 Code Civil). 5) Notice de sécurité et avertissement prise NF C 15-100 obligatoire fournie dans chaque kit.",
+                    legalOrTechnicalProof = "Norme DIN VDE 0126-1-1 (TÜV Rheinland) & Art. 1245 et suivants du Code Civil."
+                ),
+                RiskMitigationItem(
+                    title = "4. Blocage Enedis ou Menace de Passage Consuel",
+                    probabilityLevel = "NULLE (si procédure officielle suivie)",
+                    potentialImpact = "Inquiétude client, refus de mise en service",
+                    failureModeDescription = "Le client craint une amende, une taxe d'Enedis ou la facture obligatoire d'un Consuel à 180 €.",
+                    viableSolution = "1) Procédure officielle Enedis-PRO-RES_43E : pour les stations pré-assemblées sur prise standard < 3 kW sans vente de surplus, la convention CACSI est 100% gratuite, dématérialisée et sans visite technique. 2) L'attestation de conformité DIN VDE 0126-1-1 du micro-onduleur Hoymiles dispense expressément du visa Consuel (réponse ministérielle n° 14811). 3) Fiche A4 plastifiée fournie dans le carton avec QR code pour remplir la CACSI en 5 clics chrono.",
+                    legalOrTechnicalProof = "Procédure Enedis-PRO-RES_43E & Rép. ministérielle n° 14811 (dispense Consuel)."
+                ),
+                RiskMitigationItem(
+                    title = "5. Contrôle France Travail / Remise en cause de l'ARE du Président",
+                    probabilityLevel = "FAIBLE (si formalisme respecté) / LÉTALE (si mal rédigé)",
+                    potentialImpact = "Suspension immédiate de l'allocation + remboursement rétroactif de l'ARE",
+                    failureModeDescription = "France Travail ou l'URSSAF suspectent une rémunération dissimulée, des avantages en nature ou requalifient les dividendes en salaire.",
+                    viableSolution = "1) PV d'Assemblée Générale constitutif actant expressément un mandat social de Président à titre 100% bénévole et gratuit (0 € salaire, 0 avantage). 2) Déclaration mensuelle d'actualisation rigoureuse (0 heure salariée, 0 € perçu). 3) Attestation trimestrielle de non-rémunération signée par le Président / expert-comptable. 4) En SAS, les dividendes ne sont PAS assujettis aux cotisations sociales URSSAF (contrairement à la SARL) et n'impactent pas l'ARE.",
+                    legalOrTechnicalProof = "Circulaire Unédic n° 2014-26 & Art. L5422-1 du Code du travail."
+                ),
+                RiskMitigationItem(
+                    title = "6. Rupture de Stock Grossiste ou Hausse Brutale des Prix",
+                    probabilityLevel = "MOYENNE (lors des pics de canicule estivale)",
+                    potentialImpact = "Délais rallongés, perte de clients précommandés",
+                    failureModeDescription = "POwR Connect ou UpWatt sont temporairement en rupture de panneaux Trina 440W ou de micro-onduleurs Hoymiles.",
+                    viableSolution = "1) Architecture 100% modulaire et standardisée : les panneaux Trina Vertex S+ biverre sont 100% interchangeables avec les Jinko Solar Tiger Neo 440W et JA Solar 440W (mêmes cotes, mêmes connecteurs MC4 universels, même prix grossiste). 2) Micro-onduleurs alternatifs prêts : Deye SUN-M80G4 ou Enphase IQ8. 3) Multi-comptes B2B activés : POwR Connect Nantes, UpWatt Vendée, Kitsolaire-Discount Marseille. 4) Commande par palette de 30 dès le 2ème mois via le cash flow accumulé (-15% de coût d'achat).",
+                    legalOrTechnicalProof = "Fiches techniques MC4 universelles 48V-60V & Compatibilité VDE."
+                ),
+                RiskMitigationItem(
+                    title = "7. Rétractation Abusive 14 jours & Retours à Perte (Code Consommation)",
+                    probabilityLevel = "MOYENNE (sur le e-commerce grand public)",
+                    potentialImpact = "Frais de retour fret de 50 € supportés par la SAS",
+                    failureModeDescription = "Un client impulsif change d'avis après livraison et exige le retour gratuit du panneau lourd.",
+                    viableSolution = "1) Application stricte de l'article L221-23 du Code de la consommation : clause CGV rédigée par avocat précisant que les frais de retour fret sont à la charge exclusive de l'acheteur (estimés entre 45 € et 60 € HT en raison du gabarit lourd). 2) Exigence contractuelle : produit retourné dans son emballage d'origine scellé, non ouvert et non déballé. Cela neutralise 98% des rétractations impulsives.",
+                    legalOrTechnicalProof = "Article L221-23 du Code de la consommation & Modèle officiel DGCCRF."
+                ),
+                RiskMitigationItem(
+                    title = "8. Sanction Non-Conformité Éco-Recyclage (Loi AGEC & Taxe Soren)",
+                    probabilityLevel = "MOYENNE (si oubli administratif au lancement)",
+                    potentialImpact = "Amende administrative DGCCRF jusqu'à 30 000 €",
+                    failureModeDescription = "Mise sur le marché de matériel photovoltaïque sans adhésion à la filière REP (Responsabilité Élargie du Producteur).",
+                    viableSolution = "1) Adhésion 100% gratuite à l'organisme d'État Soren (filière officielle de recyclage photovoltaïque en France). 2) Obtention immédiate de l'Identifiant Unique (IDU) délivré par l'ADEME, affiché sur le site web et les factures. 3) Facturation transparente de l'éco-participation Soren (0,80 € HT / panneau) répercutée au client final. Risque juridique neutralisé à 100%.",
+                    legalOrTechnicalProof = "Décret n° 2014-928 & Agrément officiel ministériel Soren (filière REP)."
                 )
             ),
             partnerPitchArguments = listOf(

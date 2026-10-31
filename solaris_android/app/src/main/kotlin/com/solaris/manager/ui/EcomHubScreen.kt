@@ -74,6 +74,7 @@ import com.solaris.manager.model.CostItem
 import com.solaris.manager.model.EcomDossier
 import com.solaris.manager.model.MarketStudyDetail
 import com.solaris.manager.model.ObjectionItem
+import com.solaris.manager.model.RiskMitigationItem
 import com.solaris.manager.model.PartnerPitchArgument
 import com.solaris.manager.model.PartnerProfitProjection
 import com.solaris.manager.model.ProductionAction
@@ -336,7 +337,15 @@ private fun ConceptionPhaseContent(
                                 Spacer(modifier = Modifier.height(10.dp))
                             }
 
-                            // 8. FAQ OBJECTIONS & PARADES COMMERCIALES
+                            // 8. BOUCLIER ANTI-RISQUES (SOLUTIONS 100% VIABLES)
+                            if (dossier.riskMitigations.isNotEmpty()) {
+                                RiskMitigationsCard(risks = dossier.riskMitigations)
+                                Spacer(modifier = Modifier.height(14.dp))
+                                HorizontalDivider(color = Color(0xFF334155))
+                                Spacer(modifier = Modifier.height(10.dp))
+                            }
+
+                            // 9. FAQ OBJECTIONS & PARADES COMMERCIALES
                             if (dossier.objections.isNotEmpty()) {
                                 ObjectionsCard(objections = dossier.objections)
                                 Spacer(modifier = Modifier.height(14.dp))
@@ -1515,6 +1524,176 @@ private fun PartnerPitchCard(pitchArgs: List<PartnerPitchArgument>) {
     }
 }
 
+
+@Composable
+private fun RiskMitigationsCard(risks: List<RiskMitigationItem>) {
+    val context = LocalContext.current
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp))
+            .background(Color(0xFF0F172A))
+            .border(1.dp, Color(0xFFEF4444).copy(alpha = 0.5f), RoundedCornerShape(10.dp))
+            .padding(12.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(text = "🛡️", fontSize = 16.sp)
+                Spacer(modifier = Modifier.width(6.dp))
+                Text(
+                    text = "8. BOUCLIER ANTI-RISQUES (SOLUTIONS 100% VIABLES)",
+                    color = Color(0xFFF87171),
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 11.sp
+                )
+            }
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(Color(0xFFEF4444).copy(alpha = 0.2f))
+                    .border(1.dp, Color(0xFFEF4444), RoundedCornerShape(4.dp))
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
+            ) {
+                Text(
+                    text = "SÉCURITÉ BLINDÉE",
+                    color = Color(0xFFFCA5A5),
+                    fontSize = 8.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(
+            text = "Anticipation rigoureuse des 8 risques majeurs et parades juridiques, logistiques et financières testées :",
+            color = Color(0xFF94A3B8),
+            fontSize = 9.sp
+        )
+        Spacer(modifier = Modifier.height(10.dp))
+
+        risks.forEach { risk ->
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(Color(0xFF1E293B))
+                    .border(1.dp, Color(0xFF475569), RoundedCornerShape(8.dp))
+                    .padding(10.dp)
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = risk.title,
+                        color = Color.White,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 11.sp,
+                        modifier = Modifier.weight(1f)
+                    )
+                    Spacer(modifier = Modifier.width(6.dp))
+                    Box(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(4.dp))
+                            .background(Color(0xFFF59E0B).copy(alpha = 0.2f))
+                            .border(1.dp, Color(0xFFF59E0B), RoundedCornerShape(4.dp))
+                            .padding(horizontal = 5.dp, vertical = 2.dp)
+                    ) {
+                        Text(
+                            text = risk.probabilityLevel,
+                            color = Color(0xFFFCD34D),
+                            fontSize = 7.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(4.dp))
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(text = "⚠️ Impact potentiel : ", color = Color(0xFFF87171), fontSize = 9.sp, fontWeight = FontWeight.Bold)
+                    Text(text = risk.potentialImpact, color = Color(0xFFFCA5A5), fontSize = 9.sp)
+                }
+
+                Spacer(modifier = Modifier.height(3.dp))
+                Text(
+                    text = "Mode de défaillance : ${risk.failureModeDescription}",
+                    color = Color(0xFF94A3B8),
+                    fontSize = 9.sp,
+                    lineHeight = 13.sp
+                )
+
+                Spacer(modifier = Modifier.height(6.dp))
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(6.dp))
+                        .background(Color(0xFF064E3B).copy(alpha = 0.35f))
+                        .border(1.dp, Color(0xFF10B981).copy(alpha = 0.6f), RoundedCornerShape(6.dp))
+                        .padding(8.dp)
+                ) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = "✅ PARADE VIABLE À 100% :",
+                            color = Color(0xFF34D399),
+                            fontSize = 9.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.clickable {
+                                val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                                val clip = ClipData.newPlainText("Parade Risque", risk.viableSolution)
+                                clipboard.setPrimaryClip(clip)
+                                Toast.makeText(context, "Parade copiée !", Toast.LENGTH_SHORT).show()
+                            }
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.ContentCopy,
+                                contentDescription = "Copier",
+                                tint = Color(0xFF34D399),
+                                modifier = Modifier.size(11.dp)
+                            )
+                            Spacer(modifier = Modifier.width(3.dp))
+                            Text(
+                                text = "Copier",
+                                color = Color(0xFF34D399),
+                                fontSize = 8.sp,
+                                fontWeight = FontWeight.SemiBold
+                            )
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        text = risk.viableSolution,
+                        color = Color(0xFFE2E8F0),
+                        fontSize = 9.sp,
+                        lineHeight = 13.sp
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = "Preuve vérifiable : ${risk.legalOrTechnicalProof}",
+                    color = Color(0xFF38BDF8),
+                    fontSize = 8.sp,
+                    fontWeight = FontWeight.Medium
+                )
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+        }
+    }
+}
+
 @Composable
 private fun ObjectionsCard(objections: List<ObjectionItem>) {
     val context = LocalContext.current
@@ -1536,7 +1715,7 @@ private fun ObjectionsCard(objections: List<ObjectionItem>) {
                 Text(text = "🎯", fontSize = 16.sp)
                 Spacer(modifier = Modifier.width(6.dp))
                 Text(
-                    text = "8. FAQ OBJECTIONS & PARADES COMMERCIALES",
+                    text = "9. FAQ OBJECTIONS & PARADES COMMERCIALES",
                     color = Color(0xFFFBBF24),
                     fontSize = 11.sp,
                     fontWeight = FontWeight.Bold,
@@ -1653,7 +1832,7 @@ private fun RegulatoryRoadmapCard(roadmap: List<RegulatoryRoadmapItem>) {
                 Text(text = "⚖️", fontSize = 16.sp)
                 Spacer(modifier = Modifier.width(6.dp))
                 Text(
-                    text = "9. CADRE LÉGAL, DÉMARCHES & SÉCURISATION",
+                    text = "10. CADRE LÉGAL, DÉMARCHES & SÉCURISATION",
                     color = Color(0xFF38BDF8),
                     fontSize = 11.sp,
                     fontWeight = FontWeight.Bold,

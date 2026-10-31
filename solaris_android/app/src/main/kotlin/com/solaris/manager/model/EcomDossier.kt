@@ -66,6 +66,15 @@ data class VerifiedSupplier(
     val portalUrl: String
 )
 
+data class RiskMitigationItem(
+    val title: String,
+    val probabilityLevel: String, // 'FAIBLE', 'MOYEN', 'ÉLEVÉ'
+    val potentialImpact: String,
+    val failureModeDescription: String,
+    val viableSolution: String,
+    val legalOrTechnicalProof: String
+)
+
 data class PartnerPitchArgument(
     val number: Int,
     val title: String,
@@ -121,6 +130,7 @@ data class EcomDossier(
     // Pitch de présentation pour l'associé (Les arguments massue en 3 min)
     val partnerPitchArguments: List<PartnerPitchArgument> = emptyList(),
     // Objections clients réelles & parades mot à mot
+    val riskMitigations: List<RiskMitigationItem> = emptyList(),
     val objections: List<ObjectionItem> = emptyList(),
     // Réglementation, démarches administratives & boucliers
     val regulatoryRoadmap: List<RegulatoryRoadmapItem> = emptyList(),
