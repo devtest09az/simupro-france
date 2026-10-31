@@ -641,6 +641,16 @@ B. POUR L'ALARME MAISON 4G (Colis Standard Léger) :
                     netMarginPercent = "49,1% de marge",
                     paybackPeriod = "Immédiat (mesure la production en watts et euros en direct sur Tuya Smart)",
                     contents = "Prise étanche IP44 avec wattmètre connecté 2.4 GHz pour suivre la production instantanée et l'historique sur iPhone et Android."
+                ),
+                CommercialPack(
+                    name = "Option Kit Fixation Toiture Tuiles (Crochets Inox + Rails)",
+                    badge = "UPSELL TOITURE",
+                    retailPriceTTC = "59,00 € TTC",
+                    wholesaleCostHT = "22,00 € HT",
+                    netMarginAmount = "+27,17 € NET",
+                    netMarginPercent = "46,0% de marge",
+                    paybackPeriod = "Permet la pose sur toit en pente avec branchement direct sur prise 220V",
+                    contents = "4x Crochets toiture inox réglables + 2x Rails aluminium anodisé noir + Étriers de serrage + Guide Cerfa Déclaration Préalable Mairie"
                 )
             ),
             productionSimulations = listOf(
@@ -1137,6 +1147,11 @@ B. POUR L'ALARME MAISON 4G (Colis Standard Léger) :
             ),
             objections = listOf(
                 ObjectionItem(
+                    objection = "« Est-il possible de mettre un seul panneau sur le toit mais avec une prise directe 220V ? »",
+                    rebuttal = "« Oui, à 100%. Le micro-onduleur Hoymiles HMS-400 transforme le courant continu en 230V alternatif et s'injecte directement dans n'importe quelle prise standard de la maison. Sur un toit plat de garage ou cabanon, vous posez notre support triangulaire lesté sans aucun trou. Sur une toiture en tuiles, il suffit de remplacer le châssis au sol par nos crochets inox toiture (+59 €) et de faire une Déclaration Préalable gratuite en mairie (délai 1 mois, art. R421-17 du Code de l'urbanisme). Le câble étanche descend le long du mur et se branche directement sur une prise 220V ordinaire ! »",
+                    tacticalAngle = "Faisabilité 100% validée sur prise 220V + Option crochets toiture (+59 €) & Cerfa DP mairie pré-rempli"
+                ),
+                ObjectionItem(
                     objection = "« Est-ce dangereux pour mon compteur Linky ou mon installation électrique ? »",
                     rebuttal = "« Aucun risque : le micro-onduleur Hoymiles est équipé d'une protection de découplage anti-îlotage homologuée DIN VDE 0126-1-1. Si vous débranchez la prise ou s'il y a une coupure sur le réseau Enedis, le micro-onduleur coupe le courant en moins de 0,2 seconde. Aucun risque d'électrocution pour vos enfants ni de surtension sur votre tableau. »",
                     tacticalAngle = "Réassurance technique & coupure instantanée VDE sous 200ms"
@@ -1359,6 +1374,35 @@ ToolkitItem(
                     category = "Sourcing & Fournisseurs",
                     contentToCopy = "Destinataire : contact@groupepowr.com / pro@upwatt.com\nObjet : Demande d'ouverture de compte revendeur / Grille Kits Plug & Play 400W-440W\n\nBonjour,\nJe développe actuellement notre offre commerciale de stations solaires d'autoconsommation Plug & Play (stations 440W prêtes-à-brancher avec micro-onduleur Hoymiles et support inclinable sol/terrasse).\nDans le cadre du lancement de notre catalogue en France, je souhaite ouvrir un compte professionnel au sein de votre plateforme pour sourcer régulièrement nos kits et composants.\nPourriez-vous :\n1. Valider l'ouverture de notre accès revendeur B2B (SIRET ci-dessous).\n2. Me communiquer votre catalogue et vos grilles tarifaires dégressives sur Trina Solar 440W et micro-onduleurs Hoymiles HMS-400.\n3. M'indiquer vos conditions pour les expéditions palettes chez nos clients.\n\nSociété : SOLARIS France - SIRET : [Numéro] - Contact : [Nom & Prénom]",
                     sourceOrNorm = "Trame éprouvée pour validation d'accès revendeur sans KBIS initial"
+                ),
+                ToolkitItem(
+                    id = "tool_toiture_prise_directe",
+                    title = "🏠 Fiche Technique : Pose Toiture 1 Panneau sur Prise Directe (Technique & Mairie)",
+                    category = "Technique & Réglementaire",
+                    contentToCopy = """GUIDE POSE TOITURE 1 PANNEAU SUR PRISE DIRECTE 220V :
+
+1. PRINCIPE TECHNIQUE :
+- Le micro-onduleur Hoymiles HMS-400 est étanche (IP67) et fixé directement au dos du panneau Trina 440Wc.
+- Il convertit l'énergie solaire en 230V monophasé 50Hz synchronisé sur le réseau Enedis.
+- Un câble étanche résistant aux UV (3G1.5mm² ou 3G2.5mm²) descend depuis le toit jusqu'à la prise murale la plus proche.
+- Le branchement se fait sur n'importe quelle prise standard 16A avec terre (protection 30mA).
+
+2. DEUX CAS D'INSTALLATION SELON LE TYPE DE TOIT :
+A) Toit Plat / Toiture de Garage / Cabanon de Jardin (Terrasse EPDM/Bac acier) :
+- Châssis triangulaire inclinable au sol réutilisé tel quel.
+- Lestage : 2 dalles béton de 20 kg sur les traverses basses du châssis.
+- ZÉRO perforation de la toiture, risque de fuite = 0.
+
+B) Toiture en pente (Tuiles mécaniques / Ardoises) :
+- Utiliser le kit de fixation toiture (4 crochets inox glissés sous les tuiles et vissés sur chevrons + 2 rails alu).
+- Remplacement du châssis au sol (vendu en option à 59 € TTC).
+
+3. RÈGLE D'URBANISME (CODE DE L'URBANISME) :
+- Pose au sol (< 1,80 m) : Dispense totale de formalités (Art. R421-2).
+- Pose en toiture : Déclaration Préalable (DP) obligatoire (Art. R421-17 - modification de l'aspect extérieur).
+- Démarche : Formulaire Cerfa 13404*10 déposé en mairie ou sur le guichet d'urbanisme en ligne.
+- Délai d'instruction : 1 mois (2 mois si périmètre ABF Bâtiments de France). Accord tacite si absence de réponse.""",
+                    sourceOrNorm = "Art. R421-17 Code de l'urbanisme & Norme NFC 15-100"
                 )
             )
         ),
