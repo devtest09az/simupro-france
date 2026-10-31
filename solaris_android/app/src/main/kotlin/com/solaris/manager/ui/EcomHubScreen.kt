@@ -309,6 +309,12 @@ private fun ConceptionPhaseContent(
                                 Spacer(modifier = Modifier.height(10.dp))
                             }
 
+                            // 1.BIS BENCHMARK CONCURRENTIEL OFFICIEL (SUNOLOGY, BEEM, DIY VS SOLARIS)
+                            CompetitorBenchmarkCard()
+                            Spacer(modifier = Modifier.height(14.dp))
+                            HorizontalDivider(color = Color(0xFF334155))
+                            Spacer(modifier = Modifier.height(10.dp))
+
                             // 2. MODÈLE ÉCONOMIQUE UNITAIRE (P&L RÉEL CHIFFRÉ)
                             dossier.unitEconomics?.let { economics ->
                                 UnitEconomicsCard(economics = economics)
@@ -861,6 +867,227 @@ private fun MarketStudyCard(study: MarketStudyDetail) {
                 color = Color.White,
                 fontSize = 10.sp,
                 fontWeight = FontWeight.Bold
+            )
+        }
+    }
+}
+
+@Composable
+private fun CompetitorBenchmarkCard() {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp))
+            .background(Color(0xFF0F172A))
+            .border(1.dp, Color(0xFF38BDF8).copy(alpha = 0.5f), RoundedCornerShape(10.dp))
+            .padding(12.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(text = "⚖️", fontSize = 16.sp)
+                Spacer(modifier = Modifier.width(6.dp))
+                Text(
+                    text = "BENCHMARK CONCURRENTIEL OFFICIEL (FRANCE 2024-2026)",
+                    color = Color(0xFF38BDF8),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 0.5.sp
+                )
+            }
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(Color(0xFF0284C7).copy(alpha = 0.2f))
+                    .border(1.dp, Color(0xFF38BDF8), RoundedCornerShape(4.dp))
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
+            ) {
+                Text(
+                    text = "AUDIT PRIX & RENTABILITÉ",
+                    color = Color(0xFF7DD3FC),
+                    fontSize = 8.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(
+            text = "Comparatif direct des 4 offres dominantes sur le marché de l'autoconsommation Plug & Play :",
+            color = Color(0xFF94A3B8),
+            fontSize = 9.sp
+        )
+        Spacer(modifier = Modifier.height(10.dp))
+
+        // Competitor 1: SOLARIS France (Our kit)
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(8.dp))
+                .background(Color(0xFF064E3B).copy(alpha = 0.4f))
+                .border(1.5.dp, Color(0xFF10B981), RoundedCornerShape(8.dp))
+                .padding(10.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(text = "☀️", fontSize = 13.sp)
+                    Spacer(modifier = Modifier.width(4.dp))
+                    Text(text = "SOLARIS France SAS — Pack Solo 440W", color = Color(0xFF34D399), fontSize = 10.sp, fontWeight = FontWeight.Black)
+                }
+                Box(
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(4.dp))
+                        .background(Color(0xFF10B981))
+                        .padding(horizontal = 5.dp, vertical = 2.dp)
+                ) {
+                    Text(text = "NOTRE POSITIONNEMENT : CHAMPION QUALITÉ/PRIX", color = Color.Black, fontSize = 7.sp, fontWeight = FontWeight.Black)
+                }
+            }
+            Spacer(modifier = Modifier.height(4.dp))
+            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                Text(text = "• Prix Public TTC : 349,00 € TTC (Port inclus/retrait)", color = Color.White, fontSize = 9.sp, fontWeight = FontWeight.Bold)
+                Text(text = "Amorti en 2,8 ans seulement", color = Color(0xFF6EE7B7), fontSize = 9.sp, fontWeight = FontWeight.Bold)
+            }
+            Spacer(modifier = Modifier.height(2.dp))
+            Text(
+                text = "• Matériel : Panneau Trina Solar 440W Vertex S+ Bi-verre N-Type (Rendement 22%, garantie 25 ans) + Micro-onduleur Hoymiles HMS-400 VDE + Châssis alu réglable Ksolar 20°-45° + Câble Schuko 5m monté.",
+                color = Color(0xFFCBD5E1),
+                fontSize = 8.sp,
+                lineHeight = 11.sp
+            )
+            Spacer(modifier = Modifier.height(2.dp))
+            Text(
+                text = "• Modèle : Vente directe fabricant / DTC & Local. Marge brute : +97 € à +132 € HT / kit.",
+                color = Color(0xFFA7F3D0),
+                fontSize = 8.sp,
+                fontWeight = FontWeight.SemiBold
+            )
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // Competitor 2: Sunology PLAY 2
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(8.dp))
+                .background(Color(0xFF1E293B))
+                .border(1.dp, Color(0xFF475569), RoundedCornerShape(8.dp))
+                .padding(10.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(text = "1. Sunology PLAY 2 (450W)", color = Color(0xFF93C5FD), fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                Text(text = "649 € à 699 € TTC (+300 € vs SOLARIS)", color = Color(0xFFF87171), fontSize = 9.sp, fontWeight = FontWeight.Bold)
+            }
+            Spacer(modifier = Modifier.height(3.dp))
+            Text(
+                text = "• Matériel : Panneau 450W TopCon + Micro-onduleur Hoymiles (exactement la même base que SOLARIS) + Châssis alu.
+• Amortissement Linky : 5,5 ans (2 fois plus long que SOLARIS pour rentabiliser l'achat).
+• Pourquoi ce prix ? : Marge distributeur Leroy Merlin/Boulanger (25% à 30% = ~170 €) + lourds budgets de publicité TV/médias.",
+                color = Color(0xFFCBD5E1),
+                fontSize = 8.sp,
+                lineHeight = 11.sp
+            )
+        }
+
+        Spacer(modifier = Modifier.height(6.dp))
+
+        // Competitor 3: Beem Energy
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(8.dp))
+                .background(Color(0xFF1E293B))
+                .border(1.dp, Color(0xFF475569), RoundedCornerShape(8.dp))
+                .padding(10.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(text = "2. Beem Energy (Beem On 460W)", color = Color(0xFFFCD34D), fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                Text(text = "699 € à 749 € TTC (+350 € vs SOLARIS)", color = Color(0xFFF87171), fontSize = 9.sp, fontWeight = FontWeight.Bold)
+            }
+            Spacer(modifier = Modifier.height(3.dp))
+            Text(
+                text = "• Matériel : Panneau 460W + Micro-onduleur Hoymiles + Support mural/sol.
+• Amortissement Linky : 6 ans.
+• Pourquoi ce prix ? : Positionnement design lifestyle, application propriétaire, réseau physique Boulanger/Castorama.",
+                color = Color(0xFFCBD5E1),
+                fontSize = 8.sp,
+                lineHeight = 11.sp
+            )
+        }
+
+        Spacer(modifier = Modifier.height(6.dp))
+
+        // Competitor 4: Kits DIY pièces détachées (Oscaro Power / 123Elec)
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(8.dp))
+                .background(Color(0xFF1E293B))
+                .border(1.dp, Color(0xFF475569), RoundedCornerShape(8.dp))
+                .padding(10.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(text = "3. Kits DIY Pièces en vrac (Oscaro / 123Elec)", color = Color(0xFFCBD5E1), fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                Text(text = "~450 € TTC réel livré (Faux prix bas)", color = Color(0xFFFBBF24), fontSize = 9.sp, fontWeight = FontWeight.Bold)
+            }
+            Spacer(modifier = Modifier.height(3.dp))
+            Text(
+                text = "• Coûts cachés : Prix d'appel de 320 € sans transport (+70 € à +90 € de port palette) + support inclinable en option (+50 €).
+• Zéro prêt à brancher : Matériel livré en vrac non monté, connecteurs MC4 à sertir, câbles AC à assembler soi-même.
+• Cible : Bricoleurs et électriciens uniquement. Inaccessible pour le grand public sans compétences.",
+                color = Color(0xFF94A3B8),
+                fontSize = 8.sp,
+                lineHeight = 11.sp
+            )
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // Strategy Verdict Box
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(6.dp))
+                .background(Color(0xFF0369A1).copy(alpha = 0.2f))
+                .border(1.dp, Color(0xFF0284C7), RoundedCornerShape(6.dp))
+                .padding(8.dp)
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(text = "🎯", fontSize = 12.sp)
+                Spacer(modifier = Modifier.width(4.dp))
+                Text(
+                    text = "Verdict Compétitif Imbattable pour nos Clients & la SAS :",
+                    color = Color(0xFF38BDF8),
+                    fontSize = 8.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+            Spacer(modifier = Modifier.height(2.dp))
+            Text(
+                text = "SOLARIS France vend STRICTEMENT les mêmes composants industriels haut de gamme que Sunology (panneau bi-verre Trina Solar et micro-onduleur Hoymiles numéro 1 mondial), mais à MOITIÉ PRIX (349 € vs 699 €). En supprimant les intermédiaires de la grande distribution physique et la pub TV, nous dégageons 97 € à 132 € de marge brute unitaire tout en offrant au consommateur l'amortissement le plus rapide du marché français (2,8 ans contre près de 6 ans pour les concurrents).",
+                color = Color(0xFFE0F2FE),
+                fontSize = 7.sp,
+                lineHeight = 10.sp
             )
         }
     }
