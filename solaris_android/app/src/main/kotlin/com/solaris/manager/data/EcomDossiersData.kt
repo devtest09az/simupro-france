@@ -32,8 +32,8 @@ object EcomDossiersData {
             category = "Énergie & Autoconsommation",
             iconEmoji = "☀️",
             progressPercent = 80,
-            estimatedNetMargin = "+105 € à +133 € / unité",
-            targetMonthlyRevenue = "10 500 € / mois (30 stations)",
+            estimatedNetMargin = "+97 € à +132 € HT / kit",
+            targetMonthlyRevenue = "8 725 € HT / mois (30 stations)",
             liveWebsiteUrl = "https://devtest09az.github.io/simupro-france/",
             partnerNotes = "NOTE COMMUNE (Associés) :\n- Priorité absolue : déposer l'annonce test sur Leboncoin et Marketplace pour collecter 3 précommandes locales sans engagement.\n- Dès 3 clients chauds : on dépose le capital de 500 € sur Qonto et on immatricule la SAS.\n- Logistique : le stockage des 10 premiers kits se fera dans mon garage (sécurisé et sec).",
             marketStudy = MarketStudyDetail(
@@ -64,10 +64,11 @@ object EcomDossiersData {
 - Taux de conversion en vente (en proposant la remise en main propre locale ou livraison Geodis 48h) : 1 vente tous les 2 a 3 prospects.
 - Resultat : 1 vente par jour ouvre (soit 20 a 22 ventes / mois) sur le seul departement local, completee par 8 a 10 ventes sur les departements limitrophes via expedition Geodis.
 
-4. STRESS-TEST DES 3 SCENARIOS FINANCIERS :
-- Pessimiste (3 ventes/semaine, mauvais mois hivernal) : 12 kits/mois -> +1 320 EUR net societe (660 EUR / associe).
-- Realiste Cible (1 vente/jour ouvre sur Leboncoin + Web) : 30 kits/mois -> +3 344 EUR HT resultat net SAS -> 995 EUR NET d'impot en poche / associe (11 937 EUR / an) apres charges fixes, IS 15% et Flat Tax 30% + ARE maintenue (total 2 995 EUR nets/mois).
-- Optimiste (Haute saison printemps/ete, 2 annonces locales) : 60 kits/mois -> +7 140 EUR net societe (3 570 EUR / associe)."""
+4. STRESS-TEST DES 3 SCENARIOS FINANCIERS AUDITÉS (RÉSULTATS NETS APRÈS IS 15% ET FLAT TAX 30%) :
+- Démarrage prudent (12 kits/mois) : 3 490 € CA HT -> Résultat net SAS : +805 € net -> Dividende net en poche : +282 € net / associé.
+- Cible Réaliste (30 kits/mois, 1 kit/jour ouvré) : 8 725 € CA HT -> Résultat net SAS : +2 285 € net -> Dividende net en poche : +800 € net / associé (+9 596 € nets / an). (Si 30% des kits en retrait local à 0 € de port : +909 € net / associé).
+- Régime de Croisière (60 kits/mois, 2 annonces locales + Web) : 17 450 € CA HT -> Résultat net SAS : +4 750 € net -> Dividende net en poche : +1 663 € net / associé (+19 952 € nets / an).
+*Statut Dirigeant : Mandat social à titre gratuit (0 € salaire) garantissant le maintien à 100% de l'ARE personnelle France Travail, sans impact sur les dividendes de la SAS."""
             ),
             unitEconomics = UnitEconomicsDetail(
                 retailPriceTTC = "349,00 € TTC",
@@ -108,8 +109,8 @@ object EcomDossiersData {
                     badge = "BEST-SELLER",
                     retailPriceTTC = "349,00 € TTC",
                     wholesaleCostHT = "148,20 € HT",
-                    netMarginAmount = "+105,15 € NET (Livraison) / +133,00 € NET (Main propre)",
-                    netMarginPercent = "36,2% à 45,7% de marge nette",
+                    netMarginAmount = "+96,69 € HT (Livraison) à +131,69 € HT (Retrait local)",
+                    netMarginPercent = "33,2% à 45,3% de marge brute",
                     paybackPeriod = "Amorti en 2,5 à 2,9 ans (efface 500 à 650 kWh/an)",
                     contents = "1x Panneau Trina Solar 440W Biverre N-Type + 1x Micro-onduleur Hoymiles HMS-400 VDE + 1x Châssis alu réglable 20°-35° + 1x Câble Schuko 5m + Guide Enedis"
                 ),
