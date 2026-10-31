@@ -5,6 +5,16 @@ enum class ProjectPhase(val label: String) {
     PRODUCTION("2. Production, Ventes & Opérations")
 }
 
+data class MarketStudyDetail(
+    val marketSize: String,
+    val growthRate: String,
+    val targetPainPoint: String,
+    val competitiveEdge: String,
+    val officialSourceLabel: String,
+    val officialSourceUrl: String,
+    val fullAnalysis: String
+)
+
 data class EcomDossier(
     val id: String,
     val title: String,
@@ -14,7 +24,9 @@ data class EcomDossier(
     var progressPercent: Int,
     val estimatedNetMargin: String,
     val targetMonthlyRevenue: String,
-    // Partie Conception (R&D, Sourcing, Étude de marché 100% sourcée)
+    // Étude de marché dédiée et sourcée
+    val marketStudy: MarketStudyDetail? = null,
+    // Partie Conception (R&D, Sourcing 100% sourcé)
     val conceptionItems: List<ConceptionDetail>,
     // Partie Production (Mise en ligne, Actions, Opérations terrain, Ventes)
     val productionActions: List<ProductionAction>,

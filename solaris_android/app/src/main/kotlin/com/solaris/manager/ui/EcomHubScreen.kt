@@ -74,6 +74,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.solaris.manager.model.ConceptionDetail
 import com.solaris.manager.model.EcomDossier
+import com.solaris.manager.model.MarketStudyDetail
 import com.solaris.manager.model.ProjectPhase
 import com.solaris.manager.model.ToolkitItem
 import com.solaris.manager.viewmodel.EcomHubUiState
@@ -259,21 +260,32 @@ private fun ConceptionPhaseContent(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(14.dp))
-                    .border(1.dp, Color(0xFF1E293B), RoundedCornerShape(14.dp))
-                    .clickable { onDossierClick(dossier.id) },
+                    .border(1.dp, Color(0xFF1E293B), RoundedCornerShape(14.dp)),
                 colors = CardDefaults.cardColors(containerColor = Color(0xFF1C2541))
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
-                    DossierCardHeader(dossier = dossier, isExpanded = isExpanded)
+                    DossierCardHeader(
+                        dossier = dossier,
+                        isExpanded = isExpanded,
+                        onToggle = { onDossierClick(dossier.id) }
+                    )
 
                     AnimatedVisibility(visible = isExpanded) {
                         Column(modifier = Modifier.padding(top = 14.dp)) {
                             HorizontalDivider(color = Color(0xFF334155))
                             Spacer(modifier = Modifier.height(10.dp))
 
-                            // 1. ÉLÉMENTS DE CONCEPTION 100% SOURCÉS
+                            // 1. ÉTUDE DE MARCHÉ DÉTAILLÉE & CHIFFRES CLÉS (100% SOURCÉE)
+                            dossier.marketStudy?.let { study ->
+                                MarketStudyCard(study = study)
+                                Spacer(modifier = Modifier.height(14.dp))
+                                HorizontalDivider(color = Color(0xFF334155))
+                                Spacer(modifier = Modifier.height(10.dp))
+                            }
+
+                            // 2. COMPOSANTS & SOURCINGS B2B RÉELS (100% VÉRIFIÉS)
                             Text(
-                                text = "1. Composants & Sourcings Réels (100% Vérifiés) :",
+                                text = "2. Composants & Sourcings B2B (Prix Grossistes) :",
                                 color = Color(0xFF38BDF8),
                                 fontSize = 13.sp,
                                 fontWeight = FontWeight.Bold
@@ -289,9 +301,9 @@ private fun ConceptionPhaseContent(
                             HorizontalDivider(color = Color(0xFF334155))
                             Spacer(modifier = Modifier.height(10.dp))
 
-                            // 2. BOÎTE À OUTILS (SCRIPTS & MODÈLES)
+                            // 3. BOÎTE À OUTILS (SCRIPTS & MODÈLES)
                             Text(
-                                text = "2. Boîte à Outils & Modèles Prêts à Copier :",
+                                text = "3. Boîte à Outils & Modèles Prêts à Copier :",
                                 color = Color(0xFFFBBF24),
                                 fontSize = 13.sp,
                                 fontWeight = FontWeight.Bold
@@ -307,7 +319,7 @@ private fun ConceptionPhaseContent(
                             HorizontalDivider(color = Color(0xFF334155))
                             Spacer(modifier = Modifier.height(10.dp))
 
-                            // 3. JOURNAL DE BORD & PRISE DE NOTES COMMUNE
+                            // 4. JOURNAL DE BORD & PRISE DE NOTES COMMUNE
                             PartnerNotesSection(
                                 dossierId = dossier.id,
                                 noteText = currentNote,
@@ -500,9 +512,15 @@ private fun ProductionPhaseContent(
 }
 
 @Composable
-private fun DossierCardHeader(dossier: EcomDossier, isExpanded: Boolean) {
+private fun DossierCardHeader(
+    dossier: EcomDossier,
+    isExpanded: Boolean,
+    onToggle: () -> Unit = {}
+) {
     Row(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { onToggle() },
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.Top
     ) {
@@ -569,6 +587,127 @@ private fun DossierCardHeader(dossier: EcomDossier, isExpanded: Boolean) {
                 fontWeight = FontWeight.Bold
             )
         }
+    }
+}
+
+@Composable
+private fun MarketStudyCard(study: MarketStudyDetail) {
+    val context = LocalContext.current
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp))
+            .background(Color(0xFF0F172A))
+            .border(1.dp, Color(0xFF6366F1).copy(alpha = 0.5f), RoundedCornerShape(10.dp))
+            .padding(12.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(text = "📊", fontSize = 16.sp)
+                Spacer(modifier = Modifier.width(6.dp))
+                Text(
+                    text = "1. ÉTUDE DE MARCHÉ OFFICIELLE (100% SOURCÉE)",
+                    color = Color(0xFF818CF8),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 0.5.sp
+                )
+            }
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(Color(0xFF065F46))
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
+            ) {
+                Text(
+                    text = "DONNÉES VÉRIFIÉES",
+                    color = Color(0xFF34D399),
+                    fontSize = 9.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            KpiChip(label = "Taille du Marché", value = study.marketSize, modifier = Modifier.weight(1f), color = Color(0xFF38BDF8))
+            KpiChip(label = "Dynamique / Vitesse", value = study.growthRate, modifier = Modifier.weight(1f), color = Color(0xFF34D399))
+        }
+        Spacer(modifier = Modifier.height(6.dp))
+        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            KpiChip(label = "Problème Client Résolu", value = study.targetPainPoint, modifier = Modifier.weight(1f), color = Color(0xFFFCA5A5))
+            KpiChip(label = "Avantage Concurrentiel", value = study.competitiveEdge, modifier = Modifier.weight(1f), color = Color(0xFFFDE68A))
+        }
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Text(
+            text = "Analyse Stratégique & Rentabilité :",
+            color = Color(0xFFCBD5E1),
+            fontSize = 11.sp,
+            fontWeight = FontWeight.Bold
+        )
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(
+            text = study.fullAnalysis,
+            color = Color(0xFFE2E8F0),
+            fontSize = 11.sp,
+            lineHeight = 16.sp
+        )
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(6.dp))
+                .background(Color(0xFF4338CA).copy(alpha = 0.25f))
+                .border(1.dp, Color(0xFF6366F1), RoundedCornerShape(6.dp))
+                .clickable {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(study.officialSourceUrl))
+                    context.startActivity(intent)
+                }
+                .padding(horizontal = 10.dp, vertical = 7.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.weight(1f)) {
+                Icon(Icons.Default.OpenInBrowser, contentDescription = "Lien", tint = Color(0xFFA5B4FC), modifier = Modifier.size(15.dp))
+                Spacer(modifier = Modifier.width(6.dp))
+                Text(
+                    text = "Source : ${study.officialSourceLabel}",
+                    color = Color(0xFFA5B4FC),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+            Text(
+                text = "Consulter ↗",
+                color = Color.White,
+                fontSize = 10.sp,
+                fontWeight = FontWeight.Bold
+            )
+        }
+    }
+}
+
+@Composable
+private fun KpiChip(label: String, value: String, modifier: Modifier = Modifier, color: Color) {
+    Column(
+        modifier = modifier
+            .clip(RoundedCornerShape(6.dp))
+            .background(Color(0xFF1E293B))
+            .padding(8.dp)
+    ) {
+        Text(text = label.uppercase(), color = Color(0xFF94A3B8), fontSize = 9.sp, fontWeight = FontWeight.Bold)
+        Spacer(modifier = Modifier.height(2.dp))
+        Text(text = value, color = color, fontSize = 11.sp, fontWeight = FontWeight.SemiBold, lineHeight = 14.sp)
     }
 }
 

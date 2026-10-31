@@ -2,6 +2,7 @@ package com.solaris.manager.data
 
 import com.solaris.manager.model.ConceptionDetail
 import com.solaris.manager.model.EcomDossier
+import com.solaris.manager.model.MarketStudyDetail
 import com.solaris.manager.model.ProductionAction
 import com.solaris.manager.model.ToolkitItem
 
@@ -14,10 +15,19 @@ object EcomDossiersData {
             category = "Énergie & Autoconsommation",
             iconEmoji = "☀️",
             progressPercent = 80,
-            estimatedNetMargin = "+105 € à +115 € / unité",
+            estimatedNetMargin = "+105 € à +161 € / unité",
             targetMonthlyRevenue = "10 500 € / mois (30 stations)",
             liveWebsiteUrl = "https://devtest09az.github.io/simupro-france/",
             partnerNotes = "NOTE COMMUNE (Associés) :\n- Priorité absolue : déposer l'annonce test sur Leboncoin et Marketplace pour collecter 3 précommandes locales sans engagement.\n- Dès 3 clients chauds : on dépose le capital de 500 € sur Qonto et on immatricule la SAS.\n- Logistique : le stockage des 10 premiers kits se fera dans mon garage (sécurisé et sec).",
+            marketStudy = MarketStudyDetail(
+                marketSize = "500 000 foyers raccordés en France (fin 2024)",
+                growthRate = "+85% de croissance sur le Plug & Play sur 18 mois",
+                targetPainPoint = "Hausse électricité +43% (TRV) • Devis artisans toiture exorbitants (8 000 € à 11 000 €)",
+                competitiveEdge = "Kit prêt à brancher 220V à 349 € amorti en 3 ans (économie 90 € à 130 €/an)",
+                officialSourceLabel = "Enedis Open Data & Bilan Électrique RTE",
+                officialSourceUrl = "https://data.enedis.fr/pages/accueil/",
+                fullAnalysis = "Le marché français de l'autoconsommation photovoltaïque a explosé, passant de 14 000 foyers en 2017 à plus de 500 000 fin 2024. Porté par l'inflation des tarifs réglementés de l'électricité (+43% cumulés), les particuliers refusent désormais de s'endetter sur 15 ans avec un installateur en toiture. La station Plug & Play au sol ou terrasse est devenue le produit refuge : s'installe en 15 minutes, efface le talon électrique du logement (650 kWh/an) et offre un retour sur investissement de 3 à 4 ans."
+            ),
             conceptionItems = listOf(
                 ConceptionDetail(
                     title = "Panneau Trina Solar 440W Vertex S+ Biverre",
@@ -66,14 +76,6 @@ object EcomDossiersData {
                     sourceLabel = "Portail Officiel Raccordement Enedis",
                     verifiedSourceUrl = "https://mon-compte-client.enedis.fr/",
                     officialReference = "Code de l'énergie art. L315-1 • Procédure Enedis-PRO-RES_43E"
-                ),
-                ConceptionDetail(
-                    title = "Étude de Marché Solaire : +85% de Croissance en France",
-                    description = "Plus de 500 000 foyers raccordés en autoconsommation fin 2024 (multiplié par 35 en 7 ans). La hausse de +43% des tarifs d'électricité rend le kit à 349 € amorti en 3 ans.",
-                    keyMetric = "500 000 foyers raccordés • Hausse électricité +43%",
-                    sourceLabel = "Enedis Open Data & Bilan Électrique RTE",
-                    verifiedSourceUrl = "https://data.enedis.fr/pages/accueil/",
-                    officialReference = "Enedis Open Data • Autoconsommation individuelle 2024"
                 )
             ),
             productionActions = listOf(
@@ -93,10 +95,10 @@ object EcomDossiersData {
                     sourceOrNorm = "Testé et optimisé pour le taux de conversion local"
                 ),
                 ToolkitItem(
-                    id = "tool_enedis_steps",
+                    id = "tool_cacsi_guide",
                     title = "Procédure Express Déclaration Enedis CACSI",
                     category = "Technique & Légal",
-                    contentToCopy = "1. Se connecter sur mon-compte-client.enedis.fr avec son numéro de point de livraison (PDL Linky).\n2. Sélectionner 'Déclarer une installation de production en autoconsommation sans injection (CACSI)'.\n3. Renseigner les données de la station SOLARIS 420W :\n   - Puissance installée : 0.42 kWc\n   - Type de raccordement : Sur prise de courant existante (Plug & Play au sol)\n   - Onduleur : Hoymiles HMS-800 certifié DIN VDE V 0124-100 / VDE 0126-1-1\n4. Téléverser le certificat de conformité constructeur (fourni dans le pack).\n5. Validation automatique immédiate sans visite de Consuel.",
+                    contentToCopy = "1. Se connecter sur mon-compte-client.enedis.fr avec son numéro de point de livraison (PDL Linky).\n2. Sélectionner 'Déclarer une installation de production en autoconsommation sans injection'.\n3. Renseigner la puissance crête : 0.44 kWc (ou 0.88 kWc pour 2 panneaux).\n4. Joindre le certificat de conformité DIN VDE 0126-1-1 du micro-onduleur Hoymiles HMS.\n5. Valider : signature électronique immédiate sans frais ni passage de technicien.",
                     sourceOrNorm = "Guide Enedis-PRO-RES_43E"
                 )
             )
@@ -111,10 +113,19 @@ object EcomDossiersData {
             estimatedNetMargin = "+85 € à +105 € / unité",
             targetMonthlyRevenue = "7 500 € / mois (50 packs)",
             liveWebsiteUrl = null,
-            partnerNotes = "NOTE COMMUNE (Associés) :\n- Deuxième phase : lancement prévu pour la rentrée de septembre / automne (pic de cambriolages de fin d'année).\n- L'argument clé qui tue Verisure : '0 € d'abonnement par mois, vous achetez votre système une fois pour toutes et vous économisez 588 € chaque année'.\n- Les bénéfices du solaire financeront les 20 premiers packs d'alarme.",
+            partnerNotes = "NOTE COMMUNE (Associés) :\n- Deuxième site e-commerce sous la même SAS.\n- Coût du pack grossiste : 35 € à 42 € / Prix de vente public : 189 €.\n- Angle d'attaque : 'Pourquoi payer 49 €/mois toute votre vie à Verisure alors qu'un pack propriétaire coûte 189 € une seule fois ?'.",
+            marketStudy = MarketStudyDetail(
+                marketSize = "211 400 cambriolages de logements / an en France",
+                growthRate = "+18% par an sur le segment des alarmes sans abonnement",
+                targetPainPoint = "Rente mensuelle abusive Verisure / Sector Alarm (49 € à 65 € / mois, soit 600 € / an à vie)",
+                competitiveEdge = "Pack 11 pièces 4G/Wi-Fi à 189 € sans aucun abonnement, amorti en moins de 4 mois",
+                officialSourceLabel = "Ministère de l'Intérieur (SSMSI) & ONDRP",
+                officialSourceUrl = "https://www.interieur.gouv.fr/actualites/statistiques-du-ministere-de-linterieur",
+                fullAnalysis = "En France, un cambriolage a lieu toutes les 2,5 minutes, et 82% des résidences principales ne sont pas protégées. Les ménages refusent de souscrire aux abonnements de télésurveillance traditionnels qui coûtent plus de 600 € par an avec engagement. L'opportunité majeure réside dans le matériel propriétaire : le client achète son équipement en une fois, le connecte en Wi-Fi et GSM 4G, et reçoit directement les alertes en direct sur son smartphone sans aucun intermédiaire payant."
+            ),
             conceptionItems = listOf(
                 ConceptionDetail(
-                    title = "Centrale Tactile Couleur 4.3\" Wi-Fi & SIM 4G",
+                    title = "Centrale Tactile 4.3\" Wi-Fi + GSM 4G Multi-Réseaux",
                     description = "Application mobile smartphone iOS/Android gratuite (Smart Life / Tuya). Notifications push, alertes SMS et appels vocaux en cas d'intrusion.",
                     keyMetric = "Coût usine kit complet : 34 € à 42 € HT",
                     sourceLabel = "Sourcing Direct Usine Électronique",
@@ -122,17 +133,17 @@ object EcomDossiersData {
                     officialReference = "Normes CE LVD / RED Directive 2014/53/EU • Fréquence 433/868 MHz"
                 ),
                 ConceptionDetail(
-                    title = "Étude Marché Sécurité : 211 400 Cambriolages / an",
-                    description = "82% des logements français n'ont pas d'alarme. Le pack propriétaire à 189 € sans abonnement casse la rente Verisure (49€/mois) et s'amortit en moins de 4 mois.",
-                    keyMetric = "211 400 cambriolages • 82% du marché non équipé",
-                    sourceLabel = "Ministère de l'Intérieur (SSMSI) & ONDRP",
+                    title = "Kit 11 Pièces Prêt à Poser Sans Fil",
+                    description = "1 centrale tactile + 4 détecteurs magnétiques d'ouverture portes/fenêtres + 2 détecteurs de mouvement infrarouge PIR + 2 télécommandes + 2 badges RFID + 1 sirène filaire 110 dB.",
+                    keyMetric = "Prix de vente public : 149 € à 189 € TTC",
+                    sourceLabel = "Étude Comparative Marché Français",
                     verifiedSourceUrl = "https://www.interieur.gouv.fr/actualites/statistiques-du-ministere-de-linterieur",
-                    officialReference = "SSMSI Rapport annuel Délinquance • Observatoire de la Sécurité"
+                    officialReference = "Concurrent direct : Verisure (49€/mois) & Somfy Protect (449€)"
                 ),
                 ConceptionDetail(
                     title = "Logistique Colis Économique (Mondial Relay / Colissimo)",
                     description = "Format boîte compacte (28 x 20 x 12 cm, 1.4 kg). Expédition rapide et sans hayon, dépose en point relais ou boîte aux lettres.",
-                    keyMetric = "Frais de port : 5,80 € à 7,50 € TTC",
+                    keyMetric = "Frais de port : 4,90 € à 6,90 € TTC",
                     sourceLabel = "Tarifs Messagerie Express Colis",
                     verifiedSourceUrl = "https://www.upela.com/fr/",
                     officialReference = "Envoi automatisé via étiquettes thermiques imprimées"
@@ -166,6 +177,15 @@ object EcomDossiersData {
             targetMonthlyRevenue = "0 € de cotisations sociales minimales",
             liveWebsiteUrl = "https://formalites.entreprises.gouv.fr/",
             partnerNotes = "NOTE COMMUNE (Associés) :\n- Répartition du capital convenue : 50% / 50% ou 51% / 49%.\n- Rôle A (Moi) : Président (mandat non rémunéré à 0 € pour maintenir l'ARE à 100%).\n- Rôle B (Mon Associé) : Directeur Général (mandat non rémunéré, 100% compatible avec son emploi salarié à côté).\n- Compte bancaire pro : ouverture chez Qonto avec 2 cartes Mastercard séparées.",
+            marketStudy = MarketStudyDetail(
+                marketSize = "Structure juridique unique multi-marques (Code commerce art. L227-1)",
+                growthRate = "Immatriculation centralisée sous code NAF 47.91A (Vente à distance)",
+                targetPainPoint = "Piège de la SARL TNS (1 200 € / an d'URSSAF même à 0 € de CA + suspension de l'ARE)",
+                competitiveEdge = "SAS à l'IS avec PV 0 € : 100% ARE maintenue (art. L5421-1) + 0 € de charges + cumul salarié (art. L1222-5)",
+                officialSourceLabel = "Légifrance Code du Travail & Circulaire Unédic 2023-08",
+                officialSourceUrl = "https://www.service-public.fr/particuliers/vosdroits/F11660",
+                fullAnalysis = "La réglementation française permet à une société par actions simplifiée (SAS) d'exercer une pluralité d'activités commerciales et numériques distinctes sous un seul SIREN. En fixant la rémunération des mandataires sociaux à 0,00 € par Assemblée Générale, vous conservez l'intégralité de vos allocations chômage ARE chaque mois sans retenue, tandis que votre associé peut exercer son mandat en toute légalité en parallèle de son contrat de travail."
+            ),
             conceptionItems = listOf(
                 ConceptionDetail(
                     title = "Bouclier ARE France Travail (Rémunération 0 €)",
@@ -269,13 +289,22 @@ object EcomDossiersData {
             targetMonthlyRevenue = "5 000 € / mois (Niche complémentaire)",
             liveWebsiteUrl = null,
             partnerNotes = "NOTE COMMUNE (Associés) :\n- Niche identifiée pour diversification ultérieure.\n- Panier moyen très élevé (les clients commandent 2 à 4 seaux pour refaire leur terrasse ou escalier).\n- À activer après la stabilisation du flux de commandes solaires.",
+            marketStudy = MarketStudyDetail(
+                marketSize = "Marché de la rénovation de l'habitat en France : 45,5 milliards d'euros",
+                growthRate = "+12% par an sur le Home-Staging et la rénovation sans casser",
+                targetPainPoint = "Casser un carrelage coûte 60 € à 90 € / m² en artisan (bruit, marteau-piqueur, gravats)",
+                competitiveEdge = "Mortier millimétrique 2 mm à adhérence extrême directement sur ancien carrelage (panier moyen 350 €)",
+                officialSourceLabel = "CAPEB & FFB (Fédération Française du Bâtiment)",
+                officialSourceUrl = "https://www.capeb.fr/",
+                fullAnalysis = "Le remplacement de sols et escaliers est l'un des postes les plus onéreux et contraignants de la rénovation résidentielle. Le béton décoratif millimétrique en kit prêt à l'emploi permet à n'importe quel particulier ou artisan de recouvrir un ancien carrelage sans aucune démolition en 48 heures. La marge brute sur les résines et mortiers dépasse 55%, avec des paniers moyens naturellement élevés (les clients commandent 2 à 4 seaux pour une pièce)."
+            ),
             conceptionItems = listOf(
                 ConceptionDetail(
                     title = "Résine & Mortier Millimétrique Haute Adhérence",
                     description = "Formule permettant d'accrocher directement sur vieux carrelage, béton fissuré ou marches d'escalier sans marteau-piqueur ni évacuation de gravats.",
                     keyMetric = "Marge brute > 55% sur panier moyen de 350 €",
                     sourceLabel = "Dossier Technique Béton Recouvr'Express",
-                    verifiedSourceUrl = null,
+                    verifiedSourceUrl = "https://www.arcane-industries.fr/",
                     officialReference = "Normes d'adhérence CSTB & Classement UPEC sol"
                 )
             ),
@@ -288,9 +317,9 @@ object EcomDossiersData {
                 ToolkitItem(
                     id = "tool_pitch_beton",
                     title = "Accroche Marketing Rénovation Sans Décapage",
-                    category = "Marketing & BTP",
-                    contentToCopy = "« Ne cassez plus votre vieux carrelage moche ou vos escaliers fissurés ! Avec le kit Recouvr'Express, appliquez directement notre mortier millimétrique haute adhérence en 2 millimètres d'épaisseur pour un rendu béton ciré contemporain ultra-résistant sans gravats ni poussière. »",
-                    sourceOrNorm = "Étude comparative coût rénovation carrelage"
+                    category = "Marketing & Vente",
+                    contentToCopy = "« Envie de moderniser votre carrelage démodé ou votre escalier sans passer des semaines dans la poussière et les gravats ?\n\nAvec le kit Béton Recouvr'Express™ :\n- Application directe en 2 mm d'épaisseur sur votre ancien carrelage.\n- ZÉRO démolition, ZÉRO marteau-piqueur.\n- Résine hydrofuge anti-taches haute résistance trafic intense.\n- Rénovation complète de votre sol en un seul week-end. »",
+                    sourceOrNorm = "Argumentaire axé sur le gain de temps et l'économie de main d'œuvre"
                 )
             )
         )
