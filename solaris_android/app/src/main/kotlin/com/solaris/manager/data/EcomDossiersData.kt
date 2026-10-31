@@ -205,6 +205,33 @@ object EcomDossiersData {
                     whyAiCannotDoIt = "Validation finale du dossier Guichet Unique avec code d'authentification FranceConnect+.",
                     actionRequiredByPartner = "Valider le téléversement final sur le portail Guichet Unique INPI.",
                     officialUrl = "https://formalites.entreprises.gouv.fr/"
+                ),
+                HumanPrerequisiteItem(
+                    id = "h_commando_sample",
+                    title = "Commander 1 kit solaire échantillon (217 €) & 1 alarme démo (42 €) pour vidéo 60s",
+                    assignedTo = "Les Deux",
+                    estimatedCost = "259 € TTC",
+                    whyAiCannotDoIt = "Achat matériel physique et tournage vidéo réel au smartphone pour crédibilité maximale.",
+                    actionRequiredByPartner = "Passer la commande échantillon au comptoir grossiste et filmer le branchement en 60 secondes.",
+                    officialUrl = "https://hoymiles.com"
+                ),
+                HumanPrerequisiteItem(
+                    id = "h_commando_stripe",
+                    title = "Créer le compte Stripe et générer le lien de paiement direct (349 € / acompte 50 €)",
+                    assignedTo = "Moi",
+                    estimatedCost = "0 € (Frais 1,5% au succès)",
+                    whyAiCannotDoIt = "Authentification bancaire et liaison de l'IBAN de versement.",
+                    actionRequiredByPartner = "Créer le lien de paiement sur dashboard.stripe.com et remplacer le lien du bouton commander.",
+                    officialUrl = "https://dashboard.stripe.com"
+                ),
+                HumanPrerequisiteItem(
+                    id = "h_commando_leboncoin",
+                    title = "Publier 3 annonces locales LeBonCoin Pro & Facebook Marketplace",
+                    assignedTo = "Associé",
+                    estimatedCost = "0 € (Compte gratuit)",
+                    whyAiCannotDoIt = "Gestion du compte LeBonCoin personnel / pro et réponses aux messages d'acheteurs locaux.",
+                    actionRequiredByPartner = "Copier le template de l'annonce depuis l'app et publier avec photos des composants.",
+                    officialUrl = "https://www.leboncoin.fr"
                 )
             ),
             growthLevers = emptyList(),
@@ -372,6 +399,128 @@ POUR LA SOCIÉTÉ (GÉNÉRÉ PAR QONTO / GUICHET UNIQUE) :
 [ ] 7. Attestation de parution de l'avis de constitution au Journal d'Annonces Légales (JAL).
 [ ] 8. Formulaire M0 complété sur formalites.entreprises.gouv.fr (délai Kbis : 3 à 5 jours).""",
                     sourceOrNorm = "Greffe du Tribunal de Commerce & Qonto"
+                ),
+                ToolkitItem(
+                    id = "tool_plan_commando_j7",
+                    title = "⚡ PLAN D'ATTAQUE COMMANDO J-1 À J-7 (Déblocage des 5 Verrous)",
+                    category = "Stratégie Commando",
+                    contentToCopy = """PLAN D'ATTAQUE COMMANDO : VENDRE & ENCAISSER SOUS 7 JOURS
+
+LES 5 VERROUS CRITIQUES À DÉBLOQUER IMMÉDIATEMENT :
+
+1. VERROU ENCAISSEMENT CB (Stripe vs Société en cours d'immatriculation) :
+- Problème : Attendre le Kbis final (3 à 5 jours) pour ouvrir Stripe retarde les ventes.
+- Parade légale (Art. L210-6 Code de commerce) : 'Actes accomplis pour le compte de la société en formation'.
+- Action : Ouvrir le compte Stripe dès maintenant avec la mention 'Société en formation' ou utiliser le compte Stripe d'un associé, créer un Stripe Payment Link à 349 €, et proposer l'acompte de réservation de 50 € ou virement immédiat SEPA.
+
+2. VERROU NOM DE DOMAINE & SSL (Crédibilité immédiate) :
+- Action : Réserver un nom de domaine officiel (ex: solavolt.fr ou voltis-france.fr) sur OVHcloud (~7,99 €/an).
+- Pointer les DNS vers notre site avec certificat HTTPS gratuit. Les clients ne sortent pas leur CB sur une URL github.io.
+
+3. VERROU LOGISTIQUE DU PANNEAU SOLAIRE (Gabarit 176 x 113 cm / 21 kg) :
+- Attention : Colissimo, DPD et Mondial Relay REFUSENT les panneaux (hors gabarit max 150 cm).
+- Action : Pour les 10 premières commandes, activer 2 options :
+  a) Retrait gratuit sur place (en atelier / dépôt) ou livraison locale dans un rayon de 30 km par nos soins.
+  b) Compte expédition lourd sur palette via Geodis Calberson ou plateforme Boxtal / Upela.
+  (L'alarme 4G ne pose aucun problème : boîte de 1,2 kg expédiable en Colissimo 48h ou Mondial Relay à 4,50 €).
+
+4. VERROU DU KIT ÉCHANTILLON & VIDÉO DÉMO 60 SECONDES :
+- Action : Commander immédiatement 1 station solaire 440W complète et 1 kit alarme démo.
+- Tourner une vidéo brute au smartphone de 60 secondes : 'Déballage du carton -> Branchement sur prise 220V -> Témoin vert Linky qui baisse'.
+- Cette vidéo convertit 5x plus que n'importe quelle publicité 3D.
+
+5. VERROU D'ACQUISITION JOUR 1 (Zéro budget pub) :
+- Action : Publier 3 annonces ciblées sur LeBonCoin Pro (Catégorie Bricolage / Solaire) et Facebook Marketplace.
+- 80% des Français cherchant du solaire plug & play comparent sur LeBonCoin. Contacts garantis dès le premier jour.""",
+                    sourceOrNorm = "Protocole Lean E-Commerce & Art. L210-6 Code de commerce"
+                ),
+                ToolkitItem(
+                    id = "tool_leboncoin_annonce_solaire",
+                    title = "📢 Template Annonce LeBonCoin Pro (Acquisition Immédiate à 0 €)",
+                    category = "Marketing & Ventes",
+                    contentToCopy = """ANNONCE LEBONCOIN OPTIMISÉE (Solaire 440W Plug & Play) :
+
+TITRE DE L'ANNONCE :
+Station Solaire 440W Plug & Play - Prête à brancher 220V (Garantie 25 ans) - Neuve
+
+PRIX :
+349 €
+
+DESCRIPTION :
+Particuliers, réduisez immédiatement votre facture d'électricité sans installateur ni travaux sur le toit !
+
+Notre station solaire Plug & Play 440Wc produit votre propre électricité et s'injecte directement dans vos prises domestiques standard en 220V.
+
+CE QUE LA STATION EFFACE DÈS LE 1ER JOUR :
+- Réfrigérateur et congélateur (talon permanent)
+- Box internet, ordinateurs, domotique
+- Éclairage LED et appareils en veille
+-> Jusqu'à 130 € à 160 € d'économie par an sur votre facture EDF/Engie.
+
+COMPOSANTS HAUT DE GAMME INDUSTRIELS INCLUS DANS LE PACK :
+- 1 Panneau photovoltaïque Trina Solar Vertex S+ 440Wc (Technologie Bi-verre N-Type, robustesse extrême)
+- 1 Micro-onduleur Hoymiles HMS-400 homologué réseau Enedis (Norme DIN VDE 0126-1-1 / VDE-AR-N 4105)
+- 1 Châssis support aluminium noir orientable (au sol, jardin, terrasse ou balcon)
+- 1 Câble étanche secteur 5m prêt à brancher sur prise extérieure ou intérieure
+- Guide officiel déclaration Enedis CACSI en 3 clics inclus.
+
+GARANTIES & SÉCURITÉ :
+- Garantie de production panneau : 25 ans
+- Garantie micro-onduleur : 12 ans constructeur
+- Facture avec TVA fournie pour chaque commande.
+
+MODALITÉS DE LIVRAISON :
+- Retrait gratuit sur place ou livraison sécurisée à domicile sur demi-palette protégée.
+- Stock disponible de suite. Quantité limitée à ce tarif de lancement.
+
+Contactez-nous par message LeBonCoin ou téléphone pour réserver votre station.""",
+                    sourceOrNorm = "Standard de conversion LeBonCoin Pro Bricolage"
+                ),
+                ToolkitItem(
+                    id = "tool_protocole_encaissement_stripe",
+                    title = "💳 Procédure Encaissement CB Express (Stripe Payment Link en 3 min)",
+                    category = "Finance & Paiement",
+                    contentToCopy = """PROCÉDURE ENCAISSEMENT STRIPE SANS ATTENDRE LE KBIS :
+
+1. CRÉATION DU COMPTE STRIPE :
+- Aller sur dashboard.stripe.com
+- Indiquer : Type d'entité = Société (ou Entreprise individuelle en formation).
+- Renseigner l'IBAN de dépôt Qonto (attestation de séquestre).
+
+2. CRÉATION DU LIEN DE PAIEMENT UNIQUE :
+- Dans le menu 'Paiements' -> Cliquer sur 'Liens de paiement' (Payment Links).
+- Produit 1 : 'Station Solaire 440W Plug & Play' - Prix : 349,00 € TTC (Paiement en 1 fois ou 3x sans frais).
+- Produit 2 : 'Acompte Réservation Station Solaire' - Prix : 50,00 € TTC.
+- Produit 3 : 'Pack Alarme Maison 4G Sans Abonnement' - Prix : 149,00 € TTC.
+
+3. INTÉGRATION IMMÉDIATE :
+- Copier l'URL sécurisée générée (ex: https://buy.stripe.com/...).
+- Coller directement sur le bouton 'Commander' du site web et dans les messages clients LeBonCoin.
+- Les fonds sont sécurisés et reversés automatiquement sur le compte bancaire de la société.""",
+                    sourceOrNorm = "Documentation API Stripe France & ACPR"
+                ),
+                ToolkitItem(
+                    id = "tool_logistique_fret_solaire_vs_alarme",
+                    title = "📦 Guide Fret Lourd Solaire (Geodis/Boxtal) vs Alarme Colissimo",
+                    category = "Logistique & Expéditions",
+                    contentToCopy = """PROTOCOLE LOGISTIQUE COMMANDO EXPÉDITION :
+
+A. POUR LE SOLAIRE 440W (Colis Lourd & Volumineux) :
+- Dimensions : 176 cm x 113 cm x 5 cm • Poids brut pack : 24 kg.
+- TRANSPORT INTERDIT : Colissimo, Chronopost, DPD Express (refus pour dépassement gabarit L+l+h > 150cm).
+- TRANSPORTEURS HABILITÉS :
+  * Geodis Calberson (Messagerie / Distribution sur rendez-vous client par SMS)
+  * Kuehne+Nagel ou DB Schenker
+  * Plateforme intermédiaire : Boxtal.fr ou Upela.com (permet d'affréter sans contrat cadre annuel).
+- CONDITIONNEMENT : Demi-palette bois 120x80cm ou carton double cannelure avec cornières de protection polystyrène aux 4 coins.
+
+B. POUR L'ALARME MAISON 4G (Colis Standard Léger) :
+- Dimensions : 28 cm x 20 cm x 12 cm • Poids brut : 1,2 kg.
+- TRANSPORTEURS IDÉAUX :
+  * Colissimo Professionnel (La Poste) : livraison domicile 48h sans signature (~5,50 € HT).
+  * Mondial Relay / Shop2Shop : livraison point relais économique (~3,90 € HT).
+- ÉTIQUETAGE : Impression thermique au format standard A6 (10x15cm) depuis le portail transporteur.""",
+                    sourceOrNorm = "Cahier des charges logistique Geodis & La Poste Pro"
                 )
             ),
             productionActions = listOf(
