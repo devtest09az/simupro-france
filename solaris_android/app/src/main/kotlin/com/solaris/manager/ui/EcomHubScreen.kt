@@ -171,6 +171,7 @@ fun EcomHubScreen(
             when (uiState.currentPhase) {
                 ProjectPhase.CONCEPTION -> ConceptionPhaseContent(
                     uiState = uiState,
+                    onSwitcherClick = { viewModel.switchToDossier(it) },
                     onDossierClick = { viewModel.selectDossier(it) },
                     onVerificationToggle = { dId, vId -> viewModel.toggleVerification(dId, vId) },
                     onPhaseStepToggle = { dId, sNum -> viewModel.togglePhaseStep(dId, sNum) },
@@ -265,6 +266,7 @@ private fun HubHeader(uiState: EcomHubUiState) {
 @Composable
 private fun ConceptionPhaseContent(
     uiState: EcomHubUiState,
+    onSwitcherClick: (String) -> Unit,
     onDossierClick: (String) -> Unit,
     onVerificationToggle: (String, String) -> Unit,
     onPhaseStepToggle: (String, String) -> Unit,
@@ -298,7 +300,7 @@ private fun ConceptionPhaseContent(
                                 if (isSelected) Color(0xFF38BDF8) else Color(0xFF334155),
                                 RoundedCornerShape(10.dp)
                             )
-                            .clickable { onDossierClick(d.id) }
+                            .clickable { onSwitcherClick(d.id) }
                             .padding(vertical = 8.dp, horizontal = 4.dp),
                         contentAlignment = Alignment.Center
                     ) {

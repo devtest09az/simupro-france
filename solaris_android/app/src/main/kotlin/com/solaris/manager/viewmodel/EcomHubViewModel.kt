@@ -85,6 +85,10 @@ class EcomHubViewModel(application: Application) : AndroidViewModel(application)
         _uiState.value = _uiState.value.copy(selectedDossierId = nextId)
     }
 
+    fun switchToDossier(dossierId: String) {
+        _uiState.value = _uiState.value.copy(selectedDossierId = dossierId)
+    }
+
     fun onNoteChange(dossierId: String, text: String) {
         val updatedMap = _uiState.value.activeNotesByDossier.toMutableMap()
         updatedMap[dossierId] = text
