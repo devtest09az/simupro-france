@@ -64,7 +64,7 @@ object EcomDossiersData {
 
 4. STRESS-TEST DES 3 SCENARIOS FINANCIERS :
 - Pessimiste (3 ventes/semaine, mauvais mois hivernal) : 12 kits/mois -> +1 320 EUR net societe (660 EUR / associe).
-- Realiste Cible (1 vente/jour ouvre sur Leboncoin + Web) : 30 kits/mois -> +3 570 EUR net societe (1 785 EUR / associe + ARE maintenue).
+- Realiste Cible (1 vente/jour ouvre sur Leboncoin + Web) : 30 kits/mois -> +3 570 EUR HT resultat SAS -> 1 062 EUR NET d'impot en poche / associe (12 745 EUR / an) apres IS 15% et Flat Tax 30% + ARE maintenue.
 - Optimiste (Haute saison printemps/ete, 2 annonces locales) : 60 kits/mois -> +7 140 EUR net societe (3 570 EUR / associe)."""
             ),
             unitEconomics = UnitEconomicsDetail(
@@ -86,15 +86,15 @@ object EcomDossiersData {
             ),
             partnerProfit = PartnerProfitProjection(
                 monthlyVolumeHypothesis = "30 stations / mois (~1 kit / jour ouvré sur Leboncoin & Web)",
-                totalCompanyNetMonthly = "+ 3 570 € net / mois pour la SAS (~42 840 € / an)",
+                totalCompanyNetMonthly = "+ 3 570 € HT / mois de résultat d'exploitation SAS (42 840 € / an)",
                 associate1Name = "Associé 1 (Moi - Président SAS)",
-                associate1NetMonthly = "+ 1 785 € net / mois (50% société)",
-                associate1SpecificAdvantage = "Maintien 100% ARE France Travail (~2 000 €/m) = 3 785 € de ressources personnelles totales",
-                associate2Name = "Associé 2 (Mon Associé - DG Salarié)",
-                associate2NetMonthly = "+ 1 785 € net / mois (50% société)",
-                associate2SpecificAdvantage = "Salaire CDI 100% sécurisé + zéro charge sociale supplémentaire + création de patrimoine",
-                annualDividendsPerPartner = "~ 12 700 € nets d'impôt en poche par associé (après IS 15% et Flat Tax 30%)",
-                taxOptimizationNote = "Trésorerie laissée en société pour acheter les palettes de 30 panneaux en direct (zéro impôt prélevé tant que réinvesti)."
+                associate1NetMonthly = "+ 1 062 € NET d'impôt / mois (12 745 € / an)",
+                associate1SpecificAdvantage = "1 062 € dividendes nets + 2 000 € ARE = 3 062 € nets en poche / mois (quote-part brute SAS : 1 785 € / mois)",
+                associate2Name = "Associé 2 (Mon Associé - Co-fondateur)",
+                associate2NetMonthly = "+ 1 062 € NET d'impôt / mois (12 745 € / an)",
+                associate2SpecificAdvantage = "1 062 € net d'impôt viré en fin d'exercice (Flat Tax 30% déjà déduite) + 1 785 € / mois de patrimoine dans la SAS",
+                annualDividendsPerPartner = "12 745 € NETS d'impôt en poche par associé (soit 1 062 € nets / mois)",
+                taxOptimizationNote = "DÉCOMPTE FISCAL EXACT : 42 840 € de résultat brut -> -15% d'IS PME (6 426 €) = 36 414 € de bénéfice net distribuable -> 50% = 18 207 € brut -> -30% Flat Tax PFU (5 462 €) = 12 745 € NETS EN POCHE PAR ASSOCIÉ (1 062,08 € / mois)."
             ),
             commercialPacks = listOf(
                 CommercialPack(

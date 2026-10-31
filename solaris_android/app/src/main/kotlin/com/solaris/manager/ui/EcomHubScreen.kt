@@ -993,7 +993,7 @@ private fun PartnerProfitCard(profit: PartnerProfitProjection) {
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Text(text = "Bénéfice net global société :", color = Color(0xFF94A3B8), fontSize = 10.sp)
+                    Text(text = "Résultat d'exploitation brut SAS :", color = Color(0xFF94A3B8), fontSize = 10.sp)
                     Text(text = profit.totalCompanyNetMonthly, color = Color(0xFF34D399), fontSize = 11.sp, fontWeight = FontWeight.Bold)
                 }
             }
@@ -1058,7 +1058,7 @@ private fun PartnerProfitCard(profit: PartnerProfitProjection) {
                         fontWeight = FontWeight.Bold
                     )
                 }
-                Text(text = "Directeur Général • Salarié", color = Color(0xFF94A3B8), fontSize = 9.sp)
+                Text(text = "Co-fondateur • 50% du capital", color = Color(0xFF94A3B8), fontSize = 9.sp)
                 Spacer(modifier = Modifier.height(6.dp))
                 Text(
                     text = profit.associate2NetMonthly,
@@ -1092,7 +1092,7 @@ private fun PartnerProfitCard(profit: PartnerProfitProjection) {
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(text = "Dividendes annuels espérés / associé :", color = Color(0xFFA5B4FC), fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                    Text(text = "Dividende net réel en poche / associé :", color = Color(0xFFA5B4FC), fontSize = 10.sp, fontWeight = FontWeight.Bold)
                     Text(text = profit.annualDividendsPerPartner, color = Color.White, fontSize = 10.sp, fontWeight = FontWeight.Bold)
                 }
                 Spacer(modifier = Modifier.height(3.dp))
