@@ -2059,6 +2059,22 @@ private fun ProductionSimulationsCard(simulations: List<ProductionSimulation>) {
             fontSize = 10.sp,
             lineHeight = 14.sp
         )
+        Spacer(modifier = Modifier.height(6.dp))
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(6.dp))
+                .background(Color(0xFF064E3B).copy(alpha = 0.25f))
+                .border(1.dp, Color(0xFF10B981).copy(alpha = 0.4f), RoundedCornerShape(6.dp))
+                .padding(8.dp)
+        ) {
+            Text(
+                text = "☀️ Pourquoi ces écarts ? Le soleil ne brille pas pareil partout en France : un même panneau 440W produit +40% d'électricité en plus dans le Sud qu'à Paris. Les kWh/an mesurent l'électricité gratuite fabriquée qui efface vos factures Linky.",
+                color = Color(0xFFA7F3D0),
+                fontSize = 10.sp,
+                lineHeight = 14.sp
+            )
+        }
         Spacer(modifier = Modifier.height(8.dp))
 
         simulations.forEach { sim ->

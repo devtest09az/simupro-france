@@ -434,21 +434,27 @@
                     <div class="lg:col-span-7 space-y-6">
                         <!-- Step A : Zone géographique -->
                         <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
-                                1. Votre région d'ensoleillement :
-                            </label>
+                            <div class="flex justify-between items-center mb-1">
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-300">
+                                    1. Votre région d'ensoleillement :
+                                </label>
+                                <span class="text-[10px] text-amber-400 font-semibold">☀️ Le soleil produit +40% à Marseille qu'à Lille</span>
+                            </div>
+                            <p class="text-[11px] text-slate-400 mb-2.5">
+                                Les <strong>kWh/an</strong> indiquent la quantité d'électricité gratuite que vos panneaux fabriquent par an selon le soleil de votre région :
+                            </p>
                             <div class="grid grid-cols-3 gap-2 text-xs">
                                 <button type="button" onclick="setZone('nord')" id="btn-zone-nord" class="p-3 rounded-xl border border-white/10 bg-white/[0.02] hover:border-amber-400 text-center transition font-semibold">
                                     <span class="block text-amber-400 font-bold">Nord / IdF</span>
-                                    <span class="text-[10px] text-slate-400">~480 kWh/an</span>
+                                    <span id="zone-nord-kwh" class="text-[10px] text-slate-400">~480 kWh/an</span>
                                 </button>
                                 <button type="button" onclick="setZone('centre')" id="btn-zone-centre" class="p-3 rounded-xl border-2 border-amber-400 bg-amber-500/10 text-center transition font-semibold">
                                     <span class="block text-amber-400 font-bold">Centre / Ouest</span>
-                                    <span class="text-[10px] text-slate-400">~560 kWh/an</span>
+                                    <span id="zone-centre-kwh" class="text-[10px] text-slate-400">~560 kWh/an</span>
                                 </button>
                                 <button type="button" onclick="setZone('sud')" id="btn-zone-sud" class="p-3 rounded-xl border border-white/10 bg-white/[0.02] hover:border-amber-400 text-center transition font-semibold">
                                     <span class="block text-amber-400 font-bold">Sud / Médit.</span>
-                                    <span class="text-[10px] text-slate-400">~680 kWh/an</span>
+                                    <span id="zone-sud-kwh" class="text-[10px] text-slate-400">~680 kWh/an</span>
                                 </button>
                             </div>
                         </div>
@@ -1426,7 +1432,13 @@
             const savings10y = (yearlySavings * 10) - packCost;
             const savings25y = (yearlySavings * 25) - packCost;
 
-            document.getElementById('calc-kwh').innerText = `${totalGrossKwh} kWh bruts (${usefulKwh} kWh utiles ${currentTarifMode === 'hp' ? 'HP' : 'Base'})`;
+            document.getElementById('calc-kwh').innerText = `⚡ ${totalGrossKwh} kWh d'électricité gratuite produite / an (dont ${usefulKwh} kWh consommés direct)`;
+            const elNord = document.getElementById('zone-nord-kwh');
+            const elCentre = document.getElementById('zone-centre-kwh');
+            const elSud = document.getElementById('zone-sud-kwh');
+            if (elNord) elNord.innerText = `~${480 * panels} kWh/an`;
+            if (elCentre) elCentre.innerText = `~${560 * panels} kWh/an`;
+            if (elSud) elSud.innerText = `~${680 * panels} kWh/an`;
             document.getElementById('calc-yearly').innerText = `~${yearlySavings} € / an`;
             const roiEl = document.getElementById('calc-roi');
             if (roiEl) roiEl.innerText = `+ ${roiPercent} % / an`;

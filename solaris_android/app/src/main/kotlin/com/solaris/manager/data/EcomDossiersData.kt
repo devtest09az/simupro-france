@@ -656,25 +656,25 @@ B. POUR L'ALARME MAISON 4G (Colis Standard Léger) :
             productionSimulations = listOf(
                 ProductionSimulation(
                     zoneName = "Zone Nord & Île-de-France (Lille, Paris, Rennes, Strasbourg)",
-                    annualKwh = "490 kWh bruts (431 kWh utiles HP)",
-                    annualSavingsEuros = "116 € / an (HP 0,27 €) | 108 € (Base)",
-                    paybackYears = "3,0 ans (Rendement placement : +33,2 % / an)",
+                    annualKwh = "490 kWh produits/an (431 kWh consommés direct)",
+                    annualSavingsEuros = "116 € / an d'économie Linky",
+                    paybackYears = "3,0 ans (Rendement net : +33,2 % / an)",
                     sourceLabel = "PVGIS UE (30° Sud) • 88% autoconsommé",
                     sourceUrl = "https://re.jrc.ec.europa.eu/pvg_tools/fr/"
                 ),
                 ProductionSimulation(
                     zoneName = "Zone Centre & Grand Ouest (Nantes, Tours, Lyon, Bordeaux)",
-                    annualKwh = "560 kWh bruts (493 kWh utiles HP)",
-                    annualSavingsEuros = "133 € / an (HP 0,27 €) | 124 € (Base)",
-                    paybackYears = "2,6 ans (Rendement placement : +38,1 % / an)",
-                    sourceLabel = "PVGIS UE & EDF TRV • Rendement 12x Livret A",
+                    annualKwh = "560 kWh produits/an (493 kWh consommés direct)",
+                    annualSavingsEuros = "133 € / an d'économie Linky",
+                    paybackYears = "2,6 ans (Rendement net : +38,1 % / an)",
+                    sourceLabel = "PVGIS UE & EDF TRV • 12x le Livret A",
                     sourceUrl = "https://re.jrc.ec.europa.eu/pvg_tools/fr/"
                 ),
                 ProductionSimulation(
                     zoneName = "Zone Sud & Méditerranée (Toulouse, Montpellier, Marseille, Nice)",
-                    annualKwh = "680 kWh bruts (598 kWh utiles HP)",
-                    annualSavingsEuros = "161 € / an (HP 0,27 €) | 150 € (Base)",
-                    paybackYears = "2,1 ans (Rendement placement : +46,1 % / an)",
+                    annualKwh = "680 kWh produits/an (598 kWh consommés direct)",
+                    annualSavingsEuros = "161 € / an d'économie Linky",
+                    paybackYears = "2,1 ans (Rendement net : +46,1 % / an)",
                     sourceLabel = "PVGIS UE • Efface 100% talon d'été",
                     sourceUrl = "https://re.jrc.ec.europa.eu/pvg_tools/fr/"
                 )
