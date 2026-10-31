@@ -74,6 +74,7 @@ import com.solaris.manager.model.CostItem
 import com.solaris.manager.model.EcomDossier
 import com.solaris.manager.model.MarketStudyDetail
 import com.solaris.manager.model.ObjectionItem
+import com.solaris.manager.model.AssociateVerificationItem
 import com.solaris.manager.model.RiskMitigationItem
 import com.solaris.manager.model.PartnerPitchArgument
 import com.solaris.manager.model.PartnerProfitProjection
@@ -161,6 +162,7 @@ fun EcomHubScreen(
                 ProjectPhase.CONCEPTION -> ConceptionPhaseContent(
                     uiState = uiState,
                     onDossierClick = { viewModel.selectDossier(it) },
+                    onVerificationToggle = { dId, vId -> viewModel.toggleVerification(dId, vId) },
                     onNoteChange = { dId, text -> viewModel.onNoteChange(dId, text) },
                     onSaveNote = { viewModel.saveNotes(it) }
                 )
@@ -249,6 +251,7 @@ private fun HubHeader(uiState: EcomHubUiState) {
 private fun ConceptionPhaseContent(
     uiState: EcomHubUiState,
     onDossierClick: (String) -> Unit,
+    onVerificationToggle: (String, String) -> Unit,
     onNoteChange: (String, String) -> Unit,
     onSaveNote: (String) -> Unit
 ) {
@@ -344,6 +347,18 @@ private fun ConceptionPhaseContent(
                                 HorizontalDivider(color = Color(0xFF334155))
                                 Spacer(modifier = Modifier.height(10.dp))
                             }
+
+                            // 9. CHECKLIST D'AUDIT TERRAIN (À VÉRIFIER PAR LES ASSOCIÉS)
+                            if (dossier.associateVerifications.isNotEmpty()) {
+                                AssociateVerificationsCard(
+                                    verifications = dossier.associateVerifications,
+                                    onToggle = { vId -> onVerificationToggle(dossier.id, vId) }
+                                )
+                                Spacer(modifier = Modifier.height(14.dp))
+                                HorizontalDivider(color = Color(0xFF334155))
+                                Spacer(modifier = Modifier.height(10.dp))
+                            }
+
 
                             // 9. FAQ OBJECTIONS & PARADES COMMERCIALES
                             if (dossier.objections.isNotEmpty()) {
@@ -1694,6 +1709,186 @@ private fun RiskMitigationsCard(risks: List<RiskMitigationItem>) {
     }
 }
 
+
+@Composable
+private fun AssociateVerificationsCard(
+    verifications: List<AssociateVerificationItem>,
+    onToggle: (String) -> Unit
+) {
+    val context = LocalContext.current
+    val completedCount = verifications.count { it.isVerified }
+    val totalCount = verifications.size
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp))
+            .background(Color(0xFF0F172A))
+            .border(1.dp, Color(0xFF38BDF8).copy(alpha = 0.6f), RoundedCornerShape(10.dp))
+            .padding(12.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(text = "🔍", fontSize = 16.sp)
+                Spacer(modifier = Modifier.width(6.dp))
+                Text(
+                    text = "9. CHECKLIST D'AUDIT TERRAIN (À VÉRIFIER PAR VOUS)",
+                    color = Color(0xFF38BDF8),
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 11.sp
+                )
+            }
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(if (completedCount == totalCount) Color(0xFF10B981).copy(alpha = 0.2f) else Color(0xFF0284C7).copy(alpha = 0.2f))
+                    .border(1.dp, if (completedCount == totalCount) Color(0xFF10B981) else Color(0xFF38BDF8), RoundedCornerShape(4.dp))
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
+            ) {
+                Text(
+                    text = "$completedCount / $totalCount VÉRIFIÉS",
+                    color = if (completedCount == totalCount) Color(0xFF34D399) else Color(0xFF7DD3FC),
+                    fontSize = 8.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(
+            text = "Pour 0 approximation et 0 litige : les 5 vérifications concrètes à mener vous-mêmes avec scripts et pièces à exiger :",
+            color = Color(0xFF94A3B8),
+            fontSize = 9.sp
+        )
+        Spacer(modifier = Modifier.height(10.dp))
+
+        verifications.forEach { verif ->
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(Color(0xFF1E293B))
+                    .border(
+                        1.dp,
+                        if (verif.isVerified) Color(0xFF10B981).copy(alpha = 0.7f) else Color(0xFF475569),
+                        RoundedCornerShape(8.dp)
+                    )
+                    .padding(10.dp)
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { onToggle(verif.id) },
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Checkbox(
+                        checked = verif.isVerified,
+                        onCheckedChange = { onToggle(verif.id) },
+                        colors = CheckboxDefaults.colors(
+                            checkedColor = Color(0xFF10B981),
+                            uncheckedColor = Color(0xFF64748B)
+                        )
+                    )
+                    Spacer(modifier = Modifier.width(4.dp))
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(
+                            text = verif.title,
+                            color = if (verif.isVerified) Color(0xFF94A3B8) else Color.White,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 11.sp
+                        )
+                        Spacer(modifier = Modifier.height(2.dp))
+                        Box(
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(4.dp))
+                                .background(Color(0xFF334155))
+                                .padding(horizontal = 4.dp, vertical = 1.dp)
+                        ) {
+                            Text(
+                                text = "Responsable : ${verif.assignedTo}",
+                                color = Color(0xFFFCD34D),
+                                fontSize = 8.sp,
+                                fontWeight = FontWeight.SemiBold
+                            )
+                        }
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(6.dp))
+
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(6.dp))
+                        .background(Color(0xFF0F172A))
+                        .border(1.dp, Color(0xFF334155), RoundedCornerShape(6.dp))
+                        .padding(8.dp)
+                ) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = "📞 ACTION OU SCRIPT EXACT :",
+                            color = Color(0xFF38BDF8),
+                            fontSize = 8.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.clickable {
+                                val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                                val clip = ClipData.newPlainText("Script Action", verif.exactActionScript)
+                                clipboard.setPrimaryClip(clip)
+                                Toast.makeText(context, "Script copié !", Toast.LENGTH_SHORT).show()
+                            }
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.ContentCopy,
+                                contentDescription = "Copier",
+                                tint = Color(0xFF38BDF8),
+                                modifier = Modifier.size(11.dp)
+                            )
+                            Spacer(modifier = Modifier.width(3.dp))
+                            Text(
+                                text = "Copier",
+                                color = Color(0xFF38BDF8),
+                                fontSize = 8.sp,
+                                fontWeight = FontWeight.SemiBold
+                            )
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(3.dp))
+                    Text(
+                        text = verif.exactActionScript,
+                        color = Color(0xFFCBD5E1),
+                        fontSize = 9.sp,
+                        lineHeight = 13.sp
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(4.dp))
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(text = "📄 Pièce à exiger : ", color = Color(0xFF34D399), fontSize = 8.sp, fontWeight = FontWeight.Bold)
+                    Text(text = verif.documentToObtain, color = Color(0xFFA7F3D0), fontSize = 8.sp)
+                }
+
+                Spacer(modifier = Modifier.height(2.dp))
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(text = "⚖️ Source officielle : ", color = Color(0xFF94A3B8), fontSize = 8.sp, fontWeight = FontWeight.Bold)
+                    Text(text = verif.officialLegalSource, color = Color(0xFFCBD5E1), fontSize = 8.sp)
+                }
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+        }
+    }
+}
+
 @Composable
 private fun ObjectionsCard(objections: List<ObjectionItem>) {
     val context = LocalContext.current
@@ -1715,7 +1910,7 @@ private fun ObjectionsCard(objections: List<ObjectionItem>) {
                 Text(text = "🎯", fontSize = 16.sp)
                 Spacer(modifier = Modifier.width(6.dp))
                 Text(
-                    text = "9. FAQ OBJECTIONS & PARADES COMMERCIALES",
+                    text = "10. FAQ OBJECTIONS & PARADES COMMERCIALES",
                     color = Color(0xFFFBBF24),
                     fontSize = 11.sp,
                     fontWeight = FontWeight.Bold,
@@ -1832,7 +2027,7 @@ private fun RegulatoryRoadmapCard(roadmap: List<RegulatoryRoadmapItem>) {
                 Text(text = "⚖️", fontSize = 16.sp)
                 Spacer(modifier = Modifier.width(6.dp))
                 Text(
-                    text = "10. CADRE LÉGAL, DÉMARCHES & SÉCURISATION",
+                    text = "11. CADRE LÉGAL, DÉMARCHES & SÉCURISATION",
                     color = Color(0xFF38BDF8),
                     fontSize = 11.sp,
                     fontWeight = FontWeight.Bold,

@@ -31,11 +31,16 @@ class EcomHubViewModel(application: Application) : AndroidViewModel(application)
                 val isDone = prefs.getBoolean("action_${dossier.id}_${action.id}", action.isDone)
                 action.copy(isDone = isDone)
             }
+            val restoredVerifications = dossier.associateVerifications.map { v ->
+                val isVerified = prefs.getBoolean("verif_${dossier.id}_${v.id}", v.isVerified)
+                v.copy(isVerified = isVerified)
+            }
             val completedCount = restoredActions.count { it.isDone }
             val percent = if (restoredActions.isNotEmpty()) ((completedCount.toDouble() / restoredActions.size) * 100).toInt() else 0
             dossier.copy(
                 partnerNotes = persistedNotes,
                 productionActions = restoredActions,
+                associateVerifications = restoredVerifications,
                 progressPercent = percent
             )
         }
@@ -105,4 +110,25 @@ class EcomHubViewModel(application: Application) : AndroidViewModel(application)
         }
         _uiState.value = _uiState.value.copy(dossiers = updatedDossiers)
     }
+
+    fun toggleVerification(dossierId: String, verificationId: String) {
+        val updatedDossiers = _uiState.value.dossiers.map { dossier ->
+            if (dossier.id == dossierId) {
+                val updatedVerifs = dossier.associateVerifications.map { v ->
+                    if (v.id == verificationId) {
+                        val next = !v.isVerified
+                        prefs.edit().putBoolean("verif_${dossier.id}_${v.id}", next).apply()
+                        v.copy(isVerified = next)
+                    } else {
+                        v
+                    }
+                }
+                dossier.copy(associateVerifications = updatedVerifs)
+            } else {
+                dossier
+            }
+        }
+        _uiState.value = _uiState.value.copy(dossiers = updatedDossiers)
+    }
+
 }

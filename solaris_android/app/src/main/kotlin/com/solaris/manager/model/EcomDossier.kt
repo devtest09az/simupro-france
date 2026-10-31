@@ -82,6 +82,16 @@ data class PartnerPitchArgument(
     val keyProof: String
 )
 
+data class AssociateVerificationItem(
+    val id: String,
+    val title: String,
+    val assignedTo: String,
+    val exactActionScript: String,
+    val documentToObtain: String,
+    val officialLegalSource: String,
+    var isVerified: Boolean = false
+)
+
 data class ObjectionItem(
     val objection: String,
     val rebuttal: String,
@@ -131,6 +141,7 @@ data class EcomDossier(
     val partnerPitchArguments: List<PartnerPitchArgument> = emptyList(),
     // Objections clients réelles & parades mot à mot
     val riskMitigations: List<RiskMitigationItem> = emptyList(),
+    val associateVerifications: List<AssociateVerificationItem> = emptyList(),
     val objections: List<ObjectionItem> = emptyList(),
     // Réglementation, démarches administratives & boucliers
     val regulatoryRoadmap: List<RegulatoryRoadmapItem> = emptyList(),

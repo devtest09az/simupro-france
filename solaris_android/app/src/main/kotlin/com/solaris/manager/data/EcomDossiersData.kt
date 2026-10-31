@@ -6,6 +6,7 @@ import com.solaris.manager.model.CostItem
 import com.solaris.manager.model.EcomDossier
 import com.solaris.manager.model.MarketStudyDetail
 import com.solaris.manager.model.ObjectionItem
+import com.solaris.manager.model.AssociateVerificationItem
 import com.solaris.manager.model.RiskMitigationItem
 import com.solaris.manager.model.PartnerPitchArgument
 import com.solaris.manager.model.PartnerProfitProjection
@@ -260,6 +261,48 @@ object EcomDossiersData {
                     keyProof = "Rétroplanning validé sans besoin de prêt bancaire ni d'investisseur."
                 )
             ),
+                        associateVerifications = listOf(
+                AssociateVerificationItem(
+                    id = "audit_grossiste_conditions",
+                    title = "1. Appel Grossiste B2B : Validation Compte & Conditions Fret Palette",
+                    assignedTo = "Associé 1 (Président) & Associé 2",
+                    exactActionScript = "Appeler POwR Connect Nantes au 02 40 92 00 00 (ou UpWatt au 01 84 80 84 80). Script mot à mot : 'Bonjour, nous créons notre SAS de distribution photovoltaïque Plug & Play (panneaux Trina 440W + micro-onduleurs Hoymiles). Pouvez-vous nous confirmer l'ouverture d'un compte professionnel sans Kbis définitif pendant la constitution (sur attestation de dépôt des fonds Qonto) et le coût exact d'une expédition Geodis hayon 48h chez un particulier ?'",
+                    documentToObtain = "Grille tarifaire B2B officielle + Fiche d'ouverture de compte revendeur + Conditions générales de fret Geodis.",
+                    officialLegalSource = "Conditions Générales de Vente Professionnelles POwR Connect & UpWatt France."
+                ),
+                AssociateVerificationItem(
+                    id = "audit_rc_pro_assurance",
+                    title = "2. Souscription Assurance RC Pro Vente de Matériel Électrique",
+                    assignedTo = "Associé 1 (Président)",
+                    exactActionScript = "Faire une simulation directe sur Hiscox.fr ou Coover.fr pour le code NAF 47.91A (Vente à distance sur catalogue spécialisé). Point impératif à vérifier : Sélectionner la garantie 'RC Après Livraison & Produits' (plafond minimum 1 500 000 €). Vérifier par écrit qu'aucune garantie décennale du bâtiment n'est exigée pour le matériel amovible prêt à brancher.",
+                    documentToObtain = "Attestation d'assurance RC Pro Exploitation & Après Livraison (coût cible : 35 € à 50 € / mois).",
+                    officialLegalSource = "Code des assurances art. L112-1 & Code civil art. 1245 (responsabilité du fait des produits défectueux)."
+                ),
+                AssociateVerificationItem(
+                    id = "audit_chomage_are_france_travail",
+                    title = "3. Validation Maintien 100% ARE Chômage avec le Conseiller France Travail",
+                    assignedTo = "Associé 1 (Président demandeur d'emploi)",
+                    exactActionScript = "Envoyer un message sur l'espace personnel France Travail : 'Dans le cadre de mon projet de création de SAS, je serai Président non rémunéré afin de préserver 100% de la trésorerie pour le stock. Pouvez-vous me confirmer que la fourniture d'un PV d'AG actant mon mandat à titre gratuit me permet de maintenir l'intégralité de mon ARE mensuelle lors de chaque actualisation ?'",
+                    documentToObtain = "Confirmation écrite de votre conseiller référent France Travail validant le maintien ARE.",
+                    officialLegalSource = "Circulaire Unédic n° 2014-26 du 30/09/2014 (Fiche 2 - Dirigeants de société non rémunérés)."
+                ),
+                AssociateVerificationItem(
+                    id = "audit_urbanisme_plu_local",
+                    title = "4. Vérification Périmètre ABF / Monuments Historiques de votre Commune",
+                    assignedTo = "Associé 2 (Directeur Général)",
+                    exactActionScript = "Se rendre sur le portail officiel de l'État : geoportail-urbanisme.gouv.fr et renseigner l'adresse de votre siège / domicile. Vérifier que la parcelle ne se situe pas dans un périmètre de protection des abords d'un monument historique ou d'un site patrimonial remarquable (qui imposerait l'accord de l'Architecte des Bâtiments de France).",
+                    documentToObtain = "Extrait de zonage PLU officiel (Zone U, AU, etc.) téléchargeable en 1 clic.",
+                    officialLegalSource = "Code de l'urbanisme, article R*421-2 point a) (Dispense totale pour pose au sol < 1,80 m hors ABF)."
+                ),
+                AssociateVerificationItem(
+                    id = "audit_crash_test_echantillon",
+                    title = "5. Crash-Test Physique de l'Échantillon & Vérification Linky",
+                    assignedTo = "Les 2 associés ensemble",
+                    exactActionScript = "Commander 1 kit Solo de démonstration chez Kitsolaire-Discount ou UpWatt. 1) Brancher sur une prise murale avec wattmètre. 2) Relever sur l'écran du compteur Linky la puissance apparente en VA (doit chuter immédiatement de 300 à 400 VA au soleil). 3) Débrancher brutalement la prise : vérifier au multimètre que la tension aux broches de la prise mâle tombe à 0 Volt en moins d'une demi-seconde (Preuve physique du relais DIN VDE anti-électrocution).",
+                    documentToObtain = "Photos & vidéo HD du test Linky pour illustrer les futures annonces Leboncoin et le site web.",
+                    officialLegalSource = "Norme européenne DIN EN 50549-1 & Norme DIN VDE 0126-1-1 (temps de coupure garanti < 200 ms)."
+                )
+            ),
             objections = listOf(
                 ObjectionItem(
                     objection = "« Est-ce dangereux pour mon compteur Linky ou mon installation électrique ? »",
@@ -439,6 +482,48 @@ object EcomDossiersData {
                 annualDividendsPerPartner = "~ 11 600 € nets d'impôt en poche par associé (après IS 15% et Flat Tax 30%)",
                 taxOptimizationNote = "Marge nette record (52,5%) : rentabilité immédiate pour autofinancer l'acquisition sans découvert."
             ),
+                        associateVerifications = listOf(
+                AssociateVerificationItem(
+                    id = "audit_grossiste_conditions",
+                    title = "1. Appel Grossiste B2B : Validation Compte & Conditions Fret Palette",
+                    assignedTo = "Associé 1 (Président) & Associé 2",
+                    exactActionScript = "Appeler POwR Connect Nantes au 02 40 92 00 00 (ou UpWatt au 01 84 80 84 80). Script mot à mot : 'Bonjour, nous créons notre SAS de distribution photovoltaïque Plug & Play (panneaux Trina 440W + micro-onduleurs Hoymiles). Pouvez-vous nous confirmer l'ouverture d'un compte professionnel sans Kbis définitif pendant la constitution (sur attestation de dépôt des fonds Qonto) et le coût exact d'une expédition Geodis hayon 48h chez un particulier ?'",
+                    documentToObtain = "Grille tarifaire B2B officielle + Fiche d'ouverture de compte revendeur + Conditions générales de fret Geodis.",
+                    officialLegalSource = "Conditions Générales de Vente Professionnelles POwR Connect & UpWatt France."
+                ),
+                AssociateVerificationItem(
+                    id = "audit_rc_pro_assurance",
+                    title = "2. Souscription Assurance RC Pro Vente de Matériel Électrique",
+                    assignedTo = "Associé 1 (Président)",
+                    exactActionScript = "Faire une simulation directe sur Hiscox.fr ou Coover.fr pour le code NAF 47.91A (Vente à distance sur catalogue spécialisé). Point impératif à vérifier : Sélectionner la garantie 'RC Après Livraison & Produits' (plafond minimum 1 500 000 €). Vérifier par écrit qu'aucune garantie décennale du bâtiment n'est exigée pour le matériel amovible prêt à brancher.",
+                    documentToObtain = "Attestation d'assurance RC Pro Exploitation & Après Livraison (coût cible : 35 € à 50 € / mois).",
+                    officialLegalSource = "Code des assurances art. L112-1 & Code civil art. 1245 (responsabilité du fait des produits défectueux)."
+                ),
+                AssociateVerificationItem(
+                    id = "audit_chomage_are_france_travail",
+                    title = "3. Validation Maintien 100% ARE Chômage avec le Conseiller France Travail",
+                    assignedTo = "Associé 1 (Président demandeur d'emploi)",
+                    exactActionScript = "Envoyer un message sur l'espace personnel France Travail : 'Dans le cadre de mon projet de création de SAS, je serai Président non rémunéré afin de préserver 100% de la trésorerie pour le stock. Pouvez-vous me confirmer que la fourniture d'un PV d'AG actant mon mandat à titre gratuit me permet de maintenir l'intégralité de mon ARE mensuelle lors de chaque actualisation ?'",
+                    documentToObtain = "Confirmation écrite de votre conseiller référent France Travail validant le maintien ARE.",
+                    officialLegalSource = "Circulaire Unédic n° 2014-26 du 30/09/2014 (Fiche 2 - Dirigeants de société non rémunérés)."
+                ),
+                AssociateVerificationItem(
+                    id = "audit_urbanisme_plu_local",
+                    title = "4. Vérification Périmètre ABF / Monuments Historiques de votre Commune",
+                    assignedTo = "Associé 2 (Directeur Général)",
+                    exactActionScript = "Se rendre sur le portail officiel de l'État : geoportail-urbanisme.gouv.fr et renseigner l'adresse de votre siège / domicile. Vérifier que la parcelle ne se situe pas dans un périmètre de protection des abords d'un monument historique ou d'un site patrimonial remarquable (qui imposerait l'accord de l'Architecte des Bâtiments de France).",
+                    documentToObtain = "Extrait de zonage PLU officiel (Zone U, AU, etc.) téléchargeable en 1 clic.",
+                    officialLegalSource = "Code de l'urbanisme, article R*421-2 point a) (Dispense totale pour pose au sol < 1,80 m hors ABF)."
+                ),
+                AssociateVerificationItem(
+                    id = "audit_crash_test_echantillon",
+                    title = "5. Crash-Test Physique de l'Échantillon & Vérification Linky",
+                    assignedTo = "Les 2 associés ensemble",
+                    exactActionScript = "Commander 1 kit Solo de démonstration chez Kitsolaire-Discount ou UpWatt. 1) Brancher sur une prise murale avec wattmètre. 2) Relever sur l'écran du compteur Linky la puissance apparente en VA (doit chuter immédiatement de 300 à 400 VA au soleil). 3) Débrancher brutalement la prise : vérifier au multimètre que la tension aux broches de la prise mâle tombe à 0 Volt en moins d'une demi-seconde (Preuve physique du relais DIN VDE anti-électrocution).",
+                    documentToObtain = "Photos & vidéo HD du test Linky pour illustrer les futures annonces Leboncoin et le site web.",
+                    officialLegalSource = "Norme européenne DIN EN 50549-1 & Norme DIN VDE 0126-1-1 (temps de coupure garanti < 200 ms)."
+                )
+            ),
             objections = listOf(
                 ObjectionItem(
                     objection = "« Si je ne paie pas d'abonnement, qui appelle la police en cas d'intrusion ? »",
@@ -586,6 +671,48 @@ object EcomDossiersData {
                 associate2SpecificAdvantage = "Cumul légal parfait (Code du travail art. L1222-5) + salaire CDI mensuel intact",
                 annualDividendsPerPartner = "~ 24 300 € nets d'impôt en poche par associé (après IS 15% jusqu'à 42.5k€ et Flat Tax 30%)",
                 taxOptimizationNote = "Structure unique multi-marques (code NAF 47.91A) : un seul compte bancaire, une comptabilité, zéro frottement fiscal."
+            ),
+                        associateVerifications = listOf(
+                AssociateVerificationItem(
+                    id = "audit_grossiste_conditions",
+                    title = "1. Appel Grossiste B2B : Validation Compte & Conditions Fret Palette",
+                    assignedTo = "Associé 1 (Président) & Associé 2",
+                    exactActionScript = "Appeler POwR Connect Nantes au 02 40 92 00 00 (ou UpWatt au 01 84 80 84 80). Script mot à mot : 'Bonjour, nous créons notre SAS de distribution photovoltaïque Plug & Play (panneaux Trina 440W + micro-onduleurs Hoymiles). Pouvez-vous nous confirmer l'ouverture d'un compte professionnel sans Kbis définitif pendant la constitution (sur attestation de dépôt des fonds Qonto) et le coût exact d'une expédition Geodis hayon 48h chez un particulier ?'",
+                    documentToObtain = "Grille tarifaire B2B officielle + Fiche d'ouverture de compte revendeur + Conditions générales de fret Geodis.",
+                    officialLegalSource = "Conditions Générales de Vente Professionnelles POwR Connect & UpWatt France."
+                ),
+                AssociateVerificationItem(
+                    id = "audit_rc_pro_assurance",
+                    title = "2. Souscription Assurance RC Pro Vente de Matériel Électrique",
+                    assignedTo = "Associé 1 (Président)",
+                    exactActionScript = "Faire une simulation directe sur Hiscox.fr ou Coover.fr pour le code NAF 47.91A (Vente à distance sur catalogue spécialisé). Point impératif à vérifier : Sélectionner la garantie 'RC Après Livraison & Produits' (plafond minimum 1 500 000 €). Vérifier par écrit qu'aucune garantie décennale du bâtiment n'est exigée pour le matériel amovible prêt à brancher.",
+                    documentToObtain = "Attestation d'assurance RC Pro Exploitation & Après Livraison (coût cible : 35 € à 50 € / mois).",
+                    officialLegalSource = "Code des assurances art. L112-1 & Code civil art. 1245 (responsabilité du fait des produits défectueux)."
+                ),
+                AssociateVerificationItem(
+                    id = "audit_chomage_are_france_travail",
+                    title = "3. Validation Maintien 100% ARE Chômage avec le Conseiller France Travail",
+                    assignedTo = "Associé 1 (Président demandeur d'emploi)",
+                    exactActionScript = "Envoyer un message sur l'espace personnel France Travail : 'Dans le cadre de mon projet de création de SAS, je serai Président non rémunéré afin de préserver 100% de la trésorerie pour le stock. Pouvez-vous me confirmer que la fourniture d'un PV d'AG actant mon mandat à titre gratuit me permet de maintenir l'intégralité de mon ARE mensuelle lors de chaque actualisation ?'",
+                    documentToObtain = "Confirmation écrite de votre conseiller référent France Travail validant le maintien ARE.",
+                    officialLegalSource = "Circulaire Unédic n° 2014-26 du 30/09/2014 (Fiche 2 - Dirigeants de société non rémunérés)."
+                ),
+                AssociateVerificationItem(
+                    id = "audit_urbanisme_plu_local",
+                    title = "4. Vérification Périmètre ABF / Monuments Historiques de votre Commune",
+                    assignedTo = "Associé 2 (Directeur Général)",
+                    exactActionScript = "Se rendre sur le portail officiel de l'État : geoportail-urbanisme.gouv.fr et renseigner l'adresse de votre siège / domicile. Vérifier que la parcelle ne se situe pas dans un périmètre de protection des abords d'un monument historique ou d'un site patrimonial remarquable (qui imposerait l'accord de l'Architecte des Bâtiments de France).",
+                    documentToObtain = "Extrait de zonage PLU officiel (Zone U, AU, etc.) téléchargeable en 1 clic.",
+                    officialLegalSource = "Code de l'urbanisme, article R*421-2 point a) (Dispense totale pour pose au sol < 1,80 m hors ABF)."
+                ),
+                AssociateVerificationItem(
+                    id = "audit_crash_test_echantillon",
+                    title = "5. Crash-Test Physique de l'Échantillon & Vérification Linky",
+                    assignedTo = "Les 2 associés ensemble",
+                    exactActionScript = "Commander 1 kit Solo de démonstration chez Kitsolaire-Discount ou UpWatt. 1) Brancher sur une prise murale avec wattmètre. 2) Relever sur l'écran du compteur Linky la puissance apparente en VA (doit chuter immédiatement de 300 à 400 VA au soleil). 3) Débrancher brutalement la prise : vérifier au multimètre que la tension aux broches de la prise mâle tombe à 0 Volt en moins d'une demi-seconde (Preuve physique du relais DIN VDE anti-électrocution).",
+                    documentToObtain = "Photos & vidéo HD du test Linky pour illustrer les futures annonces Leboncoin et le site web.",
+                    officialLegalSource = "Norme européenne DIN EN 50549-1 & Norme DIN VDE 0126-1-1 (temps de coupure garanti < 200 ms)."
+                )
             ),
             objections = listOf(
                 ObjectionItem(
@@ -783,6 +910,48 @@ object EcomDossiersData {
                 associate2SpecificAdvantage = "Zéro composant électronique, zéro bug logiciel, aucun SAV complexe à gérer",
                 annualDividendsPerPartner = "~ 10 200 € nets d'impôt en poche par associé (après IS 15% et Flat Tax 30%)",
                 taxOptimizationNote = "Produit de renfort après stabilisation du solaire : apporte environ 1 430 € net / mois supplémentaire par associé."
+            ),
+                        associateVerifications = listOf(
+                AssociateVerificationItem(
+                    id = "audit_grossiste_conditions",
+                    title = "1. Appel Grossiste B2B : Validation Compte & Conditions Fret Palette",
+                    assignedTo = "Associé 1 (Président) & Associé 2",
+                    exactActionScript = "Appeler POwR Connect Nantes au 02 40 92 00 00 (ou UpWatt au 01 84 80 84 80). Script mot à mot : 'Bonjour, nous créons notre SAS de distribution photovoltaïque Plug & Play (panneaux Trina 440W + micro-onduleurs Hoymiles). Pouvez-vous nous confirmer l'ouverture d'un compte professionnel sans Kbis définitif pendant la constitution (sur attestation de dépôt des fonds Qonto) et le coût exact d'une expédition Geodis hayon 48h chez un particulier ?'",
+                    documentToObtain = "Grille tarifaire B2B officielle + Fiche d'ouverture de compte revendeur + Conditions générales de fret Geodis.",
+                    officialLegalSource = "Conditions Générales de Vente Professionnelles POwR Connect & UpWatt France."
+                ),
+                AssociateVerificationItem(
+                    id = "audit_rc_pro_assurance",
+                    title = "2. Souscription Assurance RC Pro Vente de Matériel Électrique",
+                    assignedTo = "Associé 1 (Président)",
+                    exactActionScript = "Faire une simulation directe sur Hiscox.fr ou Coover.fr pour le code NAF 47.91A (Vente à distance sur catalogue spécialisé). Point impératif à vérifier : Sélectionner la garantie 'RC Après Livraison & Produits' (plafond minimum 1 500 000 €). Vérifier par écrit qu'aucune garantie décennale du bâtiment n'est exigée pour le matériel amovible prêt à brancher.",
+                    documentToObtain = "Attestation d'assurance RC Pro Exploitation & Après Livraison (coût cible : 35 € à 50 € / mois).",
+                    officialLegalSource = "Code des assurances art. L112-1 & Code civil art. 1245 (responsabilité du fait des produits défectueux)."
+                ),
+                AssociateVerificationItem(
+                    id = "audit_chomage_are_france_travail",
+                    title = "3. Validation Maintien 100% ARE Chômage avec le Conseiller France Travail",
+                    assignedTo = "Associé 1 (Président demandeur d'emploi)",
+                    exactActionScript = "Envoyer un message sur l'espace personnel France Travail : 'Dans le cadre de mon projet de création de SAS, je serai Président non rémunéré afin de préserver 100% de la trésorerie pour le stock. Pouvez-vous me confirmer que la fourniture d'un PV d'AG actant mon mandat à titre gratuit me permet de maintenir l'intégralité de mon ARE mensuelle lors de chaque actualisation ?'",
+                    documentToObtain = "Confirmation écrite de votre conseiller référent France Travail validant le maintien ARE.",
+                    officialLegalSource = "Circulaire Unédic n° 2014-26 du 30/09/2014 (Fiche 2 - Dirigeants de société non rémunérés)."
+                ),
+                AssociateVerificationItem(
+                    id = "audit_urbanisme_plu_local",
+                    title = "4. Vérification Périmètre ABF / Monuments Historiques de votre Commune",
+                    assignedTo = "Associé 2 (Directeur Général)",
+                    exactActionScript = "Se rendre sur le portail officiel de l'État : geoportail-urbanisme.gouv.fr et renseigner l'adresse de votre siège / domicile. Vérifier que la parcelle ne se situe pas dans un périmètre de protection des abords d'un monument historique ou d'un site patrimonial remarquable (qui imposerait l'accord de l'Architecte des Bâtiments de France).",
+                    documentToObtain = "Extrait de zonage PLU officiel (Zone U, AU, etc.) téléchargeable en 1 clic.",
+                    officialLegalSource = "Code de l'urbanisme, article R*421-2 point a) (Dispense totale pour pose au sol < 1,80 m hors ABF)."
+                ),
+                AssociateVerificationItem(
+                    id = "audit_crash_test_echantillon",
+                    title = "5. Crash-Test Physique de l'Échantillon & Vérification Linky",
+                    assignedTo = "Les 2 associés ensemble",
+                    exactActionScript = "Commander 1 kit Solo de démonstration chez Kitsolaire-Discount ou UpWatt. 1) Brancher sur une prise murale avec wattmètre. 2) Relever sur l'écran du compteur Linky la puissance apparente en VA (doit chuter immédiatement de 300 à 400 VA au soleil). 3) Débrancher brutalement la prise : vérifier au multimètre que la tension aux broches de la prise mâle tombe à 0 Volt en moins d'une demi-seconde (Preuve physique du relais DIN VDE anti-électrocution).",
+                    documentToObtain = "Photos & vidéo HD du test Linky pour illustrer les futures annonces Leboncoin et le site web.",
+                    officialLegalSource = "Norme européenne DIN EN 50549-1 & Norme DIN VDE 0126-1-1 (temps de coupure garanti < 200 ms)."
+                )
             ),
             objections = listOf(
                 ObjectionItem(
