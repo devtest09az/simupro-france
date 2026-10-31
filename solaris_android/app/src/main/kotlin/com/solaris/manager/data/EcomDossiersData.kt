@@ -1403,6 +1403,45 @@ B) Toiture en pente (Tuiles mécaniques / Ardoises) :
 - Démarche : Formulaire Cerfa 13404*10 déposé en mairie ou sur le guichet d'urbanisme en ligne.
 - Délai d'instruction : 1 mois (2 mois si périmètre ABF Bâtiments de France). Accord tacite si absence de réponse.""",
                     sourceOrNorm = "Art. R421-17 Code de l'urbanisme & Norme NFC 15-100"
+                ),
+                ToolkitItem(
+                    id = "tool_comparatif_roi_batterie_vs_edfoa",
+                    title = "📊 Audit Comparatif Rentabilité : 4 Modèles Solaires (France 2026)",
+                    category = "Stratégie Commerciale & ROI",
+                    contentToCopy = """AUDIT COMPARATIF DE RENTABILITÉ : 4 MODÈLES SOLAIRES EN FRANCE (2026)
+
+1. MODÈLE 1 : PLUG & PLAY DIRECT (1 À 2 PANNEAUX 440W-880W) - LE CHAMPION DU ROI :
+- Investissement : 349 € (1 panneau 440W) à 649 € TTC (2 panneaux 880W).
+- Taux d'autoconsommation : 85% à 96% sans batterie (consommation du talon passif : frigo, box, veilles).
+- Économie Linky : 142 € à 250 € / an (base 0,27 €/kWh).
+- Durée d'amortissement (Payback) : 2,5 ans !
+- Rendement net du capital investi : +38% à +41% par an (12x le Livret A).
+- Réglementation : Convention CACSI Enedis 100% gratuite en 5 min, sans consuel, sans taxe.
+
+2. MODÈLE 2 : PLUG & PLAY AVEC BATTERIE DE STOCKAGE (1,6 kWh) :
+- Investissement : ~1 700 € TTC (le pack batterie coûte ~1 050 € à lui seul).
+- Taux d'autoconsommation : ~98% à 100%.
+- Économie Linky : ~317 € / an (gain nocturne supplémentaire de seulement ~67,50 €/an).
+- Durée d'amortissement : 5,4 ans pour le kit complet, mais 15,5 ANS pour amortir la batterie seule !
+- Angle mort technique : Durée de vie d'une batterie LiFePO4 = 8 à 10 ans. Elle doit être changée avant d'avoir remboursé son propre surcoût.
+
+3. MODÈLE 3 : TOITURE 3 kWc RGE + VENTE DU SURPLUS EDF OBLIGATION D'ACHAT (EDF OA) :
+- Investissement brut : ~9 500 € TTC par artisan RGE.
+- Prime à l'autoconsommation de l'État : -1 050 € (versée en 1 fois).
+- Coût net réel : 8 450 € TTC.
+- Revente du surplus non consommé : 0,13 € / kWh injecté dans le réseau (tarif réglementé 20 ans).
+- Gain annuel combiné : ~694 € / an (~420 € d'économies + ~274 € de revente EDF OA).
+- Durée d'amortissement : 12,2 ans ! Rendement net : ~8,2% / an.
+- RÈGLE LÉGALE STRICTE (Arrêté S21) : La revente EDF OA est STRICTEMENT INTERDITE aux particuliers installant du Plug & Play eux-mêmes. Elle impose impérativement un artisan RGE QualiPV et l'attestation Consuel.
+
+4. MODÈLE 4 : AUTONOMIE TOTALE 100% HORS RÉSEAU (SITE ISOLÉ) :
+- Investissement : > 25 000 € TTC (30 panneaux, 25 kWh de batteries LiFePO4, onduleur hybride 10 kVA, groupe électrogène de secours).
+- Durée d'amortissement : > 20 ans (NON RENTABLE économiquement).
+- Le piège météo : En France, la production solaire en décembre/janvier est divisée par 8 par rapport à juin. Dimensionner pour l'hiver crée un surdimensionnement ruineux et inutile en été.
+
+SYNTHÈSE COMMERCIALE CLIENT :
+Le Plug & Play direct (1 ou 2 panneaux) est mathématiquement le meilleur investissement d'énergie en France : amorti en 30 mois, sans travaux lourds, sans dépendre des subventions ni des démarches administratives complexes.""",
+                    sourceOrNorm = "Code de l'énergie art. L314-1 & Analyse financière comparative 2026"
                 )
             )
         ),

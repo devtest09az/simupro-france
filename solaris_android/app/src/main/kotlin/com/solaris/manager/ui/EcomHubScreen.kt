@@ -359,6 +359,8 @@ private fun ConceptionPhaseContent(
                             if (dossier.id == "dossier_solaire") {
                                 CompetitorBenchmarkCard()
                                 Spacer(modifier = Modifier.height(14.dp))
+                                SolarModelsRoiBenchmarkCard()
+                                Spacer(modifier = Modifier.height(14.dp))
                                 HorizontalDivider(color = Color(0xFF334155))
                                 Spacer(modifier = Modifier.height(10.dp))
                             }
@@ -935,6 +937,210 @@ private fun MarketStudyCard(study: MarketStudyDetail) {
                 color = Color.White,
                 fontSize = 10.sp,
                 fontWeight = FontWeight.Bold
+            )
+        }
+    }
+}
+
+
+@Composable
+private fun SolarModelsRoiBenchmarkCard() {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp))
+            .background(Color(0xFF0B132B))
+            .border(1.dp, Color(0xFF10B981).copy(alpha = 0.5f), RoundedCornerShape(10.dp))
+            .padding(12.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(text = "📊", fontSize = 16.sp)
+                Spacer(modifier = Modifier.width(6.dp))
+                Text(
+                    text = "COMPARATIF RENTABILITÉ : 4 MODÈLES SOLAIRES (FRANCE 2026)",
+                    color = Color(0xFF34D399),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 0.5.sp
+                )
+            }
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(Color(0xFF059669).copy(alpha = 0.2f))
+                    .border(1.dp, Color(0xFF34D399), RoundedCornerShape(4.dp))
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
+            ) {
+                Text(
+                    text = "AUDIT ROI & AMORTISSEMENT",
+                    color = Color(0xFFA7F3D0),
+                    fontSize = 9.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+        Text(
+            text = "Analyse mathématique indépendante : pourquoi le Plug & Play sans batterie écrase tous les autres modèles en vitesse d'amortissement.",
+            color = Color(0xFF94A3B8),
+            fontSize = 11.sp
+        )
+
+        Spacer(modifier = Modifier.height(12.dp))
+
+        // Modèle 1 : Plug & Play Direct
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(8.dp))
+                .background(Color(0xFF064E3B).copy(alpha = 0.35f))
+                .border(1.dp, Color(0xFF10B981), RoundedCornerShape(8.dp))
+                .padding(10.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "🏆 1. PLUG & PLAY DIRECT (1 À 2 PANNEAUX) - NOTRE CHOIX",
+                    color = Color(0xFF34D399),
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    text = "Amorti en 2,5 ans",
+                    color = Color(0xFF6EE7B7),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Black
+                )
+            }
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = "• Coût : 349 € à 649 € TTC • Zéro batterie • Autoconsommation : 85% à 96%\n• Gain : 142 € à 250 € / an • Démarche : CACSI Enedis gratuite en 5 min sans Consuel\n• Rendement net du placement : +38% à +41% / an (12x supérieur au Livret A)",
+                color = Color.White,
+                fontSize = 10.sp,
+                lineHeight = 15.sp
+            )
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // Modèle 2 : Plug & Play avec Batterie
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(8.dp))
+                .background(Color(0xFF1E293B).copy(alpha = 0.6f))
+                .border(1.dp, Color(0xFF334155), RoundedCornerShape(8.dp))
+                .padding(10.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "🔋 2. PLUG & PLAY AVEC BATTERIE (1,6 kWh ECOFLOW/ANKER)",
+                    color = Color(0xFF38BDF8),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    text = "Amorti en 5,4 ans",
+                    color = Color(0xFF7DD3FC),
+                    fontSize = 10.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = "• Coût : ~1 700 € TTC (la batterie coûte ~1 050 € à elle seule pour rapporter 67 €/an la nuit)\n• Autoconsommation : ~98% à 100% • Gain : ~317 € / an • Rendement net : +18,6% / an\n• Angle mort : Durée de vie batterie (8-10 ans), elle s'amortit juste avant son remplacement.",
+                color = Color(0xFFCBD5E1),
+                fontSize = 10.sp,
+                lineHeight = 15.sp
+            )
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // Modèle 3 : Toiture 3 kWc RGE + EDF OA
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(8.dp))
+                .background(Color(0xFF1E293B).copy(alpha = 0.6f))
+                .border(1.dp, Color(0xFF334155), RoundedCornerShape(8.dp))
+                .padding(10.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "🏠 3. TOITURE 3 kWc ARTISAN RGE + REVENTE EDF OA",
+                    color = Color(0xFFFBBF24),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    text = "Amorti en 12,2 ans",
+                    color = Color(0xFFFCD34D),
+                    fontSize = 10.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = "• Coût net : 8 450 € TTC (devis artisan ~9 500 € déduit de 1 050 € d'aide d'État)\n• Revente surplus : 0,13 € / kWh • Gain annuel global : ~694 € / an • Rendement net : ~8,2% / an\n• Piège légal : Revente EDF OA INTERDITE en Plug & Play (artisan RGE + Consuel obligatoires).",
+                color = Color(0xFFCBD5E1),
+                fontSize = 10.sp,
+                lineHeight = 15.sp
+            )
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // Modèle 4 : Autonomie Totale Hors Réseau
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(8.dp))
+                .background(Color(0xFF450A0A).copy(alpha = 0.3f))
+                .border(1.dp, Color(0xFFDC2626).copy(alpha = 0.4f), RoundedCornerShape(8.dp))
+                .padding(10.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "🔌 4. AUTONOMIE TOTALE (SITE ISOLÉ HORS RÉSEAU)",
+                    color = Color(0xFFF87171),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    text = "Amortissement > 20 ans",
+                    color = Color(0xFFFCA5A5),
+                    fontSize = 10.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = "• Coût : > 25 000 € TTC (30 panneaux + 25 kWh batteries + groupe électrogène pour l'hiver)\n• Réalité météo : Une journée de décembre produit 8x moins qu'en juin. Non rentable.",
+                color = Color(0xFFE2E8F0),
+                fontSize = 10.sp,
+                lineHeight = 15.sp
             )
         }
     }
