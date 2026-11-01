@@ -403,6 +403,10 @@ private fun ConceptionPhaseContent(
                             if (dossier.productionSimulations.isNotEmpty()) {
                                 ProductionSimulationsCard(simulations = dossier.productionSimulations)
                                 Spacer(modifier = Modifier.height(14.dp))
+                                if (dossier.id == "dossier_solaire") {
+                                    SimulateurDecisionnelRoiCard()
+                                    Spacer(modifier = Modifier.height(14.dp))
+                                }
                                 HorizontalDivider(color = Color(0xFF334155))
                                 Spacer(modifier = Modifier.height(10.dp))
                             }
@@ -5081,6 +5085,269 @@ private fun ClientLeadsManagerCard(
                         }
                     }
                 }
+            }
+        }
+    }
+}
+
+@Composable
+private fun SimulateurDecisionnelRoiCard() {
+    var selectedZone by remember { mutableStateOf("centre") } // "nord", "centre", "sud"
+    var selectedWaterHeater by remember { mutableStateOf("cumulus_matin") } // "cumulus_matin", "cumulus_soir", "autre"
+    var selectedHousehold by remember { mutableStateOf("3_plus") } // "1_2", "3_plus"
+
+    // Math engine
+    val kwhBase = when (selectedZone) {
+        "nord" -> 480
+        "sud" -> 680
+        else -> 560
+    }
+    val kwhPrice = 0.2700 // Tarif HP
+
+    // Pack Solo 440W (349 €)
+    val soloGross = kwhBase * 1
+    val soloRate = if (selectedHousehold == "1_2") 0.90 else 0.96
+    val soloUseful = (soloGross * soloRate).toInt()
+    val soloSavings = (soloUseful * kwhPrice).toInt()
+    val soloPayback = "%.1f".format(java.util.Locale.US, 349.0 / soloSavings).replace(".", ",")
+    val soloRoi = "%.1f".format(java.util.Locale.US, (soloSavings.toDouble() / 349.0) * 100).replace(".", ",")
+
+    // Pack Duo 880W (649 €)
+    val duoGross = kwhBase * 2
+    val duoRate = if (selectedHousehold == "1_2") 0.72 else 0.84
+    val duoUseful = (duoGross * duoRate).toInt()
+    val duoSavings = (duoUseful * kwhPrice).toInt()
+    val duoPayback = "%.1f".format(java.util.Locale.US, 649.0 / duoSavings).replace(".", ",")
+    val duoRoi = "%.1f".format(java.util.Locale.US, (duoSavings.toDouble() / 649.0) * 100).replace(".", ",")
+
+    // Pack Duo 880W + Dérouteur (798 €)
+    val surplusGross = duoGross - duoUseful
+    val divertedRate = when (selectedWaterHeater) {
+        "cumulus_matin" -> 0.92
+        "cumulus_soir" -> 0.35
+        else -> 0.0
+    }
+    val divertedUseful = (surplusGross * divertedRate).toInt()
+    val routeurUseful = duoUseful + divertedUseful
+    val routeurSavings = (routeurUseful * kwhPrice).toInt()
+    val routeurPayback = "%.1f".format(java.util.Locale.US, 798.0 / routeurSavings).replace(".", ",")
+    val routeurRoi = "%.1f".format(java.util.Locale.US, (routeurSavings.toDouble() / 798.0) * 100).replace(".", ",")
+    val routeur25y = (routeurSavings * 25) - 798
+
+    // Winner determination
+    val isRouteurWinner = selectedWaterHeater == "cumulus_matin"
+    val winnerName = when {
+        selectedWaterHeater == "cumulus_matin" -> "Pack Duo 880W + Dérouteur Chauffe-Eau"
+        selectedWaterHeater == "autre" -> "Pack Duo 880W (Sans Dérouteur)"
+        else -> "Pack Duo 880W (Amortissement le plus rapide)"
+    }
+    val winnerPrice = when {
+        selectedWaterHeater == "cumulus_matin" -> "798 € TTC"
+        else -> "649 € TTC"
+    }
+    val winnerPayback = when {
+        selectedWaterHeater == "cumulus_matin" -> "~$routeurPayback Ans"
+        else -> "~$duoPayback Ans"
+    }
+    val winnerYearly = when {
+        selectedWaterHeater == "cumulus_matin" -> "~$routeurSavings € / an"
+        else -> "~$duoSavings € / an"
+    }
+    val winnerRoi = when {
+        selectedWaterHeater == "cumulus_matin" -> "+$routeurRoi %/an"
+        else -> "+$duoRoi %/an"
+    }
+    val winnerReason = when (selectedWaterHeater) {
+        "cumulus_matin" -> "Votre cumulus froid le matin absorbe 90% du surplus solaire de mi-journée. C'est le retour sur investissement le plus performant et zéro énergie perdue."
+        "autre" -> "Avec une chaudière gaz ou une pompe à chaleur, le dérouteur n'a pas de résistance où injecter. Le Pack Duo 880W vous offre le meilleur ROI sans surcoût."
+        else -> "Le cumulus chauffant la nuit en HC, le dérouteur ne capte que la vaisselle du midi. Le Pack Duo 880W seul s'amortit plus vite (~$duoPayback ans contre ~$routeurPayback ans)."
+    }
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp))
+            .background(Color(0xFF0F172A))
+            .border(1.dp, Color(0xFFF59E0B).copy(alpha = 0.5f), RoundedCornerShape(10.dp))
+            .padding(12.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(text = "⚖️", fontSize = 16.sp)
+                Spacer(modifier = Modifier.width(6.dp))
+                Text(
+                    text = "SIMULATEUR DÉCISIONNEL ROI : QUEL ÉQUIPEMENT CHOISIR ?",
+                    color = Color(0xFFFBBF24),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 0.5.sp
+                )
+            }
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(Color(0xFF78350F))
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
+            ) {
+                Text(
+                    text = "ARBITRAGE ROI PUR",
+                    color = Color(0xFFFDE68A),
+                    fontSize = 8.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(
+            text = "Arbitrage mathématique 1 panneau, 2 panneaux, avec ou sans dérouteur selon l'eau chaude et les habitudes :",
+            color = Color(0xFF94A3B8),
+            fontSize = 10.sp
+        )
+        Spacer(modifier = Modifier.height(10.dp))
+
+        // 1. Région
+        Text(text = "1. Région d'ensoleillement :", color = Color(0xFFCBD5E1), fontSize = 10.sp, fontWeight = FontWeight.SemiBold)
+        Spacer(modifier = Modifier.height(4.dp))
+        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+            listOf("nord" to "Nord / IdF (~480 kWh)", "centre" to "Centre (~560 kWh)", "sud" to "Sud (~680 kWh)").forEach { (zoneId, label) ->
+                val isSel = selectedZone == zoneId
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .clip(RoundedCornerShape(6.dp))
+                        .background(if (isSel) Color(0xFFF59E0B).copy(alpha = 0.2f) else Color(0xFF1E293B))
+                        .border(1.dp, if (isSel) Color(0xFFF59E0B) else Color(0xFF334155), RoundedCornerShape(6.dp))
+                        .clickable { selectedZone = zoneId }
+                        .padding(vertical = 6.dp, horizontal = 4.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(text = label, color = if (isSel) Color(0xFFFDE68A) else Color(0xFF94A3B8), fontSize = 9.sp, fontWeight = if (isSel) FontWeight.Bold else FontWeight.Normal)
+                }
+            }
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // 2. Eau Chaude
+        Text(text = "2. Équipement eau chaude (Clé pour le dérouteur) :", color = Color(0xFFCBD5E1), fontSize = 10.sp, fontWeight = FontWeight.SemiBold)
+        Spacer(modifier = Modifier.height(4.dp))
+        Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+            listOf(
+                Triple("cumulus_matin", "🚿 Cumulus électrique — Douches matin / jour", "Ballon froid le jour : absorbe 90% du surplus solaire"),
+                Triple("cumulus_soir", "🌙 Cumulus électrique — Douches soir + HC nuit", "Ballon déjà chaud : absorbe uniquement vaisselle/éviers (~35%)"),
+                Triple("autre", "⚡ Chaudière Gaz / Pompe à chaleur / Fioul", "Pas de cumulus standard : option dérouteur non adaptée")
+            ).forEach { (whId, title, sub) ->
+                val isSel = selectedWaterHeater == whId
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(6.dp))
+                        .background(if (isSel) Color(0xFF10B981).copy(alpha = 0.15f) else Color(0xFF1E293B))
+                        .border(1.dp, if (isSel) Color(0xFF10B981) else Color(0xFF334155), RoundedCornerShape(6.dp))
+                        .clickable { selectedWaterHeater = whId }
+                        .padding(8.dp)
+                ) {
+                    Text(text = title, color = if (isSel) Color(0xFFA7F3D0) else Color(0xFFE2E8F0), fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                    Text(text = sub, color = Color(0xFF94A3B8), fontSize = 9.sp)
+                }
+            }
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // 3. Foyer
+        Text(text = "3. Taille du foyer :", color = Color(0xFFCBD5E1), fontSize = 10.sp, fontWeight = FontWeight.SemiBold)
+        Spacer(modifier = Modifier.height(4.dp))
+        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+            listOf("1_2" to "1 à 2 pers (~150-200W veille)", "3_plus" to "3 pers et + (~300-450W veille)").forEach { (hhId, label) ->
+                val isSel = selectedHousehold == hhId
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .clip(RoundedCornerShape(6.dp))
+                        .background(if (isSel) Color(0xFFF59E0B).copy(alpha = 0.2f) else Color(0xFF1E293B))
+                        .border(1.dp, if (isSel) Color(0xFFF59E0B) else Color(0xFF334155), RoundedCornerShape(6.dp))
+                        .clickable { selectedHousehold = hhId }
+                        .padding(vertical = 6.dp, horizontal = 4.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(text = label, color = if (isSel) Color(0xFFFDE68A) else Color(0xFF94A3B8), fontSize = 9.sp, fontWeight = if (isSel) FontWeight.Bold else FontWeight.Normal)
+                }
+            }
+        }
+
+        Spacer(modifier = Modifier.height(12.dp))
+
+        // Champion Banner
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(8.dp))
+                .background(Color(0xFF064E3B).copy(alpha = 0.4f))
+                .border(1.5.dp, Color(0xFF10B981), RoundedCornerShape(8.dp))
+                .padding(10.dp)
+        ) {
+            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
+                Text(text = "🏆 MEILLEUR ROI CONSEILLÉ : $winnerName", color = Color(0xFFA7F3D0), fontSize = 11.sp, fontWeight = FontWeight.Black)
+                Text(text = winnerPrice, color = Color(0xFF6EE7B7), fontSize = 11.sp, fontWeight = FontWeight.Black)
+            }
+            Spacer(modifier = Modifier.height(4.dp))
+            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                Text(text = "Amorti en : $winnerPayback", color = Color(0xFF38BDF8), fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                Text(text = "Gain Linky : $winnerYearly", color = Color(0xFF34D399), fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                Text(text = "Rendement : $winnerRoi", color = Color(0xFFFBBF24), fontSize = 10.sp, fontWeight = FontWeight.Bold)
+            }
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(text = "• $winnerReason", color = Color.White, fontSize = 9.5.sp, lineHeight = 13.sp)
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // Comparison Table
+        Text(text = "Comparatif direct des 3 options pour ce profil :", color = Color(0xFF94A3B8), fontSize = 9.sp, fontWeight = FontWeight.SemiBold)
+        Spacer(modifier = Modifier.height(4.dp))
+        Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+            // Solo
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(Color(0xFF1E293B).copy(alpha = 0.5f))
+                    .padding(horizontal = 8.dp, vertical = 4.dp),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(text = "Pack Solo 440W (349 €)", color = Color(0xFFE2E8F0), fontSize = 9.5.sp, fontWeight = FontWeight.Bold)
+                Text(text = "~$soloSavings €/an • Amorti en $soloPayback ans • +$soloRoi %/an", color = Color(0xFF94A3B8), fontSize = 9.sp)
+            }
+            // Duo
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(Color(0xFF1E293B).copy(alpha = 0.5f))
+                    .padding(horizontal = 8.dp, vertical = 4.dp),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(text = "Pack Duo 880W (649 €)", color = Color(0xFFE2E8F0), fontSize = 9.5.sp, fontWeight = FontWeight.Bold)
+                Text(text = "~$duoSavings €/an • Amorti en $duoPayback ans • +$duoRoi %/an", color = Color(0xFF94A3B8), fontSize = 9.sp)
+            }
+            // Duo + Routeur
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(if (isRouteurWinner) Color(0xFF064E3B).copy(alpha = 0.3f) else Color(0xFF1E293B).copy(alpha = 0.5f))
+                    .padding(horizontal = 8.dp, vertical = 4.dp),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(text = "Pack Duo + Dérouteur (798 €)", color = if (isRouteurWinner) Color(0xFFA7F3D0) else Color(0xFFE2E8F0), fontSize = 9.5.sp, fontWeight = FontWeight.Bold)
+                val routeurText = if (selectedWaterHeater == "autre") "Inadapté (sans cumulus)" else "~$routeurSavings €/an • Amorti en $routeurPayback ans • +$routeurRoi %/an"
+                Text(text = routeurText, color = if (isRouteurWinner) Color(0xFF6EE7B7) else Color(0xFF94A3B8), fontSize = 9.sp)
             }
         }
     }

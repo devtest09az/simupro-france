@@ -419,73 +419,104 @@
         <!-- Interactive Real-World Savings Calculator based on official PVGIS & TRV 2026 -->
         <section id="simulateur" class="max-w-6xl mx-auto px-4 sm:px-6 py-20 border-t border-white/[0.08]">
             <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-                <span class="mono text-xs font-bold uppercase tracking-widest text-emerald-400">Calculateur Transparent Officiel</span>
+                <span class="mono text-xs font-bold uppercase tracking-widest text-emerald-400">Simulateur Décisionnel ROI & Équipements</span>
                 <h2 class="font-display text-3xl sm:text-5xl font-bold tracking-tight text-white">
-                    Simulez votre gain réel sur votre compteur Linky
+                    Quel équipement est le plus rentable chez vous ?
                 </h2>
                 <p class="text-slate-400 text-sm sm:text-base">
-                    Simulateur de rentabilité basé sur un <strong>rendement théorique optimal</strong> (données satellitaires <strong>PVGIS Commission Européenne</strong>, orientation Sud 30°-35° sans ombrage et Tarif Réglementé EDF 2026).
+                    Répondez à 3 questions en 10 secondes : notre algorithme calcule votre <strong>vitesse d'amortissement</strong> et votre <strong>gain net sur 25 ans</strong> pour arbitrer mathématiquement entre 1 panneau, 2 panneaux, avec ou sans dérouteur chauffe-eau.
                 </p>
             </div>
 
-            <div class="glass-card p-6 sm:p-12 rounded-3xl border border-amber-500/30 glow-amber">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div class="glass-card p-6 sm:p-10 rounded-3xl border border-amber-500/30 glow-amber">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                     <!-- Controls (7 cols) -->
                     <div class="lg:col-span-7 space-y-6">
-                        <!-- Step A : Zone géographique -->
+                        <!-- Step 1 : Zone géographique -->
                         <div>
-                            <div class="flex justify-between items-center mb-1">
+                            <div class="flex justify-between items-center mb-1.5">
                                 <label class="block text-xs font-bold uppercase tracking-wider text-slate-300">
                                     1. Votre région d'ensoleillement :
                                 </label>
-                                <span class="text-[10px] text-amber-400 font-semibold">☀️ Le soleil produit +40% à Marseille qu'à Lille</span>
+                                <span class="text-[10px] text-amber-400 font-semibold">☀️ PVGIS UE (30° Sud)</span>
                             </div>
-                            <p class="text-[11px] text-slate-400 mb-2.5">
-                                Les <strong>kWh/an</strong> indiquent la quantité d'électricité gratuite que vos panneaux fabriquent par an selon le soleil de votre région :
-                            </p>
                             <div class="grid grid-cols-3 gap-2 text-xs">
                                 <button type="button" onclick="setZone('nord')" id="btn-zone-nord" class="p-3 rounded-xl border border-white/10 bg-white/[0.02] hover:border-amber-400 text-center transition font-semibold">
                                     <span class="block text-amber-400 font-bold">Nord / IdF</span>
-                                    <span id="zone-nord-kwh" class="text-[10px] text-slate-400">~480 kWh/an</span>
+                                    <span id="zone-nord-kwh" class="text-[10px] text-slate-400">~480 kWh/panneau</span>
                                 </button>
                                 <button type="button" onclick="setZone('centre')" id="btn-zone-centre" class="p-3 rounded-xl border-2 border-amber-400 bg-amber-500/10 text-center transition font-semibold">
                                     <span class="block text-amber-400 font-bold">Centre / Ouest</span>
-                                    <span id="zone-centre-kwh" class="text-[10px] text-slate-400">~560 kWh/an</span>
+                                    <span id="zone-centre-kwh" class="text-[10px] text-slate-400">~560 kWh/panneau</span>
                                 </button>
                                 <button type="button" onclick="setZone('sud')" id="btn-zone-sud" class="p-3 rounded-xl border border-white/10 bg-white/[0.02] hover:border-amber-400 text-center transition font-semibold">
                                     <span class="block text-amber-400 font-bold">Sud / Médit.</span>
-                                    <span id="zone-sud-kwh" class="text-[10px] text-slate-400">~680 kWh/an</span>
+                                    <span id="zone-sud-kwh" class="text-[10px] text-slate-400">~680 kWh/panneau</span>
                                 </button>
                             </div>
                         </div>
 
-                        <!-- Step B : Nombre de stations -->
+                        <!-- Step 2 : Eau chaude sanitaire -->
                         <div>
-                            <div class="flex justify-between text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
-                                <span>2. Configuration choisie :</span>
-                                <span id="label-panels" class="text-amber-400 font-mono text-sm">Pack Solo 440W (1 Panneau)</span>
+                            <div class="flex justify-between items-center mb-1.5">
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-300">
+                                    2. Votre équipement d'eau chaude (Clé pour le Dérouteur) :
+                                </label>
                             </div>
-                            <input type="range" id="slider-panels" min="1" max="2" value="1" step="1" 
-                                   class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-400"
-                                   oninput="updateSolarCalc()">
-                            <div class="flex justify-between text-xs mono text-slate-400 mt-2 font-medium">
-                                <span>1 Panneau (349 €) — Puissance 440Wc • Amorti dès 2,5 ans</span>
-                                <span>2 Panneaux (649 €) — Puissance 880Wc • Amorti dès 2,4 ans</span>
+                            <div class="space-y-2 text-xs">
+                                <button type="button" onclick="setWaterHeater('cumulus_matin')" id="btn-wh-matin" class="w-full p-3.5 rounded-xl border-2 border-emerald-400 bg-emerald-500/10 text-left transition font-semibold">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-bold text-emerald-300 text-xs sm:text-sm">🚿 Cumulus électrique — Douches le Matin / Journée</span>
+                                        <span class="text-[9px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold uppercase">Surplus Absorbé 90%</span>
+                                    </div>
+                                    <span class="text-[11px] text-slate-300 block mt-1 font-normal">Ballon froid en journée : absorbe le surplus solaire dans la résistance au lieu de le réinjecter gratuitement à Enedis.</span>
+                                </button>
+                                <button type="button" onclick="setWaterHeater('cumulus_soir')" id="btn-wh-soir" class="w-full p-3.5 rounded-xl border border-white/10 bg-white/[0.02] hover:border-amber-400 text-left transition font-semibold">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-bold text-amber-400 text-xs sm:text-sm">🌙 Cumulus électrique — Douches le Soir + HC la Nuit</span>
+                                        <span class="text-[9px] px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-bold uppercase">Appoint Seul ~35%</span>
+                                    </div>
+                                    <span class="text-[11px] text-slate-300 block mt-1 font-normal">Ballon déjà chaud la nuit : le dérouteur absorbe uniquement les appoints du midi (vaisselle, éviers).</span>
+                                </button>
+                                <button type="button" onclick="setWaterHeater('autre')" id="btn-wh-autre" class="w-full p-3.5 rounded-xl border border-white/10 bg-white/[0.02] hover:border-amber-400 text-left transition font-semibold">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-bold text-slate-300 text-xs sm:text-sm">⚡ Chaudière Gaz / Pompe à Chaleur / Autre</span>
+                                        <span class="text-[9px] px-2 py-0.5 rounded bg-slate-800 text-slate-400 font-bold uppercase">Dérouteur Inutile</span>
+                                    </div>
+                                    <span class="text-[11px] text-slate-400 block mt-1 font-normal">Pas de cumulus électrique standard : l'option dérouteur ne convient pas à votre équipement.</span>
+                                </button>
                             </div>
                         </div>
 
-                        <!-- Step C : Option Tarifaire EDF (HP vs Base) -->
+                        <!-- Step 3 : Taille du foyer -->
                         <div>
-                            <div class="flex justify-between items-center mb-2">
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
+                                3. Taille de votre foyer :
+                            </label>
+                            <div class="grid grid-cols-2 gap-2 text-xs">
+                                <button type="button" onclick="setHousehold('1_2')" id="btn-hh-12" class="p-3 rounded-xl border border-white/10 bg-white/[0.02] hover:border-amber-400 text-left transition font-semibold">
+                                    <span class="block text-amber-400 font-bold">1 à 2 personnes</span>
+                                    <span class="text-[10px] text-slate-400 block mt-0.5">Talon de veille ~150-200W (frigo, box, veilles)</span>
+                                </button>
+                                <button type="button" onclick="setHousehold('3_plus')" id="btn-hh-3plus" class="p-3 rounded-xl border-2 border-amber-400 bg-amber-500/10 text-left transition font-semibold">
+                                    <span class="block text-amber-400 font-bold">3 personnes et +</span>
+                                    <span class="text-[10px] text-slate-400 block mt-0.5">Maison familiale ~300-450W (congélateur, VMC, PC)</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 4 : Tarif EDF -->
+                        <div>
+                            <div class="flex justify-between items-center mb-1.5">
                                 <label class="block text-xs font-bold uppercase tracking-wider text-slate-300">
-                                    3. Votre contrat EDF :
+                                    4. Votre contrat EDF :
                                 </label>
-                                <span class="text-[10px] text-amber-400 font-semibold">Le soleil produit en Heures Pleines</span>
+                                <span class="text-[10px] text-amber-400 font-semibold">Tarif Réglementé 2026</span>
                             </div>
                             <div class="grid grid-cols-2 gap-2 text-xs">
                                 <button type="button" onclick="setTarifMode('hp')" id="btn-tarif-hp" class="p-3 rounded-xl border-2 border-amber-400 bg-amber-500/10 text-left transition font-semibold">
                                     <div class="flex justify-between items-center">
-                                        <span class="text-amber-400 font-bold">Heures Pleines (HP)</span>
+                                        <span class="text-amber-400 font-bold">Heures Pleines</span>
                                         <span class="text-[9px] px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono">0,2700 €/kWh</span>
                                     </div>
                                     <span class="text-[10px] text-slate-400 block mt-1">9h - 19h : Cible exacte du solaire</span>
@@ -499,76 +530,89 @@
                                 </button>
                             </div>
                         </div>
-
-                        <!-- Paramètres réalistes d'autoconsommation -->
-                        <div class="p-4 rounded-xl bg-white/[0.03] border border-white/[0.06] text-xs text-slate-300 space-y-2">
-                            <div class="flex justify-between items-center">
-                                <span class="text-amber-300 font-bold text-xs uppercase tracking-wider">Talon effacé & Taux d'autoconsommation :</span>
-                                <span class="text-emerald-400 font-mono text-xs font-bold">88 % autoconsommé en direct</span>
-                            </div>
-                            <div id="wiped-appliances" class="space-y-1.5 text-[11px] text-slate-300">
-                                <div class="flex items-center gap-2">
-                                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                                    <span><strong>Réfrigérateur Combiné A+ :</strong> ~180 kWh/an (Effacé à 100% le jour)</span>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                                    <span><strong>Box Internet Fibre & Décodeur TV :</strong> ~120 kWh/an (Effacé à 100% le jour)</span>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                                    <span><strong>Veilles TV, VMC permanente :</strong> ~180 kWh/an (Effacé à 100% le jour)</span>
-                                </div>
-                            </div>
-                            <p class="text-[10px] text-slate-400 pt-1 border-t border-white/5">
-                                *Estimation indicative basée sur un rendement théorique optimal (PVGIS 30° Sud). Les gains réels dépendent de l'exposition de votre logement et de l'usage de vos appareils.
-                            </p>
-                        </div>
                     </div>
 
-                    <!-- Output Results Card (5 cols) -->
-                    <div class="lg:col-span-5 p-6 sm:p-8 rounded-2xl bg-gradient-to-b from-slate-900 to-[#030611] border border-amber-500/40 text-center space-y-5">
-                        <div class="space-y-1">
-                            <span class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Économie Réelle sur la Facture EDF</span>
-                            <div id="calc-yearly" class="font-display text-4xl sm:text-5xl font-black text-emerald-400">
-                                ~133 € / an
+                    <!-- Output & Comparison (5 cols) -->
+                    <div class="lg:col-span-5 space-y-4">
+                        <!-- Champion Card -->
+                        <div class="p-5 sm:p-6 rounded-2xl bg-gradient-to-b from-slate-900 to-[#030611] border-2 border-emerald-400 shadow-2xl relative">
+                            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 font-mono text-[10px] font-bold uppercase tracking-wider mb-2">
+                                🏆 MEILLEUR ROI RECOMMANDÉ POUR VOUS
                             </div>
-                            <div id="calc-kwh" class="text-xs text-slate-400 font-mono">560 kWh bruts (493 kWh utiles HP)</div>
-                        </div>
-
-                        <!-- Bloc Rentabilité de Placement Financier -->
-                        <div class="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-left space-y-1.5">
-                            <div class="flex justify-between items-center">
-                                <span class="text-amber-300 font-bold text-xs uppercase tracking-wider">Rendement Annuel Net du Capital :</span>
-                                <span id="calc-roi" class="font-mono text-base font-black text-amber-400">+ 38,1 % / an</span>
-                            </div>
-                            <p id="calc-roi-desc" class="text-[10px] text-slate-300 leading-tight">
-                                <strong>Comparatif placement :</strong> Votre station rapporte <strong>38 % net d'impôt par an</strong> en économies d'énergie, soit <strong>12 fois plus que le Livret A (3,0 %)</strong> ou une assurance-vie (2,5 %).
+                            <h3 id="rec-pack-name" class="font-display text-xl sm:text-2xl font-black text-white">
+                                Pack Duo 880W + Dérouteur Chauffe-Eau
+                            </h3>
+                            <p id="rec-reason" class="text-xs text-slate-300 mt-1 leading-relaxed">
+                                Votre cumulus froid le matin absorbe 90% du surplus solaire. C'est le retour sur investissement le plus performant et zéro perte sur le réseau.
                             </p>
-                        </div>
 
-                        <div class="grid grid-cols-2 gap-3 pt-2 border-t border-white/[0.08] text-left text-xs">
-                            <div>
-                                <div class="text-cyan-400 font-bold mb-0.5">Amortissement</div>
-                                <div id="calc-payback" class="text-white font-mono text-base font-bold">~2,6 Ans</div>
-                                <div class="text-[10px] text-slate-500">Puis 22 ans 100% gratuit</div>
+                            <div class="grid grid-cols-3 gap-2 my-4 p-3 rounded-xl bg-slate-950/80 border border-white/10 text-center">
+                                <div>
+                                    <span class="text-[9px] text-slate-400 block uppercase font-bold">Amorti en</span>
+                                    <span id="rec-payback" class="font-mono text-base font-black text-cyan-400">~2,1 Ans</span>
+                                </div>
+                                <div>
+                                    <span class="text-[9px] text-slate-400 block uppercase font-bold">Gain / an</span>
+                                    <span id="rec-yearly" class="font-mono text-base font-black text-emerald-400">~379 €/an</span>
+                                </div>
+                                <div>
+                                    <span class="text-[9px] text-slate-400 block uppercase font-bold">Rendement</span>
+                                    <span id="rec-roi" class="font-mono text-base font-black text-amber-400">+47,5 %/an</span>
+                                </div>
                             </div>
-                            <div>
-                                <div class="text-emerald-400 font-bold mb-0.5">Gain Net 10 Ans</div>
-                                <div id="calc-savings-10y" class="text-white font-mono text-base font-bold">+ 1 331 €</div>
-                                <div class="text-[10px] text-slate-500">Net après achat initial</div>
+
+                            <div class="flex items-center justify-between text-xs text-slate-300 px-1 mb-4">
+                                <span>Gain net 25 ans : <strong id="rec-gain25" class="text-emerald-400 font-bold">+8 677 €</strong></span>
+                                <span id="rec-mult" class="text-[10px] text-slate-400 font-mono">(x11,9 le capital)</span>
+                            </div>
+
+                            <button type="button" id="btn-rec-cta" onclick="selectRecommendedPack()" class="w-full py-4 bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl transition shadow-lg shadow-emerald-400/25">
+                                Commander la Configuration Recommandée
+                            </button>
+                        </div>
+
+                        <!-- 3 Packs Comparison List -->
+                        <div class="space-y-2 pt-1">
+                            <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 px-1">
+                                Comparatif direct des 3 options pour votre profil :
+                            </div>
+
+                            <!-- Option 1 : Pack Solo -->
+                            <div id="card-opt-solo" onclick="selectPack('Pack Solo 440W', 349)" class="p-3 rounded-xl border border-white/10 bg-white/[0.02] hover:border-amber-400/60 cursor-pointer transition flex items-center justify-between">
+                                <div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="font-bold text-white text-xs">Pack Solo 440W</span>
+                                        <span class="text-[10px] text-amber-400 font-mono">349 € TTC</span>
+                                    </div>
+                                    <span id="opt-solo-desc" class="text-[10px] text-slate-400 block mt-0.5">~145 €/an • Amorti en 2,4 ans • +41% / an</span>
+                                </div>
+                                <button type="button" class="px-2.5 py-1 text-[10px] font-bold text-slate-300 hover:text-white rounded bg-white/5 border border-white/10">Choisir</button>
+                            </div>
+
+                            <!-- Option 2 : Pack Duo -->
+                            <div id="card-opt-duo" onclick="selectPack('Pack Duo 880W', 649)" class="p-3 rounded-xl border border-white/10 bg-white/[0.02] hover:border-amber-400/60 cursor-pointer transition flex items-center justify-between">
+                                <div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="font-bold text-white text-xs">Pack Duo 880W</span>
+                                        <span class="text-[10px] text-amber-400 font-mono">649 € TTC</span>
+                                    </div>
+                                    <span id="opt-duo-desc" class="text-[10px] text-slate-400 block mt-0.5">~254 €/an • Amorti en 2,6 ans • +39% / an</span>
+                                </div>
+                                <button type="button" class="px-2.5 py-1 text-[10px] font-bold text-slate-300 hover:text-white rounded bg-white/5 border border-white/10">Choisir</button>
+                            </div>
+
+                            <!-- Option 3 : Pack Duo + Dérouteur -->
+                            <div id="card-opt-routeur" onclick="selectPack('Pack Duo 880W + Dérouteur Chauffe-Eau', 798)" class="p-3 rounded-xl border border-white/10 bg-white/[0.02] hover:border-emerald-400/60 cursor-pointer transition flex items-center justify-between">
+                                <div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="font-bold text-white text-xs">Pack Duo 880W + Dérouteur</span>
+                                        <span class="text-[10px] text-emerald-400 font-mono">798 € TTC</span>
+                                    </div>
+                                    <span id="opt-routeur-desc" class="text-[10px] text-slate-400 block mt-0.5">~298 €/an • Amorti en 2,7 ans • +37% / an</span>
+                                </div>
+                                <button type="button" class="px-2.5 py-1 text-[10px] font-bold text-slate-300 hover:text-white rounded bg-white/5 border border-white/10">Choisir</button>
                             </div>
                         </div>
-
-                        <div class="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-center text-xs">
-                            <span class="text-emerald-300 font-semibold block">Gain net en poche sur 25 ans :</span>
-                            <span id="calc-savings-25y" class="font-mono text-base font-extrabold text-emerald-400">+ 2 979 € net</span>
-                            <span id="calc-capital-mult" class="text-[10px] text-slate-400 block">pour 349 € d'investissement de départ (x9,5 le capital)</span>
-                        </div>
-
-                        <button type="button" id="btn-calc-cta" onclick="onCalcCtaClick()" class="block w-full py-4 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl transition shadow-lg shadow-amber-400/25">
-                            Choisir le Pack Solo à 349 €
-                        </button>
                     </div>
                 </div>
             </div>
@@ -1432,10 +1476,18 @@
     <!-- Scripts -->
     <script>
         // State
+                // State
         let currentZone = 'centre'; // 'nord', 'centre', 'sud'
-        let currentPack = 'Pack Solo 440W';
-        let currentPrice = 349;
+        let currentWaterHeater = 'cumulus_matin'; // 'cumulus_matin', 'cumulus_soir', 'autre'
+        let currentHousehold = '3_plus'; // '1_2', '3_plus'
+        let currentTarifMode = 'hp'; // 'hp', 'base'
+
+        let currentPack = 'Pack Duo 880W + Dérouteur Chauffe-Eau';
+        let currentPrice = 798;
         let hasWifiOption = false;
+
+        let recommendedPackName = 'Pack Duo 880W + Dérouteur Chauffe-Eau';
+        let recommendedPackPrice = 798;
 
         const zoneKwhPerPanel = {
             'nord': 480,
@@ -1443,138 +1495,228 @@
             'sud': 680
         };
 
-        let currentTarifMode = 'hp'; // 'hp' (Heures Pleines: 0.2700 €) or 'base' (0.2516 €)
         const TARIF_HP = 0.2700;
         const TARIF_BASE = 0.2516;
-        const TAUX_AUTOCONSO = 0.88; // 88% de taux d'absorption réel par le talon permanent
-
-        function setTarifMode(mode) {
-            currentTarifMode = mode;
-            document.getElementById('btn-tarif-hp').className = mode === 'hp'
-                ? 'p-3 rounded-xl border-2 border-amber-400 bg-amber-500/10 text-left transition font-semibold'
-                : 'p-3 rounded-xl border border-white/10 bg-white/[0.02] hover:border-amber-400 text-left transition font-semibold';
-
-            document.getElementById('btn-tarif-base').className = mode === 'base'
-                ? 'p-3 rounded-xl border-2 border-amber-400 bg-amber-500/10 text-left transition font-semibold'
-                : 'p-3 rounded-xl border border-white/10 bg-white/[0.02] hover:border-amber-400 text-left transition font-semibold';
-
-            updateSolarCalc();
-        }
 
         function setZone(zone) {
             currentZone = zone;
-            document.getElementById('btn-zone-nord').className = zone === 'nord' 
-                ? 'p-3 rounded-xl border-2 border-amber-400 bg-amber-500/10 text-center transition font-semibold' 
-                : 'p-3 rounded-xl border border-white/10 bg-white/[0.02] hover:border-amber-400 text-center transition font-semibold';
-            
-            document.getElementById('btn-zone-centre').className = zone === 'centre' 
-                ? 'p-3 rounded-xl border-2 border-amber-400 bg-amber-500/10 text-center transition font-semibold' 
-                : 'p-3 rounded-xl border border-white/10 bg-white/[0.02] hover:border-amber-400 text-center transition font-semibold';
-            
-            document.getElementById('btn-zone-sud').className = zone === 'sud' 
-                ? 'p-3 rounded-xl border-2 border-amber-400 bg-amber-500/10 text-center transition font-semibold' 
-                : 'p-3 rounded-xl border border-white/10 bg-white/[0.02] hover:border-amber-400 text-center transition font-semibold';
+            ['nord', 'centre', 'sud'].forEach(z => {
+                const btn = document.getElementById('btn-zone-' + z);
+                if (btn) {
+                    btn.className = z === zone
+                        ? 'p-3 rounded-xl border-2 border-amber-400 bg-amber-500/10 text-center transition font-semibold'
+                        : 'p-3 rounded-xl border border-white/10 bg-white/[0.02] hover:border-amber-400 text-center transition font-semibold';
+                }
+            });
+            updateSolarCalc();
+        }
 
+        function setWaterHeater(type) {
+            currentWaterHeater = type;
+            const btnMatin = document.getElementById('btn-wh-matin');
+            const btnSoir = document.getElementById('btn-wh-soir');
+            const btnAutre = document.getElementById('btn-wh-autre');
+
+            if (btnMatin) {
+                btnMatin.className = type === 'cumulus_matin'
+                    ? 'w-full p-3.5 rounded-xl border-2 border-emerald-400 bg-emerald-500/10 text-left transition font-semibold'
+                    : 'w-full p-3.5 rounded-xl border border-white/10 bg-white/[0.02] hover:border-emerald-400 text-left transition font-semibold';
+            }
+            if (btnSoir) {
+                btnSoir.className = type === 'cumulus_soir'
+                    ? 'w-full p-3.5 rounded-xl border-2 border-amber-400 bg-amber-500/10 text-left transition font-semibold'
+                    : 'w-full p-3.5 rounded-xl border border-white/10 bg-white/[0.02] hover:border-amber-400 text-left transition font-semibold';
+            }
+            if (btnAutre) {
+                btnAutre.className = type === 'autre'
+                    ? 'w-full p-3.5 rounded-xl border-2 border-slate-400 bg-slate-800 text-left transition font-semibold'
+                    : 'w-full p-3.5 rounded-xl border border-white/10 bg-white/[0.02] hover:border-amber-400 text-left transition font-semibold';
+            }
+            updateSolarCalc();
+        }
+
+        function setHousehold(hh) {
+            currentHousehold = hh;
+            const btn12 = document.getElementById('btn-hh-12');
+            const btn3p = document.getElementById('btn-hh-3plus');
+            if (btn12) {
+                btn12.className = hh === '1_2'
+                    ? 'p-3 rounded-xl border-2 border-amber-400 bg-amber-500/10 text-left transition font-semibold'
+                    : 'p-3 rounded-xl border border-white/10 bg-white/[0.02] hover:border-amber-400 text-left transition font-semibold';
+            }
+            if (btn3p) {
+                btn3p.className = hh === '3_plus'
+                    ? 'p-3 rounded-xl border-2 border-amber-400 bg-amber-500/10 text-left transition font-semibold'
+                    : 'p-3 rounded-xl border border-white/10 bg-white/[0.02] hover:border-amber-400 text-left transition font-semibold';
+            }
+            updateSolarCalc();
+        }
+
+        function setTarifMode(mode) {
+            currentTarifMode = mode;
+            const btnHp = document.getElementById('btn-tarif-hp');
+            const btnBase = document.getElementById('btn-tarif-base');
+            if (btnHp) {
+                btnHp.className = mode === 'hp'
+                    ? 'p-3 rounded-xl border-2 border-amber-400 bg-amber-500/10 text-left transition font-semibold'
+                    : 'p-3 rounded-xl border border-white/10 bg-white/[0.02] hover:border-amber-400 text-left transition font-semibold';
+            }
+            if (btnBase) {
+                btnBase.className = mode === 'base'
+                    ? 'p-3 rounded-xl border-2 border-amber-400 bg-amber-500/10 text-left transition font-semibold'
+                    : 'p-3 rounded-xl border border-white/10 bg-white/[0.02] hover:border-amber-400 text-left transition font-semibold';
+            }
             updateSolarCalc();
         }
 
         function updateSolarCalc() {
-            const panels = parseInt(document.getElementById('slider-panels').value);
-            const panelText = panels === 1 ? 'Pack Solo 440W (1 Panneau)' : 'Pack Duo 880W (2 Panneaux)';
-            document.getElementById('label-panels').innerText = panelText;
-
-            const baseKwh = zoneKwhPerPanel[currentZone];
-            const totalGrossKwh = baseKwh * panels;
-            // Énergie utile réellement autoconsommée (88% talon)
-            const usefulKwh = Math.round(totalGrossKwh * TAUX_AUTOCONSO);
-            
+            const kwhBase = zoneKwhPerPanel[currentZone] || 560;
             const kwhPrice = currentTarifMode === 'hp' ? TARIF_HP : TARIF_BASE;
-            const yearlySavings = Math.round(usefulKwh * kwhPrice);
-            
-            const packCost = panels === 1 ? 349 : 649;
-            const paybackYears = (packCost / yearlySavings).toFixed(1);
-            
-            // Rendement financier annuel net : (économie / coût pack) * 100
-            const roiPercent = ((yearlySavings / packCost) * 100).toFixed(1);
-            
-            const savings10y = (yearlySavings * 10) - packCost;
-            const savings25y = (yearlySavings * 25) - packCost;
 
-            document.getElementById('calc-kwh').innerText = `⚡ ${totalGrossKwh} kWh d'électricité gratuite produite / an (dont ${usefulKwh} kWh consommés direct)`;
+            // 1. Pack Solo 440W (349 €)
+            const soloGross = kwhBase * 1;
+            const soloRate = currentHousehold === '1_2' ? 0.90 : 0.96;
+            const soloUseful = Math.round(soloGross * soloRate);
+            const soloSavings = Math.round(soloUseful * kwhPrice);
+            const soloPayback = (349 / soloSavings).toFixed(1);
+            const soloRoi = ((soloSavings / 349) * 100).toFixed(1);
+            const solo25y = (soloSavings * 25) - 349;
+
+            // 2. Pack Duo 880W (649 €)
+            const duoGross = kwhBase * 2;
+            const duoRate = currentHousehold === '1_2' ? 0.72 : 0.84;
+            const duoUseful = Math.round(duoGross * duoRate);
+            const duoSavings = Math.round(duoUseful * kwhPrice);
+            const duoPayback = (649 / duoSavings).toFixed(1);
+            const duoRoi = ((duoSavings / 649) * 100).toFixed(1);
+            const duo25y = (duoSavings * 25) - 649;
+
+            // 3. Pack Duo 880W + Dérouteur (798 €)
+            const surplusGross = duoGross - duoUseful;
+            let divertedRate = 0;
+            if (currentWaterHeater === 'cumulus_matin') {
+                divertedRate = 0.92;
+            } else if (currentWaterHeater === 'cumulus_soir') {
+                divertedRate = 0.35;
+            } else {
+                divertedRate = 0.0;
+            }
+            const divertedUseful = Math.round(surplusGross * divertedRate);
+            const routeurUseful = duoUseful + divertedUseful;
+            const routeurSavings = Math.round(routeurUseful * kwhPrice);
+            const routeurPayback = (798 / routeurSavings).toFixed(1);
+            const routeurRoi = ((routeurSavings / 798) * 100).toFixed(1);
+            const routeur25y = (routeurSavings * 25) - 798;
+
+            // Update Zone Labels
             const elNord = document.getElementById('zone-nord-kwh');
             const elCentre = document.getElementById('zone-centre-kwh');
             const elSud = document.getElementById('zone-sud-kwh');
-            if (elNord) elNord.innerText = `~${480 * panels} kWh/an`;
-            if (elCentre) elCentre.innerText = `~${560 * panels} kWh/an`;
-            if (elSud) elSud.innerText = `~${680 * panels} kWh/an`;
-            document.getElementById('calc-yearly').innerText = `~${yearlySavings} € / an`;
-            const roiEl = document.getElementById('calc-roi');
-            if (roiEl) roiEl.innerText = `+ ${roiPercent} % / an`;
-            document.getElementById('calc-savings-10y').innerText = `+ ${savings10y.toLocaleString('fr-FR')} € net`;
-            document.getElementById('calc-savings-25y').innerText = `+ ${savings25y.toLocaleString('fr-FR')} € net`;
-            
-            // Multiplicateur dynamique du capital
-            const capitalMult = ((yearlySavings * 25) / packCost).toFixed(1).replace('.', ',');
-            const elMult = document.getElementById('calc-capital-mult');
-            if (elMult) {
-                elMult.innerText = `pour ${packCost} € d'investissement de départ (x${capitalMult} le capital)`;
+            if (elNord) elNord.innerText = '~480 kWh/panneau';
+            if (elCentre) elCentre.innerText = '~560 kWh/panneau';
+            if (elSud) elSud.innerText = '~680 kWh/panneau';
+
+            // Update Comparison Cards Texts
+            const optSoloDesc = document.getElementById('opt-solo-desc');
+            if (optSoloDesc) {
+                optSoloDesc.innerText = `~${soloSavings} €/an • Amorti en ${soloPayback.replace('.', ',')} ans • +${soloRoi.replace('.', ',')}% net/an`;
             }
 
-            // Descriptif dynamique comparatif Livret A
-            const livretMult = Math.round(parseFloat(roiPercent) / 3.0);
-            const elRoiDesc = document.getElementById('calc-roi-desc');
-            if (elRoiDesc) {
-                elRoiDesc.innerHTML = `<strong>Comparatif placement :</strong> Votre station rapporte <strong>${roiPercent.replace('.', ',')} % net d'impôt par an</strong> en économies d'énergie, soit <strong>${livretMult} fois plus que le Livret A (3,0 %)</strong> ou une assurance-vie (2,5 %).`;
-            }
-            document.getElementById('calc-payback').innerText = `~${paybackYears} Ans`;
-
-            const ctaBtn = document.getElementById('btn-calc-cta');
-            if (ctaBtn) {
-                ctaBtn.innerText = panels === 1 ? 'Choisir le Pack Solo à 349 €' : 'Choisir le Pack Duo à 649 €';
+            const optDuoDesc = document.getElementById('opt-duo-desc');
+            if (optDuoDesc) {
+                optDuoDesc.innerText = `~${duoSavings} €/an • Amorti en ${duoPayback.replace('.', ',')} ans • +${duoRoi.replace('.', ',')}% net/an`;
             }
 
-            // Update appliances text
-            const appDiv = document.getElementById('wiped-appliances');
-            if (panels === 1) {
-                appDiv.innerHTML = `
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                        <span><strong>Réfrigérateur Combiné A+ :</strong> ~180 kWh/an (Effacé à 100% le jour)</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                        <span><strong>Box Internet Fibre & Décodeur TV :</strong> ~120 kWh/an (Effacé à 100% le jour)</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                        <span><strong>Veilles TV, ordinateurs, VMC permanente :</strong> ~180 kWh/an (Effacé à 100% le jour)</span>
-                    </div>
-                `;
-            } else {
-                appDiv.innerHTML = `
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                        <span><strong>Tout le talon de veille (frigo, box, congel, VMC) :</strong> Effacé à 100%</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                        <span><strong>Lave-linge & Lave-vaisselle le midi :</strong> Couvert en quasi-totalité par le solaire</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                        <span><strong>Télétravail (écrans, PC portable, imprimante) :</strong> Consommation 100% solaire</span>
-                    </div>
-                `;
+            const optRouteurDesc = document.getElementById('opt-routeur-desc');
+            if (optRouteurDesc) {
+                if (currentWaterHeater === 'autre') {
+                    optRouteurDesc.innerText = `Inadapté (sans cumulus) • Pack Duo 880W recommandé`;
+                } else {
+                    optRouteurDesc.innerText = `~${routeurSavings} €/an • Amorti en ${routeurPayback.replace('.', ',')} ans • +${routeurRoi.replace('.', ',')}% net/an`;
+                }
+            }
+
+            // Arbitrage : Choisir la recommandation mathématique
+            let winner = 'Pack Duo 880W + Dérouteur Chauffe-Eau';
+            let winnerPrice = 798;
+            let winnerPayback = routeurPayback;
+            let winnerRoi = routeurRoi;
+            let winnerSavings = routeurSavings;
+            let winnerGain25y = routeur25y;
+            let winnerReason = '';
+
+            if (currentWaterHeater === 'cumulus_matin') {
+                winner = 'Pack Duo 880W + Dérouteur Chauffe-Eau';
+                winnerPrice = 798;
+                winnerPayback = routeurPayback;
+                winnerRoi = routeurRoi;
+                winnerSavings = routeurSavings;
+                winnerGain25y = routeur25y;
+                winnerReason = 'Votre cumulus froid le matin absorbe 90% du surplus solaire de mi-journée. C\'est le scénario idéal pour valoriser 100% de votre production et maximiser les gains nets sur 25 ans (+ ' + winnerGain25y.toLocaleString('fr-FR') + ' €).';
+            } else if (currentWaterHeater === 'autre') {
+                winner = 'Pack Duo 880W';
+                winnerPrice = 649;
+                winnerPayback = duoPayback;
+                winnerRoi = duoRoi;
+                winnerSavings = duoSavings;
+                winnerGain25y = duo25y;
+                winnerReason = 'Vous avez une chaudière gaz ou une pompe à chaleur : le dérouteur cumulus n\'a pas de résistance où injecter. Le Pack Duo 880W vous offre le meilleur ROI net sans surcoût inutile.';
+            } else { // cumulus_soir
+                if (parseFloat(duoPayback) <= parseFloat(routeurPayback)) {
+                    winner = 'Pack Duo 880W';
+                    winnerPrice = 649;
+                    winnerPayback = duoPayback;
+                    winnerRoi = duoRoi;
+                    winnerSavings = duoSavings;
+                    winnerGain25y = duo25y;
+                    winnerReason = 'Votre ballon chauffant la nuit en heures creuses, le dérouteur ne capte que la vaisselle du midi. Le Pack Duo 880W seul s\'amortit plus vite (~' + duoPayback.replace('.', ',') + ' ans) tout en couvrant 100% de votre talon.';
+                } else {
+                    winner = 'Pack Duo 880W + Dérouteur Chauffe-Eau';
+                    winnerPrice = 798;
+                    winnerPayback = routeurPayback;
+                    winnerRoi = routeurRoi;
+                    winnerSavings = routeurSavings;
+                    winnerGain25y = routeur25y;
+                    winnerReason = 'Même avec douches le soir, la valorisation de la vaisselle du midi et des petits tirages de jour permet un excellent gain cumulé net sur 25 ans (+ ' + winnerGain25y.toLocaleString('fr-FR') + ' €).';
+                }
+            }
+
+            recommendedPackName = winner;
+            recommendedPackPrice = winnerPrice;
+
+            // Update Champion Card in UI
+            const elRecName = document.getElementById('rec-pack-name');
+            if (elRecName) elRecName.innerText = `${winner} (${winnerPrice} €)`;
+
+            const elRecReason = document.getElementById('rec-reason');
+            if (elRecReason) elRecReason.innerText = winnerReason;
+
+            const elRecPayback = document.getElementById('rec-payback');
+            if (elRecPayback) elRecPayback.innerText = `~${winnerPayback.replace('.', ',')} Ans`;
+
+            const elRecYearly = document.getElementById('rec-yearly');
+            if (elRecYearly) elRecYearly.innerText = `~${winnerSavings} € / an`;
+
+            const elRecRoi = document.getElementById('rec-roi');
+            if (elRecRoi) elRecRoi.innerText = `+ ${winnerRoi.replace('.', ',')} %/an`;
+
+            const elRecGain25 = document.getElementById('rec-gain25');
+            if (elRecGain25) elRecGain25.innerText = `+ ${winnerGain25y.toLocaleString('fr-FR')} € net`;
+
+            const elRecMult = document.getElementById('rec-mult');
+            if (elRecMult) {
+                const mult = ((winnerSavings * 25) / winnerPrice).toFixed(1).replace('.', ',');
+                elRecMult.innerText = `(x${mult} le capital initial)`;
+            }
+
+            const elRecBtn = document.getElementById('btn-rec-cta');
+            if (elRecBtn) {
+                elRecBtn.innerText = `Commander cette Configuration (${winnerPrice} € TTC)`;
             }
         }
 
-        function onCalcCtaClick() {
-            const panels = parseInt(document.getElementById('slider-panels').value);
-            if (panels === 1) {
-                selectPack('Pack Solo 440W', 349);
-            } else {
-                selectPack('Pack Duo 880W', 649);
-            }
+        function selectRecommendedPack() {
+            selectPack(recommendedPackName, recommendedPackPrice);
         }
 
         function selectPack(packName, price) {
