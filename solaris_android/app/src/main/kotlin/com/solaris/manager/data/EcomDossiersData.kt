@@ -1481,13 +1481,22 @@ Le Plug & Play direct (1 ou 2 panneaux) est mathématiquement le meilleur invest
 - Le ballon d'eau chaude de 200L stocke entre 10 et 12 kWh d'énergie thermique pure !
 - ZÉRO watt perdu, eau chaude gratuite toute l'année, facture EDF eau chaude allégée de 120 € à 150 €/an.
 
-3. STRUCTURE ÉCONOMIQUE POUR NOTRE SAS :
-- Prix de vente client : 149 € TTC (124,17 € HT) seul, ou inclus dans le Pack Trio à 798 € TTC.
-- Prix d'achat B2B grossiste : 69 € HT.
-- Marge brute unitaire : +52,68 € HT / unité.
-- Vendu à 40% de nos acheteurs de panneaux = +1 050 € HT de bénéfice net mensuel supplémentaire !
+3. ARBITRAGE INDUSTRIEL : FABRIQUER SOI-MÊME vs MODULE RAIL DIN USINE :
+- ❌ FABRICATION MAISON DIY (REJETÉE) : Un cumulus tire 2 000W à 3 000W sous 230V. Fabriquer un gradateur artisanal expose à un risque pénal en cas d'incendie tableau. L'homologation laboratoire (CE, directive basse tension LVD 2014/35/UE, CEM) coûte 15 000 € à 25 000 €. L'assurance RC Pro refuserait la garantie.
+- 🏆 SOURCING MODULE RAIL DIN INDUSTRIEL CERTIFIÉ CE (RETENU) : Boîtier standard 2-4 modules DIN clipsable au tableau électrique, avec pince ampèremétrique CT ouvrante (mesure par induction sans aucun contact cuivre, 100% sécurisée). Déjà certifié CE/RoHS par l'usine.
 
-4. ARGUMENT MASSUE CLIENT :
+4. STRUCTURE ÉCONOMIQUE & MARGES DÉCUPLÉES (SAS) :
+- Achat usine ODM (lots de 20 à 50) : ~28 € à 35 € HT ($30 à $38 USD).
+- Prix de vente client : 149,00 € TTC (124,17 € HT) seul, ou inclus dans le Pack Trio à 798 € TTC.
+- Frais Stripe (1,5% + 0,25 €) : ~2,49 € HT. Zéro port supplémentaire (glissé dans le colis du kit).
+- Marge brute unitaire record : +91,49 € NET par unité (73,7% de marge brute !).
+- Sur 50 kits solaires vendus avec 40% d'option routeur (20 boîtiers) : +1 830 € NET de bénéfice SAS mensuel direct !
+
+5. SOURCING FOURNISSEURS IDENTIFIÉS :
+- Usines ODM Chine certifiées CE ISO9001 : Solar PV Immersion Diverter 16A 3kW (sur Alibaba / Made-in-China avec marquage blanc 'SOLARIS EcoDiverter').
+- Alternative européenne connectée : Module rail DIN Shelly Pro EM avec pince CT 50A (~55 € HT grossiste B2B).
+
+6. ARGUMENT MASSUE CLIENT :
 « Pourquoi dépenser 1 050 € dans une batterie chimique de 1,6 kWh qui durera 8 ans, alors que votre ballon d'eau chaude existant stocke 10 kWh d'énergie gratuitement pour seulement 149 € amortis en 14 mois ? »""",
                     sourceOrNorm = "Norme NFC 15-100 & Économie d'énergie thermique ADEME"
                 )

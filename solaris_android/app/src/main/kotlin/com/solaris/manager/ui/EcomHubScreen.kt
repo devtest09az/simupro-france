@@ -391,6 +391,10 @@ private fun ConceptionPhaseContent(
                             if (dossier.commercialPacks.isNotEmpty()) {
                                 CommercialPacksCard(packs = dossier.commercialPacks)
                                 Spacer(modifier = Modifier.height(14.dp))
+                                if (dossier.id == "dossier_solaire") {
+                                    RouteurIndustrialStrategyCard()
+                                    Spacer(modifier = Modifier.height(14.dp))
+                                }
                                 HorizontalDivider(color = Color(0xFF334155))
                                 Spacer(modifier = Modifier.height(10.dp))
                             }
@@ -1179,6 +1183,134 @@ private fun SolarModelsRoiBenchmarkCard() {
                 color = Color(0xFFE2E8F0),
                 fontSize = 10.sp,
                 lineHeight = 15.sp
+            )
+        }
+    }
+}
+
+
+@Composable
+private fun RouteurIndustrialStrategyCard() {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp))
+            .background(Color(0xFF0F172A))
+            .border(1.dp, Color(0xFF34D399).copy(alpha = 0.5f), RoundedCornerShape(10.dp))
+            .padding(12.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(text = "⚡", fontSize = 16.sp)
+                Spacer(modifier = Modifier.width(6.dp))
+                Text(
+                    text = "STRATÉGIE ROUTEUR CUMULUS : FABRIQUER vs MODULE RAIL DIN",
+                    color = Color(0xFF34D399),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 0.5.sp
+                )
+            }
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(Color(0xFF064E3B))
+                    .border(1.dp, Color(0xFF34D399), RoundedCornerShape(4.dp))
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
+            ) {
+                Text(
+                    text = "ARBITRAGE INDUSTRIEL SAS",
+                    color = Color(0xFFA7F3D0),
+                    fontSize = 9.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+        Text(
+            text = "Décision stratégique des 2 associés pour commercialiser l'option Routeur Solaire Chauffe-Eau :",
+            color = Color(0xFF94A3B8),
+            fontSize = 10.sp
+        )
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        // Option A : DIY / Fabrication maison (Rejetée)
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(8.dp))
+                .background(Color(0xFF450A0A).copy(alpha = 0.25f))
+                .border(1.dp, Color(0xFFDC2626).copy(alpha = 0.4f), RoundedCornerShape(8.dp))
+                .padding(10.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "❌ OPTION A : FABRICATION MAISON ARTISANALE (REJETÉE)",
+                    color = Color(0xFFF87171),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    text = "RISQUE MAJEUR",
+                    color = Color(0xFFFCA5A5),
+                    fontSize = 9.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = "• Risque 230V / 3 000W : En cas d'incendie tableau électrique, responsabilité pénale du dirigeant.\n• Coût d'homologation : Tests en laboratoire accrédité (CE, LVD 2014/35/UE, CEM) = 15 000 € à 25 000 €.\n• Assurance RC Pro : Refus de garantie immédiat pour un appareil haute puissance non certifié.\n• Verdict : Incompatible avec un lancement rapide et sécurisé.",
+                color = Color(0xFFE2E8F0),
+                fontSize = 10.sp,
+                lineHeight = 14.sp
+            )
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // Option B : Module Rail DIN Industriel CE (Retenue)
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(8.dp))
+                .background(Color(0xFF064E3B).copy(alpha = 0.35f))
+                .border(1.dp, Color(0xFF10B981), RoundedCornerShape(8.dp))
+                .padding(10.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "🏆 OPTION B : SOURCING MODULE RAIL DIN CE EXISTANT (RETENUE)",
+                    color = Color(0xFF34D399),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    text = "+91 € NET / UNITÉ",
+                    color = Color(0xFF6EE7B7),
+                    fontSize = 10.sp,
+                    fontWeight = FontWeight.Black
+                )
+            }
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = "• Format : Boîtier standard 2-4 modules pour tableau électrique + pince tore ouvrante CT (induction sans contact cuivre).\n• Certifications : Déjà 100% certifié CE, LVD et RoHS par le fabricant d'origine (couvert par notre RC Pro).\n• Coût d'achat usine : ~28 € à 35 € HT ($30-$38 USD) par lots de 20-50 pièces sur Alibaba/Made-in-China.\n• Prix de vente client : 149 € TTC (124 € HT) • Marge brute SAS : +91,49 € NET par unité (73,7% de marge !).\n• Verdict : Zéro R&D, zéro risque juridique, marge maximale dès le premier mois (+1 830 € sur 20 ventes).",
+                color = Color.White,
+                fontSize = 10.sp,
+                lineHeight = 14.sp
             )
         }
     }
