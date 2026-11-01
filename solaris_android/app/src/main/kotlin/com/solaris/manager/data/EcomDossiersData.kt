@@ -653,24 +653,24 @@ B. POUR L'ALARME MAISON 4G (Colis Standard Léger) :
                     contents = "4x Crochets toiture inox réglables + 2x Rails aluminium anodisé noir + Étriers de serrage + Guide Cerfa Déclaration Préalable Mairie"
                 ),
                 CommercialPack(
-                    name = "Option Box Routeur Solaire Chauffe-Eau (Zéro Perte Cumulus)",
-                    badge = "INNOVATION RENTABILITÉ",
+                    name = "Option Boîtier Dérouteur de Surplus Chauffe-Eau",
+                    badge = "MODULE RAIL DIN (ANTI-GASPILLAGE)",
                     retailPriceTTC = "149,00 € TTC",
-                    wholesaleCostHT = "69,00 € HT",
-                    netMarginAmount = "+52,68 € NET",
-                    netMarginPercent = "42,4% de marge brute",
-                    paybackPeriod = "Amorti en 1,2 an (économise 120 € à 150 €/an d'eau chaude)",
-                    contents = "Boîtier variateur de surplus pour résistance cumulus + Pince ampèremétrique CT sans coupure + Câblage rapide. Déroute 100% du surplus solaire dans le ballon d'eau chaude au lieu de l'injecter gratuitement sur le réseau."
+                    wholesaleCostHT = "32,00 € HT",
+                    netMarginAmount = "+91,49 € NET",
+                    netMarginPercent = "73,7% de marge brute",
+                    paybackPeriod = "Valorisation du surplus : zéro promesse de température, énergie dirigée vers le ballon",
+                    contents = "Boîtier dérouteur rail DIN CE 16A + pince ampèremétrique CT ouvrante sans coupure. Déroute l'énergie excédentaire non consommée vers la résistance du chauffe-eau existant au lieu de la réinjecter à 0 € sur Enedis. Aucune garantie de température d'eau."
                 ),
                 CommercialPack(
-                    name = "Pack Trio Autonomie Eau Chaude 880W + Routeur Solaire",
-                    badge = "OFFRE COMPLÈTE MAISON",
-                    retailPriceTTC = "798,00 € TTC (au lieu de 848 €)",
-                    wholesaleCostHT = "346,40 € HT",
-                    netMarginAmount = "+271,18 € NET (Livraison) / +307,68 € NET (Main propre)",
-                    netMarginPercent = "40,8% à 46,3% de marge nette",
-                    paybackPeriod = "Amorti en 2,3 ans (efface talon électrique + eau chaude sanitaire)",
-                    contents = "2x Panneaux Trina 440W Biverre + 1x Micro-onduleur Hoymiles Duo HMS-800 + 2x Châssis alu + 1x Câble Schuko 5m + 1x Box Routeur Solaire Chauffe-eau 16A avec tore de mesure"
+                    name = "Pack Duo 880W + Dérouteur de Surplus Chauffe-Eau",
+                    badge = "PACK DOUBLE PUISSANCE",
+                    retailPriceTTC = "798,00 € TTC",
+                    wholesaleCostHT = "305,40 € HT",
+                    netMarginAmount = "+310,00 € NET (Main propre) / +275,00 € NET (Livraison)",
+                    netMarginPercent = "45% à 51% de marge nette",
+                    paybackPeriod = "Amorti en 2,3 ans (efface le talon électrique + surplus envoyé au chauffe-eau)",
+                    contents = "2x Panneaux Trina 440W Biverre + 1x Micro-onduleur Hoymiles 800W + 1x Boîtier Dérouteur rail DIN 16A avec pince de mesure CT + 2x Châssis alu + Câbles 230V"
                 )
             ),
             productionSimulations = listOf(
@@ -1465,39 +1465,32 @@ Le Plug & Play direct (1 ou 2 panneaux) est mathématiquement le meilleur invest
                 ),
                 ToolkitItem(
                     id = "tool_routeur_solaire_guide",
-                    title = "⚡ Fiche Stratégique : Routeur Solaire Chauffe-Eau (Batterie Thermique 10 kWh)",
+                    title = "⚡ Fiche Stratégique : Dérouteur de Surplus Chauffe-Eau (Zéro Fausse Promesse)",
                     category = "Innovation & Rentabilité",
-                    contentToCopy = """GUIDE TECHNIQUE & COMMERCIAL : LE ROUTEUR SOLAIRE CHAUFFE-EAU (CUMULUS)
+                    contentToCopy = """GUIDE TECHNIQUE & POSITIONNEMENT LÉGAL : DÉROUTEUR DE SURPLUS CHAUFFE-EAU
 
-1. LE PROBLÈME RÉSOLU :
-- Avec 2 panneaux solaires (880W), il arrive en milieu de journée que la maison produise plus que son talon de base (ex: 700W produits pour 200W consommés).
-- Les 500W restants partent gratuitement sur le réseau Enedis sans être rémunérés.
-- Acheter une batterie lithium de 1,6 kWh coûte ~1 050 € et met 15 ans à s'amortir.
+1. LE PRINCIPE PHYSIQUE RÉEL (ZÉRO PROMESSE ILLUSOIRE) :
+- En milieu de journée, si la maison consomme moins que la production solaire (ex: 250W consommés sur 800W produits), l'excédent (550W) est habituellement injecté gratuitement sur le réseau Enedis (0 € de rachat pour les kits branchés sur prise).
+- Le boîtier dérouteur détecte cet excédent via sa pince de mesure CT et l'envoie vers la résistance de votre chauffe-eau existant.
+- L'énergie excédentaire part dans la résistance au lieu de partir sur le réseau.
 
-2. LA SOLUTION RÉVOLUTIONNAIRE (LE ROUTEUR SOLAIRE À 149 €) :
-- Une pince ampèremétrique se clipse sur la phase du tableau électrique (zéro coupure, pose en 30 secondes).
-- Elle mesure le flux d'énergie 50 fois par seconde.
-- Dès qu'elle détecte ne serait-ce que 50W ou 200W qui s'apprêtent à sortir vers la rue, le boîtier module la puissance et injecte EXACTEMENT ce surplus dans la résistance du chauffe-eau.
-- Le ballon d'eau chaude de 200L stocke entre 10 et 12 kWh d'énergie thermique pure !
-- ZÉRO watt perdu, eau chaude gratuite toute l'année, facture EDF eau chaude allégée de 120 € à 150 €/an.
+2. CADRAGE JURIDIQUE & COMMERCIAL (DIRECTIVE ASSOCIÉS CRITIQUE) :
+- AUCUNE GARANTIE DE TEMPÉRATURE : Nous ne promettons JAMAIS que l'eau sera à 55°C ou 60°C.
+- Selon la météo, les nuages, la saison, et surtout les habitudes du foyer (consommations imprévues d'autres appareils), l'apport solaire ne suffit pas à garantir un niveau de chauffe précis.
+- NE JAMAIS DIRE au client « vos douches seront 100% gratuites » ou « vous pouvez couper le chauffe-eau la nuit ». C'est trompeur et dangereux.
+- Le discours irréprochable et factuel : « Aucune garantie d'eau chaude magique. Simplement, l'énergie produite par vos panneaux n'est plus perdue sur le réseau : elle part dans votre chauffe-eau pour valoriser chaque watt produit. »
 
-3. ARBITRAGE INDUSTRIEL : FABRIQUER SOI-MÊME vs MODULE RAIL DIN USINE :
-- ❌ FABRICATION MAISON DIY (REJETÉE) : Un cumulus tire 2 000W à 3 000W sous 230V. Fabriquer un gradateur artisanal expose à un risque pénal en cas d'incendie tableau. L'homologation laboratoire (CE, directive basse tension LVD 2014/35/UE, CEM) coûte 15 000 € à 25 000 €. L'assurance RC Pro refuserait la garantie.
-- 🏆 SOURCING MODULE RAIL DIN INDUSTRIEL CERTIFIÉ CE (RETENU) : Boîtier standard 2-4 modules DIN clipsable au tableau électrique, avec pince ampèremétrique CT ouvrante (mesure par induction sans aucun contact cuivre, 100% sécurisée). Déjà certifié CE/RoHS par l'usine.
+3. IMPACT DES HABITUDES : DOUCHE LE MATIN vs DOUCHE LE SOIR :
+- Douche le matin : le cumulus est vidé de son eau chaude le matin. Le ballon est froid toute la journée. Dès 11h, le surplus solaire peut être absorbé par la résistance. C'est la configuration optimale d'absorption.
+- Douche le soir : si le cumulus s'est réchauffé la nuit en heures creuses, le ballon est déjà à 65°C dès le matin. Le thermostat mécanique coupe le circuit : le dérouteur ne peut rien injecter car le cumulus est déjà à bloc ! Couper le cumulus la nuit pour forcer le solaire est risqué car en cas de journée grise ou de surconsommation, le client n'aura pas d'eau chaude le soir.
+- Conclusion : aucune promesse de résultat ne peut être tenue, cela dépend du mode de vie de chaque foyer.
 
-4. STRUCTURE ÉCONOMIQUE & MARGES DÉCUPLÉES (SAS) :
-- Achat usine ODM (lots de 20 à 50) : ~28 € à 35 € HT ($30 à $38 USD).
-- Prix de vente client : 149,00 € TTC (124,17 € HT) seul, ou inclus dans le Pack Trio à 798 € TTC.
-- Frais Stripe (1,5% + 0,25 €) : ~2,49 € HT. Zéro port supplémentaire (glissé dans le colis du kit).
-- Marge brute unitaire record : +91,49 € NET par unité (73,7% de marge brute !).
-- Sur 50 kits solaires vendus avec 40% d'option routeur (20 boîtiers) : +1 830 € NET de bénéfice SAS mensuel direct !
+4. ARBITRAGE INDUSTRIEL : FABRICATION DIY vs MODULE RAIL DIN INDUSTRIEL :
+- ❌ REJET DU DIY : Fabriquer un gradateur artisanal sur 230V / 3 000W engage la responsabilité pénale du dirigeant et entraîne un refus de garantie RC Pro en cas de sinistre électrique. Homologation labo CE/LVD trop coûteuse (15-25 k€).
+- 🏆 MODULE RAIL DIN CE INDUSTRIEL (APPROUVÉ) : Boîtier 2-4 modules certifié CE, LVD et RoHS par le fabricant. Pince de mesure CT ouvrante (induction sans contact cuivre). Sourcing usine ODM à ~28 € - 35 € HT. Vente 149 € TTC (124,17 € HT). Marge brute SAS record : +91,49 € NET par unité (73,7%).
 
-5. SOURCING FOURNISSEURS IDENTIFIÉS :
-- Usines ODM Chine certifiées CE ISO9001 : Solar PV Immersion Diverter 16A 3kW (sur Alibaba / Made-in-China avec marquage blanc 'SOLARIS EcoDiverter').
-- Alternative européenne connectée : Module rail DIN Shelly Pro EM avec pince CT 50A (~55 € HT grossiste B2B).
-
-6. ARGUMENT MASSUE CLIENT :
-« Pourquoi dépenser 1 050 € dans une batterie chimique de 1,6 kWh qui durera 8 ans, alors que votre ballon d'eau chaude existant stocke 10 kWh d'énergie gratuitement pour seulement 149 € amortis en 14 mois ? »""",
+5. FORMULATION COMMERCIALE COMMUNICABLE :
+« Zéro promesse magique, aucune garantie de température : simplement, l'énergie excédentaire de vos panneaux n'est plus perdue sur le réseau, elle part dans votre chauffe-eau. »""",
                     sourceOrNorm = "Norme NFC 15-100 & Économie d'énergie thermique ADEME"
                 )
             )

@@ -1051,21 +1051,21 @@ private fun SolarModelsRoiBenchmarkCard() {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "🔥 1 BIS. ROUTEUR CHAUFFE-EAU (BATTERIE THERMIQUE)",
+                    text = "⚡ 1 BIS. DÉROUTEUR DE SURPLUS CHAUFFE-EAU (OPTION 149 €)",
                     color = Color(0xFFA7F3D0),
                     fontSize = 11.sp,
                     fontWeight = FontWeight.Bold
                 )
                 Text(
-                    text = "Amorti en 1,2 an !",
+                    text = "ANTI-GASPILLAGE",
                     color = Color(0xFF6EE7B7),
-                    fontSize = 11.sp,
+                    fontSize = 10.sp,
                     fontWeight = FontWeight.Black
                 )
             }
             Spacer(modifier = Modifier.height(4.dp))
             Text(
-                text = "• Coût : +149 € TTC (boîtier variateur + pince tore sans coupure) • 100% de surplus dérouté dans le cumulus\n• Capacité de stockage : 10 à 12 kWh d'eau chaude gratuite (écrase la batterie lithium 1,6 kWh à 1 050 €)\n• Gain eau chaude : 120 € à 150 € / an • Rendement : +80% / an sur le boîtier. L'arme anti-gaspillage ultime.",
+                text = "• Coût : +149 € TTC (module rail DIN 16A + pince CT sans coupure de câble).\n• Principe : Si la maison consomme moins que la production des panneaux, l'excédent est envoyé dans la résistance du chauffe-eau existant au lieu de partir à 0 € sur le réseau.\n• ZÉRO PROMESSE DE TEMPÉRATURE : Aucune garantie d'eau chaude miraculeuse (dépend de la météo et des habitudes du foyer). L'énergie n'est simplement plus perdue.",
                 color = Color.White,
                 fontSize = 10.sp,
                 lineHeight = 15.sp
@@ -1307,7 +1307,45 @@ private fun RouteurIndustrialStrategyCard() {
             }
             Spacer(modifier = Modifier.height(4.dp))
             Text(
-                text = "• Format : Boîtier standard 2-4 modules pour tableau électrique + pince tore ouvrante CT (induction sans contact cuivre).\n• Certifications : Déjà 100% certifié CE, LVD et RoHS par le fabricant d'origine (couvert par notre RC Pro).\n• Coût d'achat usine : ~28 € à 35 € HT ($30-$38 USD) par lots de 20-50 pièces sur Alibaba/Made-in-China.\n• Prix de vente client : 149 € TTC (124 € HT) • Marge brute SAS : +91,49 € NET par unité (73,7% de marge !).\n• Verdict : Zéro R&D, zéro risque juridique, marge maximale dès le premier mois (+1 830 € sur 20 ventes).",
+                text = "• Format : Boîtier standard 2-4 modules pour tableau électrique + pince tore ouvrante CT (induction sans contact cuivre).\n• Certifications : Déjà 100% certifié CE, LVD et RoHS par le fabricant d'origine (couvert par notre RC Pro).\n• Coût d'achat usine : ~28 € à 35 € HT ($30-$38 USD) par lots de 20-50 pièces sur Alibaba/Made-in-China.\n• Prix de vente client : 149 € TTC (124 € HT) • Marge brute SAS : +91,49 € NET par unité (73,7% de marge !).\n• Sourcing identifié : Fabricants ODM certifiés ISO9001 (Alibaba / Made-in-China) ou Shelly Pro EM rail DIN.",
+                color = Color.White,
+                fontSize = 10.sp,
+                lineHeight = 14.sp
+            )
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // Cadrage Juridique & Commercial : ZÉRO PROMESSE DE TEMPÉRATURE
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(8.dp))
+                .background(Color(0xFF1E1B4B).copy(alpha = 0.35f))
+                .border(1.dp, Color(0xFF818CF8), RoundedCornerShape(8.dp))
+                .padding(10.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "⚖️ CADRAGE COMMERCIAL : ZÉRO PROMESSE DE TEMPÉRATURE",
+                    color = Color(0xFFA5B4FC),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    text = "PROTECTION LÉGALE",
+                    color = Color(0xFFC7D2FE),
+                    fontSize = 9.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = "• Règle d'or : Strictement AUCUNE garantie de température (ne jamais promettre de l'eau à 60°C ou des 'douches 100% gratuites').\n• Habitudes du foyer : Le matin le cumulus est froid donc réceptif au surplus. Le soir, si le cumulus a chauffé la nuit en heures creuses, il est déjà à bloc et le thermostat mécanique coupe la résistance !\n• Aléas réels : Météo couverte, surconsommation imprévue dans la maison, météo d'hiver.\n• Formule officielle irréprochable : 'Zéro promesse magique, aucune garantie de température : simplement, l'énergie excédentaire de vos panneaux n'est plus perdue sur le réseau, elle part dans votre chauffe-eau.'",
                 color = Color.White,
                 fontSize = 10.sp,
                 lineHeight = 14.sp
