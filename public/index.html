@@ -542,7 +542,7 @@
                                 <span class="text-amber-300 font-bold text-xs uppercase tracking-wider">Rendement Annuel Net du Capital :</span>
                                 <span id="calc-roi" class="font-mono text-base font-black text-amber-400">+ 38,1 % / an</span>
                             </div>
-                            <p class="text-[10px] text-slate-300 leading-tight">
+                            <p id="calc-roi-desc" class="text-[10px] text-slate-300 leading-tight">
                                 <strong>Comparatif placement :</strong> Votre station rapporte <strong>38 % net d'impôt par an</strong> en économies d'énergie, soit <strong>12 fois plus que le Livret A (3,0 %)</strong> ou une assurance-vie (2,5 %).
                             </p>
                         </div>
@@ -563,7 +563,7 @@
                         <div class="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-center text-xs">
                             <span class="text-emerald-300 font-semibold block">Gain net en poche sur 25 ans :</span>
                             <span id="calc-savings-25y" class="font-mono text-base font-extrabold text-emerald-400">+ 2 979 € net</span>
-                            <span class="text-[10px] text-slate-400 block">pour 349 € d'investissement de départ (x9,5 le capital)</span>
+                            <span id="calc-capital-mult" class="text-[10px] text-slate-400 block">pour 349 € d'investissement de départ (x9,5 le capital)</span>
                         </div>
 
                         <button type="button" id="btn-calc-cta" onclick="onCalcCtaClick()" class="block w-full py-4 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl transition shadow-lg shadow-amber-400/25">
@@ -1444,6 +1444,20 @@
             if (roiEl) roiEl.innerText = `+ ${roiPercent} % / an`;
             document.getElementById('calc-savings-10y').innerText = `+ ${savings10y.toLocaleString('fr-FR')} € net`;
             document.getElementById('calc-savings-25y').innerText = `+ ${savings25y.toLocaleString('fr-FR')} € net`;
+            
+            // Multiplicateur dynamique du capital
+            const capitalMult = ((yearlySavings * 25) / packCost).toFixed(1).replace('.', ',');
+            const elMult = document.getElementById('calc-capital-mult');
+            if (elMult) {
+                elMult.innerText = `pour ${packCost} € d'investissement de départ (x${capitalMult} le capital)`;
+            }
+
+            // Descriptif dynamique comparatif Livret A
+            const livretMult = Math.round(parseFloat(roiPercent) / 3.0);
+            const elRoiDesc = document.getElementById('calc-roi-desc');
+            if (elRoiDesc) {
+                elRoiDesc.innerHTML = `<strong>Comparatif placement :</strong> Votre station rapporte <strong>${roiPercent.replace('.', ',')} % net d'impôt par an</strong> en économies d'énergie, soit <strong>${livretMult} fois plus que le Livret A (3,0 %)</strong> ou une assurance-vie (2,5 %).`;
+            }
             document.getElementById('calc-payback').innerText = `~${paybackYears} Ans`;
 
             const ctaBtn = document.getElementById('btn-calc-cta');
