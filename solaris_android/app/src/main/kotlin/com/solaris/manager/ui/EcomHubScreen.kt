@@ -1032,6 +1032,44 @@ private fun SolarModelsRoiBenchmarkCard() {
 
         Spacer(modifier = Modifier.height(8.dp))
 
+        // Modèle 1 bis : Option Routeur Solaire Chauffe-Eau (Batterie Thermique 10 kWh)
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(8.dp))
+                .background(Color(0xFF0F2E28).copy(alpha = 0.6f))
+                .border(1.dp, Color(0xFF34D399), RoundedCornerShape(8.dp))
+                .padding(10.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "🔥 1 BIS. ROUTEUR CHAUFFE-EAU (BATTERIE THERMIQUE)",
+                    color = Color(0xFFA7F3D0),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    text = "Amorti en 1,2 an !",
+                    color = Color(0xFF6EE7B7),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Black
+                )
+            }
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = "• Coût : +149 € TTC (boîtier variateur + pince tore sans coupure) • 100% de surplus dérouté dans le cumulus\n• Capacité de stockage : 10 à 12 kWh d'eau chaude gratuite (écrase la batterie lithium 1,6 kWh à 1 050 €)\n• Gain eau chaude : 120 € à 150 € / an • Rendement : +80% / an sur le boîtier. L'arme anti-gaspillage ultime.",
+                color = Color.White,
+                fontSize = 10.sp,
+                lineHeight = 15.sp
+            )
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
         // Modèle 2 : Plug & Play avec Batterie
         Column(
             modifier = Modifier

@@ -651,6 +651,26 @@ B. POUR L'ALARME MAISON 4G (Colis Standard Léger) :
                     netMarginPercent = "46,0% de marge",
                     paybackPeriod = "Permet la pose sur toit en pente avec branchement direct sur prise 220V",
                     contents = "4x Crochets toiture inox réglables + 2x Rails aluminium anodisé noir + Étriers de serrage + Guide Cerfa Déclaration Préalable Mairie"
+                ),
+                CommercialPack(
+                    name = "Option Box Routeur Solaire Chauffe-Eau (Zéro Perte Cumulus)",
+                    badge = "INNOVATION RENTABILITÉ",
+                    retailPriceTTC = "149,00 € TTC",
+                    wholesaleCostHT = "69,00 € HT",
+                    netMarginAmount = "+52,68 € NET",
+                    netMarginPercent = "42,4% de marge brute",
+                    paybackPeriod = "Amorti en 1,2 an (économise 120 € à 150 €/an d'eau chaude)",
+                    contents = "Boîtier variateur de surplus pour résistance cumulus + Pince ampèremétrique CT sans coupure + Câblage rapide. Déroute 100% du surplus solaire dans le ballon d'eau chaude au lieu de l'injecter gratuitement sur le réseau."
+                ),
+                CommercialPack(
+                    name = "Pack Trio Autonomie Eau Chaude 880W + Routeur Solaire",
+                    badge = "OFFRE COMPLÈTE MAISON",
+                    retailPriceTTC = "798,00 € TTC (au lieu de 848 €)",
+                    wholesaleCostHT = "346,40 € HT",
+                    netMarginAmount = "+271,18 € NET (Livraison) / +307,68 € NET (Main propre)",
+                    netMarginPercent = "40,8% à 46,3% de marge nette",
+                    paybackPeriod = "Amorti en 2,3 ans (efface talon électrique + eau chaude sanitaire)",
+                    contents = "2x Panneaux Trina 440W Biverre + 1x Micro-onduleur Hoymiles Duo HMS-800 + 2x Châssis alu + 1x Câble Schuko 5m + 1x Box Routeur Solaire Chauffe-eau 16A avec tore de mesure"
                 )
             ),
             productionSimulations = listOf(
@@ -1442,6 +1462,34 @@ B) Toiture en pente (Tuiles mécaniques / Ardoises) :
 SYNTHÈSE COMMERCIALE CLIENT :
 Le Plug & Play direct (1 ou 2 panneaux) est mathématiquement le meilleur investissement d'énergie en France : amorti en 30 mois, sans travaux lourds, sans dépendre des subventions ni des démarches administratives complexes.""",
                     sourceOrNorm = "Code de l'énergie art. L314-1 & Analyse financière comparative 2026"
+                ),
+                ToolkitItem(
+                    id = "tool_routeur_solaire_guide",
+                    title = "⚡ Fiche Stratégique : Routeur Solaire Chauffe-Eau (Batterie Thermique 10 kWh)",
+                    category = "Innovation & Rentabilité",
+                    contentToCopy = """GUIDE TECHNIQUE & COMMERCIAL : LE ROUTEUR SOLAIRE CHAUFFE-EAU (CUMULUS)
+
+1. LE PROBLÈME RÉSOLU :
+- Avec 2 panneaux solaires (880W), il arrive en milieu de journée que la maison produise plus que son talon de base (ex: 700W produits pour 200W consommés).
+- Les 500W restants partent gratuitement sur le réseau Enedis sans être rémunérés.
+- Acheter une batterie lithium de 1,6 kWh coûte ~1 050 € et met 15 ans à s'amortir.
+
+2. LA SOLUTION RÉVOLUTIONNAIRE (LE ROUTEUR SOLAIRE À 149 €) :
+- Une pince ampèremétrique se clipse sur la phase du tableau électrique (zéro coupure, pose en 30 secondes).
+- Elle mesure le flux d'énergie 50 fois par seconde.
+- Dès qu'elle détecte ne serait-ce que 50W ou 200W qui s'apprêtent à sortir vers la rue, le boîtier module la puissance et injecte EXACTEMENT ce surplus dans la résistance du chauffe-eau.
+- Le ballon d'eau chaude de 200L stocke entre 10 et 12 kWh d'énergie thermique pure !
+- ZÉRO watt perdu, eau chaude gratuite toute l'année, facture EDF eau chaude allégée de 120 € à 150 €/an.
+
+3. STRUCTURE ÉCONOMIQUE POUR NOTRE SAS :
+- Prix de vente client : 149 € TTC (124,17 € HT) seul, ou inclus dans le Pack Trio à 798 € TTC.
+- Prix d'achat B2B grossiste : 69 € HT.
+- Marge brute unitaire : +52,68 € HT / unité.
+- Vendu à 40% de nos acheteurs de panneaux = +1 050 € HT de bénéfice net mensuel supplémentaire !
+
+4. ARGUMENT MASSUE CLIENT :
+« Pourquoi dépenser 1 050 € dans une batterie chimique de 1,6 kWh qui durera 8 ans, alors que votre ballon d'eau chaude existant stocke 10 kWh d'énergie gratuitement pour seulement 149 € amortis en 14 mois ? »""",
+                    sourceOrNorm = "Norme NFC 15-100 & Économie d'énergie thermique ADEME"
                 )
             )
         ),
